@@ -1,0 +1,132 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths = (async () => {
+  const projects = await getCollection("projects", ({ data }) => !data.draft);
+  return projects.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}) satisfies GetStaticPaths;
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.summary}>
+  <article class="project">
+    <header class="section section--hero container project__head">
+      <p class="eyebrow">
+        Project · {entry.data.year}
+        {entry.data.status && ` · ${entry.data.status}`}
+      </p>
+      <h1>{entry.data.title}</h1>
+      {entry.data.titleZh && <p class="project__zh">{entry.data.titleZh}</p>}
+      <p class="project__lede">{entry.data.summary}</p>
+      {entry.data.summaryZh && (
+        <p class="project__lede project__lede--zh">{entry.data.summaryZh}</p>
+      )}
+      <dl class="project__meta">
+        {entry.data.location && (
+          <>
+            <dt>Location</dt>
+            <dd>{entry.data.location}</dd>
+          </>
+        )}
+        {entry.data.role && (
+          <>
+            <dt>Role</dt>
+            <dd>{entry.data.role}</dd>
+          </>
+        )}
+        {entry.data.typology && (
+          <>
+            <dt>Typology</dt>
+            <dd>{entry.data.typology}</dd>
+          </>
+        )}
+      </dl>
+    </header>
+
+    <section class="container project__body">
+      <div class="prose">
+        <Content />
+      </div>
+    </section>
+
+    <nav class="container project__nav">
+      <a href={`${base}/projects`} class="project__back">← All projects</a>
+    </nav>
+  </article>
+</BaseLayout>
+
+<style>
+  .project__head {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: var(--space-5);
+  }
+  .project__zh {
+    color: var(--fg-muted);
+    margin-top: -0.75rem;
+  }
+  .project__lede {
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+    line-height: var(--leading-snug);
+    max-width: 56ch;
+    margin-top: var(--space-3);
+  }
+  .project__lede--zh {
+    color: var(--fg-muted);
+    margin-top: 0.6rem;
+  }
+  .project__meta {
+    display: grid;
+    grid-template-columns: 8rem 1fr;
+    column-gap: 1rem;
+    row-gap: 0.4rem;
+    margin-top: var(--space-4);
+    font-size: 0.92rem;
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-3);
+    max-width: 36rem;
+  }
+  .project__meta dt {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .project__meta dd {
+    margin: 0;
+  }
+  .project__body {
+    padding-top: var(--space-5);
+    padding-bottom: var(--space-4);
+  }
+  .prose {
+    max-width: 62ch;
+  }
+  .prose :global(h2) {
+    margin-top: var(--space-4);
+  }
+  .prose :global(p) {
+    margin-bottom: var(--space-2);
+  }
+  .project__nav {
+    padding-bottom: var(--space-5);
+  }
+  .project__back {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--fg-muted);
+  }
+  .project__back:hover {
+    color: var(--fg);
+  }
+</style>

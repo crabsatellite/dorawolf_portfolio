@@ -1,0 +1,130 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Research"
+  description="Computational design tooling at the heart of the studio's daily workflow."
+>
+  <section class="section section--hero container">
+    <p class="eyebrow">Research</p>
+    <h1>Tools as <em>instruments</em>, not as the design.</h1>
+    <p class="lede">
+      Computational tools earn their place when they let the studio test more
+      alternatives, more honestly, in less time. The list below is short on
+      purpose: only the instruments used regularly, with a note on what each is
+      asked to do.
+    </p>
+  </section>
+
+  <section class="section container">
+    <ol class="tools">
+      <li>
+        <header>
+          <h3>Sketchup</h3>
+          <p class="eyebrow">Form &amp; massing · daily</p>
+        </header>
+        <p>
+          The studio's everyday surface for thinking in three dimensions —
+          fast enough to keep up with conversation, accurate enough to feed
+          schematic drawings.
+        </p>
+      </li>
+      <li>
+        <header>
+          <h3>Grasshopper</h3>
+          <p class="eyebrow">Computational geometry · weekly</p>
+        </header>
+        <p>
+          Used where a problem has many alternatives: facade rhythms, terrace
+          stepping, daylight studies. The aim is to widen the search, not to
+          generate novelty for its own sake.
+        </p>
+      </li>
+      <li>
+        <header>
+          <h3>Rhino</h3>
+          <p class="eyebrow">Detail geometry · per project</p>
+        </header>
+        <p>
+          The engine behind Grasshopper, plus the place where complex surfaces
+          and detail geometry get resolved before drawings are issued.
+        </p>
+      </li>
+    </ol>
+
+    <div class="research-note">
+      <p>
+        <strong>What's not on this list.</strong> Tools that look impressive
+        but are rarely used in real schemes don't earn a place. The studio
+        prefers a small kit, used well.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 300;
+  }
+  .lede {
+    font-family: var(--font-display);
+    color: var(--fg-muted);
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    line-height: var(--leading-snug);
+    max-width: 60ch;
+    margin-top: var(--space-3);
+  }
+  .tools {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: t;
+  }
+  .tools li {
+    counter-increment: t;
+    border-top: 1px solid var(--border);
+    padding: var(--space-3) 0;
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    gap: var(--space-3);
+    align-items: baseline;
+  }
+  .tools li::before {
+    content: "0" counter(t);
+    font-family: var(--font-mono);
+    color: var(--fg-subtle);
+    font-size: 0.85rem;
+  }
+  .tools header h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    margin: 0;
+  }
+  .tools header .eyebrow {
+    margin-top: 0.4rem;
+  }
+  .tools li > p {
+    grid-column: 2 / 3;
+    color: var(--fg);
+    margin-top: 0.6rem;
+    max-width: 60ch;
+  }
+  .research-note {
+    margin-top: var(--space-5);
+    padding: var(--space-3);
+    border-left: 2px solid var(--accent);
+    background: var(--bg-elevated);
+    color: var(--fg-muted);
+    max-width: 60ch;
+  }
+  .research-note p {
+    margin: 0;
+  }
+  .research-note strong {
+    color: var(--fg);
+    font-weight: 500;
+  }
+</style>

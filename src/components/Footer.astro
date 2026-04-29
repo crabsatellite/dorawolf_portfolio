@@ -1,0 +1,67 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="foot">
+  <div class="container foot__inner">
+    <div>
+      <p class="eyebrow">Contact</p>
+      <a href="mailto:949505300@qq.com">949505300@qq.com</a>
+    </div>
+    <div>
+      <p class="eyebrow">Studio</p>
+      <p>Wuhan · China</p>
+    </div>
+    <div>
+      <p class="eyebrow">Notice</p>
+      <p>鄂ICP备2024064771号</p>
+    </div>
+  </div>
+  <div class="container foot__bottom">
+    <p>© {year} DoraWolf. All rights reserved.</p>
+    <p>
+      <a
+        href="https://github.com/crabsatellite/dorawolf_portfolio"
+        rel="noopener noreferrer"
+        target="_blank">Source</a
+      >
+    </p>
+  </div>
+</footer>
+
+<style>
+  .foot {
+    border-top: 1px solid var(--border);
+    margin-top: var(--space-7);
+    padding: var(--space-5) 0 var(--space-3);
+    color: var(--fg-muted);
+    font-size: 0.92rem;
+  }
+  .foot__inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-4);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--border);
+  }
+  .foot__inner p {
+    margin: 0.25rem 0 0;
+  }
+  .foot__inner a {
+    color: var(--fg);
+  }
+  .foot__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-2);
+    font-size: 0.82rem;
+  }
+  @media (max-width: 540px) {
+    .foot__bottom {
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+  }
+</style>

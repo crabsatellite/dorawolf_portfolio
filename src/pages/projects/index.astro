@@ -1,0 +1,135 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const projects = (await getCollection("projects", ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<BaseLayout
+  title="Projects"
+  description="Selected projects by DoraWolf — education, infrastructure, and concept work, 2021 – 2023."
+>
+  <section class="section section--hero container">
+    <p class="eyebrow">Projects</p>
+    <h1>Selected works.</h1>
+    <p class="lede">
+      A small set of projects from school, competition, and the studio years —
+      arranged in reverse chronological order. Each entry is a short brief plus
+      the design intent that drove the scheme.
+    </p>
+  </section>
+
+  <section class="section container">
+    <ol class="project-grid">
+      {
+        projects.map((p) => (
+          <li>
+            <a href={`${base}/projects/${p.slug}`} class="card">
+              <div class="card__cover" aria-hidden="true">
+                <span class="card__year">{p.data.year}</span>
+              </div>
+              <div class="card__body">
+                <h3>{p.data.title}</h3>
+                {p.data.titleZh && <p class="card__zh">{p.data.titleZh}</p>}
+                <p class="card__meta">
+                  {[p.data.typology, p.data.location].filter(Boolean).join(" · ")}
+                </p>
+                <p class="card__summary">{p.data.summary}</p>
+                <span class="card__cta">
+                  Read project <span aria-hidden="true">→</span>
+                </span>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: var(--space-2);
+  }
+  .lede {
+    font-family: var(--font-display);
+    color: var(--fg-muted);
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    line-height: var(--leading-snug);
+  }
+  .project-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  @media (min-width: 880px) {
+    .project-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-5);
+    }
+  }
+  .card {
+    display: block;
+    color: inherit;
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+    border-radius: 4px;
+    overflow: hidden;
+    transition:
+      transform var(--transition),
+      border-color var(--transition);
+  }
+  .card:hover {
+    border-color: var(--fg);
+    transform: translateY(-2px);
+  }
+  .card__cover {
+    aspect-ratio: 16 / 9;
+    background:
+      linear-gradient(135deg, #efeee8 0%, #d8d6cf 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem 1.25rem;
+  }
+  .card__year {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--fg-muted);
+  }
+  .card__body {
+    padding: 1.5rem 1.5rem 1.75rem;
+  }
+  .card__body h3 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    margin: 0 0 0.25rem;
+  }
+  .card__zh {
+    color: var(--fg-muted);
+    font-size: 0.92rem;
+    margin: 0 0 0.6rem;
+  }
+  .card__meta {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin: 0 0 1rem;
+  }
+  .card__summary {
+    color: var(--fg);
+    font-size: 0.96rem;
+    margin-bottom: 1.2rem;
+  }
+  .card__cta {
+    color: var(--accent);
+    font-size: 0.92rem;
+  }
+</style>

@@ -1,0 +1,90 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="About"
+  description="DoraWolf is an architect and designer based in Wuhan, working in education, infrastructure, and public buildings."
+>
+  <section class="section section--hero container">
+    <p class="eyebrow">About</p>
+    <h1>An architect formed by <em>site</em>, by <em>tool</em>, and by the discipline of public work.</h1>
+  </section>
+
+  <section class="section container about">
+    <div class="about__col about__col--lead">
+      <p>
+        DoraWolf is an architect and designer working in Wuhan. The studio is
+        interested in projects where the site, the climate, and the public
+        purpose of the building each get a clear voice in the final form.
+      </p>
+      <p>
+        Training at Hubei University of Technology (2016 – 2021) and four years
+        in the Wuhan studio of the China Architecture Design &amp; Research
+        Group (中信建筑设计研究院, 2021 – 2023) shaped a practice that moves
+        between schematic competition work, civic infrastructure, and education
+        commissions.
+      </p>
+      <p>
+        Sustainable design and the use of computational tools — Sketchup,
+        Grasshopper, and increasingly real-time engines — sit at the centre of
+        the daily workflow.
+      </p>
+    </div>
+
+    <aside class="about__col about__col--side">
+      <div>
+        <p class="eyebrow">Based in</p>
+        <p>Wuhan, China</p>
+      </div>
+      <div>
+        <p class="eyebrow">Languages</p>
+        <p>Chinese · English</p>
+      </div>
+      <div>
+        <p class="eyebrow">Works in</p>
+        <p>Education · Infrastructure · Civic · Concept</p>
+      </div>
+      <div>
+        <p class="eyebrow">Tools</p>
+        <p>Sketchup · Grasshopper · Rhino</p>
+      </div>
+      <div>
+        <p class="eyebrow">Contact</p>
+        <p><a href="mailto:949505300@qq.com">949505300@qq.com</a></p>
+      </div>
+    </aside>
+  </section>
+</BaseLayout>
+
+<style>
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 300;
+  }
+  .about {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+  }
+  .about__col p {
+    max-width: 64ch;
+  }
+  .about__col--side {
+    display: grid;
+    gap: var(--space-2);
+  }
+  .about__col--side .eyebrow {
+    margin-bottom: 0.2rem;
+  }
+  .about__col--side p {
+    margin: 0;
+  }
+  @media (min-width: 880px) {
+    .about {
+      grid-template-columns: 1.6fr 1fr;
+      gap: var(--space-6);
+    }
+  }
+</style>

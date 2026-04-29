@@ -1,0 +1,119 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+
+interface Entry {
+  range: string;
+  title: string;
+  org: string;
+  location?: string;
+  kind: "education" | "work";
+  notes?: string;
+}
+
+const entries: Entry[] = [
+  {
+    range: "2021 — 2023",
+    title: "Architectural designer",
+    org: "China Architecture Design & Research Group · Wuhan studio (中信建筑设计研究院)",
+    location: "Wuhan, China",
+    kind: "work",
+    notes:
+      "Schematic and competition work across education, infrastructure, and civic typologies.",
+  },
+  {
+    range: "2016 — 2021",
+    title: "B.Arch — Architecture",
+    org: "Hubei University of Technology · School of Architecture",
+    location: "Wuhan, China",
+    kind: "education",
+  },
+];
+---
+
+<BaseLayout title="Timeline" description="Education and practice timeline.">
+  <section class="section section--hero container">
+    <p class="eyebrow">Timeline</p>
+    <h1>Where the studio came from.</h1>
+  </section>
+
+  <section class="section container">
+    <ol class="timeline">
+      {
+        entries.map((e) => (
+          <li class:list={["t-item", `t-item--${e.kind}`]}>
+            <span class="t-item__range">{e.range}</span>
+            <div class="t-item__body">
+              <h3>{e.title}</h3>
+              <p class="t-item__org">
+                {e.org}
+                {e.location && <span class="t-item__loc"> · {e.location}</span>}
+              </p>
+              {e.notes && <p class="t-item__notes">{e.notes}</p>}
+            </div>
+            <span class="t-item__kind">{e.kind === "work" ? "Practice" : "Education"}</span>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</BaseLayout>
+
+<style>
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .t-item {
+    display: grid;
+    grid-template-columns: 9rem 1fr 7rem;
+    gap: var(--space-3);
+    padding: var(--space-3) 0;
+    border-top: 1px solid var(--border);
+    align-items: baseline;
+  }
+  .t-item:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+  .t-item__range {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--fg-muted);
+    letter-spacing: 0.04em;
+  }
+  .t-item__body h3 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    margin: 0 0 0.3rem;
+  }
+  .t-item__org {
+    margin: 0;
+    color: var(--fg);
+  }
+  .t-item__loc {
+    color: var(--fg-muted);
+  }
+  .t-item__notes {
+    margin: 0.5rem 0 0;
+    color: var(--fg-muted);
+    max-width: 56ch;
+  }
+  .t-item__kind {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-subtle);
+    text-align: right;
+  }
+  @media (max-width: 720px) {
+    .t-item {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    .t-item__kind {
+      text-align: left;
+      order: -1;
+    }
+  }
+</style>
