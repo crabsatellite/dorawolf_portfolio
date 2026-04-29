@@ -1,0 +1,14 @@
+.elementor-2030 .elementor-element.elementor-element-a5bdbdd{--display:flex;--background-transition:0.3s;}/* Start custom CSS for html, class: .elementor-element-a87eccd */#beianhao-container {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px; /* 字体大小，根据需要调整 */
+}
+
+#beianhao-container a {
+    color: #0073e6; /* 链接颜色，可以根据需要调整 */
+    text-decoration: none; /* 去掉下划线 */
+}
+
+#beianhao-container a:hover {
+    text-decoration: underline; /* 鼠标悬停时显示下划线 */
+}/* End custom CSS */
