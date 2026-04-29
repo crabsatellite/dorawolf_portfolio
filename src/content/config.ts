@@ -22,4 +22,17 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { projects };
+const research = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    titleZh: z.string().optional(),
+    blurb: z.string(),
+    blurbZh: z.string().optional(),
+    hero: z.string().optional(),
+    order: z.number().default(0),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { projects, research };

@@ -1,0 +1,23 @@
+[
+  {
+    "$comment": "Work + education timeline. kind = 'work' or 'education'. Latest first.",
+    "kind": "work",
+    "range": "2021 — 2023",
+    "title": "Architectural designer",
+    "titleZh": "建筑师",
+    "org": "China Architecture Design & Research Group · Wuhan studio",
+    "orgZh": "中信建筑设计研究总院 (原武汉市建筑设计院)",
+    "location": "Wuhan, China",
+    "note": "Top-60 Chinese engineering design enterprise; designated Foreign-Aid Engineering Design Institute under the Ministry of Commerce. Schematic and competition work across education, infrastructure, and civic typologies."
+  },
+  {
+    "kind": "education",
+    "range": "2016 — 2021",
+    "title": "B.Arch — Architecture",
+    "titleZh": "建筑学学士",
+    "org": "Hubei University of Technology · School of Civil Architecture and Environment",
+    "orgZh": "湖北工业大学 · 土木建筑与环境学院",
+    "location": "Wuhan, China",
+    "note": "Coursework included architectural design, residential planning, site design, building mechanics, and interior design."
+  }
+]

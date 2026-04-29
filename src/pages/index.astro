@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import site from "../../data/site.json";
 
 const projects = (await getCollection("projects", ({ data }) => !data.draft))
   .sort((a, b) => a.data.order - b.data.order);
@@ -8,9 +9,9 @@ const projects = (await getCollection("projects", ({ data }) => !data.draft))
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
-<BaseLayout title="DoraWolf">
+<BaseLayout title={site.name}>
   <section class="section section--hero container">
-    <p class="eyebrow">Selected works · 2021 — 2023</p>
+    <p class="eyebrow">Selected works · {site.yearRange}</p>
     <h1>
       Architecture<br />
       that listens to its <em>site</em>,<br />
@@ -19,12 +20,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       will inhabit it.
     </h1>
     <p class="lede">
-      Qingyuan Fu — known online as DoraWolf — is an architect and designer
-      based in Wuhan. Trained at Hubei University of Technology and formed in
-      practice at the China Architecture Design &amp; Research Group, the
-      studio works across education, infrastructure, and public buildings,
-      with a continuing interest in sustainable design and computational
-      tools.
+      {site.fullName} — known online as {site.name} — is an architect and
+      designer based in {site.location}. Trained at Hubei University of
+      Technology and formed in practice at the China Architecture Design &amp;
+      Research Group, the studio works across education, infrastructure, and
+      public buildings, with a continuing interest in sustainable design and
+      computational tools.
     </p>
     <div class="hero-actions">
       <a class="btn btn--primary" href={`${base}/projects`}>View projects</a>

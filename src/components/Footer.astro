@@ -1,4 +1,6 @@
 ---
+import site from "../../data/site.json";
+
 const year = new Date().getFullYear();
 ---
 
@@ -6,22 +8,22 @@ const year = new Date().getFullYear();
   <div class="container foot__inner">
     <div>
       <p class="eyebrow">Contact</p>
-      <a href="mailto:949505300@qq.com">949505300@qq.com</a>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
     </div>
     <div>
       <p class="eyebrow">Studio</p>
-      <p>Wuhan · China</p>
+      <p>{site.location}</p>
     </div>
     <div>
       <p class="eyebrow">Notice</p>
-      <p>鄂ICP备2024064771号</p>
+      <p>{site.icp}</p>
     </div>
   </div>
   <div class="container foot__bottom">
-    <p>© {year} DoraWolf. All rights reserved.</p>
+    <p>© {year} {site.fullName}. All rights reserved.</p>
     <p>
       <a
-        href="https://github.com/crabsatellite/dorawolf_portfolio"
+        href={`https://github.com/${site.githubRepo}`}
         rel="noopener noreferrer"
         target="_blank">Source</a
       >

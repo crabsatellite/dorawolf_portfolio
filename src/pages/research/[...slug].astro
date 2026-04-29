@@ -1,0 +1,148 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths = (async () => {
+  const items = await getCollection("research", ({ data }) => !data.draft);
+  return items.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}) satisfies GetStaticPaths;
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const heroSrc = entry.data.hero ? `${base}${entry.data.hero}` : null;
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.blurb}>
+  <article class="research">
+    <header class="research__head container">
+      <p class="eyebrow">Research</p>
+      <h1>{entry.data.title}</h1>
+      {entry.data.titleZh && (
+        <p class="research__zh">{entry.data.titleZh}</p>
+      )}
+      <p class="research__lede">{entry.data.blurb}</p>
+      {entry.data.blurbZh && (
+        <p class="research__lede research__lede--zh">{entry.data.blurbZh}</p>
+      )}
+    </header>
+
+    {heroSrc && (
+      <figure class="research__hero">
+        <img src={heroSrc} alt={`${entry.data.title} — cover`} loading="eager" />
+      </figure>
+    )}
+
+    <section class="container research__body">
+      <div class="prose">
+        <Content />
+      </div>
+    </section>
+
+    <nav class="container research__nav">
+      <a href={`${base}/research`} class="research__back">← All research</a>
+    </nav>
+  </article>
+</BaseLayout>
+
+<style>
+  .research__head {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-4);
+  }
+  .research__head h1 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.4rem;
+  }
+  .research__zh {
+    color: var(--fg-muted);
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    margin: 0 0 1.2rem;
+  }
+  .research__lede {
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+    line-height: var(--leading-snug);
+    max-width: 60ch;
+    margin-top: var(--space-3);
+    color: var(--fg-muted);
+  }
+  .research__lede--zh {
+    margin-top: 0.6rem;
+  }
+  .research__hero {
+    margin: var(--space-3) 0 var(--space-5);
+    padding: 0;
+  }
+  .research__hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .research__body {
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-4);
+  }
+  .prose {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .prose :global(h2) {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+    line-height: var(--leading-tight);
+    letter-spacing: -0.01em;
+    margin: var(--space-5) 0 var(--space-2);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border);
+  }
+  .prose :global(h3) {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.15rem;
+    margin: var(--space-3) 0 var(--space-1);
+  }
+  .prose :global(p) {
+    margin: 0 0 1rem;
+    line-height: 1.85;
+    letter-spacing: 0.01em;
+  }
+  .prose :global(p:has(img)) {
+    margin: var(--space-3) 0;
+  }
+  .prose :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+  }
+  .research__nav {
+    padding-bottom: var(--space-5);
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-3);
+    margin-top: var(--space-4);
+  }
+  .research__back {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--fg-muted);
+  }
+  .research__back:hover {
+    color: var(--fg);
+  }
+  @media (min-width: 920px) {
+    .research__hero img {
+      max-height: 78vh;
+      object-fit: cover;
+    }
+  }
+</style>

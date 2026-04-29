@@ -1,121 +1,83 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import site from "../../data/site.json";
+import about from "../../data/about.json";
+import skills from "../../data/skills.json";
+import experience from "../../data/experience.json";
+import projectsRecord from "../../data/projects-record.json";
+import awards from "../../data/awards.json";
 
-const skills = [
-  "Sketchup",
-  "Rhino",
-  "Grasshopper",
-  "Lumion",
-  "Enscape",
-  "Vray",
-  "AutoCAD",
-  "天正建筑",
-  "Revit",
-  "Photoshop",
-  "Illustrator",
-  "InDesign",
-  "D5",
-  "Midjourney",
-  "Stable Diffusion",
+// Flatten skills groups for the right-rail chip cloud
+const allSkills = [
+  ...skills.modeling,
+  ...skills.rendering,
+  ...skills.drafting,
+  ...skills.graphics,
+  ...skills.ai,
 ];
 
-const experience = [
-  {
-    org: "China Architecture Design & Research Group · Wuhan studio",
-    orgZh: "中信建筑设计研究总院 (原武汉市建筑设计院)",
-    range: "2021 — 2023",
-    note: "Top-60 Chinese engineering design enterprise; designated Foreign-Aid Engineering Design Institute under the Ministry of Commerce.",
-  },
-];
-
-const projects = [
-  ["Wuhan Metro National Convention Center Control", "武汉市轨道交通国博控制中心", "2022"],
-  ["National Cybersecurity Center · Phase II", "国家网络安全中心二期", "2022"],
-  ["Yangtze New District Foreign Language School", "武汉长江新区外国语学校", "2023"],
-  ["Hongshan High School · Qingling Campus", "洪山高中青菱校区", "2022"],
-  ["Optics Valley Exhibition Center", "光谷展示中心", "2022"],
-  ["Hanjiangwan Foreign Language Specialty School", "硚口区汉江湾外语特色学校", "2022"],
-  ["Jiangxia Star", "江夏之星", "2022"],
-  ["Zhuxin Technology Industrial Park", "筑芯科技产业园", "—"],
-  ["Foshan Longjiang Middle School", "佛山龙江中学改扩建", "—"],
-  ["Yichang Concord Hospital", "宜昌市协和医院", "—"],
-  ["Wuhan Metro Line 12 · Danshuichi Section", "武汉轨道交通12号线丹水池标段", "—"],
-  ["Chinese Academy of Sciences Primary School", "中科院小学设计", "—"],
-  ["Suzhou Industrial Internet Park", "苏州工业互联网园区", "—"],
-  ["National Geological Museum", "国家地质博物馆", "—"],
-];
-
-const awards = [
-  ["Hubei Craftsman Cup · BIM Construction Management", "First Prize"],
-  ["Hubei Craftsman Cup · BIM Green Building", "Second Prize"],
-  ["Hubei Craftsman Cup · BIM Engineering Cost", "Second Prize"],
-  ["Hubei Craftsman Cup · BIM Engineering Design", "Third Prize"],
-];
+// Filter out the $comment field on records
+const cleanRecord = (rec: any) =>
+  Object.fromEntries(Object.entries(rec).filter(([k]) => !k.startsWith("$")));
+const records = projectsRecord.map(cleanRecord);
+const exp = experience.map(cleanRecord);
+const aw = awards.map(cleanRecord);
 ---
 
 <BaseLayout
   title="About"
-  description="Qingyuan Fu (DoraWolf) is an architect and designer based in Wuhan, working in education, infrastructure, and civic buildings."
+  description={`${site.fullName} (${site.name}) is an architect and designer based in ${site.location}.`}
 >
   <section class="section section--hero container">
     <p class="eyebrow">About</p>
-    <h1>Qingyuan Fu &mdash; <em>architect</em>, designer.</h1>
-    <p class="hero__zh">傅清远 · 建筑学学士</p>
+    <h1>
+      {site.fullName} &mdash; <em>architect</em>, designer.
+    </h1>
+    <p class="hero__zh">{site.fullNameZh} · {about.education.degreeZh}</p>
   </section>
 
   <section class="section container about">
     <div class="about__col about__col--lead">
       <h2 class="about__heading">关于我</h2>
-      <p>
-        我是一名对绿植和自然景观充满热情的设计师, 特别擅长参数化模型设计,
-        对 Grasshopper 有着深入的理解和应用. 我精通 Sketchup, 并自创了一些动态组件的建模方法,
-        这些技术显著提高了我的工作效率和设计质量. 此外, 我熟悉 Ladybug
-        等节能分析软件, 让我能在设计中融入可持续发展的理念.
-      </p>
+      <p>{about.bioZh}</p>
 
       <h2 class="about__heading">About me</h2>
-      <p>
-        I'm a designer with a long-standing interest in green plants, natural
-        landscape, and parametric form. Grasshopper sits at the centre of my
-        daily workflow, paired with a Sketchup practice that I've extended with
-        custom dynamic components. Energy and daylight tools — chiefly Ladybug
-        — let me weave sustainability into early-stage design instead of as a
-        late-stage check.
-      </p>
+      <p>{about.bioEn}</p>
 
       <h2 class="about__heading">Education</h2>
       <p>
-        <strong>Hubei University of Technology</strong> · School of Civil
-        Architecture and Environment · 2016 — 2021. Coursework: architectural
-        design, residential planning, site design, building mechanics, interior
-        design, and architectural theory.
+        <strong>{about.education.school}</strong> · {about.education.department}
+        · {about.education.range}.
+        Coursework: {about.education.courses.join(", ")}.
       </p>
 
       <h2 class="about__heading">Practice</h2>
       <ul class="exp">
         {
-          experience.map((e) => (
-            <li>
-              <span class="exp__range">{e.range}</span>
-              <div>
-                <p class="exp__org">{e.org}</p>
-                <p class="exp__org-zh">{e.orgZh}</p>
-                <p class="exp__note">{e.note}</p>
-              </div>
-            </li>
-          ))
+          exp
+            .filter((e) => e.kind === "work")
+            .map((e) => (
+              <li>
+                <span class="exp__range">{e.range}</span>
+                <div>
+                  <p class="exp__org">{e.org}</p>
+                  <p class="exp__org-zh">{e.orgZh}</p>
+                  <p class="exp__note">{e.note}</p>
+                </div>
+              </li>
+            ))
         }
       </ul>
 
       <h2 class="about__heading">Selected projects on record</h2>
       <ul class="proj">
         {
-          projects.map(([en, zh, year]) => (
+          records.map((r: any) => (
             <li>
-              <span class="proj__year">{year}</span>
+              <span class="proj__year">{r.year}</span>
               <span class="proj__title">
-                <span class="proj__en">{en}</span>
-                <span class="proj__zh">{zh}</span>
+                <span class="proj__en">{r.en}</span>
+                <span class="proj__zh">{r.zh}</span>
               </span>
             </li>
           ))
@@ -125,10 +87,10 @@ const awards = [
       <h2 class="about__heading">Awards</h2>
       <ul class="awards">
         {
-          awards.map(([title, prize]) => (
+          aw.map((a: any) => (
             <li>
-              <span>{title}</span>
-              <span class="awards__prize">{prize}</span>
+              <span>{a.title}</span>
+              <span class="awards__prize">{a.prize}</span>
             </li>
           ))
         }
@@ -138,25 +100,25 @@ const awards = [
     <aside class="about__col about__col--side">
       <div>
         <p class="eyebrow">Based in</p>
-        <p>Wuhan, China</p>
+        <p>{site.location}</p>
       </div>
       <div>
         <p class="eyebrow">Languages</p>
-        <p>Chinese · English (CET-6)</p>
+        <p>{about.languages.join(" · ")}</p>
       </div>
       <div>
         <p class="eyebrow">Works in</p>
-        <p>Education · Infrastructure · Civic · Concept</p>
+        <p>{about.interests.join(" · ")}</p>
       </div>
       <div>
         <p class="eyebrow">Tools</p>
         <ul class="skills">
-          {skills.map((s) => <li>{s}</li>)}
+          {allSkills.map((s) => <li>{s}</li>)}
         </ul>
       </div>
       <div>
         <p class="eyebrow">Contact</p>
-        <p><a href="mailto:949505300@qq.com">949505300@qq.com</a></p>
+        <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
       </div>
     </aside>
   </section>

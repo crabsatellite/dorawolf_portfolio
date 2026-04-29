@@ -1,0 +1,8 @@
+{
+  "$comment": "Tool stack shown on the About page. Add or remove freely.",
+  "modeling": ["Sketchup", "Rhino", "Grasshopper"],
+  "rendering": ["Lumion", "Enscape", "Vray", "D5"],
+  "drafting": ["AutoCAD", "天正建筑", "Revit"],
+  "graphics": ["Photoshop", "Illustrator", "InDesign"],
+  "ai": ["Midjourney", "Stable Diffusion"]
+}

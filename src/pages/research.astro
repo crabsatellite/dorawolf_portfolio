@@ -1,63 +1,64 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const items = (await getCollection("research", ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <BaseLayout
   title="Research"
-  description="Computational design tooling at the heart of the studio's daily workflow."
+  description="Computational design tooling at the heart of the studio's daily workflow — Sketchup and Grasshopper studies."
 >
   <section class="section section--hero container">
     <p class="eyebrow">Research</p>
     <h1>Tools as <em>instruments</em>, not as the design.</h1>
     <p class="lede">
       Computational tools earn their place when they let the studio test more
-      alternatives, more honestly, in less time. The list below is short on
-      purpose: only the instruments used regularly, with a note on what each is
-      asked to do.
+      alternatives, more honestly, in less time. Two long studies — Sketchup
+      and Grasshopper — collected here as ongoing logs.
     </p>
   </section>
 
   <section class="section container">
-    <ol class="tools">
-      <li>
-        <header>
-          <h3>Sketchup</h3>
-          <p class="eyebrow">Form &amp; massing · daily</p>
-        </header>
-        <p>
-          The studio's everyday surface for thinking in three dimensions —
-          fast enough to keep up with conversation, accurate enough to feed
-          schematic drawings.
-        </p>
-      </li>
-      <li>
-        <header>
-          <h3>Grasshopper</h3>
-          <p class="eyebrow">Computational geometry · weekly</p>
-        </header>
-        <p>
-          Used where a problem has many alternatives: facade rhythms, terrace
-          stepping, daylight studies. The aim is to widen the search, not to
-          generate novelty for its own sake.
-        </p>
-      </li>
-      <li>
-        <header>
-          <h3>Rhino</h3>
-          <p class="eyebrow">Detail geometry · per project</p>
-        </header>
-        <p>
-          The engine behind Grasshopper, plus the place where complex surfaces
-          and detail geometry get resolved before drawings are issued.
-        </p>
-      </li>
+    <ol class="research-grid">
+      {
+        items.map((item) => {
+          const heroSrc = item.data.hero ? `${base}${item.data.hero}` : null;
+          return (
+            <li>
+              <a href={`${base}/research/${item.slug}`} class="card">
+                <div class="card__cover" aria-hidden="true">
+                  {heroSrc ? (
+                    <img src={heroSrc} alt="" loading="lazy" />
+                  ) : (
+                    <span class="card__placeholder" />
+                  )}
+                </div>
+                <div class="card__body">
+                  <h3>{item.data.title}</h3>
+                  {item.data.titleZh && (
+                    <p class="card__zh">{item.data.titleZh}</p>
+                  )}
+                  <p class="card__blurb">{item.data.blurb}</p>
+                  <span class="card__cta">
+                    Read study <span aria-hidden="true">→</span>
+                  </span>
+                </div>
+              </a>
+            </li>
+          );
+        })
+      }
     </ol>
 
     <div class="research-note">
       <p>
-        <strong>What's not on this list.</strong> Tools that look impressive
-        but are rarely used in real schemes don't earn a place. The studio
-        prefers a small kit, used well.
+        <strong>What's not here.</strong> Tools that look impressive but are
+        rarely used in real schemes don't earn a page. The studio prefers a
+        small kit, used well.
       </p>
     </div>
   </section>
@@ -77,40 +78,72 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
     max-width: 60ch;
     margin-top: var(--space-3);
   }
-  .tools {
+  .research-grid {
     list-style: none;
     margin: 0;
     padding: 0;
-    counter-reset: t;
-  }
-  .tools li {
-    counter-increment: t;
-    border-top: 1px solid var(--border);
-    padding: var(--space-3) 0;
     display: grid;
-    grid-template-columns: 4rem 1fr;
-    gap: var(--space-3);
-    align-items: baseline;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
   }
-  .tools li::before {
-    content: "0" counter(t);
-    font-family: var(--font-mono);
-    color: var(--fg-subtle);
-    font-size: 0.85rem;
+  @media (min-width: 880px) {
+    .research-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-5);
+    }
   }
-  .tools header h3 {
+  .card {
+    display: block;
+    color: inherit;
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+    overflow: hidden;
+    transition:
+      transform var(--transition),
+      border-color var(--transition);
+  }
+  .card:hover {
+    border-color: var(--fg);
+    transform: translateY(-2px);
+  }
+  .card__cover {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background: linear-gradient(135deg, #efeee8 0%, #d8d6cf 100%);
+    overflow: hidden;
+  }
+  .card__cover img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 700ms cubic-bezier(0.2, 0.6, 0.2, 1);
+  }
+  .card:hover .card__cover img {
+    transform: scale(1.04);
+  }
+  .card__body {
+    padding: 1.5rem 1.5rem 1.75rem;
+  }
+  .card__body h3 {
     font-family: var(--font-display);
-    font-size: 1.6rem;
-    margin: 0;
+    font-size: 1.5rem;
+    margin: 0 0 0.25rem;
   }
-  .tools header .eyebrow {
-    margin-top: 0.4rem;
+  .card__zh {
+    color: var(--fg-muted);
+    font-size: 0.92rem;
+    margin: 0 0 0.7rem;
   }
-  .tools li > p {
-    grid-column: 2 / 3;
+  .card__blurb {
     color: var(--fg);
-    margin-top: 0.6rem;
-    max-width: 60ch;
+    font-size: 0.96rem;
+    margin-bottom: 1.2rem;
+  }
+  .card__cta {
+    color: var(--accent);
+    font-size: 0.92rem;
   }
   .research-note {
     margin-top: var(--space-5);

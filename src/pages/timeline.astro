@@ -1,33 +1,10 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import experience from "../../data/experience.json";
 
-interface Entry {
-  range: string;
-  title: string;
-  org: string;
-  location?: string;
-  kind: "education" | "work";
-  notes?: string;
-}
-
-const entries: Entry[] = [
-  {
-    range: "2021 — 2023",
-    title: "Architectural designer",
-    org: "China Architecture Design & Research Group · Wuhan studio (中信建筑设计研究院)",
-    location: "Wuhan, China",
-    kind: "work",
-    notes:
-      "Schematic and competition work across education, infrastructure, and civic typologies.",
-  },
-  {
-    range: "2016 — 2021",
-    title: "B.Arch — Architecture",
-    org: "Hubei University of Technology · School of Architecture",
-    location: "Wuhan, China",
-    kind: "education",
-  },
-];
+const cleanRecord = (rec: any) =>
+  Object.fromEntries(Object.entries(rec).filter(([k]) => !k.startsWith("$")));
+const entries = experience.map(cleanRecord);
 ---
 
 <BaseLayout title="Timeline" description="Education and practice timeline.">
@@ -39,18 +16,22 @@ const entries: Entry[] = [
   <section class="section container">
     <ol class="timeline">
       {
-        entries.map((e) => (
+        entries.map((e: any) => (
           <li class:list={["t-item", `t-item--${e.kind}`]}>
             <span class="t-item__range">{e.range}</span>
             <div class="t-item__body">
               <h3>{e.title}</h3>
+              {e.titleZh && <p class="t-item__title-zh">{e.titleZh}</p>}
               <p class="t-item__org">
                 {e.org}
                 {e.location && <span class="t-item__loc"> · {e.location}</span>}
               </p>
-              {e.notes && <p class="t-item__notes">{e.notes}</p>}
+              {e.orgZh && <p class="t-item__org-zh">{e.orgZh}</p>}
+              {e.note && <p class="t-item__notes">{e.note}</p>}
             </div>
-            <span class="t-item__kind">{e.kind === "work" ? "Practice" : "Education"}</span>
+            <span class="t-item__kind">
+              {e.kind === "work" ? "Practice" : "Education"}
+            </span>
           </li>
         ))
       }
@@ -86,15 +67,25 @@ const entries: Entry[] = [
     font-size: 1.35rem;
     margin: 0 0 0.3rem;
   }
+  .t-item__title-zh {
+    margin: -0.2rem 0 0.3rem;
+    color: var(--fg-muted);
+    font-size: 0.92rem;
+  }
   .t-item__org {
     margin: 0;
     color: var(--fg);
+  }
+  .t-item__org-zh {
+    margin: 0.2rem 0 0;
+    color: var(--fg-muted);
+    font-size: 0.92rem;
   }
   .t-item__loc {
     color: var(--fg-muted);
   }
   .t-item__notes {
-    margin: 0.5rem 0 0;
+    margin: 0.6rem 0 0;
     color: var(--fg-muted);
     max-width: 56ch;
   }

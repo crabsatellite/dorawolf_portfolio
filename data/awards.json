@@ -1,0 +1,31 @@
+[
+  {
+    "$comment": "Awards / honours displayed on the About page.",
+    "title": "Hubei Craftsman Cup · BIM Construction Management",
+    "titleZh": "湖北工匠杯 · BIM 施工管理",
+    "prize": "First Prize",
+    "prizeZh": "一等奖",
+    "year": "2020"
+  },
+  {
+    "title": "Hubei Craftsman Cup · BIM Green Building",
+    "titleZh": "湖北工匠杯 · BIM 绿色建筑",
+    "prize": "Second Prize",
+    "prizeZh": "二等奖",
+    "year": "2020"
+  },
+  {
+    "title": "Hubei Craftsman Cup · BIM Engineering Cost",
+    "titleZh": "湖北工匠杯 · BIM 工程造价",
+    "prize": "Second Prize",
+    "prizeZh": "二等奖",
+    "year": "2020"
+  },
+  {
+    "title": "Hubei Craftsman Cup · BIM Engineering Design",
+    "titleZh": "湖北工匠杯 · BIM 工程设计",
+    "prize": "Third Prize",
+    "prizeZh": "三等奖",
+    "year": "2020"
+  }
+]
