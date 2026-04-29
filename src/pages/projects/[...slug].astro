@@ -3,6 +3,8 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
 import Picture from "~/components/Picture.astro";
 import { getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
+import fs from "node:fs";
+import path from "node:path";
 
 export const getStaticPaths = (async () => {
   const projects = await getCollection("projects", ({ data }) => !data.draft);
@@ -17,6 +19,34 @@ const { Content } = await entry.render();
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
+// Build hero preload links (AVIF + WebP). Picks the largest available
+// variant so the browser starts the request before parsing CSS.
+let heroPreloads: { type: string; srcset: string; sizes: string }[] = [];
+if (entry.data.hero) {
+  const manifestPath = path.join(process.cwd(), "public", ".image-manifest.json");
+  if (fs.existsSync(manifestPath)) {
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
+    const m = manifest[entry.data.hero];
+    if (m) {
+      for (const fmt of ["avif", "webp"] as const) {
+        const widths = m.variants?.[fmt];
+        if (!widths || !widths.length) continue;
+        const srcset = widths
+          .map(
+            (w: number) =>
+              `${base}${entry.data.hero!.replace(/\.[^.]+$/, `-${w}.${fmt}`)} ${w}w`
+          )
+          .join(", ");
+        heroPreloads.push({
+          type: `image/${fmt}`,
+          srcset,
+          sizes: "100vw",
+        });
+      }
+    }
+  }
+}
+
 // Find prev/next in the ordered list for footer nav
 const all = (await getCollection("projects", ({ data }) => !data.draft))
   .sort((a, b) => a.data.order - b.data.order);
@@ -26,6 +56,19 @@ const next = idx < all.length - 1 ? all[idx + 1] : null;
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.summary}>
+  {
+    heroPreloads.map((p) => (
+      <link
+        slot="head"
+        rel="preload"
+        as="image"
+        type={p.type}
+        imagesrcset={p.srcset}
+        imagesizes={p.sizes}
+      />
+    ))
+  }
+
   <article class="project">
     <header class="container project__head">
       <p class="eyebrow">
@@ -77,7 +120,7 @@ const next = idx < all.length - 1 ? all[idx + 1] : null;
       </figure>
     )}
 
-    <section class="container project__body">
+    <section class="project__body">
       <div class="prose">
         <Content />
       </div>
@@ -176,65 +219,113 @@ const next = idx < all.length - 1 ? all[idx + 1] : null;
   }
 
   .project__body {
-    padding-top: var(--space-3);
-    padding-bottom: var(--space-4);
+    padding: var(--space-3) 0 var(--space-4);
   }
-  .prose {
+
+  /* ---------- Magazine plate layout ---------- */
+  .prose :global(.plate) {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: var(--space-5) var(--gutter);
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-3);
+  }
+  .prose :global(.plate:first-child) {
+    border-top: 0;
+  }
+  .prose :global(.plate__text) {
+    max-width: 60ch;
+  }
+  .prose :global(.plate__media) {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .prose :global(.plate--text-only),
+  .prose :global(.plate--intro) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .prose :global(.plate--text-only .plate__text),
+  .prose :global(.plate--intro .plate__text) {
     max-width: 760px;
     margin: 0 auto;
   }
-  .prose :global(h2) {
+  @media (min-width: 920px) {
+    .prose :global(.plate--right),
+    .prose :global(.plate--left) {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+      gap: var(--space-5);
+      align-items: start;
+    }
+    .prose :global(.plate--right .plate__text) {
+      grid-column: 1 / 2;
+      grid-row: 1;
+      position: sticky;
+      top: calc(var(--nav-height) + var(--space-3));
+    }
+    .prose :global(.plate--right .plate__media) {
+      grid-column: 2 / 3;
+      grid-row: 1;
+    }
+    .prose :global(.plate--left .plate__text) {
+      grid-column: 2 / 3;
+      grid-row: 1;
+      position: sticky;
+      top: calc(var(--nav-height) + var(--space-3));
+    }
+    .prose :global(.plate--left .plate__media) {
+      grid-column: 1 / 2;
+      grid-row: 1;
+    }
+  }
+
+  /* ---------- Prose typography inside plates ---------- */
+  .prose :global(.plate__text h2) {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    font-size: clamp(1.45rem, 2.4vw, 1.95rem);
     line-height: var(--leading-tight);
     letter-spacing: -0.018em;
-    margin: var(--space-5) 0 var(--space-2);
-    padding-top: var(--space-3);
-    border-top: 1px solid var(--border);
+    margin: 0 0 var(--space-2);
   }
-  .prose :global(h3) {
+  .prose :global(.plate__text h3) {
     font-family: var(--font-display);
     font-weight: 400;
     font-size: 1.18rem;
     margin: var(--space-3) 0 var(--space-1);
     letter-spacing: -0.012em;
   }
-  .prose :global(p) {
+  .prose :global(.plate__text p) {
     margin: 0 0 1rem;
     line-height: var(--leading-cn);
     letter-spacing: 0.005em;
     color: var(--fg);
+    max-width: 56ch;
   }
-  /* Markdown image plates: full-width within prose, with hairline frame */
-  .prose :global(p:has(picture)),
-  .prose :global(p:has(img)) {
-    margin: var(--space-4) 0;
-    max-width: none;
+  .prose :global(.plate__text ul) {
+    margin: 0 0 1rem;
+    padding-left: 1.4rem;
   }
-  .prose :global(picture) {
-    display: block;
-    width: 100%;
+  .prose :global(.plate__text li) {
+    margin-bottom: 0.4rem;
+    line-height: var(--leading-cn);
   }
-  .prose :global(img),
-  .prose :global(picture > img) {
+
+  /* ---------- Media in plates ---------- */
+  .prose :global(.plate__media picture),
+  .prose :global(.plate__media img) {
     width: 100%;
     height: auto;
     display: block;
     margin: 0;
     background: var(--bg-elevated);
-    /* No border on full-bleed images for a cleaner plate look */
+  }
+  .prose :global(.plate__media picture) {
+    overflow: hidden;
   }
 
-  .prose :global(ul) {
-    margin: 0 0 1rem;
-    padding-left: 1.4rem;
-  }
-  .prose :global(ul li) {
-    margin-bottom: 0.4rem;
-    line-height: var(--leading-cn);
-  }
-
+  /* ---------- Pager + back ---------- */
   .project__nav {
     border-top: 1px solid var(--border);
     padding-top: var(--space-3);
@@ -275,8 +366,5 @@ const next = idx < all.length - 1 ? all[idx + 1] : null;
   }
   .project__pager-item--right {
     text-align: right;
-  }
-  .project__pager-item:hover {
-    color: var(--fg);
   }
 </style>

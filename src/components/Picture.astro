@@ -1,9 +1,8 @@
 ---
 /**
- * <Picture> — same WebP/AVIF wrap as the markdown rehype plugin, but for
- * static templates. Looks up variants in public/.image-manifest.json by
- * source-relative path (no baseUrl prefix). Add baseUrl back when emitting
- * the <source srcset> URLs.
+ * <Picture> — same WebP/AVIF wrap as the markdown rehype plugin, plus a
+ * base64 LQIP background so the blurred placeholder paints before the
+ * real image arrives.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -22,7 +21,7 @@ const {
   alt,
   loading = "lazy",
   fetchpriority,
-  sizes = "(min-width: 920px) 760px, 100vw",
+  sizes = "(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw",
   class: className,
 } = Astro.props;
 
@@ -40,7 +39,6 @@ try {
 
 let lookup = src.startsWith("/") ? src : "/" + src;
 const entry = manifest[lookup];
-
 const fullSrc = `${baseUrl}${lookup}`;
 
 function variantSrcset(fmt: "avif" | "webp"): string | null {
@@ -53,9 +51,11 @@ function variantSrcset(fmt: "avif" | "webp"): string | null {
 
 const avifSet = entry ? variantSrcset("avif") : null;
 const webpSet = entry ? variantSrcset("webp") : null;
+const pictureClass = ["lqip", className].filter(Boolean).join(" ");
+const pictureStyle = entry?.lqip ? `--lqip:url('${entry.lqip}')` : undefined;
 ---
 
-<picture class={className}>
+<picture class={pictureClass} style={pictureStyle}>
   {avifSet && <source type="image/avif" srcset={avifSet} sizes={sizes} />}
   {webpSet && <source type="image/webp" srcset={webpSet} sizes={sizes} />}
   <img

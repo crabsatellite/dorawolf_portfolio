@@ -15,12 +15,16 @@ const __filename = url.fileURLToPath(import.meta.url);
 const ROOT = path.resolve(path.dirname(__filename), "..");
 const PUBLIC_DIR = path.join(ROOT, "public");
 const TARGET_SUBDIRS = ["projects", "research"];
-const SIZES = [800, 1600, 2400];
+const SIZES = [400, 800, 1200, 2000];
 const FORMATS = ["avif", "webp"];
-const QUALITY = { avif: 55, webp: 80 };
+const QUALITY = { avif: 50, webp: 78 };
 // AVIF effort 0–9 — higher = better compression, much slower. 3 is the
 // sweet spot for CI: ~2-3x faster than 4 for ~5% larger files.
 const AVIF_EFFORT = 3;
+// LQIP (low-quality image placeholder) width — emitted as a base64 AVIF
+// data URI in the manifest; used as a CSS background to fade in real
+// images.
+const LQIP_WIDTH = 24;
 const SUFFIX_RE = /-(800|1600|2400)\.(avif|webp)$/i;
 const ORIGINAL_RE = /\.(jpe?g|png)$/i;
 
@@ -108,10 +112,25 @@ async function main() {
         }
       }
 
+      // Generate an inline LQIP — tiny 24w AVIF stored as base64 in the
+      // manifest. Aspect-ratio is preserved.
+      let lqip = null;
+      try {
+        const buf = await sharp(file)
+          .resize({ width: LQIP_WIDTH })
+          .blur(0.6)
+          .toFormat("avif", { quality: 30, effort: 4 })
+          .toBuffer();
+        lqip = `data:image/avif;base64,${buf.toString("base64")}`;
+      } catch (err) {
+        // some images may not encode at tiny size; that's fine, skip LQIP
+      }
+
       manifest[rel] = {
         width: origW,
         height: origH,
         variants,
+        lqip,
       };
 
       if (processed % 25 === 0) {

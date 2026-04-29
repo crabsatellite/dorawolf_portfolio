@@ -98,6 +98,24 @@ picture {
   display: block;
 }
 
+/* Low-quality image placeholder. The blurred 24w AVIF is injected as a
+   CSS variable on each <picture class="lqip">. The real <img> sits on
+   top; once it has bytes, it covers the placeholder. */
+picture.lqip {
+  position: relative;
+  background-image: var(--lqip);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+picture.lqip > img {
+  position: relative;
+  z-index: 1;
+}
+@supports (background-image: image-set(url("") type("image/avif"))) {
+  /* AVIF base64 is fine — keep as-is */
+}
+
 a {
   color: inherit;
   text-decoration: none;
