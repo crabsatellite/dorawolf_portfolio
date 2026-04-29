@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import Picture from "~/components/Picture.astro";
 import { getCollection } from "astro:content";
 
 const items = (await getCollection("research", ({ data }) => !data.draft))
@@ -14,46 +15,52 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 >
   <section class="section section--hero container">
     <p class="eyebrow">Research</p>
-    <h1>Tools as <em>instruments</em>, not as the design.</h1>
+    <h1>Tools as <em>instruments</em>,<br />not as the design.</h1>
     <p class="lede">
-      Computational tools earn their place when they let the studio test more
-      alternatives, more honestly, in less time. Two long studies — Sketchup
-      and Grasshopper — collected here as ongoing logs.
+      Computational tools earn their place when they let the studio test
+      more alternatives, more honestly, in less time. Two long studies —
+      Sketchup and Grasshopper — collected here as ongoing logs.
     </p>
   </section>
 
-  <section class="section container">
-    <ol class="research-grid">
+  <section class="section">
+    <ol class="plates">
       {
-        items.map((item) => {
-          const heroSrc = item.data.hero ? `${base}${item.data.hero}` : null;
-          return (
-            <li>
-              <a href={`${base}/research/${item.slug}`} class="card">
-                <div class="card__cover" aria-hidden="true">
-                  {heroSrc ? (
-                    <img src={heroSrc} alt="" loading="lazy" />
-                  ) : (
-                    <span class="card__placeholder" />
-                  )}
-                </div>
-                <div class="card__body">
-                  <h3>{item.data.title}</h3>
+        items.map((item, i) => (
+          <li class="plate">
+            <a href={`${base}/research/${item.slug}`} class="plate__link">
+              <div class="container plate__inner">
+                <span class="plate__no">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div class="plate__copy">
+                  <p class="eyebrow">Study · {item.data.title}</p>
+                  <h2 class="plate__title">{item.data.title}</h2>
                   {item.data.titleZh && (
-                    <p class="card__zh">{item.data.titleZh}</p>
+                    <p class="plate__zh">{item.data.titleZh}</p>
                   )}
-                  <p class="card__blurb">{item.data.blurb}</p>
-                  <span class="card__cta">
-                    Read study <span aria-hidden="true">→</span>
-                  </span>
+                  <p class="plate__summary">{item.data.blurb}</p>
+                  <span class="arrow-link">Read study</span>
                 </div>
-              </a>
-            </li>
-          );
-        })
+                <div class="plate__image">
+                  {item.data.hero && (
+                    <Picture
+                      src={item.data.hero}
+                      alt={item.data.title}
+                      loading={i === 0 ? "eager" : "lazy"}
+                      sizes="(min-width: 980px) 50vw, 100vw"
+                    />
+                  )}
+                </div>
+              </div>
+            </a>
+          </li>
+        ))
       }
     </ol>
+  </section>
 
+  <section class="section container">
     <div class="research-note">
       <p>
         <strong>What's not here.</strong> Tools that look impressive but are
@@ -67,8 +74,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 <style>
   h1 em {
     font-style: italic;
-    color: var(--accent);
     font-weight: 300;
+    color: var(--fg);
   }
   .lede {
     font-family: var(--font-display);
@@ -78,77 +85,98 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     max-width: 60ch;
     margin-top: var(--space-3);
   }
-  .research-grid {
+
+  /* Reuse plate styling from projects index */
+  .plates {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
   }
-  @media (min-width: 880px) {
-    .research-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-5);
-    }
+  .plate {
+    border-top: 1px solid var(--border);
   }
-  .card {
+  .plate:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+  .plate__link {
     display: block;
     color: inherit;
-    border: 1px solid var(--border);
+    transition: background var(--transition);
+  }
+  .plate__link:hover {
     background: var(--bg-elevated);
+  }
+  .plate__inner {
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    gap: var(--space-3);
+    padding: var(--space-4) 0;
+    align-items: start;
+  }
+  @media (min-width: 880px) {
+    .plate__inner {
+      grid-template-columns: 4.5rem minmax(0, 1.05fr) minmax(0, 1.05fr);
+      gap: var(--space-4);
+      padding: var(--space-5) 0;
+    }
+  }
+  .plate__no {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    color: var(--fg-subtle);
+    padding-top: 0.4rem;
+  }
+  .plate__copy {
+    max-width: 48ch;
+  }
+  .plate__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+    margin: 0 0 0.3rem;
+    letter-spacing: -0.018em;
+    line-height: var(--leading-tight);
+  }
+  .plate__zh {
+    font-family: var(--font-display);
+    color: var(--fg-muted);
+    font-size: 1rem;
+    margin: 0 0 0.9rem;
+  }
+  .plate__summary {
+    color: var(--fg);
+    margin: 0 0 1.2rem;
+  }
+  .plate__image {
     overflow: hidden;
-    transition:
-      transform var(--transition),
-      border-color var(--transition);
+    aspect-ratio: 4 / 3;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
   }
-  .card:hover {
-    border-color: var(--fg);
-    transform: translateY(-2px);
-  }
-  .card__cover {
-    position: relative;
-    aspect-ratio: 16 / 10;
-    background: linear-gradient(135deg, #efeee8 0%, #d8d6cf 100%);
-    overflow: hidden;
-  }
-  .card__cover img {
-    position: absolute;
-    inset: 0;
+  .plate__image :global(img),
+  .plate__image :global(picture) {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 700ms cubic-bezier(0.2, 0.6, 0.2, 1);
+    transition: transform 900ms cubic-bezier(0.2, 0.6, 0.18, 1);
   }
-  .card:hover .card__cover img {
-    transform: scale(1.04);
+  .plate__link:hover .plate__image :global(img) {
+    transform: scale(1.03);
   }
-  .card__body {
-    padding: 1.5rem 1.5rem 1.75rem;
+  @media (max-width: 879px) {
+    .plate__image {
+      aspect-ratio: 16 / 10;
+      grid-column: 1 / -1;
+      margin-top: var(--space-2);
+    }
+    .plate__copy {
+      grid-column: 2 / -1;
+    }
   }
-  .card__body h3 {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    margin: 0 0 0.25rem;
-  }
-  .card__zh {
-    color: var(--fg-muted);
-    font-size: 0.92rem;
-    margin: 0 0 0.7rem;
-  }
-  .card__blurb {
-    color: var(--fg);
-    font-size: 0.96rem;
-    margin-bottom: 1.2rem;
-  }
-  .card__cta {
-    color: var(--accent);
-    font-size: 0.92rem;
-  }
+
   .research-note {
-    margin-top: var(--space-5);
     padding: var(--space-3);
-    border-left: 2px solid var(--accent);
+    border-left: 2px solid var(--fg);
     background: var(--bg-elevated);
     color: var(--fg-muted);
     max-width: 60ch;

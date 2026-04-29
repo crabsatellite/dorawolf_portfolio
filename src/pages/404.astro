@@ -7,12 +7,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 <BaseLayout title="Not found">
   <section class="section section--hero container nf">
     <p class="eyebrow">404</p>
-    <h1>This page isn't here.</h1>
-    <p>
-      The page you're looking for has moved or doesn't exist on the redesigned
-      site yet.
+    <h1>This page<br />isn't here.</h1>
+    <p class="nf__lede">
+      The page you're looking for has moved or doesn't exist on the
+      redesigned site yet.
     </p>
-    <a class="link" href={`${base}/`}>Back to home →</a>
+    <a class="arrow-link" href={`${base}/`}>Back to home</a>
   </section>
 </BaseLayout>
 
@@ -20,11 +20,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   .nf {
     min-height: 60vh;
   }
-  .link {
-    color: var(--accent);
-    font-family: var(--font-mono);
-    font-size: 0.92rem;
-    margin-top: var(--space-3);
-    display: inline-block;
+  .nf__lede {
+    font-family: var(--font-display);
+    color: var(--fg-muted);
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    line-height: var(--leading-snug);
+    max-width: 56ch;
+    margin: var(--space-3) 0 var(--space-3);
   }
 </style>

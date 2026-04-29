@@ -7,16 +7,14 @@ import experience from "../../data/experience.json";
 import projectsRecord from "../../data/projects-record.json";
 import awards from "../../data/awards.json";
 
-// Flatten skills groups for the right-rail chip cloud
-const allSkills = [
-  ...skills.modeling,
-  ...skills.rendering,
-  ...skills.drafting,
-  ...skills.graphics,
-  ...skills.ai,
+const skillGroups = [
+  { label: "Modeling", items: skills.modeling },
+  { label: "Rendering", items: skills.rendering },
+  { label: "Drafting", items: skills.drafting },
+  { label: "Graphics", items: skills.graphics },
+  { label: "AI / Generative", items: skills.ai },
 ];
 
-// Filter out the $comment field on records
 const cleanRecord = (rec: any) =>
   Object.fromEntries(Object.entries(rec).filter(([k]) => !k.startsWith("$")));
 const records = projectsRecord.map(cleanRecord);
@@ -28,226 +26,308 @@ const aw = awards.map(cleanRecord);
   title="About"
   description={`${site.fullName} (${site.name}) is an architect and designer based in ${site.location}.`}
 >
-  <section class="section section--hero container">
+  <section class="section section--hero container about-hero">
     <p class="eyebrow">About</p>
-    <h1>
-      {site.fullName} &mdash; <em>architect</em>, designer.
+    <h1 class="about-hero__title">
+      {site.fullName} &mdash; <em>architect</em>,<br />
+      designer.
     </h1>
-    <p class="hero__zh">{site.fullNameZh} · {about.education.degreeZh}</p>
+    <p class="about-hero__zh">
+      {site.fullNameZh} · {about.education.degreeZh}
+    </p>
   </section>
 
-  <section class="section container about">
-    <div class="about__col about__col--lead">
-      <h2 class="about__heading">关于我</h2>
-      <p>{about.bioZh}</p>
+  <section class="section container about-bio">
+    <div class="about-bio__col">
+      <h2 class="about-h2">Biography</h2>
+      <p class="about-bio__lead about-bio__lead--zh">{about.bioZh}</p>
+      <p class="about-bio__lead">{about.bioEn}</p>
+    </div>
+    <aside class="about-bio__side">
+      <dl class="kv">
+        <dt>Based in</dt>
+        <dd>{site.location} · {site.locationZh}</dd>
+        <dt>Languages</dt>
+        <dd>{about.languages.join(" · ")}</dd>
+        <dt>Works in</dt>
+        <dd>{about.interests.join(" · ")}</dd>
+        <dt>Email</dt>
+        <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+      </dl>
+    </aside>
+  </section>
 
-      <h2 class="about__heading">About me</h2>
-      <p>{about.bioEn}</p>
+  <section class="section container">
+    <h2 class="about-h2">Practice</h2>
+    <ul class="exp">
+      {
+        exp.map((e: any) => (
+          <li class:list={["exp__item", `exp__item--${e.kind}`]}>
+            <span class="exp__range">{e.range}</span>
+            <div class="exp__body">
+              <p class="exp__title">{e.title}</p>
+              <p class="exp__org">{e.org}</p>
+              {e.orgZh && <p class="exp__org-zh">{e.orgZh}</p>}
+              {e.note && <p class="exp__note">{e.note}</p>}
+            </div>
+            <span class="exp__kind">
+              {e.kind === "work" ? "Practice" : "Education"}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 
-      <h2 class="about__heading">Education</h2>
-      <p>
-        <strong>{about.education.school}</strong> · {about.education.department}
-        · {about.education.range}.
-        Coursework: {about.education.courses.join(", ")}.
-      </p>
+  <section class="section container">
+    <h2 class="about-h2">Selected projects on record</h2>
+    <ol class="proj">
+      {
+        records.map((r: any, i: number) => (
+          <li class="proj__item">
+            <span class="proj__no">{String(i + 1).padStart(2, "0")}</span>
+            <span class="proj__year">{r.year}</span>
+            <span class="proj__title">
+              <span class="proj__en">{r.en}</span>
+              <span class="proj__zh">{r.zh}</span>
+            </span>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
 
-      <h2 class="about__heading">Practice</h2>
-      <ul class="exp">
-        {
-          exp
-            .filter((e) => e.kind === "work")
-            .map((e) => (
+  <section class="section container">
+    <div class="about-grid">
+      <div>
+        <h2 class="about-h2">Awards</h2>
+        <ul class="awards">
+          {
+            aw.map((a: any) => (
               <li>
-                <span class="exp__range">{e.range}</span>
-                <div>
-                  <p class="exp__org">{e.org}</p>
-                  <p class="exp__org-zh">{e.orgZh}</p>
-                  <p class="exp__note">{e.note}</p>
-                </div>
+                <span class="awards__title">{a.title}</span>
+                {a.titleZh && <span class="awards__zh">{a.titleZh}</span>}
+                <span class="awards__prize">{a.prize}</span>
               </li>
             ))
-        }
-      </ul>
-
-      <h2 class="about__heading">Selected projects on record</h2>
-      <ul class="proj">
-        {
-          records.map((r: any) => (
-            <li>
-              <span class="proj__year">{r.year}</span>
-              <span class="proj__title">
-                <span class="proj__en">{r.en}</span>
-                <span class="proj__zh">{r.zh}</span>
-              </span>
-            </li>
-          ))
-        }
-      </ul>
-
-      <h2 class="about__heading">Awards</h2>
-      <ul class="awards">
-        {
-          aw.map((a: any) => (
-            <li>
-              <span>{a.title}</span>
-              <span class="awards__prize">{a.prize}</span>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-
-    <aside class="about__col about__col--side">
-      <div>
-        <p class="eyebrow">Based in</p>
-        <p>{site.location}</p>
-      </div>
-      <div>
-        <p class="eyebrow">Languages</p>
-        <p>{about.languages.join(" · ")}</p>
-      </div>
-      <div>
-        <p class="eyebrow">Works in</p>
-        <p>{about.interests.join(" · ")}</p>
-      </div>
-      <div>
-        <p class="eyebrow">Tools</p>
-        <ul class="skills">
-          {allSkills.map((s) => <li>{s}</li>)}
+          }
         </ul>
       </div>
       <div>
-        <p class="eyebrow">Contact</p>
-        <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+        <h2 class="about-h2">Tools</h2>
+        <dl class="tools">
+          {
+            skillGroups.map((g) => (
+              <>
+                <dt>{g.label}</dt>
+                <dd>
+                  <ul class="chip-list">
+                    {g.items.map((s) => (
+                      <li>{s}</li>
+                    ))}
+                  </ul>
+                </dd>
+              </>
+            ))
+          }
+        </dl>
       </div>
-    </aside>
+    </div>
   </section>
 </BaseLayout>
 
 <style>
-  h1 em {
+  .about-hero__title em {
     font-style: italic;
-    color: var(--accent);
     font-weight: 300;
   }
-  .hero__zh {
+  .about-hero__zh {
     color: var(--fg-muted);
     font-family: var(--font-display);
-    font-size: 1.2rem;
-    margin-top: -0.5rem;
+    font-size: 1.25rem;
+    margin-top: var(--space-2);
+    letter-spacing: 0.01em;
   }
-  .about {
+
+  .about-h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    margin: 0 0 var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--fg);
+    display: inline-block;
+  }
+
+  /* Bio — asymmetric two-column with hairline rail */
+  .about-bio {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-5);
+    gap: var(--space-4);
   }
-  .about__col p,
-  .about__col li {
-    max-width: 64ch;
+  @media (min-width: 880px) {
+    .about-bio {
+      grid-template-columns: 1.7fr 1fr;
+      gap: var(--space-5);
+    }
   }
-  .about__heading {
+  .about-bio__lead {
     font-family: var(--font-display);
-    font-size: clamp(1.4rem, 2.2vw, 1.75rem);
-    margin: var(--space-5) 0 var(--space-2);
-    padding-top: var(--space-3);
-    border-top: 1px solid var(--border);
+    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+    line-height: var(--leading-snug);
+    max-width: 56ch;
+    margin: 0 0 var(--space-3);
+    color: var(--fg);
   }
-  .about__heading:first-child {
-    border-top: 0;
-    padding-top: 0;
-    margin-top: 0;
+  .about-bio__lead--zh {
+    line-height: var(--leading-cn);
+    margin-bottom: var(--space-3);
   }
-  .about__col--side {
+
+  .kv {
     display: grid;
-    gap: var(--space-2);
-    align-content: start;
-    position: sticky;
-    top: calc(64px + var(--space-3));
-    align-self: start;
+    grid-template-columns: 8rem 1fr;
+    gap: 0.45rem 1rem;
+    margin: 0;
+    font-size: 0.92rem;
   }
-  .about__col--side .eyebrow {
-    margin-bottom: 0.2rem;
+  .kv dt {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    padding-top: 0.18rem;
   }
-  .about__col--side > div > p {
+  .kv dd {
     margin: 0;
   }
-  .skills {
-    list-style: none;
-    margin: 0.4rem 0 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
+  .kv a {
+    border-bottom: 1px solid var(--border);
   }
-  .skills li {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    padding: 0.2rem 0.55rem;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    color: var(--fg-muted);
+  .kv a:hover {
+    border-bottom-color: var(--fg);
   }
+
+  /* Practice timeline */
   .exp {
     list-style: none;
     margin: 0;
     padding: 0;
   }
-  .exp li {
+  .exp__item {
     display: grid;
-    grid-template-columns: 9rem 1fr;
-    gap: 1rem;
-    padding: var(--space-2) 0;
+    grid-template-columns: 8.5rem 1fr 7rem;
+    gap: var(--space-3);
+    padding: var(--space-3) 0;
     border-top: 1px solid var(--border);
+    align-items: baseline;
+  }
+  .exp__item:last-child {
+    border-bottom: 1px solid var(--border);
   }
   .exp__range {
     font-family: var(--font-mono);
     font-size: 0.85rem;
     color: var(--fg-muted);
+    font-feature-settings: "tnum" 1;
+  }
+  .exp__title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin: 0 0 0.35rem;
+    letter-spacing: -0.012em;
   }
   .exp__org {
     margin: 0;
+    color: var(--fg);
     font-weight: 500;
   }
   .exp__org-zh {
-    margin: 0.2rem 0 0.4rem;
+    margin: 0.15rem 0 0;
     color: var(--fg-muted);
     font-size: 0.92rem;
   }
   .exp__note {
-    margin: 0.4rem 0 0;
+    margin: 0.6rem 0 0;
     color: var(--fg-muted);
-    font-size: 0.92rem;
+    max-width: 60ch;
+    line-height: var(--leading-cn);
   }
+  .exp__kind {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-subtle);
+    text-align: right;
+  }
+  @media (max-width: 720px) {
+    .exp__item {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      padding: var(--space-3) 0;
+    }
+    .exp__kind {
+      text-align: left;
+      order: -1;
+    }
+    .exp__range {
+      order: 0;
+    }
+  }
+
+  /* Project record list */
   .proj {
     list-style: none;
     margin: 0;
     padding: 0;
   }
-  .proj li {
+  .proj__item {
     display: grid;
-    grid-template-columns: 4.5rem 1fr;
+    grid-template-columns: 3rem 4rem 1fr;
     gap: 1rem;
-    padding: 0.6rem 0;
+    padding: 0.7rem 0;
     border-top: 1px solid var(--border);
     align-items: baseline;
   }
-  .proj li:last-child {
+  .proj__item:last-child {
     border-bottom: 1px solid var(--border);
+  }
+  .proj__no {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--fg-subtle);
+    letter-spacing: 0.1em;
   }
   .proj__year {
     font-family: var(--font-mono);
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     color: var(--fg-muted);
+    font-feature-settings: "tnum" 1;
   }
   .proj__en {
     display: block;
     font-size: 0.98rem;
+    line-height: 1.4;
   }
   .proj__zh {
     display: block;
     color: var(--fg-muted);
     font-size: 0.85rem;
-    margin-top: 0.15rem;
+    margin-top: 0.18rem;
+  }
+
+  /* Awards + Tools side-by-side */
+  .about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+  }
+  @media (min-width: 880px) {
+    .about-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-5);
+    }
   }
   .awards {
     list-style: none;
@@ -257,24 +337,66 @@ const aw = awards.map(cleanRecord);
   .awards li {
     display: grid;
     grid-template-columns: 1fr auto;
-    gap: 1rem;
-    padding: 0.55rem 0;
+    gap: 0.4rem 1rem;
+    padding: 0.6rem 0;
     border-top: 1px solid var(--border);
   }
   .awards li:last-child {
     border-bottom: 1px solid var(--border);
   }
-  .awards__prize {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
+  .awards__title {
+    grid-column: 1 / 2;
+    font-size: 0.96rem;
   }
-  @media (min-width: 980px) {
-    .about {
-      grid-template-columns: 1.7fr 1fr;
-      gap: var(--space-6);
-    }
+  .awards__zh {
+    grid-column: 1 / 2;
+    color: var(--fg-muted);
+    font-size: 0.85rem;
+    margin-top: 0.1rem;
+  }
+  .awards__prize {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg);
+    align-self: start;
+  }
+
+  .tools {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 0.6rem 1rem;
+  }
+  .tools dt {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    padding-top: 0.4rem;
+  }
+  .tools dd {
+    margin: 0;
+  }
+  .chip-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .chip-list li {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--fg-muted);
   }
 </style>

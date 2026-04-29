@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import Picture from "~/components/Picture.astro";
 import { getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
 
@@ -15,26 +16,33 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-const heroSrc = entry.data.hero ? `${base}${entry.data.hero}` : null;
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.blurb}>
   <article class="research">
-    <header class="research__head container">
+    <header class="container research__head">
       <p class="eyebrow">Research</p>
       <h1>{entry.data.title}</h1>
       {entry.data.titleZh && (
         <p class="research__zh">{entry.data.titleZh}</p>
       )}
-      <p class="research__lede">{entry.data.blurb}</p>
-      {entry.data.blurbZh && (
-        <p class="research__lede research__lede--zh">{entry.data.blurbZh}</p>
-      )}
+      <div class="research__meta-row">
+        <p class="research__lede">{entry.data.blurb}</p>
+        {entry.data.blurbZh && (
+          <p class="research__lede research__lede--zh">{entry.data.blurbZh}</p>
+        )}
+      </div>
     </header>
 
-    {heroSrc && (
+    {entry.data.hero && (
       <figure class="research__hero">
-        <img src={heroSrc} alt={`${entry.data.title} — cover`} loading="eager" />
+        <Picture
+          src={entry.data.hero}
+          alt={`${entry.data.title} — cover`}
+          loading="eager"
+          fetchpriority="high"
+          sizes="100vw"
+        />
       </figure>
     )}
 
@@ -62,25 +70,34 @@ const heroSrc = entry.data.hero ? `${base}${entry.data.hero}` : null;
   .research__zh {
     color: var(--fg-muted);
     font-family: var(--font-display);
-    font-size: 1.15rem;
-    margin: 0 0 1.2rem;
+    font-size: 1.2rem;
+    margin: 0 0 var(--space-3);
+  }
+  .research__meta-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.6rem;
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-3);
   }
   .research__lede {
     font-family: var(--font-display);
     font-size: clamp(1.05rem, 1.5vw, 1.3rem);
     line-height: var(--leading-snug);
     max-width: 60ch;
-    margin-top: var(--space-3);
-    color: var(--fg-muted);
+    margin: 0;
+    color: var(--fg);
   }
   .research__lede--zh {
-    margin-top: 0.6rem;
+    color: var(--fg-muted);
+    margin-top: 0;
   }
   .research__hero {
     margin: var(--space-3) 0 var(--space-5);
     padding: 0;
   }
-  .research__hero img {
+  .research__hero :global(picture),
+  .research__hero :global(img) {
     width: 100%;
     height: auto;
     display: block;
@@ -96,9 +113,9 @@ const heroSrc = entry.data.hero ? `${base}${entry.data.hero}` : null;
   .prose :global(h2) {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
     line-height: var(--leading-tight);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.018em;
     margin: var(--space-5) 0 var(--space-2);
     padding-top: var(--space-3);
     border-top: 1px solid var(--border);
@@ -106,23 +123,30 @@ const heroSrc = entry.data.hero ? `${base}${entry.data.hero}` : null;
   .prose :global(h3) {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: 1.15rem;
+    font-size: 1.18rem;
     margin: var(--space-3) 0 var(--space-1);
+    letter-spacing: -0.012em;
   }
   .prose :global(p) {
     margin: 0 0 1rem;
-    line-height: 1.85;
-    letter-spacing: 0.01em;
+    line-height: var(--leading-cn);
+    letter-spacing: 0.005em;
   }
+  .prose :global(p:has(picture)),
   .prose :global(p:has(img)) {
-    margin: var(--space-3) 0;
+    margin: var(--space-4) 0;
+    max-width: none;
   }
-  .prose :global(img) {
+  .prose :global(picture) {
+    display: block;
+    width: 100%;
+  }
+  .prose :global(img),
+  .prose :global(picture > img) {
     width: 100%;
     height: auto;
     display: block;
     margin: 0;
-    border: 1px solid var(--border);
     background: var(--bg-elevated);
   }
   .research__nav {
@@ -133,16 +157,12 @@ const heroSrc = entry.data.hero ? `${base}${entry.data.hero}` : null;
   }
   .research__back {
     font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--fg-muted);
   }
   .research__back:hover {
     color: var(--fg);
-  }
-  @media (min-width: 920px) {
-    .research__hero img {
-      max-height: 78vh;
-      object-fit: cover;
-    }
   }
 </style>

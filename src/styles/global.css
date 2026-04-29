@@ -1,36 +1,59 @@
+/* ============================================================
+   DoraWolf — type system + base layer
+   Aesthetic: architect-grade restraint. Warm ink-on-cream,
+   monolithic display serif, generous whitespace, no chromatic
+   accent. Hairline rules. Numerical features.
+   ============================================================ */
+
 :root {
-  --bg: #fafaf7;
-  --bg-elevated: #ffffff;
-  --fg: #1a1a1a;
-  --fg-muted: #6e6e68;
-  --fg-subtle: #a3a39c;
-  --border: #e8e6e0;
-  --accent: #3a4a3f;
-  --accent-hover: #2d3b32;
+  /* Palette — pure ink on warm cream */
+  --bg: #f6f5ef;
+  --bg-elevated: #fbfaf5;
+  --fg: #131313;
+  --fg-muted: #5e5d57;
+  --fg-subtle: #9a988e;
+  --border: #d6d3c8;
+  --border-strong: #1a1a1a;
 
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Helvetica Neue", "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
-    sans-serif;
-  --font-display: "Source Serif 4", "EB Garamond", "Songti SC", "Noto Serif SC",
-    Georgia, serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  /* Type */
+  --font-sans:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+    "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  --font-display:
+    "Source Serif 4", "EB Garamond", "Songti SC", "Noto Serif SC", Georgia,
+    serif;
+  --font-mono:
+    "JetBrains Mono", "Berkeley Mono", ui-monospace, "SF Mono", Menlo,
+    monospace;
 
-  --max-w: 1320px;
-  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --max-w: 1440px;
+  --gutter: clamp(1.25rem, 4.5vw, 3rem);
 
-  --leading-tight: 1.15;
-  --leading-snug: 1.35;
-  --leading-normal: 1.6;
+  --leading-tight: 1.05;
+  --leading-snug: 1.32;
+  --leading-normal: 1.7;
+  --leading-cn: 1.85; /* Better for CJK */
 
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
   --space-4: 2.5rem;
-  --space-5: 4rem;
-  --space-6: 6rem;
-  --space-7: 9rem;
+  --space-5: 4.5rem;
+  --space-6: 7rem;
+  --space-7: 10rem;
 
-  --transition: 280ms cubic-bezier(0.2, 0.6, 0.2, 1);
+  --transition: 320ms cubic-bezier(0.2, 0.6, 0.18, 1);
+
+  --nav-height: 68px;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --space-5: 3rem;
+    --space-6: 5rem;
+    --space-7: 7rem;
+    --nav-height: 56px;
+  }
 }
 
 *,
@@ -42,6 +65,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -51,13 +75,24 @@ body {
   font-family: var(--font-sans);
   font-size: 17px;
   line-height: var(--leading-normal);
-  font-feature-settings: "ss01", "cv11";
+  font-feature-settings:
+    "ss01",
+    "cv11",
+    "kern" 1;
+  font-variant-numeric: oldstyle-nums proportional-nums;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media (min-width: 720px) {
+  body {
+    font-size: 18px;
+  }
+}
+
 img,
-video {
+video,
+picture {
   max-width: 100%;
   height: auto;
   display: block;
@@ -70,7 +105,12 @@ a {
 }
 
 a:hover {
-  color: var(--accent);
+  color: var(--fg);
+}
+
+::selection {
+  background: var(--fg);
+  color: var(--bg);
 }
 
 h1,
@@ -80,26 +120,55 @@ h4 {
   font-family: var(--font-display);
   font-weight: 400;
   line-height: var(--leading-tight);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.018em;
   margin: 0 0 var(--space-3);
+  color: var(--fg);
+  font-feature-settings: "kern" 1, "liga" 1, "dlig" 0;
 }
 
 h1 {
-  font-size: clamp(2.4rem, 5.4vw, 4.4rem);
-  letter-spacing: -0.02em;
+  font-size: clamp(2.6rem, 7vw, 5.4rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
 }
 
 h2 {
-  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+  letter-spacing: -0.022em;
 }
 
 h3 {
   font-size: 1.35rem;
+  letter-spacing: -0.012em;
 }
 
 p {
   margin: 0 0 var(--space-2);
-  max-width: 68ch;
+  max-width: 64ch;
+}
+
+/* Chinese paragraphs benefit from slightly wider line-height */
+p:lang(zh),
+p:lang(zh-Hans),
+:lang(zh-Hans) p {
+  line-height: var(--leading-cn);
+  letter-spacing: 0.01em;
+}
+
+strong {
+  font-weight: 500;
+  color: var(--fg);
+}
+
+em {
+  font-style: italic;
+}
+
+hr {
+  height: 1px;
+  background: var(--border);
+  border: 0;
+  margin: var(--space-4) 0;
 }
 
 .container {
@@ -110,17 +179,12 @@ p {
 
 .eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--fg-muted);
-}
-
-.hairline {
-  height: 1px;
-  background: var(--border);
-  border: 0;
-  margin: 0;
+  margin: 0 0 var(--space-2);
+  font-feature-settings: "tnum" 1;
 }
 
 .section {
@@ -129,16 +193,79 @@ p {
 }
 
 .section--hero {
-  padding: var(--space-7) 0 var(--space-6);
+  padding: var(--space-7) 0 var(--space-5);
   border-top: 0;
 }
 
-@media (min-width: 720px) {
-  body {
-    font-size: 18px;
+@media (max-width: 720px) {
+  .section {
+    padding: var(--space-5) 0;
+  }
+  .section--hero {
+    padding: var(--space-6) 0 var(--space-4);
   }
 }
 
+/* Standard "view more" arrow link, replaces pill buttons throughout */
+.arrow-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.005em;
+  color: var(--fg);
+  border-bottom: 1px solid var(--fg);
+  padding: 0 0 0.18rem;
+  transition:
+    border-color var(--transition),
+    color var(--transition);
+}
+
+.arrow-link::after {
+  content: "→";
+  font-family: var(--font-mono);
+  transition: transform var(--transition);
+}
+
+.arrow-link:hover {
+  color: var(--fg);
+  border-bottom-color: transparent;
+}
+
+.arrow-link:hover::after {
+  transform: translateX(4px);
+}
+
+.arrow-link--mono {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--fg);
+  color: var(--bg);
+  padding: 0.5rem 1rem;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* Focus visibility */
+:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

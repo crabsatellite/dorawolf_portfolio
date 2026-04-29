@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import Picture from "~/components/Picture.astro";
 import { getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
 
@@ -15,55 +16,63 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-const heroSrc = entry.data.hero
-  ? `${base}${entry.data.hero}`
-  : null;
+
+// Find prev/next in the ordered list for footer nav
+const all = (await getCollection("projects", ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order);
+const idx = all.findIndex((p) => p.slug === entry.slug);
+const prev = idx > 0 ? all[idx - 1] : null;
+const next = idx < all.length - 1 ? all[idx + 1] : null;
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.summary}>
   <article class="project">
-    <header class="project__head container">
+    <header class="container project__head">
       <p class="eyebrow">
         Project · {entry.data.year}
         {entry.data.status && ` · ${entry.data.status}`}
       </p>
-      <h1>{entry.data.title}</h1>
+      <h1 class="project__h1">{entry.data.title}</h1>
       {entry.data.titleZh && <p class="project__zh">{entry.data.titleZh}</p>}
-      <p class="project__lede">{entry.data.summary}</p>
-      <dl class="project__meta">
-        {entry.data.dateZh && (
-          <>
-            <dt>Date</dt>
-            <dd>{entry.data.dateZh}</dd>
-          </>
-        )}
-        {entry.data.location && (
-          <>
-            <dt>Location</dt>
-            <dd>{entry.data.location}</dd>
-          </>
-        )}
-        {entry.data.role && (
-          <>
-            <dt>Role</dt>
-            <dd>{entry.data.role}</dd>
-          </>
-        )}
-        {entry.data.typology && (
-          <>
-            <dt>Typology</dt>
-            <dd>{entry.data.typology}</dd>
-          </>
-        )}
-      </dl>
+      <div class="project__meta-row">
+        <p class="project__lede">{entry.data.summary}</p>
+        <dl class="project__meta">
+          {entry.data.dateZh && (
+            <>
+              <dt>Date</dt>
+              <dd>{entry.data.dateZh}</dd>
+            </>
+          )}
+          {entry.data.location && (
+            <>
+              <dt>Location</dt>
+              <dd>{entry.data.location}</dd>
+            </>
+          )}
+          {entry.data.role && (
+            <>
+              <dt>Role</dt>
+              <dd>{entry.data.role}</dd>
+            </>
+          )}
+          {entry.data.typology && (
+            <>
+              <dt>Typology</dt>
+              <dd>{entry.data.typology}</dd>
+            </>
+          )}
+        </dl>
+      </div>
     </header>
 
-    {heroSrc && (
+    {entry.data.hero && (
       <figure class="project__hero">
-        <img
-          src={heroSrc}
-          alt={`${entry.data.title} — hero image`}
+        <Picture
+          src={entry.data.hero}
+          alt={`${entry.data.title} — hero`}
           loading="eager"
+          fetchpriority="high"
+          sizes="100vw"
         />
       </figure>
     )}
@@ -74,8 +83,25 @@ const heroSrc = entry.data.hero
       </div>
     </section>
 
-    <nav class="container project__nav">
+    <nav class="container project__nav" aria-label="Project navigation">
       <a href={`${base}/projects`} class="project__back">← All projects</a>
+      <div class="project__pager">
+        {prev && (
+          <a href={`${base}/projects/${prev.slug}`} class="project__pager-item">
+            <span class="eyebrow">Previous</span>
+            <span>{prev.data.title}</span>
+          </a>
+        )}
+        {next && (
+          <a
+            href={`${base}/projects/${next.slug}`}
+            class="project__pager-item project__pager-item--right"
+          >
+            <span class="eyebrow">Next</span>
+            <span>{next.data.title}</span>
+          </a>
+        )}
+      </div>
     </nav>
   </article>
 </BaseLayout>
@@ -85,54 +111,70 @@ const heroSrc = entry.data.hero
     padding-top: var(--space-6);
     padding-bottom: var(--space-4);
   }
-  .project__head h1 {
+  .project__h1 {
     margin-top: 0.5rem;
     margin-bottom: 0.4rem;
   }
   .project__zh {
     color: var(--fg-muted);
     font-family: var(--font-display);
-    font-size: 1.15rem;
-    margin: 0 0 1.2rem;
+    font-size: 1.2rem;
+    margin: 0 0 var(--space-3);
+  }
+  .project__meta-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-3);
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-3);
+  }
+  @media (min-width: 880px) {
+    .project__meta-row {
+      grid-template-columns: 1.4fr 1fr;
+      gap: var(--space-4);
+      align-items: start;
+    }
   }
   .project__lede {
     font-family: var(--font-display);
-    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+    font-size: clamp(1.1rem, 1.55vw, 1.4rem);
     line-height: var(--leading-snug);
     max-width: 56ch;
-    margin-top: var(--space-3);
-    color: var(--fg-muted);
+    margin: 0;
+    color: var(--fg);
   }
   .project__meta {
     display: grid;
-    grid-template-columns: 8rem 1fr;
+    grid-template-columns: 7rem 1fr;
     column-gap: 1rem;
-    row-gap: 0.4rem;
-    margin-top: var(--space-4);
+    row-gap: 0.5rem;
+    margin: 0;
     font-size: 0.92rem;
-    border-top: 1px solid var(--border);
-    padding-top: var(--space-3);
-    max-width: 36rem;
+    align-self: start;
   }
   .project__meta dt {
     font-family: var(--font-mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--fg-muted);
+    padding-top: 0.18rem;
   }
   .project__meta dd {
     margin: 0;
   }
+
   .project__hero {
     margin: var(--space-3) 0 var(--space-5);
     padding: 0;
   }
-  .project__hero img {
+  .project__hero :global(picture),
+  .project__hero :global(img) {
     width: 100%;
     height: auto;
     display: block;
   }
+
   .project__body {
     padding-top: var(--space-3);
     padding-bottom: var(--space-4);
@@ -144,9 +186,9 @@ const heroSrc = entry.data.hero
   .prose :global(h2) {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
     line-height: var(--leading-tight);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.018em;
     margin: var(--space-5) 0 var(--space-2);
     padding-top: var(--space-3);
     border-top: 1px solid var(--border);
@@ -154,49 +196,87 @@ const heroSrc = entry.data.hero
   .prose :global(h3) {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: 1.15rem;
+    font-size: 1.18rem;
     margin: var(--space-3) 0 var(--space-1);
+    letter-spacing: -0.012em;
   }
   .prose :global(p) {
     margin: 0 0 1rem;
-    line-height: 1.85;
-    letter-spacing: 0.01em;
+    line-height: var(--leading-cn);
+    letter-spacing: 0.005em;
     color: var(--fg);
   }
+  /* Markdown image plates: full-width within prose, with hairline frame */
+  .prose :global(p:has(picture)),
   .prose :global(p:has(img)) {
-    margin: var(--space-3) 0;
+    margin: var(--space-4) 0;
     max-width: none;
   }
-  .prose :global(img) {
+  .prose :global(picture) {
+    display: block;
+    width: 100%;
+  }
+  .prose :global(img),
+  .prose :global(picture > img) {
     width: 100%;
     height: auto;
     display: block;
     margin: 0;
-    border: 1px solid var(--border);
     background: var(--bg-elevated);
+    /* No border on full-bleed images for a cleaner plate look */
   }
+
   .prose :global(ul) {
     margin: 0 0 1rem;
-    padding-left: 1.5rem;
+    padding-left: 1.4rem;
   }
+  .prose :global(ul li) {
+    margin-bottom: 0.4rem;
+    line-height: var(--leading-cn);
+  }
+
   .project__nav {
-    padding-bottom: var(--space-5);
     border-top: 1px solid var(--border);
     padding-top: var(--space-3);
-    margin-top: var(--space-4);
+    padding-bottom: var(--space-5);
+    display: grid;
+    gap: var(--space-3);
   }
   .project__back {
     font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--fg-muted);
   }
   .project__back:hover {
     color: var(--fg);
   }
-  @media (min-width: 920px) {
-    .project__hero img {
-      max-height: 78vh;
-      object-fit: cover;
+  .project__pager {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  @media (min-width: 720px) {
+    .project__pager {
+      grid-template-columns: 1fr 1fr;
     }
+  }
+  .project__pager-item {
+    display: grid;
+    gap: 0.3rem;
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-2);
+    color: var(--fg);
+  }
+  .project__pager-item span:nth-child(2) {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+  }
+  .project__pager-item--right {
+    text-align: right;
+  }
+  .project__pager-item:hover {
+    color: var(--fg);
   }
 </style>

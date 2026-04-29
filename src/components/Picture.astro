@@ -1,0 +1,70 @@
+---
+/**
+ * <Picture> — same WebP/AVIF wrap as the markdown rehype plugin, but for
+ * static templates. Looks up variants in public/.image-manifest.json by
+ * source-relative path (no baseUrl prefix). Add baseUrl back when emitting
+ * the <source srcset> URLs.
+ */
+import fs from "node:fs";
+import path from "node:path";
+
+interface Props {
+  src: string;
+  alt: string;
+  loading?: "eager" | "lazy";
+  fetchpriority?: "high" | "low" | "auto";
+  sizes?: string;
+  class?: string;
+}
+
+const {
+  src,
+  alt,
+  loading = "lazy",
+  fetchpriority,
+  sizes = "(min-width: 920px) 760px, 100vw",
+  class: className,
+} = Astro.props;
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/+$/, "");
+
+let manifest: Record<string, any> = {};
+try {
+  const p = path.join(process.cwd(), "public", ".image-manifest.json");
+  if (fs.existsSync(p)) {
+    manifest = JSON.parse(fs.readFileSync(p, "utf-8"));
+  }
+} catch (_) {
+  manifest = {};
+}
+
+let lookup = src.startsWith("/") ? src : "/" + src;
+const entry = manifest[lookup];
+
+const fullSrc = `${baseUrl}${lookup}`;
+
+function variantSrcset(fmt: "avif" | "webp"): string | null {
+  const widths = entry?.variants?.[fmt];
+  if (!widths || widths.length === 0) return null;
+  return widths
+    .map((w: number) => `${baseUrl}${lookup.replace(/\.[^.]+$/, `-${w}.${fmt}`)} ${w}w`)
+    .join(", ");
+}
+
+const avifSet = entry ? variantSrcset("avif") : null;
+const webpSet = entry ? variantSrcset("webp") : null;
+---
+
+<picture class={className}>
+  {avifSet && <source type="image/avif" srcset={avifSet} sizes={sizes} />}
+  {webpSet && <source type="image/webp" srcset={webpSet} sizes={sizes} />}
+  <img
+    src={fullSrc}
+    alt={alt}
+    loading={loading}
+    decoding="async"
+    fetchpriority={fetchpriority}
+    width={entry?.width}
+    height={entry?.height}
+  />
+</picture>

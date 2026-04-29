@@ -1,49 +1,87 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import Picture from "~/components/Picture.astro";
 import { getCollection } from "astro:content";
 import site from "../../data/site.json";
 
 const projects = (await getCollection("projects", ({ data }) => !data.draft))
   .sort((a, b) => a.data.order - b.data.order);
 
+const featured = projects[0];
+const rest = projects.slice(1);
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <BaseLayout title={site.name}>
-  <section class="section section--hero container">
-    <p class="eyebrow">Selected works · {site.yearRange}</p>
-    <h1>
-      Architecture<br />
-      that listens to its <em>site</em>,<br />
-      its <em>climate</em>,<br />
-      and the people who<br />
-      will inhabit it.
-    </h1>
-    <p class="lede">
-      {site.fullName} — known online as {site.name} — is an architect and
-      designer based in {site.location}. Trained at Hubei University of
-      Technology and formed in practice at the China Architecture Design &amp;
-      Research Group, the studio works across education, infrastructure, and
-      public buildings, with a continuing interest in sustainable design and
-      computational tools.
-    </p>
-    <div class="hero-actions">
-      <a class="btn btn--primary" href={`${base}/projects`}>View projects</a>
-      <a class="btn" href={`${base}/about`}>About</a>
+  <section class="section section--hero container hero">
+    <div class="hero__head">
+      <p class="eyebrow">Selected works · {site.yearRange}</p>
+      <h1 class="hero__title">
+        Architecture<br />
+        that listens to its <span class="hero__emph">site</span>,<br />
+        its <span class="hero__emph">climate</span>,<br />
+        and the people who<br />
+        will inhabit it.
+      </h1>
+    </div>
+    <div class="hero__lede">
+      <p>
+        {site.fullName} — known online as {site.name} — is an architect and
+        designer based in {site.location}. Trained at Hubei University of
+        Technology and formed in practice at the China Architecture Design &amp;
+        Research Group, the studio works across education, infrastructure, and
+        public buildings, with a continuing interest in sustainable design and
+        computational tools.
+      </p>
+      <p class="hero__cta">
+        <a class="arrow-link" href={`${base}/projects`}>View all projects</a>
+      </p>
     </div>
   </section>
 
+  {
+    featured && (
+      <section class="section featured">
+        <a href={`${base}/projects/${featured.slug}`} class="featured__link">
+          <div class="featured__image">
+            {featured.data.hero ? (
+              <Picture
+                src={featured.data.hero}
+                alt={featured.data.title}
+                loading="eager"
+                fetchpriority="high"
+                sizes="100vw"
+              />
+            ) : null}
+          </div>
+          <div class="container featured__caption">
+            <p class="eyebrow">Featured · {featured.data.year}</p>
+            <h2 class="featured__title">{featured.data.title}</h2>
+            {featured.data.titleZh && (
+              <p class="featured__zh">{featured.data.titleZh}</p>
+            )}
+            <p class="featured__summary">{featured.data.summary}</p>
+            <span class="arrow-link">Read project</span>
+          </div>
+        </a>
+      </section>
+    )
+  }
+
   <section class="section container">
     <header class="section-head">
-      <p class="eyebrow">Projects</p>
-      <h2>Selected works</h2>
-      <a class="section-head__link" href={`${base}/projects`}
-        >All {projects.length} projects →</a
+      <div>
+        <p class="eyebrow">Index</p>
+        <h2>Selected works</h2>
+      </div>
+      <a class="arrow-link arrow-link--mono" href={`${base}/projects`}
+        >All {projects.length} projects</a
       >
     </header>
     <ol class="project-list">
       {
-        projects.map((p) => (
+        rest.map((p) => (
           <li class="project-item">
             <a href={`${base}/projects/${p.slug}`}>
               <span class="project-item__year">{p.data.year}</span>
@@ -66,21 +104,26 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     </ol>
   </section>
 
-  <section class="section container">
+  <section class="section container threads-section">
     <header class="section-head">
-      <p class="eyebrow">Practice</p>
-      <h2>Three threads</h2>
+      <div>
+        <p class="eyebrow">Practice</p>
+        <h2>Three threads</h2>
+      </div>
     </header>
     <div class="threads">
       <article>
+        <p class="thread__no">01</p>
         <h3>Site as origin</h3>
         <p>
           Each scheme begins by reading the existing topography, climate, and
           civic edges. Form follows from what the site already offers — the
-          contour, the prevailing wind, the way people already cross the land.
+          contour, the prevailing wind, the way people already cross the
+          land.
         </p>
       </article>
       <article>
+        <p class="thread__no">02</p>
         <h3>Computational tools</h3>
         <p>
           Sketchup and Grasshopper sit at the centre of the studio's daily
@@ -90,11 +133,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         </p>
       </article>
       <article>
+        <p class="thread__no">03</p>
         <h3>Public legibility</h3>
         <p>
           Public buildings are owed a calm, legible reading from the street.
-          Where possible, schemes resolve to a single quiet datum visible from
-          the city before any internal complexity reveals itself.
+          Where possible, schemes resolve to a single quiet datum visible
+          from the city before any internal complexity reveals itself.
         </p>
       </article>
     </div>
@@ -102,85 +146,125 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 </BaseLayout>
 
 <style>
-  h1 em {
-    font-style: italic;
-    color: var(--accent);
-    font-weight: 300;
+  /* Hero — asymmetric two-column on wide screens, stacked on phone */
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
   }
-  .lede {
+  @media (min-width: 980px) {
+    .hero {
+      grid-template-columns: 1.55fr 1fr;
+      gap: var(--space-6);
+      align-items: end;
+    }
+  }
+  .hero__title {
+    margin: 0;
+  }
+  .hero__emph {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--fg);
+  }
+  .hero__lede p {
     font-family: var(--font-display);
-    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
     line-height: var(--leading-snug);
     color: var(--fg-muted);
+    max-width: 42ch;
+  }
+  .hero__cta {
     margin-top: var(--space-3);
-    max-width: 56ch;
-  }
-  .hero-actions {
-    display: flex;
-    gap: 0.75rem;
-    margin-top: var(--space-4);
-    flex-wrap: wrap;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.7rem 1.25rem;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    font-size: 0.92rem;
-    background: transparent;
-    color: var(--fg);
-    transition:
-      background var(--transition),
-      color var(--transition),
-      border-color var(--transition);
-  }
-  .btn:hover {
-    background: var(--fg);
-    color: var(--bg);
-    border-color: var(--fg);
-  }
-  .btn--primary {
-    background: var(--accent);
-    color: var(--bg);
-    border-color: var(--accent);
-  }
-  .btn--primary:hover {
-    background: var(--accent-hover);
-    border-color: var(--accent-hover);
   }
 
+  /* Featured — full-bleed hero image with caption strip below */
+  .featured {
+    border-top: 1px solid var(--border);
+    padding: var(--space-5) 0 0;
+  }
+  .featured__link {
+    display: block;
+    color: inherit;
+  }
+  .featured__image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--bg-elevated);
+  }
+  .featured__image :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 900ms cubic-bezier(0.2, 0.6, 0.18, 1);
+  }
+  .featured__link:hover .featured__image :global(img) {
+    transform: scale(1.025);
+  }
+  .featured__caption {
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-2);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.4rem;
+    max-width: var(--max-w);
+  }
+  .featured__title {
+    font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+    margin: 0;
+  }
+  .featured__zh {
+    font-family: var(--font-display);
+    color: var(--fg-muted);
+    margin: 0;
+  }
+  .featured__summary {
+    margin: 0.6rem 0 1.2rem;
+    max-width: 60ch;
+    color: var(--fg);
+  }
+  @media (min-width: 980px) {
+    .featured__caption {
+      grid-template-columns: 1.5fr 1fr;
+      gap: var(--space-4);
+      align-items: start;
+    }
+    .featured__title {
+      grid-column: 1 / 2;
+    }
+    .featured__zh {
+      grid-column: 1 / 2;
+    }
+    .featured__summary {
+      grid-column: 2 / 3;
+      grid-row: 1 / span 3;
+      align-self: end;
+    }
+    .featured__caption .arrow-link {
+      grid-column: 2 / 3;
+      align-self: start;
+    }
+  }
+
+  /* Project index list — monolithic rows, hairline rules */
   .section-head {
     display: flex;
     align-items: baseline;
+    justify-content: space-between;
     gap: 1rem;
     margin-bottom: var(--space-4);
     flex-wrap: wrap;
   }
   .section-head h2 {
     margin: 0;
-    flex: 1;
   }
-  .section-head__link {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--fg-muted);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-  .section-head__link:hover {
-    color: var(--fg);
-  }
-
   .project-list {
     list-style: none;
-    counter-reset: prj;
     margin: 0;
     padding: 0;
   }
   .project-item {
-    counter-increment: prj;
     border-top: 1px solid var(--border);
   }
   .project-item:last-child {
@@ -201,28 +285,37 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     font-family: var(--font-mono);
     font-size: 0.85rem;
     color: var(--fg-muted);
+    font-feature-settings: "tnum" 1;
   }
   .project-item__title-en {
     display: block;
     font-family: var(--font-display);
-    font-size: clamp(1.15rem, 2vw, 1.55rem);
+    font-size: clamp(1.15rem, 2vw, 1.65rem);
     line-height: var(--leading-tight);
+    letter-spacing: -0.012em;
   }
   .project-item__title-zh {
     display: block;
     color: var(--fg-muted);
-    font-size: 0.92rem;
-    margin-top: 0.2rem;
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    margin-top: 0.3rem;
   }
   .project-item__meta {
     color: var(--fg-muted);
-    font-size: 0.88rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     text-align: right;
+    max-width: 22ch;
   }
   .project-item__arrow {
     font-family: var(--font-mono);
-    color: var(--fg-muted);
-    transition: transform var(--transition);
+    color: var(--fg-subtle);
+    transition:
+      transform var(--transition),
+      color var(--transition);
   }
   .project-item a:hover .project-item__arrow {
     transform: translateX(0.4rem);
@@ -230,28 +323,50 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   }
   @media (max-width: 720px) {
     .project-item a {
-      grid-template-columns: 4rem 1fr 1.5rem;
+      grid-template-columns: 3.5rem 1fr;
+      gap: 0.8rem;
+      padding: 1.2rem 0;
     }
     .project-item__meta {
       grid-column: 2 / 3;
       text-align: left;
-      margin-top: 0.25rem;
+      margin-top: 0.4rem;
+      max-width: none;
+    }
+    .project-item__arrow {
+      display: none;
     }
   }
 
+  /* Threads — three columns of design-philosophy snippets */
+  .threads-section {
+    border-top: 1px solid var(--border);
+  }
   .threads {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: var(--space-4);
   }
   .threads article {
     border-top: 1px solid var(--fg);
     padding-top: 1rem;
   }
+  .thread__no {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--fg-subtle);
+    margin: 0 0 0.4rem;
+  }
   .threads h3 {
     font-family: var(--font-sans);
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 1.05rem;
     letter-spacing: 0;
+    margin-bottom: 0.6rem;
+  }
+  .threads p {
+    color: var(--fg-muted);
+    margin: 0;
   }
 </style>

@@ -28,3 +28,9 @@ Thumbs.db
 
 # scrape staging (Phase 2)
 _scrape/
+
+# Generated image variants (created by scripts/build-images.mjs at prebuild)
+public/**/*.avif
+public/**/*.webp
+# Manifest is committed so the rehype plugin works without running prebuild
+!public/.image-manifest.json
