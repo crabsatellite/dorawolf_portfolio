@@ -30,7 +30,23 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      # Cache the generated AVIF/WebP variants. Hashing every original keeps
+      # the cache valid as long as nothing in the source images changed.
+      # First cold build is slow (~10 min); subsequent runs hit cache and
+      # skip re-encoding entirely.
+      - name: Restore image variants cache
+        id: image-cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            public/**/*.avif
+            public/**/*.webp
+            public/.image-manifest.json
+          key: image-variants-v2-${{ hashFiles('public/projects/**/*.jpg', 'public/projects/**/*.png', 'public/research/**/*.jpg', 'public/research/**/*.png', 'scripts/build-images.mjs') }}
+          restore-keys: |
+            image-variants-v2-
+
+      - name: Build (prebuild generates any missing image variants)
         run: npm run build
 
       - name: Upload Pages artifact

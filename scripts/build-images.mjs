@@ -17,7 +17,10 @@ const PUBLIC_DIR = path.join(ROOT, "public");
 const TARGET_SUBDIRS = ["projects", "research"];
 const SIZES = [800, 1600, 2400];
 const FORMATS = ["avif", "webp"];
-const QUALITY = { avif: 50, webp: 80 };
+const QUALITY = { avif: 55, webp: 80 };
+// AVIF effort 0–9 — higher = better compression, much slower. 3 is the
+// sweet spot for CI: ~2-3x faster than 4 for ~5% larger files.
+const AVIF_EFFORT = 3;
 const SUFFIX_RE = /-(800|1600|2400)\.(avif|webp)$/i;
 const ORIGINAL_RE = /\.(jpe?g|png)$/i;
 
@@ -79,7 +82,7 @@ async function main() {
           const out = path.join(dirOf, `${base}.${fmt}`);
           if (!fs.existsSync(out)) {
             await sharp(file)
-              .toFormat(fmt, { quality: QUALITY[fmt], effort: 4 })
+              .toFormat(fmt, { quality: QUALITY[fmt], effort: fmt === "avif" ? AVIF_EFFORT : 4 })
               .toFile(out);
             generated++;
           } else {
@@ -94,7 +97,7 @@ async function main() {
             if (!fs.existsSync(out)) {
               await sharp(file)
                 .resize({ width: w, withoutEnlargement: true })
-                .toFormat(fmt, { quality: QUALITY[fmt], effort: 4 })
+                .toFormat(fmt, { quality: QUALITY[fmt], effort: fmt === "avif" ? AVIF_EFFORT : 4 })
                 .toFile(out);
               generated++;
             } else {
