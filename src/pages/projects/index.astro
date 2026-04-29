@@ -10,41 +10,53 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 <BaseLayout
   title="Projects"
-  description="Selected projects by DoraWolf — education, infrastructure, and concept work, 2021 – 2023."
+  description="Selected projects by Qingyuan Fu — education, infrastructure, and concept work."
 >
   <section class="section section--hero container">
-    <p class="eyebrow">Projects</p>
+    <p class="eyebrow">Projects · {projects.length} works</p>
     <h1>Selected works.</h1>
     <p class="lede">
-      A small set of projects from school, competition, and the studio years —
-      arranged in reverse chronological order. Each entry is a short brief plus
-      the design intent that drove the scheme.
+      School, competition, and studio years arranged in chronological order.
+      Each entry holds a short brief and the design intent that drove the
+      scheme.
     </p>
   </section>
 
   <section class="section container">
     <ol class="project-grid">
       {
-        projects.map((p) => (
-          <li>
-            <a href={`${base}/projects/${p.slug}`} class="card">
-              <div class="card__cover" aria-hidden="true">
-                <span class="card__year">{p.data.year}</span>
-              </div>
-              <div class="card__body">
-                <h3>{p.data.title}</h3>
-                {p.data.titleZh && <p class="card__zh">{p.data.titleZh}</p>}
-                <p class="card__meta">
-                  {[p.data.typology, p.data.location].filter(Boolean).join(" · ")}
-                </p>
-                <p class="card__summary">{p.data.summary}</p>
-                <span class="card__cta">
-                  Read project <span aria-hidden="true">→</span>
-                </span>
-              </div>
-            </a>
-          </li>
-        ))
+        projects.map((p) => {
+          const heroSrc = p.data.hero ? `${base}${p.data.hero}` : null;
+          return (
+            <li>
+              <a href={`${base}/projects/${p.slug}`} class="card">
+                <div class="card__cover" aria-hidden="true">
+                  {heroSrc ? (
+                    <img src={heroSrc} alt="" loading="lazy" />
+                  ) : (
+                    <span class="card__placeholder" />
+                  )}
+                  <span class="card__year">{p.data.year}</span>
+                </div>
+                <div class="card__body">
+                  <h3>{p.data.title}</h3>
+                  {p.data.titleZh && (
+                    <p class="card__zh">{p.data.titleZh}</p>
+                  )}
+                  <p class="card__meta">
+                    {[p.data.typology, p.data.location]
+                      .filter(Boolean)
+                      .join(" · ")}
+                  </p>
+                  <p class="card__summary">{p.data.summary}</p>
+                  <span class="card__cta">
+                    Read project <span aria-hidden="true">→</span>
+                  </span>
+                </div>
+              </a>
+            </li>
+          );
+        })
       }
     </ol>
   </section>
@@ -79,7 +91,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     color: inherit;
     border: 1px solid var(--border);
     background: var(--bg-elevated);
-    border-radius: 4px;
     overflow: hidden;
     transition:
       transform var(--transition),
@@ -90,17 +101,35 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     transform: translateY(-2px);
   }
   .card__cover {
-    aspect-ratio: 16 / 9;
-    background:
-      linear-gradient(135deg, #efeee8 0%, #d8d6cf 100%);
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background: linear-gradient(135deg, #efeee8 0%, #d8d6cf 100%);
     display: flex;
     align-items: flex-end;
     padding: 1rem 1.25rem;
+    overflow: hidden;
+  }
+  .card__cover img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 700ms cubic-bezier(0.2, 0.6, 0.2, 1);
+  }
+  .card:hover .card__cover img {
+    transform: scale(1.04);
   }
   .card__year {
     font-family: var(--font-mono);
     font-size: 0.85rem;
-    color: var(--fg-muted);
+    color: var(--bg);
+    background: rgba(20, 20, 20, 0.55);
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+    backdrop-filter: blur(4px);
+    z-index: 1;
+    position: relative;
   }
   .card__body {
     padding: 1.5rem 1.5rem 1.75rem;

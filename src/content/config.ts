@@ -6,11 +6,15 @@ const projects = defineCollection({
     title: z.string(),
     titleZh: z.string().optional(),
     year: z.number(),
+    dateZh: z.string().optional(),
     location: z.string().optional(),
     role: z.string().optional(),
     typology: z.string().optional(),
-    status: z.enum(["concept", "competition", "schematic", "built", "ongoing"]).optional(),
+    status: z
+      .enum(["concept", "competition", "schematic", "built", "ongoing"])
+      .optional(),
     cover: z.string().optional(),
+    hero: z.string().optional(),
     summary: z.string(),
     summaryZh: z.string().optional(),
     order: z.number().default(0),

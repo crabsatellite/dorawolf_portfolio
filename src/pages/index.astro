@@ -19,15 +19,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       will inhabit it.
     </h1>
     <p class="lede">
-      DoraWolf is an architect and designer based in Wuhan. Trained at Hubei
-      University of Technology and formed in practice at the China Architecture
-      Design &amp; Research Group, the studio works across education,
-      infrastructure, and public buildings — with a continuing interest in
-      sustainable design and computational tools.
+      Qingyuan Fu — known online as DoraWolf — is an architect and designer
+      based in Wuhan. Trained at Hubei University of Technology and formed in
+      practice at the China Architecture Design &amp; Research Group, the
+      studio works across education, infrastructure, and public buildings,
+      with a continuing interest in sustainable design and computational
+      tools.
     </p>
     <div class="hero-actions">
       <a class="btn btn--primary" href={`${base}/projects`}>View projects</a>
-      <a class="btn" href={`${base}/about`}>About the studio</a>
+      <a class="btn" href={`${base}/about`}>About</a>
     </div>
   </section>
 
@@ -35,6 +36,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     <header class="section-head">
       <p class="eyebrow">Projects</p>
       <h2>Selected works</h2>
+      <a class="section-head__link" href={`${base}/projects`}
+        >All {projects.length} projects →</a
+      >
     </header>
     <ol class="project-list">
       {
@@ -51,7 +55,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
               <span class="project-item__meta">
                 {[p.data.typology, p.data.location].filter(Boolean).join(" · ")}
               </span>
-              <span class="project-item__arrow" aria-hidden="true">→</span>
+              <span class="project-item__arrow" aria-hidden="true">
+                →
+              </span>
             </a>
           </li>
         ))
@@ -77,8 +83,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         <h3>Computational tools</h3>
         <p>
           Sketchup and Grasshopper sit at the centre of the studio's daily
-          workflow. They are not the design — they are an instrument for
-          studying many alternatives quickly.
+          workflow, paired with Rhino for detail geometry and Ladybug for
+          early-stage daylight and energy work. Tools are an instrument, not
+          the design.
         </p>
       </article>
       <article>
@@ -152,6 +159,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   }
   .section-head h2 {
     margin: 0;
+    flex: 1;
+  }
+  .section-head__link {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .section-head__link:hover {
+    color: var(--fg);
   }
 
   .project-list {

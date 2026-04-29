@@ -1,35 +1,138 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
+
+const skills = [
+  "Sketchup",
+  "Rhino",
+  "Grasshopper",
+  "Lumion",
+  "Enscape",
+  "Vray",
+  "AutoCAD",
+  "天正建筑",
+  "Revit",
+  "Photoshop",
+  "Illustrator",
+  "InDesign",
+  "D5",
+  "Midjourney",
+  "Stable Diffusion",
+];
+
+const experience = [
+  {
+    org: "China Architecture Design & Research Group · Wuhan studio",
+    orgZh: "中信建筑设计研究总院 (原武汉市建筑设计院)",
+    range: "2021 — 2023",
+    note: "Top-60 Chinese engineering design enterprise; designated Foreign-Aid Engineering Design Institute under the Ministry of Commerce.",
+  },
+];
+
+const projects = [
+  ["Wuhan Metro National Convention Center Control", "武汉市轨道交通国博控制中心", "2022"],
+  ["National Cybersecurity Center · Phase II", "国家网络安全中心二期", "2022"],
+  ["Yangtze New District Foreign Language School", "武汉长江新区外国语学校", "2023"],
+  ["Hongshan High School · Qingling Campus", "洪山高中青菱校区", "2022"],
+  ["Optics Valley Exhibition Center", "光谷展示中心", "2022"],
+  ["Hanjiangwan Foreign Language Specialty School", "硚口区汉江湾外语特色学校", "2022"],
+  ["Jiangxia Star", "江夏之星", "2022"],
+  ["Zhuxin Technology Industrial Park", "筑芯科技产业园", "—"],
+  ["Foshan Longjiang Middle School", "佛山龙江中学改扩建", "—"],
+  ["Yichang Concord Hospital", "宜昌市协和医院", "—"],
+  ["Wuhan Metro Line 12 · Danshuichi Section", "武汉轨道交通12号线丹水池标段", "—"],
+  ["Chinese Academy of Sciences Primary School", "中科院小学设计", "—"],
+  ["Suzhou Industrial Internet Park", "苏州工业互联网园区", "—"],
+  ["National Geological Museum", "国家地质博物馆", "—"],
+];
+
+const awards = [
+  ["Hubei Craftsman Cup · BIM Construction Management", "First Prize"],
+  ["Hubei Craftsman Cup · BIM Green Building", "Second Prize"],
+  ["Hubei Craftsman Cup · BIM Engineering Cost", "Second Prize"],
+  ["Hubei Craftsman Cup · BIM Engineering Design", "Third Prize"],
+];
 ---
 
 <BaseLayout
   title="About"
-  description="DoraWolf is an architect and designer based in Wuhan, working in education, infrastructure, and public buildings."
+  description="Qingyuan Fu (DoraWolf) is an architect and designer based in Wuhan, working in education, infrastructure, and civic buildings."
 >
   <section class="section section--hero container">
     <p class="eyebrow">About</p>
-    <h1>An architect formed by <em>site</em>, by <em>tool</em>, and by the discipline of public work.</h1>
+    <h1>Qingyuan Fu &mdash; <em>architect</em>, designer.</h1>
+    <p class="hero__zh">傅清远 · 建筑学学士</p>
   </section>
 
   <section class="section container about">
     <div class="about__col about__col--lead">
+      <h2 class="about__heading">关于我</h2>
       <p>
-        DoraWolf is an architect and designer working in Wuhan. The studio is
-        interested in projects where the site, the climate, and the public
-        purpose of the building each get a clear voice in the final form.
+        我是一名对绿植和自然景观充满热情的设计师, 特别擅长参数化模型设计,
+        对 Grasshopper 有着深入的理解和应用. 我精通 Sketchup, 并自创了一些动态组件的建模方法,
+        这些技术显著提高了我的工作效率和设计质量. 此外, 我熟悉 Ladybug
+        等节能分析软件, 让我能在设计中融入可持续发展的理念.
       </p>
+
+      <h2 class="about__heading">About me</h2>
       <p>
-        Training at Hubei University of Technology (2016 – 2021) and four years
-        in the Wuhan studio of the China Architecture Design &amp; Research
-        Group (中信建筑设计研究院, 2021 – 2023) shaped a practice that moves
-        between schematic competition work, civic infrastructure, and education
-        commissions.
+        I'm a designer with a long-standing interest in green plants, natural
+        landscape, and parametric form. Grasshopper sits at the centre of my
+        daily workflow, paired with a Sketchup practice that I've extended with
+        custom dynamic components. Energy and daylight tools — chiefly Ladybug
+        — let me weave sustainability into early-stage design instead of as a
+        late-stage check.
       </p>
+
+      <h2 class="about__heading">Education</h2>
       <p>
-        Sustainable design and the use of computational tools — Sketchup,
-        Grasshopper, and increasingly real-time engines — sit at the centre of
-        the daily workflow.
+        <strong>Hubei University of Technology</strong> · School of Civil
+        Architecture and Environment · 2016 — 2021. Coursework: architectural
+        design, residential planning, site design, building mechanics, interior
+        design, and architectural theory.
       </p>
+
+      <h2 class="about__heading">Practice</h2>
+      <ul class="exp">
+        {
+          experience.map((e) => (
+            <li>
+              <span class="exp__range">{e.range}</span>
+              <div>
+                <p class="exp__org">{e.org}</p>
+                <p class="exp__org-zh">{e.orgZh}</p>
+                <p class="exp__note">{e.note}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+
+      <h2 class="about__heading">Selected projects on record</h2>
+      <ul class="proj">
+        {
+          projects.map(([en, zh, year]) => (
+            <li>
+              <span class="proj__year">{year}</span>
+              <span class="proj__title">
+                <span class="proj__en">{en}</span>
+                <span class="proj__zh">{zh}</span>
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <h2 class="about__heading">Awards</h2>
+      <ul class="awards">
+        {
+          awards.map(([title, prize]) => (
+            <li>
+              <span>{title}</span>
+              <span class="awards__prize">{prize}</span>
+            </li>
+          ))
+        }
+      </ul>
     </div>
 
     <aside class="about__col about__col--side">
@@ -39,7 +142,7 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
       </div>
       <div>
         <p class="eyebrow">Languages</p>
-        <p>Chinese · English</p>
+        <p>Chinese · English (CET-6)</p>
       </div>
       <div>
         <p class="eyebrow">Works in</p>
@@ -47,7 +150,9 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
       </div>
       <div>
         <p class="eyebrow">Tools</p>
-        <p>Sketchup · Grasshopper · Rhino</p>
+        <ul class="skills">
+          {skills.map((s) => <li>{s}</li>)}
+        </ul>
       </div>
       <div>
         <p class="eyebrow">Contact</p>
@@ -63,27 +168,150 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
     color: var(--accent);
     font-weight: 300;
   }
+  .hero__zh {
+    color: var(--fg-muted);
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    margin-top: -0.5rem;
+  }
   .about {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-5);
   }
-  .about__col p {
+  .about__col p,
+  .about__col li {
     max-width: 64ch;
+  }
+  .about__heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+    margin: var(--space-5) 0 var(--space-2);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border);
+  }
+  .about__heading:first-child {
+    border-top: 0;
+    padding-top: 0;
+    margin-top: 0;
   }
   .about__col--side {
     display: grid;
     gap: var(--space-2);
+    align-content: start;
+    position: sticky;
+    top: calc(64px + var(--space-3));
+    align-self: start;
   }
   .about__col--side .eyebrow {
     margin-bottom: 0.2rem;
   }
-  .about__col--side p {
+  .about__col--side > div > p {
     margin: 0;
   }
-  @media (min-width: 880px) {
+  .skills {
+    list-style: none;
+    margin: 0.4rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .skills li {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 0.2rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--fg-muted);
+  }
+  .exp {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .exp li {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 1rem;
+    padding: var(--space-2) 0;
+    border-top: 1px solid var(--border);
+  }
+  .exp__range {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--fg-muted);
+  }
+  .exp__org {
+    margin: 0;
+    font-weight: 500;
+  }
+  .exp__org-zh {
+    margin: 0.2rem 0 0.4rem;
+    color: var(--fg-muted);
+    font-size: 0.92rem;
+  }
+  .exp__note {
+    margin: 0.4rem 0 0;
+    color: var(--fg-muted);
+    font-size: 0.92rem;
+  }
+  .proj {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .proj li {
+    display: grid;
+    grid-template-columns: 4.5rem 1fr;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    border-top: 1px solid var(--border);
+    align-items: baseline;
+  }
+  .proj li:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+  .proj__year {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+  }
+  .proj__en {
+    display: block;
+    font-size: 0.98rem;
+  }
+  .proj__zh {
+    display: block;
+    color: var(--fg-muted);
+    font-size: 0.85rem;
+    margin-top: 0.15rem;
+  }
+  .awards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .awards li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    padding: 0.55rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .awards li:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+  .awards__prize {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  @media (min-width: 980px) {
     .about {
-      grid-template-columns: 1.6fr 1fr;
+      grid-template-columns: 1.7fr 1fr;
       gap: var(--space-6);
     }
   }

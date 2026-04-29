@@ -15,11 +15,14 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const heroSrc = entry.data.hero
+  ? `${base}${entry.data.hero}`
+  : null;
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.summary}>
   <article class="project">
-    <header class="section section--hero container project__head">
+    <header class="project__head container">
       <p class="eyebrow">
         Project · {entry.data.year}
         {entry.data.status && ` · ${entry.data.status}`}
@@ -27,10 +30,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       <h1>{entry.data.title}</h1>
       {entry.data.titleZh && <p class="project__zh">{entry.data.titleZh}</p>}
       <p class="project__lede">{entry.data.summary}</p>
-      {entry.data.summaryZh && (
-        <p class="project__lede project__lede--zh">{entry.data.summaryZh}</p>
-      )}
       <dl class="project__meta">
+        {entry.data.dateZh && (
+          <>
+            <dt>Date</dt>
+            <dd>{entry.data.dateZh}</dd>
+          </>
+        )}
         {entry.data.location && (
           <>
             <dt>Location</dt>
@@ -52,6 +58,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       </dl>
     </header>
 
+    {heroSrc && (
+      <figure class="project__hero">
+        <img
+          src={heroSrc}
+          alt={`${entry.data.title} — hero image`}
+          loading="eager"
+        />
+      </figure>
+    )}
+
     <section class="container project__body">
       <div class="prose">
         <Content />
@@ -66,12 +82,18 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 <style>
   .project__head {
-    border-bottom: 1px solid var(--border);
-    padding-bottom: var(--space-5);
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-4);
+  }
+  .project__head h1 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.4rem;
   }
   .project__zh {
     color: var(--fg-muted);
-    margin-top: -0.75rem;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    margin: 0 0 1.2rem;
   }
   .project__lede {
     font-family: var(--font-display);
@@ -79,10 +101,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     line-height: var(--leading-snug);
     max-width: 56ch;
     margin-top: var(--space-3);
-  }
-  .project__lede--zh {
     color: var(--fg-muted);
-    margin-top: 0.6rem;
   }
   .project__meta {
     display: grid;
@@ -105,21 +124,66 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   .project__meta dd {
     margin: 0;
   }
+  .project__hero {
+    margin: var(--space-3) 0 var(--space-5);
+    padding: 0;
+  }
+  .project__hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
   .project__body {
-    padding-top: var(--space-5);
+    padding-top: var(--space-3);
     padding-bottom: var(--space-4);
   }
   .prose {
-    max-width: 62ch;
+    max-width: 760px;
+    margin: 0 auto;
   }
   .prose :global(h2) {
-    margin-top: var(--space-4);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+    line-height: var(--leading-tight);
+    letter-spacing: -0.01em;
+    margin: var(--space-5) 0 var(--space-2);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border);
+  }
+  .prose :global(h3) {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.15rem;
+    margin: var(--space-3) 0 var(--space-1);
   }
   .prose :global(p) {
-    margin-bottom: var(--space-2);
+    margin: 0 0 1rem;
+    line-height: 1.85;
+    letter-spacing: 0.01em;
+    color: var(--fg);
+  }
+  .prose :global(p:has(img)) {
+    margin: var(--space-3) 0;
+    max-width: none;
+  }
+  .prose :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+  }
+  .prose :global(ul) {
+    margin: 0 0 1rem;
+    padding-left: 1.5rem;
   }
   .project__nav {
     padding-bottom: var(--space-5);
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-3);
+    margin-top: var(--space-4);
   }
   .project__back {
     font-family: var(--font-mono);
@@ -128,5 +192,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   }
   .project__back:hover {
     color: var(--fg);
+  }
+  @media (min-width: 920px) {
+    .project__hero img {
+      max-height: 78vh;
+      object-fit: cover;
+    }
   }
 </style>
