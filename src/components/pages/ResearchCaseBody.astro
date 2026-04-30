@@ -364,9 +364,9 @@ const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
   .case__nav {
     border-top: 1px solid var(--border);
     padding-top: var(--space-4);
-    padding-bottom: var(--space-5);
+    padding-bottom: var(--space-4);
     display: grid;
-    gap: var(--space-4);
+    gap: var(--space-3);
   }
   .case__back {
     font-family: var(--font-mono);
@@ -386,7 +386,7 @@ const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
   }
   @media (min-width: 720px) {
     .case__pager {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
       gap: var(--space-4);
     }
   }

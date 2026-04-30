@@ -12,10 +12,7 @@
    versa. */
 @import "@fontsource-variable/source-serif-4/index.css";
 @import "@fontsource-variable/source-serif-4/wght-italic.css";
-@import "@fontsource/inter/300.css";
-@import "@fontsource/inter/400.css";
-@import "@fontsource/inter/500.css";
-@import "@fontsource/inter/600.css";
+@import "@fontsource-variable/geist/index.css";
 @import "@fontsource/jetbrains-mono/400.css";
 
 /* Designed Chinese typography. Noto Serif SC (Adobe Source Han Serif)
@@ -43,7 +40,7 @@
      HarmonyOS Sans SC (sans body) and Noto Serif SC (Ming display)
      subsets. System fallbacks at the tail are only used offline. */
   --font-sans:
-    "Inter", "HarmonyOS Sans SC", -apple-system, BlinkMacSystemFont,
+    "Geist Variable", "HarmonyOS Sans SC", -apple-system, BlinkMacSystemFont,
     "Segoe UI", "Helvetica Neue", "PingFang SC", "Microsoft YaHei",
     sans-serif;
   --font-display:
