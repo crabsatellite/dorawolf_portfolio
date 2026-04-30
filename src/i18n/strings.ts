@@ -26,7 +26,7 @@ const strings = {
     "home.eyebrow": "{range}",
     "home.hero": ["建筑读它的", "场地", "气候", "以及居于其中的人"],
     "home.lede":
-      "DoraWolf 工作室坐落于武汉,以教育建筑、基础设施与公共建筑为主要工作范围。每个方案先以读地形落笔——读地形、读气候、读公共边界——再用一套精炼的计算工具:Sketchup、Grasshopper、Rhino、Ladybug。",
+      "DoraWolf 工作室坐落于武汉,以教育建筑、基础设施与公共建筑为主要工作范围。每个方案先读场地——它的等高线、它的气候、它的公共边界——再用一套精炼的计算工具:Sketchup、Grasshopper、Rhino、Ladybug。",
     "home.cta_view_projects": "进入作品",
     "home.cta_about": "关于工作室",
     "home.section_index_eyebrow": "作品",
