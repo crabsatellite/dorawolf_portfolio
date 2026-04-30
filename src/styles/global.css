@@ -390,3 +390,218 @@ hr {
     scroll-behavior: auto !important;
   }
 }
+
+/* ============================================================
+   "Lively detail" layer — paper grain, scroll progress,
+   custom cursor, scroll-reveal, marquee strip, oversized
+   year/decoration backdrops. Inspired by Tadao Ando, SANAA,
+   Kengo Kuma, Snøhetta and Heatherwick site idioms — kept
+   restrained so the architect-grade minimal base survives.
+   ============================================================ */
+
+/* ---- Paper grain over the whole page ----
+   Inline SVG noise as a fixed background, blended at low opacity. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.045;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch' /%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' /%3E%3C/svg%3E");
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    opacity: 0.025;
+  }
+}
+
+/* ---- Scroll progress indicator ---- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: var(--fg);
+  z-index: 60;
+  transform-origin: left center;
+  transform: scaleX(0);
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ---- Scroll-reveal -----------------------------------------------------
+   Elements get .reveal added by the BaseLayout script when supported.
+   .no-js fallback skips the transform so content is always visible. */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity 760ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 760ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+.no-js .reveal {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+/* Stagger groups of siblings — applied on common collections.
+   The total delay is tiny so the page never feels "slow", just
+   slightly orchestrated. */
+.project-list .reveal:nth-child(2) { transition-delay: 60ms; }
+.project-list .reveal:nth-child(3) { transition-delay: 120ms; }
+.project-list .reveal:nth-child(4) { transition-delay: 180ms; }
+.project-list .reveal:nth-child(5) { transition-delay: 240ms; }
+.project-list .reveal:nth-child(6) { transition-delay: 300ms; }
+.threads .reveal:nth-child(2) { transition-delay: 80ms; }
+.threads .reveal:nth-child(3) { transition-delay: 160ms; }
+
+/* ---- Custom cursor (desktop, hover-capable, no reduced motion) ---- */
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  transition: opacity 240ms;
+}
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--bg-elevated);
+  border-radius: 50%;
+  transition:
+    width 320ms cubic-bezier(0.2, 0.6, 0.18, 1),
+    height 320ms cubic-bezier(0.2, 0.6, 0.18, 1),
+    border-color 320ms cubic-bezier(0.2, 0.6, 0.18, 1),
+    opacity 240ms;
+}
+.cursor-ring.is-hover {
+  width: 56px;
+  height: 56px;
+  border-color: var(--bg-elevated);
+  /* Recenter the larger ring relative to the cursor.
+     The JS uses a 17px offset which fits the default 34px size; we
+     translate by a CSS variable here too. */
+  transform-origin: center;
+}
+.cursor-ring.is-press {
+  width: 24px;
+  height: 24px;
+}
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .html-js,
+  .html-js body {
+    cursor: none;
+  }
+  .html-js a,
+  .html-js button,
+  .html-js picture.lqip,
+  .html-js .plate__link {
+    cursor: none;
+  }
+}
+
+/* ---- Marquee strip ----------------------------------------------------
+   A slow horizontal scroll of project Chinese titles across the page,
+   used between sections as a quiet rhythm marker. */
+.marquee {
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-top: var(--space-6);
+  background: var(--bg);
+}
+.marquee__track {
+  display: inline-flex;
+  gap: 3.5rem;
+  padding: 1.4rem 0;
+  white-space: nowrap;
+  animation: marquee 60s linear infinite;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3.2vw, 2.4rem);
+  color: var(--fg-muted);
+  letter-spacing: -0.01em;
+  font-style: italic;
+  font-weight: 300;
+}
+.marquee__track span::after {
+  content: "·";
+  margin-left: 3.5rem;
+  color: var(--fg-subtle);
+  font-style: normal;
+}
+@keyframes marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+  }
+}
+
+/* ---- Oversized backdrop type ----
+   Used in project case-study heads to put the year as a faint giant
+   number behind the title — Heatherwick / Snøhetta idiom. */
+.display-bg-wrap {
+  position: relative;
+  isolation: isolate;
+}
+.display-bg {
+  position: absolute;
+  top: -0.18em;
+  right: clamp(-1rem, -2vw, 0rem);
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: clamp(8rem, 22vw, 18rem);
+  line-height: 0.85;
+  color: var(--bg-elevated);
+  letter-spacing: -0.04em;
+  z-index: -1;
+  user-select: none;
+  pointer-events: none;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+/* ---- Italic axis tighten for display ----
+   Source Serif 4 Variable supports both weight and italic axis;
+   our hero italics get a slightly lower optical size feeling. */
+em,
+i {
+  font-style: italic;
+  font-synthesis: none;
+}
+
+/* ---- A subtle hairline expansion on hoverable images ---- */
+picture.lqip {
+  outline: 1px solid transparent;
+  transition: outline-color 320ms ease;
+}
+picture.lqip:hover {
+  outline-color: var(--fg);
+}

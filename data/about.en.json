@@ -1,6 +1,14 @@
 {
   "$comment": "English about-page content.",
-  "bio": "I'm a designer with a long-standing interest in green plants, natural landscape, and parametric form. Grasshopper sits at the centre of my daily workflow, paired with a Sketchup practice that I've extended with custom dynamic components. Energy and daylight tools — chiefly Ladybug — let me weave sustainability into early-stage design instead of as a late-stage check.",
+  "bio": "Qingyuan Fu trained in architecture at Hubei University of Technology (2016 — 2021), then spent four years on schematic and competition work at the China Architecture Design & Research Group before founding DoraWolf Studio in Wuhan in 2023. The studio's working method is simple: read each site — its topography, climate, and civic edges — before committing to form, then push the design through a small kit of computational tools (Sketchup, Grasshopper, Rhino, Ladybug) until it has the precision to be built. Sustainable design and parametric modelling are not a manifesto here — they're the daily fabric of the practice.",
+  "studio": {
+    "name": "DoraWolf Studio",
+    "founded": "Founded 2023",
+    "based": "Wuhan, China",
+    "principal": "Qingyuan Fu · Founder & principal architect",
+    "ethos": "A small kit of tools, used well. Restrained form. Public buildings owe the street a calm, legible presence.",
+    "areas": ["Education", "Infrastructure", "Civic & cultural", "Concept & competition"]
+  },
   "education": {
     "school": "Hubei University of Technology",
     "department": "School of Civil Architecture and Environment",

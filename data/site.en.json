@@ -2,9 +2,10 @@
   "$comment": "English site settings. Edit and push, the site rebuilds within ~30s. Chinese version is in site.zh.json.",
   "name": "DoraWolf",
   "fullName": "Qingyuan Fu",
-  "role": "Architect & Designer",
+  "studioName": "DoraWolf Studio",
+  "role": "Founder & Principal architect",
   "tagline": "Architecture that listens to its site, its climate, and the people who will inhabit it.",
-  "yearRange": "2021 — 2023",
+  "yearRange": "Studio · Wuhan · est. 2023",
   "location": "Wuhan, China",
   "email": "949505300@qq.com",
   "githubRepo": "crabsatellite/dorawolf_portfolio"

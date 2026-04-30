@@ -57,6 +57,23 @@ const pickPrize = (a: any) =>
       <h2 class="about-h2">{t(lang, "about.h2_bio")}</h2>
       <p class="about-bio__lead">{about.bio}</p>
 
+      {(about as any).studio && (
+        <div class="studio-card">
+          <div class="studio-card__head">
+            <p class="eyebrow">{(about as any).studio.founded}</p>
+            <h3>{(about as any).studio.name}</h3>
+          </div>
+          <p class="studio-card__principal">
+            {(about as any).studio.principal}
+          </p>
+          <p class="studio-card__based">{(about as any).studio.based}</p>
+          <p class="studio-card__ethos">{(about as any).studio.ethos}</p>
+          <ul class="studio-card__areas">
+            {(about as any).studio.areas.map((a: string) => <li>{a}</li>)}
+          </ul>
+        </div>
+      )}
+
       <h2 class="about-h2">{t(lang, "about.h2_education")}</h2>
       <p>
         <strong>{about.education.school}</strong> · {about.education.department}
@@ -187,6 +204,60 @@ const pickPrize = (a: any) =>
     max-width: 56ch;
     margin: 0 0 var(--space-3);
     color: var(--fg);
+  }
+
+  .studio-card {
+    margin: var(--space-3) 0 var(--space-4);
+    padding: var(--space-3) var(--space-3);
+    border-top: 2px solid var(--fg);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-elevated);
+    max-width: 56ch;
+  }
+  .studio-card__head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-bottom: 0.8rem;
+  }
+  .studio-card__head h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2vw, 1.8rem);
+    margin: 0;
+    letter-spacing: -0.012em;
+  }
+  .studio-card__principal {
+    margin: 0 0 0.2rem;
+    font-weight: 500;
+  }
+  .studio-card__based {
+    margin: 0 0 0.7rem;
+    color: var(--fg-muted);
+    font-size: 0.92rem;
+  }
+  .studio-card__ethos {
+    margin: 0 0 0.7rem;
+    font-style: italic;
+    font-family: var(--font-display);
+    color: var(--fg);
+  }
+  .studio-card__areas {
+    list-style: none;
+    margin: 0.4rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .studio-card__areas li {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--fg-muted);
   }
   :global(html[lang^="zh"]) .about-bio__lead {
     line-height: var(--leading-cn);

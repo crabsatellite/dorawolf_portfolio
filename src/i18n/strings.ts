@@ -23,10 +23,10 @@ const strings = {
     "nav.home_aria": "{name} — 主页",
     "nav.lang_switch_aria": "切换语言",
 
-    "home.eyebrow": "精选作品 · {range}",
+    "home.eyebrow": "{range}",
     "home.hero": ["建筑应该聆听它的", "场地", "气候", "以及居于其中的人"],
     "home.lede":
-      "{fullName} —— 网名 {name},坐标 {location}。湖北工业大学建筑系毕业,曾任职于中信建筑设计研究总院,工作范围涵盖教育、基础设施与公共建筑,长期关注可持续设计与计算工具。",
+      "{fullName} 在湖北工业大学完成建筑学训练,经中信建筑设计研究总院四年方案与竞赛实战,于 2023 年在武汉创立 DoraWolf 工作室。作品聚焦教育建筑、基础设施与公共建筑的交叉地带,以一套小而精的计算工具——Sketchup、Grasshopper、Rhino、Ladybug——推进至落地。",
     "home.cta_view_projects": "查看项目",
     "home.cta_about": "关于",
     "home.section_index_eyebrow": "索引",
@@ -77,10 +77,11 @@ const strings = {
     "about.title": "关于",
     "about.eyebrow": "关于",
     "about.h1_role": "建筑师",
-    "about.h1_after": ",设计师。",
-    "about.h2_bio": "关于我",
+    "about.h1_after": ",设计师,工作室创始人。",
+    "about.h2_bio": "关于工作室",
+    "about.h2_studio": "DoraWolf 工作室",
     "about.h2_education": "教育背景",
-    "about.h2_practice": "实践",
+    "about.h2_practice": "工作室",
     "about.h2_record": "项目记录",
     "about.h2_awards": "奖项",
     "about.h2_tools": "工具",
@@ -98,7 +99,7 @@ const strings = {
 
     "timeline.title": "履历",
     "timeline.eyebrow": "履历",
-    "timeline.h1": ["工作室", "从何而来。"],
+    "timeline.h1": ["DoraWolf 工作室", "之前与之后。"],
 
     "footer.contact": "联系",
     "footer.studio": "工作室",
@@ -120,7 +121,7 @@ const strings = {
     "nav.home_aria": "{name} — home",
     "nav.lang_switch_aria": "Switch language",
 
-    "home.eyebrow": "Selected works · {range}",
+    "home.eyebrow": "{range}",
     "home.hero": [
       "Architecture",
       "site",
@@ -128,7 +129,7 @@ const strings = {
       "and the people who will inhabit it.",
     ],
     "home.lede":
-      "{fullName} — known online as {name} — is an architect and designer based in {location}. Trained at Hubei University of Technology and formed in practice at the China Architecture Design & Research Group, the studio works across education, infrastructure, and public buildings.",
+      "{fullName} trained in architecture at Hubei University of Technology, then spent four years on schematic and competition work at the China Architecture Design & Research Group before founding DoraWolf Studio in {location} in 2023. The practice works at the intersection of education, infrastructure, and public buildings — reading each site before any form is committed, then pushing the design through a small kit of computational tools (Sketchup, Grasshopper, Rhino, Ladybug) until it has the precision to be built.",
     "home.cta_view_projects": "View projects",
     "home.cta_about": "About",
     "home.section_index_eyebrow": "Index",
@@ -179,10 +180,11 @@ const strings = {
     "about.title": "About",
     "about.eyebrow": "About",
     "about.h1_role": "architect",
-    "about.h1_after": ", designer.",
-    "about.h2_bio": "Biography",
+    "about.h1_after": ", designer, studio founder.",
+    "about.h2_bio": "About the studio",
+    "about.h2_studio": "DoraWolf Studio",
     "about.h2_education": "Education",
-    "about.h2_practice": "Practice",
+    "about.h2_practice": "Studio",
     "about.h2_record": "Selected projects on record",
     "about.h2_awards": "Awards",
     "about.h2_tools": "Tools",
@@ -200,7 +202,7 @@ const strings = {
 
     "timeline.title": "Timeline",
     "timeline.eyebrow": "Timeline",
-    "timeline.h1": ["Where the studio", "came from."],
+    "timeline.h1": ["DoraWolf Studio,", "before and since."],
 
     "footer.contact": "Contact",
     "footer.studio": "Studio",
