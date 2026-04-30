@@ -4,7 +4,6 @@ titleZh: "网安二期"
 year: 2022
 dateZh: "2021-08-19"
 location: "Wuhan, Hubei"
-role: "Architectural designer"
 typology: "Civic / infrastructure"
 status: "schematic"
 order: 5

@@ -1,8 +1,8 @@
 /**
  * Translation maps for project frontmatter values that are stored in
- * English only (typology, location, role, status). Used by page bodies
+ * English only (typology, location, status). Used by page bodies
  * so the Chinese version of the site doesn't show "Education / Wuhan,
- * Hubei / Architectural designer / schematic" alongside Chinese copy.
+ * Hubei / schematic" alongside Chinese copy.
  */
 import type { Lang } from "./strings";
 
@@ -41,15 +41,6 @@ export const locationTranslations: Map = {
     "Wuhan, Hubei": "湖北 · 武汉",
     "Wuhan, China": "中国 · 武汉",
     "China, Wuhan": "中国 · 武汉",
-  },
-  en: {},
-};
-
-export const roleTranslations: Map = {
-  zh: {
-    "Architectural designer": "建筑设计",
-    "Concept designer": "概念设计",
-    "Founder & Principal architect": "创始人 / 主创建筑师",
   },
   en: {},
 };

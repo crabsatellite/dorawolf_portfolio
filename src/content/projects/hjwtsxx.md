@@ -4,7 +4,6 @@ titleZh: "汉江湾外语特色学校"
 year: 2022
 dateZh: "2022-01-30"
 location: "Wuhan, Hubei"
-role: "Architectural designer"
 typology: "Education"
 status: "schematic"
 order: 6

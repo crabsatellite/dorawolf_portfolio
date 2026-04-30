@@ -4,7 +4,6 @@ titleZh: "洪山高中青菱校区"
 year: 2022
 dateZh: "2023-05-05"
 location: "Wuhan, Hubei"
-role: "Concept designer"
 typology: "Education"
 status: "concept"
 order: 3

@@ -4,7 +4,6 @@ titleZh: "国博控制中心"
 year: 2022
 dateZh: "2022-08-03"
 location: "Wuhan, Hubei"
-role: "Architectural designer"
 typology: "Infrastructure / civic"
 status: "schematic"
 order: 2

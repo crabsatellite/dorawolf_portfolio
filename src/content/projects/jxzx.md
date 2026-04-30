@@ -4,7 +4,6 @@ titleZh: "江夏之星"
 year: 2022
 dateZh: "2022-01-23"
 location: "Wuhan, Hubei"
-role: "Architectural designer"
 typology: "Mixed-use / civic"
 status: "schematic"
 order: 7

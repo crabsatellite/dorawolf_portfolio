@@ -8,7 +8,6 @@ const projects = defineCollection({
     year: z.number(),
     dateZh: z.string().optional(),
     location: z.string().optional(),
-    role: z.string().optional(),
     typology: z.string().optional(),
     status: z
       .enum(["concept", "competition", "schematic", "built", "ongoing"])

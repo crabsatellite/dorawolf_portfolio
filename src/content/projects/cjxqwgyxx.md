@@ -4,7 +4,6 @@ titleZh: "长江新区外国语学校"
 year: 2023
 dateZh: "2023-03-24"
 location: "Wuhan, Hubei"
-role: "Architectural designer"
 typology: "Education"
 status: "schematic"
 order: 1

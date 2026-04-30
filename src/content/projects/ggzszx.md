@@ -3,7 +3,6 @@ title: "Optics Valley Exhibition Center"
 titleZh: "光谷展示中心"
 year: 2022
 location: "Wuhan, Hubei"
-role: "Architectural designer"
 typology: "Civic / cultural"
 status: "schematic"
 order: 4

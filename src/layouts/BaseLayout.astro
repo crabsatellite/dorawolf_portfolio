@@ -2,7 +2,7 @@
 import "~/styles/global.css";
 import Nav from "~/components/Nav.astro";
 import Footer from "~/components/Footer.astro";
-import { langFromPath, type Lang } from "~/i18n/strings";
+import { langFromPath, t, type Lang } from "~/i18n/strings";
 import { loadSite } from "~/i18n/loadData";
 
 interface Props {
@@ -109,10 +109,10 @@ const htmlLang = lang === "en" ? "en" : "zh-Hans-CN";
     <dialog class="lightbox" id="lightbox" aria-label="Image viewer">
       <div class="lightbox__inner" id="lightbox-inner"></div>
       <div class="lightbox__bar">
-        <button type="button" data-lb-prev aria-label="Previous">←</button>
+        <button type="button" data-lb-prev aria-label={t(lang, "lightbox.prev")}>←</button>
         <span data-lb-counter></span>
-        <button type="button" data-lb-next aria-label="Next">→</button>
-        <button type="button" data-lb-close aria-label="Close">Close ✕</button>
+        <button type="button" data-lb-next aria-label={t(lang, "lightbox.next")}>→</button>
+        <button type="button" data-lb-close aria-label={t(lang, "lightbox.close")}>{t(lang, "lightbox.close")} ✕</button>
       </div>
     </dialog>
 
