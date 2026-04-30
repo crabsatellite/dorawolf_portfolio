@@ -37,7 +37,7 @@ const strings = {
     "home.thread_1_title": "从场地开始",
     "home.thread_1_body":
       "形态从场地里已经有的东西出发，比如地形、常年风向、现有的步行路径。我们会先把场地看清楚再画。",
-    "home.thread_2_title": "几样常用工具",
+    "home.thread_2_title": "用一套小工具",
     "home.thread_2_body":
       "Sketchup 和 Grasshopper 工作室用得最多，Rhino 画细节，Ladybug 在前期估算日照和能耗。一般是先把设计想好，再用这些工具画出来。",
     "home.thread_3_title": "面向街道",
@@ -142,7 +142,7 @@ const strings = {
     "home.thread_1_title": "Start from the site",
     "home.thread_1_body":
       "The form starts from what is already on the site. That includes terrain, prevailing wind, and paths people already walk. We look at the site carefully before drawing.",
-    "home.thread_2_title": "A few regular tools",
+    "home.thread_2_title": "Use a small kit",
     "home.thread_2_body":
       "Sketchup and Grasshopper are what we use most. Rhino is for detail, Ladybug for early daylight and energy estimates. We work out the design first and then pick up the tools.",
     "home.thread_3_title": "Toward the street",

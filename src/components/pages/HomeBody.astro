@@ -54,12 +54,10 @@ function previewSrc(p: any): string | null {
               <span class="hero__line hero__line--mark" style="--i:1">
                 <span class="hero__index" aria-hidden="true">01</span>
                 <span class="hero__keyword">{heroLines[1]}</span>
-                <span class="hero__sep">、</span>
               </span>
               <span class="hero__line hero__line--mark" style="--i:2">
                 <span class="hero__index" aria-hidden="true">02</span>
                 <span class="hero__keyword">{heroLines[2]}</span>
-                <span class="hero__sep">、</span>
               </span>
               <span class="hero__line hero__line--prose" style="--i:3">
                 {heroLines[3]}。
@@ -73,13 +71,10 @@ function previewSrc(p: any): string | null {
               <span class="hero__line hero__line--mark" style="--i:1">
                 <span class="hero__index" aria-hidden="true">01</span>
                 <span class="hero__keyword">{heroLines[1]}</span>
-                <span class="hero__sep">,</span>
               </span>
               <span class="hero__line hero__line--mark" style="--i:2">
                 <span class="hero__index" aria-hidden="true">02</span>
-                <span class="hero__prefix">its </span>
                 <span class="hero__keyword">{heroLines[2]}</span>
-                <span class="hero__sep">,</span>
               </span>
               <span class="hero__line hero__line--prose" style="--i:3">
                 {heroLines[3]}
@@ -386,12 +381,6 @@ function previewSrc(p: any): string | null {
     to {
       transform: scaleX(1);
     }
-  }
-
-  .hero__sep,
-  .hero__prefix {
-    font-weight: 300;
-    color: var(--fg-muted);
   }
 
   .hero__lede p {

@@ -18,17 +18,19 @@
 @import "@fontsource/inter/600.css";
 @import "@fontsource/jetbrains-mono/400.css";
 
-/* Designed Chinese typography — Noto Serif SC (Adobe Source Han Serif)
-   for the display pair and Noto Sans SC for body. Kaiti (楷体) handles
+/* Designed Chinese typography. Noto Serif SC (Adobe Source Han Serif)
+   for the display pair, MiSans (Xiaomi, free commercial use) for body.
+   MiSans reads more current than Noto Sans SC: tighter spacing, lighter
+   visual weight, more contemporary stroke geometry. Kaiti (楷体) handles
    the italic shape for CJK (Latin italic doesn't exist in CJK; using
    Kaiti is the long-standing typographic convention for Chinese
    "italic"). */
 @import "@fontsource/noto-serif-sc/300.css";
 @import "@fontsource/noto-serif-sc/400.css";
 @import "@fontsource/noto-serif-sc/500.css";
-@import "@fontsource/noto-sans-sc/300.css";
-@import "@fontsource/noto-sans-sc/400.css";
-@import "@fontsource/noto-sans-sc/500.css";
+@import "misans/lib/Normal/MiSans-Light.min.css";
+@import "misans/lib/Normal/MiSans-Regular.min.css";
+@import "misans/lib/Normal/MiSans-Medium.min.css";
 
 :root {
   /* Palette — pure ink on warm cream */
@@ -40,12 +42,12 @@
   --border: #d6d3c8;
   --border-strong: #1a1a1a;
 
-  /* Type — Latin first (Source Serif 4 / Inter) so Latin glyphs
-     come from the Adobe Source family; CJK falls through to the
-     self-hosted Noto Serif SC / Noto Sans SC subsets. System
-     fallbacks at the tail are only used offline. */
+  /* Type. Latin first (Source Serif 4 / Inter) so Latin glyphs come
+     from the Adobe Source family; CJK falls through to the self-hosted
+     MiSans (sans) and Noto Serif SC (serif) subsets. System fallbacks
+     at the tail are only used offline. */
   --font-sans:
-    "Inter", "Noto Sans SC", -apple-system, BlinkMacSystemFont,
+    "Inter", "MiSans", -apple-system, BlinkMacSystemFont,
     "Segoe UI", "Helvetica Neue", "PingFang SC", "Microsoft YaHei",
     sans-serif;
   --font-display:
