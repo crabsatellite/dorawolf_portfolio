@@ -8,7 +8,7 @@ role: "Architectural designer"
 typology: "Education"
 status: "schematic"
 order: 6
-hero: "/projects/hjwtsxx/_18.png"
+hero: "/projects/hjwtsxx/_23.jpg"
 summary: "A K-12 campus in the dense Qiaokou district treated as a network of stacked grounds — primary, secondary, sport, and community — with a raised carpet of green landscape running through."
 summaryZh: "本项目与周边汉江湾高中、文体公园形成品字形格局，周边紧邻的高强度商业与居住区节来了挑战与机通。我们超越用地局限，从全域协同的角度出发，将幼小初高全年龄段多校进行拓扑重构，以城市新型基础设施的理念，打造岛链式分布的教育民生网络"
 align: "right"

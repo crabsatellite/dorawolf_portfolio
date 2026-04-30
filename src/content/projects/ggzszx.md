@@ -7,7 +7,7 @@ role: "Architectural designer"
 typology: "Civic / cultural"
 status: "schematic"
 order: 4
-hero: "/projects/ggzszx/____05.jpg"
+hero: "/projects/ggzszx/____07.jpg"
 summary: "An exhibition and visitor-facing volume in Wuhan's Optics Valley district; two competing schemes explore how to give a culturally legible face to a landlocked civic site."
 summaryZh: "在地:光谷展示中心需要如何改造？"
 align: "right"

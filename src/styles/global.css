@@ -657,8 +657,9 @@ picture.lqip:hover {
     grid-template-columns: repeat(6, 1fr);
   }
   .plate__media-grid > picture { grid-column: span 6; }
-  .plate__media-grid > picture[data-type="diagram"] { grid-column: span 3; }
+  .plate__media-grid > picture[data-type="diagram"] { grid-column: span 2; }
   .plate__media-grid > picture[data-type="sketch"]  { grid-column: span 2; }
+  .plate__media-grid > picture[data-type="axon"]    { grid-column: span 3; }
 }
 @media (min-width: 1024px) {
   .plate__media-grid {
@@ -667,11 +668,11 @@ picture.lqip:hover {
   .plate__media-grid > picture { grid-column: span 12; }
   .plate__media-grid > picture[data-type="render"],
   .plate__media-grid > picture[data-type="photo"],
-  .plate__media-grid > picture[data-type="site-plan"],
   .plate__media-grid > picture[data-type="collage"] { grid-column: span 12; }
-  .plate__media-grid > picture[data-type="axon"]    { grid-column: 3 / span 8; }
-  .plate__media-grid > picture[data-type="diagram"] { grid-column: span 6; }
-  .plate__media-grid > picture[data-type="sketch"]  { grid-column: span 4; }
+  .plate__media-grid > picture[data-type="site-plan"] { grid-column: span 8; justify-self: center; }
+  .plate__media-grid > picture[data-type="axon"]      { grid-column: span 6; }
+  .plate__media-grid > picture[data-type="diagram"]   { grid-column: span 4; }
+  .plate__media-grid > picture[data-type="sketch"]    { grid-column: span 3; }
 }
 
 /* visual treatment per type — a thin frame for abstract drawings, no

@@ -8,7 +8,7 @@ role: "Architectural designer"
 typology: "Education"
 status: "schematic"
 order: 1
-hero: "/projects/cjxqwgyxx/111.png"
+hero: "/projects/cjxqwgyxx/_9.jpg"
 summary: "An international-language secondary campus organised around a central cross of public space, set into a blue-green ecological corridor on the eastern edge of Wuhan's Yangtze New District."
 summaryZh: "西侧胜海大道为片区重要交通廊道，南北侧规划道路，西北角有规划远期轨道交通站点"
 align: "left"

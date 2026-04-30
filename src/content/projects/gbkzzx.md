@@ -8,7 +8,7 @@ role: "Architectural designer"
 typology: "Infrastructure / civic"
 status: "schematic"
 order: 2
-hero: "/projects/gbkzzx/_31.jpg"
+hero: "/projects/gbkzzx/_34.jpg"
 summary: "A combined dispatch and civic-facing volume on the Sixin axis, reconciling 24/7 operational requirements with the legibility owed to a transit landmark on the Yangtze."
 summaryZh: "武汉经济技术开发区位于湖北省武汉市西南，最初为承载中法合资神龙汽车项目而成立，1991年5月动工兴建，1993年4月经国务院批准为国家级经济技术开发区，2013年整体托管汉南区，探索出了一条功能区整体托管行政区、“区区融合”的发展新路径。截至2021年，武汉经开区辖区面积489.7平方公里，下辖7个街道、7大园区，常住人口61.8万人，形成了汽车及汽车零部件、电子电器、食品饮料等主导产业，年产整车近百万辆，工业产值突破3000亿元，是武汉经济发展的主战场、工业的顶梁柱，被誉为“中国车谷”。"
 align: "right"

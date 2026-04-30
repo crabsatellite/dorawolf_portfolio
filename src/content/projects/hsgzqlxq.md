@@ -8,7 +8,7 @@ role: "Concept designer"
 typology: "Education"
 status: "concept"
 order: 3
-hero: "/projects/hsgzqlxq/_1.jpg"
+hero: "/projects/hsgzqlxq/_6.jpg"
 summary: "A 48-class senior-high campus draped down a lakeside slope; instruction occupies the upper plateau, sport and student-life spill toward the water, leaving a continuous public path along Qingling Lake."
 summaryZh: "引景入园——面向湖面的“BIG U”   一体双翼——“工字型”  规划结构"
 align: "left"
