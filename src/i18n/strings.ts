@@ -24,9 +24,9 @@ const strings = {
     "nav.lang_switch_aria": "切换语言",
 
     "home.eyebrow": "{range}",
-    "home.hero": ["建筑读它的", "场地", "气候", "以及居于其中的人"],
+    "home.hero": ["建筑围绕", "场地", "气候", "和住在里面的人"],
     "home.lede":
-      "DoraWolf 工作室坐落于武汉,以教育建筑、基础设施与公共建筑为主要工作范围。每个方案先读场地——它的等高线、它的气候、它的公共边界——再用一套精炼的计算工具:Sketchup、Grasshopper、Rhino、Ladybug。",
+      "DoraWolf 工作室在武汉,主要做教育、基础设施和公共建筑。每个项目先看场地的地形、气候和周边,再用 Sketchup、Grasshopper、Rhino、Ladybug 把方案画出来。",
     "home.cta_view_projects": "进入作品",
     "home.cta_about": "关于工作室",
     "home.section_index_eyebrow": "作品",
@@ -34,15 +34,15 @@ const strings = {
     "home.section_all_link": "全部 {count} 件",
     "home.section_threads_eyebrow": "工作室",
     "home.section_threads_title": "三条线索",
-    "home.thread_1_title": "以场地为起点",
+    "home.thread_1_title": "从场地开始",
     "home.thread_1_body":
-      "形态从场地已经存在的事物中生发——等高线、主导风向、人们已习惯穿越的路径。读完场地,方案才落笔。",
-    "home.thread_2_title": "工具是器具",
+      "形态来自场地里现有的东西:地形、常年风向、人已经在走的路。先把场地看明白,再画。",
+    "home.thread_2_title": "几样常用工具",
     "home.thread_2_body":
-      "Sketchup 与 Grasshopper 是工作室日常的核心,Rhino 用于细部,Ladybug 用于早期日照与能耗。工具是器具,不是设计本身。",
-    "home.thread_3_title": "公共可读性",
+      "Sketchup 和 Grasshopper 工作室用得最多,Rhino 画细节,Ladybug 在前期估算日照和能耗。设计的工作还是要靠自己。",
+    "home.thread_3_title": "面向街道",
     "home.thread_3_body":
-      "公共建筑欠街道一份冷静的可读性。可能时,方案化为一条安静的基准线——先于内部的任何复杂。",
+      "公共建筑对着街道,要让人一眼看懂。外面尽量简单,复杂的部分留在里面。",
     "home.featured_eyebrow": "首件 · {year}",
     "home.featured_cta": "进入",
 
@@ -123,29 +123,29 @@ const strings = {
 
     "home.eyebrow": "{range}",
     "home.hero": [
-      "Architecture reads its",
+      "Made for the",
       "site",
       "climate",
-      "and the people who inhabit it.",
+      "and the people who use it.",
     ],
     "home.lede":
-      "DoraWolf Studio works primarily in education, infrastructure, and public buildings, based in {location}. Every project begins with the contour of the site, and a small kit of computational tools — Sketchup, Grasshopper, Rhino, Ladybug — carries that reading until the design has the precision to be built.",
-    "home.cta_view_projects": "Enter the works",
+      "DoraWolf Studio is based in {location}. The studio works on education, infrastructure, and public buildings. Each project starts on the site: terrain, climate, what's around it. We draw in Sketchup, Grasshopper, Rhino, and Ladybug.",
+    "home.cta_view_projects": "View projects",
     "home.cta_about": "About the studio",
     "home.section_index_eyebrow": "Works",
     "home.section_index_title": "Selected works",
     "home.section_all_link": "All {count} works",
     "home.section_threads_eyebrow": "Studio",
     "home.section_threads_title": "Three threads",
-    "home.thread_1_title": "Site as origin",
+    "home.thread_1_title": "Start from the site",
     "home.thread_1_body":
-      "Form follows from what the site already offers — the contour, the prevailing wind, the way people already cross the land. Read the site first, then begin.",
-    "home.thread_2_title": "Tools as instruments",
+      "The form comes from what is already there: terrain, prevailing wind, the paths people walk. We look at the site carefully before we draw.",
+    "home.thread_2_title": "A few regular tools",
     "home.thread_2_body":
-      "Sketchup and Grasshopper sit at the centre of the studio's daily work; Rhino for detail; Ladybug for early daylight and energy. Tools are an instrument, not the design.",
-    "home.thread_3_title": "Public legibility",
+      "Sketchup and Grasshopper are what we use most. Rhino is for detail, Ladybug for early daylight and energy estimates. The design work still has to be done by us.",
+    "home.thread_3_title": "Facing the street",
     "home.thread_3_body":
-      "Public buildings owe the street a calm, legible reading. Where possible, schemes resolve to a single quiet datum — visible from the city before any internal complexity reveals itself.",
+      "A public building should be easy to understand from the street. We keep the outside as a simple shape and put the more complicated parts inside.",
     "home.featured_eyebrow": "Featured · {year}",
     "home.featured_cta": "Open",
 
