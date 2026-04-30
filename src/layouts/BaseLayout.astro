@@ -19,8 +19,8 @@ const site = loadSite(lang);
 
 const fallbackDescription =
   lang === "en"
-    ? `${site.fullName} (${site.name}) — architect and designer based in ${site.location}.`
-    : `${site.fullName}（${site.name}）—— 建筑师与设计师,坐标 ${site.location}。`;
+    ? `${site.fullName} (${site.name}) — architect, ${site.location}.`
+    : `${site.fullName}（${site.name}）—— 建筑师,坐标 ${site.location}。`;
 
 const fullTitle = title === site.name ? title : `${title} — ${site.name}`;
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();

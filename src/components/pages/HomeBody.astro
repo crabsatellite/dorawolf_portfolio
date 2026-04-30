@@ -39,6 +39,7 @@ function previewSrc(p: any): string | null {
 
 <BaseLayout title={site.name} lang={lang}>
   <section class="section section--hero container hero">
+    <span class="hero__backdrop" aria-hidden="true">{yearRange.split(" ").pop()}</span>
     <div class="hero__head">
       <p class="eyebrow">
         {t(lang, "home.eyebrow", { range: yearRange })}
@@ -47,25 +48,42 @@ function previewSrc(p: any): string | null {
         {
           lang === "zh" ? (
             <>
-              <span class="hero__line" style="--i:0">{heroLines[0]}</span>
-              <span class="hero__line" style="--i:1">
-                <span class="hero__emph">{heroLines[1]}</span>、
+              <span class="hero__line hero__line--prose" style="--i:0">
+                {heroLines[0]}
               </span>
-              <span class="hero__line" style="--i:2">
-                <span class="hero__emph">{heroLines[2]}</span>、
+              <span class="hero__line hero__line--mark" style="--i:1">
+                <span class="hero__index" aria-hidden="true">01</span>
+                <span class="hero__keyword">{heroLines[1]}</span>
+                <span class="hero__sep">、</span>
               </span>
-              <span class="hero__line" style="--i:3">{heroLines[3]}。</span>
+              <span class="hero__line hero__line--mark" style="--i:2">
+                <span class="hero__index" aria-hidden="true">02</span>
+                <span class="hero__keyword">{heroLines[2]}</span>
+                <span class="hero__sep">、</span>
+              </span>
+              <span class="hero__line hero__line--prose" style="--i:3">
+                {heroLines[3]}。
+              </span>
             </>
           ) : (
             <>
-              <span class="hero__line" style="--i:0">{heroLines[0]}</span>
-              <span class="hero__line" style="--i:1">
-                <span class="hero__emph">{heroLines[1]}</span>,
+              <span class="hero__line hero__line--prose" style="--i:0">
+                {heroLines[0]}
               </span>
-              <span class="hero__line" style="--i:2">
-                its <span class="hero__emph">{heroLines[2]}</span>,
+              <span class="hero__line hero__line--mark" style="--i:1">
+                <span class="hero__index" aria-hidden="true">01</span>
+                <span class="hero__keyword">{heroLines[1]}</span>
+                <span class="hero__sep">,</span>
               </span>
-              <span class="hero__line" style="--i:3">{heroLines[3]}</span>
+              <span class="hero__line hero__line--mark" style="--i:2">
+                <span class="hero__index" aria-hidden="true">02</span>
+                <span class="hero__prefix">its </span>
+                <span class="hero__keyword">{heroLines[2]}</span>
+                <span class="hero__sep">,</span>
+              </span>
+              <span class="hero__line hero__line--prose" style="--i:3">
+                {heroLines[3]}
+              </span>
             </>
           )
         }
@@ -221,6 +239,8 @@ function previewSrc(p: any): string | null {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-4);
+    position: relative;
+    isolation: isolate;
   }
   @media (min-width: 980px) {
     .hero {
@@ -229,9 +249,35 @@ function previewSrc(p: any): string | null {
       align-items: end;
     }
   }
+
+  /* Oversized year backdrop — quiet editorial mark in the upper-right */
+  .hero__backdrop {
+    position: absolute;
+    top: -0.18em;
+    right: 0;
+    font-family: var(--font-display);
+    font-weight: 200;
+    font-size: clamp(7rem, 18vw, 15rem);
+    line-height: 0.85;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--border);
+    letter-spacing: -0.04em;
+    z-index: -1;
+    user-select: none;
+    pointer-events: none;
+    font-feature-settings: "tnum" 1, "lnum" 1;
+  }
+  @media (max-width: 720px) {
+    .hero__backdrop { display: none; }
+  }
+
+  .hero__head {
+    position: relative;
+  }
   .hero__title {
     margin: 0;
     display: block;
+    letter-spacing: -0.022em;
   }
   .hero__line {
     display: block;
@@ -258,11 +304,98 @@ function previewSrc(p: any): string | null {
       transform: none;
     }
   }
-  .hero__emph {
-    font-style: italic;
+
+  /* Connecting prose — recedes so the keywords lead */
+  .hero__line--prose {
     font-weight: 300;
+    color: var(--fg-muted);
+  }
+
+  /* Marked lines — the architectural reading. Side-rail ordinal label,
+     keyword in regular weight (no italic), thin underscore drawn after
+     the line rises. */
+  .hero__line--mark {
+    position: relative;
+    font-weight: 400;
     color: var(--fg);
   }
+  @media (min-width: 720px) {
+    .hero__line--mark {
+      padding-left: 3.6rem;
+    }
+  }
+
+  .hero__index {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    color: var(--fg-subtle);
+    display: inline-block;
+    vertical-align: 0.55em;
+    margin-right: 0.7rem;
+  }
+  @media (min-width: 720px) {
+    .hero__index {
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 2.6rem;
+      margin-right: 0;
+    }
+    .hero__index::after {
+      content: "";
+      position: absolute;
+      left: 1.6rem;
+      top: 0.55em;
+      width: 0.8rem;
+      height: 1px;
+      background: var(--border-strong);
+      opacity: 0.55;
+    }
+  }
+
+  .hero__keyword {
+    position: relative;
+    display: inline-block;
+    color: var(--fg);
+    letter-spacing: -0.024em;
+  }
+  .hero__keyword::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.06em;
+    height: 1px;
+    background: var(--fg);
+    transform: scaleX(0);
+    transform-origin: left center;
+    animation: hero-rule 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(var(--i, 0) * 90ms + 700ms);
+  }
+  .no-js .hero__keyword::after {
+    transform: none;
+    animation: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__keyword::after {
+      transform: none;
+      animation: none;
+    }
+  }
+  @keyframes hero-rule {
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  .hero__sep,
+  .hero__prefix {
+    font-weight: 300;
+    color: var(--fg-muted);
+  }
+
   .hero__lede p {
     font-family: var(--font-display);
     font-size: clamp(1.05rem, 1.6vw, 1.25rem);
@@ -476,14 +609,14 @@ function previewSrc(p: any): string | null {
   }
   .threads article {
     border-top: 1px solid var(--fg);
-    padding-top: 1rem;
+    padding-top: 1.1rem;
   }
   .thread__no {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
     color: var(--fg-subtle);
-    margin: 0 0 0.4rem;
+    margin: 0 0 0.55rem;
   }
   .threads h3 {
     font-family: var(--font-sans);
