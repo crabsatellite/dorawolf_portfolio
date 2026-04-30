@@ -19,7 +19,7 @@
     "@fontsource/jetbrains-mono": "^5.2.8",
     "@fontsource/noto-serif-sc": "^5.2.9",
     "astro": "^5.4.0",
-    "harmonyos-sans-sc-webfont-splitted": "^1.1.0",
+    "lxgw-wenkai-screen-webfont": "^1.7.0",
     "sharp": "^0.34.0"
   },
   "devDependencies": {
