@@ -804,6 +804,38 @@ picture.lqip:hover {
   padding: clamp(0.4rem, 0.9vw, 0.8rem);
 }
 
+/* Animated GIFs (research demos / dynamic-component reels). They have
+   no AVIF/WebP variants — the original GIF is the only file. Treat them
+   like sketches in the grid (3-across on desktop, 2-across on tablet),
+   sit them on the elevated surface, mark with a quiet "▶︎ ANIMATED"
+   indicator so the click affordance is clear. */
+.plate__media-grid > picture[data-type="gif"] {
+  background: var(--bg-elevated);
+  padding: clamp(0.4rem, 0.9vw, 0.8rem);
+  position: relative;
+}
+.plate__media-grid > picture[data-type="gif"]::before {
+  content: "▶︎ ANIMATED";
+  position: absolute;
+  top: 0.6rem;
+  left: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  color: var(--bg);
+  background: rgba(19, 19, 19, 0.78);
+  padding: 0.18rem 0.45rem;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: 1px;
+}
+@media (min-width: 720px) {
+  .plate__media-grid > picture[data-type="gif"] { grid-column: span 3; }
+}
+@media (min-width: 1024px) {
+  .plate__media-grid > picture[data-type="gif"] { grid-column: span 4; }
+}
+
 /* Hide the mono uppercase caption labels — they were adding visual
    noise and breaking the cohesion the user asked for. The data-caption
    attrs stay in the DOM (tooltips / accessibility / future use). */

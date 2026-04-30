@@ -28,6 +28,7 @@ const AVIF_EFFORT = 3;
 const LQIP_WIDTH = 16;
 const SUFFIX_RE = /-(800|1600|2400)\.(avif|webp)$/i;
 const ORIGINAL_RE = /\.(jpe?g|png)$/i;
+const ANIMATED_RE = /\.gif$/i;
 
 async function* walk(dir) {
   const entries = await fs.promises.readdir(dir, { withFileTypes: true });
@@ -35,7 +36,11 @@ async function* walk(dir) {
     const full = path.join(dir, e.name);
     if (e.isDirectory()) {
       yield* walk(full);
-    } else if (e.isFile() && ORIGINAL_RE.test(e.name) && !SUFFIX_RE.test(e.name)) {
+    } else if (
+      e.isFile() &&
+      (ORIGINAL_RE.test(e.name) || ANIMATED_RE.test(e.name)) &&
+      !SUFFIX_RE.test(e.name)
+    ) {
       yield full;
     }
   }
@@ -76,8 +81,39 @@ async function main() {
       }
       const origW = meta.width ?? 0;
       const origH = meta.height ?? 0;
+      const isAnimated = ANIMATED_RE.test(file);
 
       const variants = { avif: [], webp: [] };
+
+      // GIFs: don't generate AVIF/WebP variants (would lose animation).
+      // Just record metadata + LQIP so the rehype pipeline can wrap the
+      // <img> in a <picture class="lqip"> for grid + lightbox treatment.
+      if (isAnimated) {
+        let lqip = null;
+        try {
+          const buf = await sharp(file, { animated: false, page: 0 })
+            .resize({ width: LQIP_WIDTH })
+            .blur(0.6)
+            .toFormat("avif", { quality: 30, effort: 4 })
+            .toBuffer();
+          lqip = `data:image/avif;base64,${buf.toString("base64")}`;
+        } catch {
+          /* skip — non-encodable */
+        }
+        manifest[rel] = {
+          width: origW,
+          height: origH,
+          variants,
+          lqip,
+          animated: true,
+        };
+        if (processed % 25 === 0) {
+          process.stdout.write(
+            `  · processed ${processed} (gen ${generated}, skip ${skipped})\r`
+          );
+        }
+        continue;
+      }
 
       // Decide which sizes apply (skip upscaling)
       const usableSizes = SIZES.filter((w) => w <= origW * 1.05);

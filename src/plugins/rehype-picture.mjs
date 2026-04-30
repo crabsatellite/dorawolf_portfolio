@@ -59,7 +59,22 @@ export default function rehypePicture(opts = {}) {
         lookup = lookup.slice(baseUrl.length);
       }
       const entry = manifest[lookup];
-      if (!entry) return img;
+      if (!entry) {
+        // No manifest entry — still wrap the img in a <picture class="lqip">
+        // so the lightbox click handler, fade-in, and grid sizing all work.
+        // Most likely this is a GIF or other format we don't pre-process.
+        img.properties = {
+          ...props,
+          loading: props.loading || "lazy",
+          decoding: "async",
+        };
+        return {
+          type: "element",
+          tagName: "picture",
+          properties: { className: ["lqip"] },
+          children: [img],
+        };
+      }
 
       const sources = [];
       for (const fmt of ["avif", "webp"]) {
