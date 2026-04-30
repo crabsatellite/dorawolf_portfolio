@@ -29,6 +29,9 @@ Thumbs.db
 # scrape staging (Phase 2)
 _scrape/
 
+# Design review screenshots (taken locally via _design/screenshot.mjs)
+_design/shots/
+
 # Generated image variants (created by scripts/build-images.mjs at prebuild)
 public/**/*.avif
 public/**/*.webp
