@@ -1,26 +1,32 @@
 {
   "/projects/hjwtsxx/_18.png": {
     "type": "diagram",
-    "caption": "四种操场布局比选"
+    "caption": "四种操场布局比选",
+    "captionEn": "Four sports-field layouts compared"
   },
   "/projects/hjwtsxx/_23.jpg": {
     "type": "render",
-    "caption": "城市街区俯视鸟瞰"
+    "caption": "城市街区俯视鸟瞰",
+    "captionEn": "Urban block, top-down aerial"
   },
   "/projects/hjwtsxx/_26.jpg": {
     "type": "render",
-    "caption": "校园整体鸟瞰"
+    "caption": "校园整体鸟瞰",
+    "captionEn": "Whole campus aerial"
   },
   "/projects/hjwtsxx/_24.jpg": {
     "type": "axon",
-    "caption": "架空操场与校园轴测"
+    "caption": "架空操场与校园轴测",
+    "captionEn": "Lifted sports field and campus axon"
   },
   "/projects/hjwtsxx/_27.jpg": {
     "type": "site-plan",
-    "caption": "总平面图"
+    "caption": "总平面图",
+    "captionEn": "Master plan"
   },
   "/projects/hjwtsxx/_30.jpg": {
     "type": "render",
-    "caption": "云顶大棚下的中心广场"
+    "caption": "云顶大棚下的中心广场",
+    "captionEn": "Central plaza beneath cloud canopy"
   }
 }

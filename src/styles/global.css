@@ -606,70 +606,117 @@ picture.lqip:hover {
   outline-color: var(--fg);
 }
 
-/* ---- Image type-aware sizing inside plate__media ----------------------
-   Each <picture> in a project body now carries data-type (set by the
-   rehype-image-types plugin from data/image-classifications/<slug>.json)
-   and optionally data-caption. Different image types want different
-   visual weights — a hand-drawn sketch should not fill the full plate
-   column, a rendering should. */
+/* ---- Plate layout — Phase 11 redesign ---------------------------------
+   Each <h2> section becomes a vertical stack: a narrow centred prose
+   column on top, a wide 12-column image grid underneath. Each image is
+   placed in the grid by its data-type span (set by rehype-image-types):
+     render / photo / site-plan / collage  → span 12 (full container)
+     axon                                  → span 8  (almost full)
+     diagram                               → span 6  (pair side-by-side)
+     sketch                                → span 4  (three across)
+   The grid collapses to 6 columns at tablet (≥720px) and 1 column on
+   phones, where every image goes full width. */
 
-/* default — full width inside the column */
-.plate__media picture.lqip {
-  width: 100%;
+.plate__intro {
+  max-width: 800px;
   margin: 0 auto;
-  display: block;
+  padding: 0 var(--gutter);
+  margin-bottom: var(--space-4);
+}
+.plate__intro h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.018em;
+  margin: 0 0 var(--space-2);
+  color: var(--fg);
+}
+.plate__intro p {
+  margin: 0 0 1rem;
+  line-height: var(--leading-cn);
+  color: var(--fg);
+  max-width: 60ch;
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+}
+:global(html[lang^="en"]) .plate__intro p {
+  line-height: var(--leading-normal);
 }
 
-/* sketches: small, centred, with a generous breathing room */
-.plate__media picture.lqip[data-type="sketch"] {
-  max-width: min(72%, 460px);
+.plate__media-grid {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr; /* phone */
+  gap: clamp(1rem, 1.6vw, 1.8rem);
+  align-items: start;
 }
-.plate__media picture.lqip[data-type="sketch"] > img {
-  background: var(--bg-elevated);
+@media (min-width: 720px) {
+  .plate__media-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .plate__media-grid > picture { grid-column: span 6; }
+  .plate__media-grid > picture[data-type="diagram"] { grid-column: span 3; }
+  .plate__media-grid > picture[data-type="sketch"]  { grid-column: span 2; }
+}
+@media (min-width: 1024px) {
+  .plate__media-grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+  .plate__media-grid > picture { grid-column: span 12; }
+  .plate__media-grid > picture[data-type="render"],
+  .plate__media-grid > picture[data-type="photo"],
+  .plate__media-grid > picture[data-type="site-plan"],
+  .plate__media-grid > picture[data-type="collage"] { grid-column: span 12; }
+  .plate__media-grid > picture[data-type="axon"]    { grid-column: 3 / span 8; }
+  .plate__media-grid > picture[data-type="diagram"] { grid-column: span 6; }
+  .plate__media-grid > picture[data-type="sketch"]  { grid-column: span 4; }
 }
 
-/* diagrams: medium, light surface so abstract drawings have a frame */
-.plate__media picture.lqip[data-type="diagram"] {
-  max-width: 86%;
+/* visual treatment per type — a thin frame for abstract drawings, no
+   chrome for renders/photos */
+.plate__media-grid > picture {
+  width: 100%;
+  margin: 0;
+}
+.plate__media-grid > picture[data-type="diagram"],
+.plate__media-grid > picture[data-type="axon"],
+.plate__media-grid > picture[data-type="sketch"],
+.plate__media-grid > picture[data-type="site-plan"] {
   background: var(--bg-elevated);
-  padding: clamp(0.5rem, 1.5vw, 1rem);
   outline: 1px solid var(--border);
   outline-offset: -1px;
 }
-
-/* axonometric: similar treatment to diagrams but a bit larger */
-.plate__media picture.lqip[data-type="axon"] {
-  max-width: 90%;
-  background: var(--bg-elevated);
+.plate__media-grid > picture[data-type="diagram"] {
+  padding: clamp(0.4rem, 1vw, 0.8rem);
 }
 
-/* site plans: full-width, neutral surface */
-.plate__media picture.lqip[data-type="site-plan"] {
-  background: var(--bg-elevated);
-}
-
-/* renderings, photos, collages: full bleed, no surrounding chrome */
-.plate__media picture.lqip[data-type="render"],
-.plate__media picture.lqip[data-type="photo"],
-.plate__media picture.lqip[data-type="collage"] {
-  width: 100%;
-}
-
-/* If the classification provides a Chinese caption, render it under
-   the image as a tiny mono uppercase label. Doesn't replace any
-   prose — it just labels the image type for orientation. */
-.plate__media picture.lqip[data-caption]::after {
-  content: attr(data-caption);
+/* image caption — tiny mono uppercase label under each picture, locale-
+   aware. Use captionEn on English pages, captionZh on Chinese pages. */
+.plate__media-grid > picture[data-caption-zh]::after,
+.plate__media-grid > picture[data-caption-en]::after {
   display: block;
-  margin-top: 0.55rem;
+  margin-top: 0.5rem;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
   color: var(--fg-muted);
   text-align: left;
+  font-feature-settings: "tnum" 1;
 }
-.case--right .plate__media picture.lqip[data-caption]::after {
-  text-align: right;
+:global(html[lang^="zh"]) .plate__media-grid > picture[data-caption-zh]::after {
+  content: attr(data-caption-zh);
+}
+:global(html[lang^="en"]) .plate__media-grid > picture[data-caption-en]::after {
+  content: attr(data-caption-en);
+  text-transform: uppercase;
+}
+/* Fallback when only zh is present */
+:global(html[lang^="en"])
+  .plate__media-grid
+  > picture[data-caption-zh]:not([data-caption-en])::after {
+  content: attr(data-caption-zh);
 }
 
 /* ---- Project-list cursor-follow preview --------------------------------

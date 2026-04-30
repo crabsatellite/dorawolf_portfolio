@@ -1,17 +1,16 @@
 /**
- * Reads per-project image classification JSONs from
- *   data/image-classifications/<slug>.json
- * and stamps each markdown-body <picture> with a data-type attribute
- * (site-plan / diagram / sketch / axon / render / photo / collage) and
- * an optional data-caption attribute.
+ * Stamps each markdown-body <picture> with attributes from the
+ * data/image-classifications/<slug>.json sidecars:
+ *   - data-type: site-plan | diagram | sketch | axon | render | photo | collage
+ *   - data-caption-zh: short Chinese caption (museum plaque)
+ *   - data-caption-en: short English caption (optional)
  *
- * The CSS in global.css then sizes each <picture> appropriately
- * (e.g. sketches and small diagrams don't fill the full media column,
- * renderings/photos do).
+ * The CSS in global.css then sizes each picture by type via grid spans
+ * inside .plate__media-grid, and renders the locale-appropriate caption
+ * below each image via a `::after` rule keyed off the html[lang^="…"]
+ * selector.
  *
- * Runs AFTER rehype-picture (which created the <picture> wrappers) and
- * BEFORE rehype-section-plates (which only inspects <p> > picture pairs,
- * unaffected by added attributes).
+ * Runs after rehype-picture (which created the <picture> wrappers).
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -24,14 +23,13 @@ function loadAll() {
     if (!f.endsWith(".json")) continue;
     try {
       const data = JSON.parse(fs.readFileSync(path.join(dir, f), "utf-8"));
-      // Skip $comment / meta keys
       for (const [k, v] of Object.entries(data)) {
         if (k.startsWith("$") || !v || typeof v !== "object") continue;
         if (typeof v.type !== "string") continue;
         map[k] = v;
       }
     } catch {
-      // ignore unparseable files
+      // ignore parse errors
     }
   }
   return map;
@@ -74,7 +72,10 @@ export default function rehypeImageTypes(opts = {}) {
       pic.properties = pic.properties || {};
       pic.properties["data-type"] = meta.type;
       if (meta.caption) {
-        pic.properties["data-caption"] = meta.caption;
+        pic.properties["data-caption-zh"] = meta.caption;
+      }
+      if (meta.captionEn) {
+        pic.properties["data-caption-en"] = meta.captionEn;
       }
     }
 

@@ -1,86 +1,107 @@
 {
   "/projects/hsgzqlxq/_1.jpg": {
     "type": "site-plan",
-    "caption": "校园整体水彩鸟瞰"
+    "caption": "校园整体水彩鸟瞰",
+    "captionEn": "Campus watercolor aerial"
   },
   "/projects/hsgzqlxq/_25.jpg": {
     "type": "diagram",
-    "caption": "用地周边交通与出入口"
+    "caption": "用地周边交通与出入口",
+    "captionEn": "Site traffic and entry points"
   },
   "/projects/hsgzqlxq/_26-1.jpg": {
     "type": "diagram",
-    "caption": "蓝绿网络与环湖步道"
+    "caption": "蓝绿网络与环湖步道",
+    "captionEn": "Blue-green network and lakeside path"
   },
   "/projects/hsgzqlxq/_27-1.jpg": {
     "type": "diagram",
-    "caption": "西侧宗教建筑用地关系"
+    "caption": "西侧宗教建筑用地关系",
+    "captionEn": "West-side religious building context"
   },
   "/projects/hsgzqlxq/_28-1.jpg": {
     "type": "diagram",
-    "caption": "周边住宅与分时共享"
+    "caption": "周边住宅与分时共享",
+    "captionEn": "Adjacent housing and time-sharing"
   },
   "/projects/hsgzqlxq/_3.jpg": {
     "type": "diagram",
-    "caption": "四方案体量比选轴测"
+    "caption": "四方案体量比选轴测",
+    "captionEn": "Four massing options, axonometric"
   },
   "/projects/hsgzqlxq/_4.jpg": {
     "type": "diagram",
-    "caption": "围合景观与文体绿楔策略"
+    "caption": "围合景观与文体绿楔策略",
+    "captionEn": "Enclosed landscape and green wedges"
   },
   "/projects/hsgzqlxq/_5.jpg": {
     "type": "diagram",
-    "caption": "绿谷长街与城市格局生成"
+    "caption": "绿谷长街与城市格局生成",
+    "captionEn": "Green valley street, urban form"
   },
   "/projects/hsgzqlxq/_6.jpg": {
     "type": "render",
-    "caption": "城市尺度大鸟瞰"
+    "caption": "城市尺度大鸟瞰",
+    "captionEn": "Urban scale, wide aerial"
   },
   "/projects/hsgzqlxq/_23-2.jpg": {
     "type": "render",
-    "caption": "拥湖入怀黄昏鸟瞰"
+    "caption": "拥湖入怀黄昏鸟瞰",
+    "captionEn": "Lake-embraced dusk aerial"
   },
   "/projects/hsgzqlxq/_10.jpg": {
     "type": "render",
-    "caption": "工字形结构鸟瞰"
+    "caption": "工字形结构鸟瞰",
+    "captionEn": "I-shaped scheme aerial"
   },
   "/projects/hsgzqlxq/_11-1.jpg": {
     "type": "render",
-    "caption": "文体设施分合鸟瞰"
+    "caption": "文体设施分合鸟瞰",
+    "captionEn": "Arts and sports cluster aerial"
   },
   "/projects/hsgzqlxq/_14.jpg": {
     "type": "render",
-    "caption": "教学组团阶梯花园半鸟瞰"
+    "caption": "教学组团阶梯花园半鸟瞰",
+    "captionEn": "Teaching cluster stepped garden aerial"
   },
   "/projects/hsgzqlxq/_15-2.jpg": {
     "type": "render",
-    "caption": "南入口前广场半鸟瞰"
+    "caption": "南入口前广场半鸟瞰",
+    "captionEn": "South entrance plaza, semi-aerial"
   },
   "/projects/hsgzqlxq/_16-1.jpg": {
     "type": "site-plan",
-    "caption": "总平面图"
+    "caption": "总平面图",
+    "captionEn": "Master plan"
   },
   "/projects/hsgzqlxq/_17-1.jpg": {
     "type": "axon",
-    "caption": "三组团轴测分解"
+    "caption": "三组团轴测分解",
+    "captionEn": "Three-cluster exploded axonometric"
   },
   "/projects/hsgzqlxq/_18-1.jpg": {
     "type": "collage",
-    "caption": "公共场景与场地拼贴"
+    "caption": "公共场景与场地拼贴",
+    "captionEn": "Public scenes and site collage"
   },
   "/projects/hsgzqlxq/_19-1.jpg": {
     "type": "render",
-    "caption": "中央枢纽广场黄昏透视"
+    "caption": "中央枢纽广场黄昏透视",
+    "captionEn": "Central hub plaza at dusk"
   },
   "/projects/hsgzqlxq/_20-1.jpg": {
     "type": "render",
-    "caption": "主教学楼沿街透视"
+    "caption": "主教学楼沿街透视",
+    "captionEn": "Main teaching building, street view"
   },
   "/projects/hsgzqlxq/_21.jpg": {
     "type": "render",
-    "caption": "操场远眺青菱湖"
+    "caption": "操场远眺青菱湖",
+    "captionEn": "Sports field, view to Qingling Lake"
   },
   "/projects/hsgzqlxq/_22-1.jpg": {
     "type": "render",
-    "caption": "行政报告厅沿街透视"
+    "caption": "行政报告厅沿街透视",
+    "captionEn": "Admin auditorium, street view"
   }
 }

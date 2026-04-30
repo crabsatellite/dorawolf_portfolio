@@ -1,82 +1,102 @@
 {
   "/projects/cjxqwgyxx/111.png": {
     "type": "diagram",
-    "caption": "区域路网与场地四向开口"
+    "caption": "区域路网与场地四向开口",
+    "captionEn": "Site openness to four-way road network"
   },
   "/projects/cjxqwgyxx/222.png": {
     "type": "diagram",
-    "caption": "片区周边用地关系"
+    "caption": "片区周边用地关系",
+    "captionEn": "Surrounding land use context"
   },
   "/projects/cjxqwgyxx/333.png": {
     "type": "diagram",
-    "caption": "蓝绿水系生态网络"
+    "caption": "蓝绿水系生态网络",
+    "captionEn": "Blue-green ecological network"
   },
   "/projects/cjxqwgyxx/444.png": {
     "type": "diagram",
-    "caption": "中央庭院的十字围合"
+    "caption": "中央庭院的十字围合",
+    "captionEn": "Central courtyard cross enclosure"
   },
   "/projects/cjxqwgyxx/11.jpg": {
     "type": "diagram",
-    "caption": "岛链环礁的体量肌理"
+    "caption": "岛链环礁的体量肌理",
+    "captionEn": "Atoll-like massing texture"
   },
   "/projects/cjxqwgyxx/22.jpg": {
     "type": "diagram",
-    "caption": "十字风车的公建集群"
+    "caption": "十字风车的公建集群",
+    "captionEn": "Pinwheel cluster of public buildings"
   },
   "/projects/cjxqwgyxx/33.jpg": {
     "type": "diagram",
-    "caption": "毯式街区的边界打开"
+    "caption": "毯式街区的边界打开",
+    "captionEn": "Carpet block, opened edges"
   },
   "/projects/cjxqwgyxx/44.jpg": {
     "type": "diagram",
-    "caption": "弹性教学单元的散布"
+    "caption": "弹性教学单元的散布",
+    "captionEn": "Scattered flexible teaching units"
   },
   "/projects/cjxqwgyxx/55.jpg": {
     "type": "diagram",
-    "caption": "中央十字环的功能分布"
+    "caption": "中央十字环的功能分布",
+    "captionEn": "Central cross-ring program distribution"
   },
   "/projects/cjxqwgyxx/66.jpg": {
     "type": "diagram",
-    "caption": "教学组团的步行串联"
+    "caption": "教学组团的步行串联",
+    "captionEn": "Pedestrian links between teaching clusters"
   },
   "/projects/cjxqwgyxx/_10.png": {
     "type": "diagram",
-    "caption": "四种规划格局的比选"
+    "caption": "四种规划格局的比选",
+    "captionEn": "Four planning schemes compared"
   },
   "/projects/cjxqwgyxx/_11.jpg": {
     "type": "axon",
-    "caption": "风车型规划架构轴测"
+    "caption": "风车型规划架构轴测",
+    "captionEn": "Pinwheel framework, axonometric"
   },
   "/projects/cjxqwgyxx/_9.jpg": {
     "type": "render",
-    "caption": "整体区域鸟瞰"
+    "caption": "整体区域鸟瞰",
+    "captionEn": "Overall area, bird's eye"
   },
   "/projects/cjxqwgyxx/_15-1.jpg": {
     "type": "render",
-    "caption": "南向中轴鸟瞰"
+    "caption": "南向中轴鸟瞰",
+    "captionEn": "South central axis, bird's eye"
   },
   "/projects/cjxqwgyxx/_16.jpg": {
     "type": "render",
-    "caption": "胜海大道一侧鸟瞰"
+    "caption": "胜海大道一侧鸟瞰",
+    "captionEn": "Shenghai Avenue side, bird's eye"
   },
   "/projects/cjxqwgyxx/_17.jpg": {
     "type": "axon",
-    "caption": "中心花园功能分布轴测"
+    "caption": "中心花园功能分布轴测",
+    "captionEn": "Central garden program, axonometric"
   },
   "/projects/cjxqwgyxx/_18.jpg": {
     "type": "axon",
-    "caption": "校园整体功能轴测"
+    "caption": "校园整体功能轴测",
+    "captionEn": "Whole campus program, axonometric"
   },
   "/projects/cjxqwgyxx/_19.jpg": {
     "type": "render",
-    "caption": "中心花园近景鸟瞰"
+    "caption": "中心花园近景鸟瞰",
+    "captionEn": "Central garden, close bird's eye"
   },
   "/projects/cjxqwgyxx/_20.jpg": {
     "type": "render",
-    "caption": "总图正俯瞰"
+    "caption": "总图正俯瞰",
+    "captionEn": "Master plan, top-down view"
   },
   "/projects/cjxqwgyxx/_23-1.jpg": {
     "type": "axon",
-    "caption": "两学部生活区轴测"
+    "caption": "两学部生活区轴测",
+    "captionEn": "Two-division living quarters, axonometric"
   }
 }

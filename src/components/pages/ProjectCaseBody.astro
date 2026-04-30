@@ -404,97 +404,26 @@ if (entry.data.status)
     margin: 0;
   }
 
-  /* ----- Body — magazine plates (kept from rehype output) ------------ */
+  /* ----- Body — vertical-stack plates ------------------------------- */
   .case__body {
     padding: var(--space-4) 0 var(--space-4);
   }
   .prose {
-    max-width: 760px;
-    margin: 0 auto;
+    /* the plate / plate__intro / plate__media-grid styles in
+       global.css carry the layout — the prose container only needs
+       to provide vertical rhythm */
+    display: block;
   }
   .prose :global(.plate) {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: var(--space-4) var(--gutter);
+    padding: var(--space-5) 0;
     border-top: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-3);
   }
   .prose :global(.plate:first-child) {
     border-top: 0;
+    padding-top: 0;
   }
-  .prose :global(.plate__text) {
-    max-width: 60ch;
-  }
-  .prose :global(.plate__media) {
-    display: grid;
-    gap: var(--space-3);
-  }
-  .prose :global(.plate--text-only),
   .prose :global(.plate--intro) {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .prose :global(.plate--text-only .plate__text),
-  .prose :global(.plate--intro .plate__text) {
-    max-width: 760px;
-    margin: 0 auto;
-  }
-  @media (min-width: 920px) {
-    .prose :global(.plate--right),
-    .prose :global(.plate--left) {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
-      gap: var(--space-5);
-      align-items: start;
-    }
-    .prose :global(.plate--right .plate__text) {
-      grid-column: 1 / 2;
-      grid-row: 1;
-      position: sticky;
-      top: calc(var(--nav-height) + var(--space-3));
-    }
-    .prose :global(.plate--right .plate__media) {
-      grid-column: 2 / 3;
-      grid-row: 1;
-    }
-    .prose :global(.plate--left .plate__text) {
-      grid-column: 2 / 3;
-      grid-row: 1;
-      position: sticky;
-      top: calc(var(--nav-height) + var(--space-3));
-    }
-    .prose :global(.plate--left .plate__media) {
-      grid-column: 1 / 2;
-      grid-row: 1;
-    }
-  }
-  .prose :global(.plate__text h2) {
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-size: clamp(1.45rem, 2.4vw, 1.95rem);
-    line-height: var(--leading-tight);
-    letter-spacing: -0.018em;
-    margin: 0 0 var(--space-2);
-    color: var(--fg);
-  }
-  /* Each h2 starts with a tiny mono prefix that fades the section number,
-     so the body reads as numbered chapters rather than bare list items. */
-  .prose :global(.plate__text h2)::before {
-    content: "";
-  }
-  .prose :global(.plate__text p) {
-    margin: 0 0 1rem;
-    line-height: var(--leading-cn);
-    color: var(--fg);
-    max-width: 56ch;
-  }
-  .prose :global(.plate__media picture),
-  .prose :global(.plate__media img) {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 0;
-    background: var(--bg-elevated);
+    padding-bottom: var(--space-3);
   }
 
   /* ----- Lang note + nav --------------------------------------------- */

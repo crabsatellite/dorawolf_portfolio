@@ -1,30 +1,37 @@
 {
   "/projects/jxzx/_6-_.jpg": {
     "type": "render",
-    "caption": "方案一黄昏鸟瞰"
+    "caption": "方案一黄昏鸟瞰",
+    "captionEn": "Scheme 1, dusk aerial"
   },
   "/projects/jxzx/_5-_.jpg": {
     "type": "render",
-    "caption": "方案一夜景平面鸟瞰"
+    "caption": "方案一夜景平面鸟瞰",
+    "captionEn": "Scheme 1, night plan aerial"
   },
   "/projects/jxzx/_7-_.jpg": {
     "type": "render",
-    "caption": "方案一岸边人视"
+    "caption": "方案一岸边人视",
+    "captionEn": "Scheme 1, waterfront eye level"
   },
   "/projects/jxzx/_12-_.jpg": {
     "type": "render",
-    "caption": "方案二黄昏鸟瞰"
+    "caption": "方案二黄昏鸟瞰",
+    "captionEn": "Scheme 2, dusk aerial"
   },
   "/projects/jxzx/_11-_.jpg": {
     "type": "render",
-    "caption": "方案二夜景平面鸟瞰"
+    "caption": "方案二夜景平面鸟瞰",
+    "captionEn": "Scheme 2, night plan aerial"
   },
   "/projects/jxzx/_14-_.jpg": {
     "type": "render",
-    "caption": "方案二夜景半鸟瞰"
+    "caption": "方案二夜景半鸟瞰",
+    "captionEn": "Scheme 2, night semi-aerial"
   },
   "/projects/jxzx/_13-_.jpg": {
     "type": "render",
-    "caption": "方案二入口人视"
+    "caption": "方案二入口人视",
+    "captionEn": "Scheme 2, entrance eye level"
   }
 }

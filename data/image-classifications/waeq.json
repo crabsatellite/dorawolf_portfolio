@@ -1,70 +1,87 @@
 {
   "/projects/waeq/_1-1.jpg": {
     "type": "render",
-    "caption": "园区整体鸟瞰,二期延展于一期之西"
+    "caption": "园区整体鸟瞰,二期延展于一期之西",
+    "captionEn": "Overall aerial, phase two west of phase one"
   },
   "/projects/waeq/_2-1.jpg": {
     "type": "render",
-    "caption": "近景鸟瞰,环形体育馆与绿阶酒店"
+    "caption": "近景鸟瞰,环形体育馆与绿阶酒店",
+    "captionEn": "Close aerial, ring arena and stepped hotel"
   },
   "/projects/waeq/_3-1.jpg": {
     "type": "diagram",
-    "caption": "南北轴与公园分区结构示意"
+    "caption": "南北轴与公园分区结构示意",
+    "captionEn": "North-south axis and park zoning"
   },
   "/projects/waeq/_4-1.jpg": {
     "type": "diagram",
-    "caption": "节点分布与功能编号示意"
+    "caption": "节点分布与功能编号示意",
+    "captionEn": "Node layout and program index"
   },
   "/projects/waeq/_5-1.jpg": {
     "type": "diagram",
-    "caption": "绿谷-绿环-绿篱-绿毯结构示意"
+    "caption": "绿谷-绿环-绿篱-绿毯结构示意",
+    "captionEn": "Green valley, ring, hedge, carpet structure"
   },
   "/projects/waeq/_6-1.jpg": {
     "type": "render",
-    "caption": "中央公园人视鸟瞰,建筑融入地景"
+    "caption": "中央公园人视鸟瞰,建筑融入地景",
+    "captionEn": "Central park view, buildings into landscape"
   },
   "/projects/waeq/_7-1.jpg": {
     "type": "diagram",
-    "caption": "总平面注释,五处地景节点"
+    "caption": "总平面注释,五处地景节点",
+    "captionEn": "Annotated plan, five landscape nodes"
   },
   "/projects/waeq/_8-2.jpg": {
     "type": "render",
-    "caption": "考试中心入口檐廊人视"
+    "caption": "考试中心入口檐廊人视",
+    "captionEn": "Exam center entrance colonnade view"
   },
   "/projects/waeq/_16-2.jpg": {
     "type": "render",
-    "caption": "高区精品酒店黄昏林间人视"
+    "caption": "高区精品酒店黄昏林间人视",
+    "captionEn": "Boutique hotel, dusk forest view"
   },
   "/projects/waeq/_9-1.jpg": {
     "type": "render",
-    "caption": "创客智谷棚架聚落鸟瞰"
+    "caption": "创客智谷棚架聚落鸟瞰",
+    "captionEn": "Maker valley canopy cluster aerial"
   },
   "/projects/waeq/_17-2.jpg": {
     "type": "diagram",
-    "caption": "云环天街与活力社区轴测分析"
+    "caption": "云环天街与活力社区轴测分析",
+    "captionEn": "Cloud-ring sky street and community axon"
   },
   "/projects/waeq/_10-1.jpg": {
     "type": "render",
-    "caption": "环形体育馆夜景鸟瞰"
+    "caption": "环形体育馆夜景鸟瞰",
+    "captionEn": "Ring arena, night aerial"
   },
   "/projects/waeq/_11-2.jpg": {
     "type": "render",
-    "caption": "美食街与水景广场人视"
+    "caption": "美食街与水景广场人视",
+    "captionEn": "Food street and water plaza view"
   },
   "/projects/waeq/_12-1.jpg": {
     "type": "site-plan",
-    "caption": "总平面图,二期落位于一期之西"
+    "caption": "总平面图,二期落位于一期之西",
+    "captionEn": "Master plan, phase two west of phase one"
   },
   "/projects/waeq/_13-1.jpg": {
     "type": "diagram",
-    "caption": "景观主轴与五园分主题示意"
+    "caption": "景观主轴与五园分主题示意",
+    "captionEn": "Landscape main axis and five-garden themes"
   },
   "/projects/waeq/_14-1.jpg": {
     "type": "axon",
-    "caption": "南侧云环天街业态分层轴测"
+    "caption": "南侧云环天街业态分层轴测",
+    "captionEn": "South sky street, program layer axon"
   },
   "/projects/waeq/_15-3.jpg": {
     "type": "axon",
-    "caption": "活力社区双首层与多业态轴测"
+    "caption": "活力社区双首层与多业态轴测",
+    "captionEn": "Vibrant community, dual ground floor axon"
   }
 }
