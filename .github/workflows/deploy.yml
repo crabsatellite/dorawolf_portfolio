@@ -28,7 +28,11 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
+        # Use `npm install` rather than `npm ci` because some transitive
+        # deps (cn-font-split → @emnapi/runtime) are platform-specific and
+        # don't end up in a Windows-generated lockfile. `npm install`
+        # tolerates the drift and fills in the missing Linux bindings.
+        run: npm install --no-audit --no-fund
 
       # Cache the generated AVIF/WebP variants. Hashing every original keeps
       # the cache valid as long as nothing in the source images changed.
