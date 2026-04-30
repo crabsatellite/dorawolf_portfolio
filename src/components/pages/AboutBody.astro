@@ -175,23 +175,48 @@ const pickPrize = (a: any) =>
 </BaseLayout>
 
 <style>
+  .about-hero__title {
+    font-weight: 300;
+    letter-spacing: -0.032em;
+  }
   .about-hero__title em {
     font-style: italic;
     font-weight: 300;
+    color: var(--fg-muted);
   }
   .about-hero__zh {
     color: var(--fg-muted);
     font-family: var(--font-display);
-    font-size: 1.25rem;
-    margin-top: var(--space-2);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    margin-top: var(--space-3);
+    max-width: 60ch;
+  }
+  :global(html[lang^="zh"]) .about-hero__zh {
+    font-style: normal;
   }
   .about-h2 {
     font-family: var(--font-display);
-    font-size: clamp(1.3rem, 2vw, 1.7rem);
-    margin: 0 0 var(--space-3);
+    font-weight: 300;
+    font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+    letter-spacing: -0.02em;
+    margin: var(--space-5) 0 var(--space-3);
     padding-top: var(--space-3);
-    border-top: 1px solid var(--fg);
-    display: inline-block;
+    border-top: 1px solid var(--border);
+    display: block;
+  }
+  .about-h2:first-of-type {
+    margin-top: 0;
+  }
+  .about-h2::before {
+    content: "";
+    display: block;
+    width: 2.4rem;
+    height: 1px;
+    background: var(--fg);
+    margin-top: -1.5rem;
+    margin-bottom: 1.5rem;
   }
   .about-bio {
     display: grid;
@@ -215,38 +240,47 @@ const pickPrize = (a: any) =>
 
   .studio-card {
     margin: var(--space-3) 0 var(--space-4);
-    padding: var(--space-3) var(--space-3);
-    border-top: 2px solid var(--fg);
+    padding: var(--space-4) var(--space-4);
+    border-top: 1px solid var(--fg);
     border-bottom: 1px solid var(--border);
     background: var(--bg-elevated);
-    max-width: 56ch;
+    max-width: 60ch;
   }
   .studio-card__head {
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
-    margin-bottom: 0.8rem;
+    gap: 0.3rem;
+    margin-bottom: 1rem;
   }
   .studio-card__head h3 {
     font-family: var(--font-display);
-    font-size: clamp(1.4rem, 2vw, 1.8rem);
+    font-weight: 300;
+    font-size: clamp(1.6rem, 2.4vw, 2.1rem);
     margin: 0;
-    letter-spacing: -0.012em;
+    letter-spacing: -0.022em;
+    line-height: 1;
   }
   .studio-card__principal {
     margin: 0 0 0.2rem;
     font-weight: 500;
   }
   .studio-card__based {
-    margin: 0 0 0.7rem;
+    margin: 0 0 1rem;
     color: var(--fg-muted);
     font-size: 0.92rem;
   }
   .studio-card__ethos {
-    margin: 0 0 0.7rem;
+    margin: 0 0 1rem;
     font-style: italic;
+    font-weight: 300;
     font-family: var(--font-display);
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+    line-height: 1.45;
     color: var(--fg);
+  }
+  :global(html[lang^="zh"]) .studio-card__ethos {
+    font-style: normal;
+    line-height: var(--leading-cn);
   }
   .studio-card__areas {
     list-style: none;
@@ -258,12 +292,11 @@ const pickPrize = (a: any) =>
   }
   .studio-card__areas li {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.04em;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    padding: 0.25rem 0.55rem;
+    padding: 0.22rem 0.55rem;
     border: 1px solid var(--border);
-    border-radius: 999px;
     color: var(--fg-muted);
   }
   :global(html[lang^="zh"]) .about-bio__lead {
@@ -351,36 +384,42 @@ const pickPrize = (a: any) =>
     list-style: none;
     margin: 0;
     padding: 0;
+    columns: 1;
+    column-gap: var(--space-4);
+  }
+  @media (min-width: 720px) {
+    .proj {
+      columns: 2;
+    }
   }
   .proj__item {
     display: grid;
-    grid-template-columns: 3rem 4rem 1fr;
-    gap: 1rem;
-    padding: 0.7rem 0;
-    border-top: 1px solid var(--border);
+    grid-template-columns: 2.4rem 3.5rem 1fr;
+    gap: 0.8rem;
+    padding: 0.55rem 0;
     align-items: baseline;
-  }
-  .proj__item:last-child {
-    border-bottom: 1px solid var(--border);
+    break-inside: avoid;
   }
   .proj__no {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     color: var(--fg-subtle);
+    font-feature-settings: "tnum" 1;
   }
   .proj__year {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--fg-muted);
   }
   .proj__en {
     display: block;
-    font-size: 0.98rem;
+    font-size: 0.94rem;
+    line-height: 1.35;
   }
   .proj__zh {
     display: block;
     color: var(--fg-muted);
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     margin-top: 0.18rem;
   }
 

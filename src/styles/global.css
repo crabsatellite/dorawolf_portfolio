@@ -607,9 +607,11 @@ picture.lqip:hover {
 }
 
 /* ---- Plate layout — Phase 11 redesign ---------------------------------
-   Each <h2> section becomes a vertical stack: a narrow centred prose
-   column on top, a wide 12-column image grid underneath. Each image is
-   placed in the grid by its data-type span (set by rehype-image-types):
+   Each <h2> section becomes an asymmetric 12-column structure on desktop:
+   the chapter heading occupies cols 1-3 as a narrow side rail, the prose
+   sits in cols 4-9 (~58ch reading column), and a wide 12-column image
+   grid lives under both. Each image is placed in the grid by its
+   data-type span (set by rehype-image-types):
      render / photo / site-plan / collage  → span 12 (full container)
      axon                                  → span 8  (almost full)
      diagram                               → span 6  (pair side-by-side)
@@ -618,26 +620,69 @@ picture.lqip:hover {
    phones, where every image goes full width. */
 
 .plate__intro {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: var(--max-w);
+  margin: 0 auto var(--space-4);
   padding: 0 var(--gutter);
-  margin-bottom: var(--space-4);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+}
+@media (min-width: 880px) {
+  .plate__intro {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: clamp(1rem, 2vw, 2rem);
+    row-gap: var(--space-2);
+    align-items: baseline;
+  }
 }
 .plate__intro h2 {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+  font-weight: 300;
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
   line-height: var(--leading-tight);
-  letter-spacing: -0.018em;
+  letter-spacing: -0.022em;
   margin: 0 0 var(--space-2);
   color: var(--fg);
+  position: relative;
+}
+.plate__intro h2::before {
+  content: "";
+  display: block;
+  width: 2.4rem;
+  height: 1px;
+  background: var(--fg);
+  margin-bottom: 0.9rem;
+}
+@media (min-width: 880px) {
+  .plate__intro h2 {
+    grid-column: 1 / span 3;
+    margin: 0;
+    padding-right: 1rem;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+  }
 }
 .plate__intro p {
   margin: 0 0 1rem;
   line-height: var(--leading-cn);
   color: var(--fg);
-  max-width: 60ch;
-  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  max-width: 62ch;
+  font-size: clamp(1rem, 1.1vw, 1.1rem);
+}
+.plate__intro p:last-child {
+  margin-bottom: 0;
+}
+@media (min-width: 880px) {
+  .plate__intro p {
+    grid-column: 4 / span 7;
+  }
+  .plate__intro p ~ p {
+    grid-column: 4 / span 7;
+  }
+  /* Plates without h2 (loose intro) — keep text in the reading column */
+  .plate--intro .plate__intro p {
+    grid-column: 1 / span 9;
+    max-width: 70ch;
+  }
 }
 :global(html[lang^="en"]) .plate__intro p {
   line-height: var(--leading-normal);
@@ -657,22 +702,34 @@ picture.lqip:hover {
     grid-template-columns: repeat(6, 1fr);
   }
   .plate__media-grid > picture { grid-column: span 6; }
-  .plate__media-grid > picture[data-type="diagram"] { grid-column: span 2; }
+  .plate__media-grid > picture[data-type="diagram"] { grid-column: span 3; }
   .plate__media-grid > picture[data-type="sketch"]  { grid-column: span 2; }
   .plate__media-grid > picture[data-type="axon"]    { grid-column: span 3; }
 }
 @media (min-width: 1024px) {
   .plate__media-grid {
     grid-template-columns: repeat(12, 1fr);
+    gap: clamp(1.2rem, 1.8vw, 2rem);
   }
   .plate__media-grid > picture { grid-column: span 12; }
+  /* Renders / photos / collages: full-bleed by default, but the second
+     of any group gets inset by a column on each side. Creates a quiet
+     pulse — wide / narrower / wide — instead of a uniform stack. */
   .plate__media-grid > picture[data-type="render"],
   .plate__media-grid > picture[data-type="photo"],
   .plate__media-grid > picture[data-type="collage"] { grid-column: span 12; }
-  .plate__media-grid > picture[data-type="site-plan"] { grid-column: span 8; justify-self: center; }
-  .plate__media-grid > picture[data-type="axon"]      { grid-column: span 6; }
-  .plate__media-grid > picture[data-type="diagram"]   { grid-column: span 4; }
-  .plate__media-grid > picture[data-type="sketch"]    { grid-column: span 3; }
+  .plate__media-grid > picture[data-type="render"]:nth-of-type(even),
+  .plate__media-grid > picture[data-type="photo"]:nth-of-type(even),
+  .plate__media-grid > picture[data-type="collage"]:nth-of-type(even) {
+    grid-column: 2 / span 10;
+  }
+  .plate__media-grid > picture[data-type="site-plan"] { grid-column: 3 / span 8; }
+  .plate__media-grid > picture[data-type="axon"]      { grid-column: span 7; }
+  .plate__media-grid > picture[data-type="axon"]:nth-of-type(2n) { grid-column: 7 / span 6; }
+  .plate__media-grid > picture[data-type="diagram"]   { grid-column: span 6; }
+  .plate__media-grid > picture[data-type="sketch"]    { grid-column: span 4; }
+  /* When a single diagram sits alone, centre it at 6/12 */
+  .plate__media-grid > picture[data-type="diagram"]:only-child { grid-column: 4 / span 6; justify-self: center; }
 }
 
 /* visual treatment per type — a thin frame for abstract drawings, no
@@ -689,7 +746,11 @@ picture.lqip:hover {
   outline: 1px solid var(--border);
   outline-offset: -1px;
 }
-.plate__media-grid > picture[data-type="diagram"] {
+.plate__media-grid > picture[data-type="diagram"],
+.plate__media-grid > picture[data-type="sketch"] {
+  padding: clamp(0.6rem, 1.4vw, 1.2rem);
+}
+.plate__media-grid > picture[data-type="axon"] {
   padding: clamp(0.4rem, 1vw, 0.8rem);
 }
 
