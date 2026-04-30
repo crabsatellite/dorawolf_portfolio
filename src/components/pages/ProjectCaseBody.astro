@@ -40,11 +40,7 @@ if (entry.data.hero) {
               `${base}${entry.data.hero!.replace(/\.[^.]+$/, `-${w}.${fmt}`)} ${w}w`
           )
           .join(", ");
-        heroPreloads.push({
-          type: `image/${fmt}`,
-          srcset,
-          sizes: "100vw",
-        });
+        heroPreloads.push({ type: `image/${fmt}`, srcset, sizes: "100vw" });
       }
     }
   }
@@ -59,9 +55,35 @@ const next = idx < all.length - 1 ? all[idx + 1] : null;
 const titleDisplay =
   lang === "zh" && entry.data.titleZh ? entry.data.titleZh : entry.data.title;
 const subtitle =
-  lang === "zh"
-    ? entry.data.title
-    : entry.data.titleZh;
+  lang === "zh" ? entry.data.title : entry.data.titleZh;
+
+const note = lang === "zh" ? entry.data.noteZh : entry.data.note;
+const noteLabel =
+  lang === "zh" ? "工作室手记" : "Studio note";
+
+// Tiny inline-markdown renderer for *italic* / **bold** within studio notes
+function renderInline(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\*\*([^*]+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*([^*]+?)\*/g, "<em>$1</em>");
+}
+
+const align = entry.data.align ?? "left";
+const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
+
+// Compact meta line — typology · location · role
+const metaItems: string[] = [];
+if (entry.data.typology)
+  metaItems.push(tr(typologyTranslations, lang, entry.data.typology));
+if (entry.data.location)
+  metaItems.push(tr(locationTranslations, lang, entry.data.location));
+if (entry.data.role)
+  metaItems.push(tr(roleTranslations, lang, entry.data.role));
+if (entry.data.status)
+  metaItems.push(tr(statusTranslations, lang, entry.data.status));
 ---
 
 <BaseLayout title={titleDisplay} description={entry.data.summary} lang={lang}>
@@ -78,49 +100,21 @@ const subtitle =
     ))
   }
 
-  <article class="project">
-    <header class="container project__head display-bg-wrap">
-      <span class="display-bg" aria-hidden="true">{entry.data.year}</span>
-      <p class="eyebrow">
-        {t(lang, "case.eyebrow", { year: String(entry.data.year) })}
-        {entry.data.status &&
-          ` · ${tr(statusTranslations, lang, entry.data.status)}`}
-      </p>
-      <h1 class="project__h1">{titleDisplay}</h1>
-      {subtitle && <p class="project__zh">{subtitle}</p>}
-      <div class="project__meta-row">
-        <p class="project__lede">{pickSummary(lang, entry.data)}</p>
-        <dl class="project__meta">
-          {entry.data.dateZh && (
-            <>
-              <dt>{t(lang, "case.meta_date")}</dt>
-              <dd>{entry.data.dateZh}</dd>
-            </>
-          )}
-          {entry.data.location && (
-            <>
-              <dt>{t(lang, "case.meta_location")}</dt>
-              <dd>{tr(locationTranslations, lang, entry.data.location)}</dd>
-            </>
-          )}
-          {entry.data.role && (
-            <>
-              <dt>{t(lang, "case.meta_role")}</dt>
-              <dd>{tr(roleTranslations, lang, entry.data.role)}</dd>
-            </>
-          )}
-          {entry.data.typology && (
-            <>
-              <dt>{t(lang, "case.meta_typology")}</dt>
-              <dd>{tr(typologyTranslations, lang, entry.data.typology)}</dd>
-            </>
-          )}
-        </dl>
+  <article class:list={["case", `case--${align}`]}>
+    <header class="case__head container">
+      <div class="case__head-rail">
+        <span class="case__seq" aria-hidden="true">{orderTwo}</span>
+        <span class="case__rule" aria-hidden="true"></span>
+        <p class="eyebrow case__eyebrow">
+          {t(lang, "case.eyebrow", { year: String(entry.data.year) })}
+        </p>
       </div>
+      <h1 class="case__title">{titleDisplay}</h1>
+      {subtitle && <p class="case__subtitle">{subtitle}</p>}
     </header>
 
     {entry.data.hero && (
-      <figure class="project__hero">
+      <figure class="case__hero">
         <Picture
           src={entry.data.hero}
           alt={`${entry.data.title} — hero`}
@@ -131,27 +125,69 @@ const subtitle =
       </figure>
     )}
 
-    {lang === "en" && (
-      <p class="project__lang-note container">
-        {t(lang, "case.body_note")}
-      </p>
+    {note && (
+      <section class="case__note container">
+        <div class="case__note-inner">
+          <p class="eyebrow case__note-label">{noteLabel}</p>
+          <blockquote class="case__note-text">
+            <p set:html={renderInline(note)} />
+          </blockquote>
+        </div>
+      </section>
     )}
 
-    <section class="project__body">
+    {metaItems.length > 0 && (
+      <aside class="case__meta container">
+        <dl>
+          {entry.data.dateZh && (
+            <div>
+              <dt>{t(lang, "case.meta_date")}</dt>
+              <dd>{entry.data.dateZh}</dd>
+            </div>
+          )}
+          {entry.data.location && (
+            <div>
+              <dt>{t(lang, "case.meta_location")}</dt>
+              <dd>{tr(locationTranslations, lang, entry.data.location)}</dd>
+            </div>
+          )}
+          {entry.data.role && (
+            <div>
+              <dt>{t(lang, "case.meta_role")}</dt>
+              <dd>{tr(roleTranslations, lang, entry.data.role)}</dd>
+            </div>
+          )}
+          {entry.data.typology && (
+            <div>
+              <dt>{t(lang, "case.meta_typology")}</dt>
+              <dd>{tr(typologyTranslations, lang, entry.data.typology)}</dd>
+            </div>
+          )}
+        </dl>
+      </aside>
+    )}
+
+    <section class="case__body">
       <div class="prose">
         <Content />
       </div>
     </section>
 
-    <nav class="container project__nav" aria-label="Project navigation">
-      <a href={`${langPrefix}/projects`} class="project__back">
+    {lang === "en" && (
+      <p class="case__lang-note container">
+        {t(lang, "case.body_note")}
+      </p>
+    )}
+
+    <nav class="container case__nav" aria-label="Project navigation">
+      <a href={`${langPrefix}/projects`} class="case__back">
         {t(lang, "case.back")}
       </a>
-      <div class="project__pager">
+      <div class="case__pager">
         {prev && (
           <a
             href={`${langPrefix}/projects/${prev.slug}`}
-            class="project__pager-item"
+            class="case__pager-item"
           >
             <span class="eyebrow">{t(lang, "case.prev")}</span>
             <span>
@@ -164,7 +200,7 @@ const subtitle =
         {next && (
           <a
             href={`${langPrefix}/projects/${next.slug}`}
-            class="project__pager-item project__pager-item--right"
+            class="case__pager-item case__pager-item--right"
           >
             <span class="eyebrow">{t(lang, "case.next")}</span>
             <span>
@@ -180,100 +216,193 @@ const subtitle =
 </BaseLayout>
 
 <style>
-  .project__head {
-    padding-top: var(--space-6);
-    padding-bottom: var(--space-4);
-    overflow: hidden;
+  /* ============================================================
+     Project case study — independent layout, not the plate
+     template. Each project's `align` (left | right) flips the
+     studio-note column and title alignment so the two halves
+     of the case set carry a different center of gravity.
+     ============================================================ */
+
+  .case {
+    --case-pad-top: var(--space-6);
   }
-  .project__head .display-bg {
-    top: -0.05em;
-    color: var(--bg-elevated);
-    opacity: 1;
-    mix-blend-mode: multiply;
+
+  .case__head {
+    padding-top: var(--case-pad-top);
+    padding-bottom: var(--space-3);
   }
-  @media (prefers-color-scheme: light) {
-    .project__head .display-bg {
-      color: #eceadf;
-    }
-  }
-  .project__h1 {
-    margin-top: 0.5rem;
-    margin-bottom: 0.4rem;
-  }
-  .project__zh {
-    color: var(--fg-muted);
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    margin: 0 0 var(--space-3);
-  }
-  .project__meta-row {
+  .case__head-rail {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-3);
-    border-top: 1px solid var(--border);
-    padding-top: var(--space-3);
+    grid-template-columns: 3.5rem 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--border);
   }
-  @media (min-width: 880px) {
-    .project__meta-row {
-      grid-template-columns: 1.4fr 1fr;
-      gap: var(--space-4);
-      align-items: start;
-    }
-  }
-  .project__lede {
-    font-family: var(--font-display);
-    font-size: clamp(1.1rem, 1.55vw, 1.4rem);
-    line-height: var(--leading-snug);
-    max-width: 56ch;
-    margin: 0;
-  }
-  .project__meta {
-    display: grid;
-    grid-template-columns: 7rem 1fr;
-    column-gap: 1rem;
-    row-gap: 0.5rem;
-    margin: 0;
-    font-size: 0.92rem;
-  }
-  .project__meta dt {
+  .case__seq {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--fg-muted);
-    padding-top: 0.18rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    color: var(--fg-subtle);
+    font-feature-settings: "tnum" 1;
   }
-  .project__meta dd {
+  .case__rule {
+    height: 1px;
+    background: var(--border);
+  }
+  .case__eyebrow {
     margin: 0;
+    text-align: right;
   }
-  .project__hero {
+
+  .case__title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.6rem, 8vw, 6.6rem);
+    line-height: 0.96;
+    letter-spacing: -0.028em;
+    margin: var(--space-3) 0 0.4rem;
+    max-width: 18ch;
+  }
+  .case--right .case__title {
+    margin-left: auto;
+    text-align: right;
+  }
+  .case__subtitle {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--fg-muted);
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    margin: 0 0 var(--space-3);
+    letter-spacing: 0.005em;
+  }
+  .case--right .case__subtitle {
+    text-align: right;
+  }
+
+  .case__hero {
     margin: var(--space-3) 0 var(--space-5);
     padding: 0;
   }
-  .project__hero :global(picture),
-  .project__hero :global(img) {
+  .case__hero :global(picture),
+  .case__hero :global(img) {
     width: 100%;
     height: auto;
     display: block;
   }
-  .project__lang-note {
+  @media (min-width: 1024px) {
+    .case__hero :global(picture),
+    .case__hero :global(img) {
+      max-height: 84vh;
+      object-fit: cover;
+    }
+  }
+
+  /* ----- Studio note ------------------------------------------------- */
+  .case__note {
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-5);
+  }
+  .case__note-inner {
+    position: relative;
+    max-width: 64ch;
+  }
+  .case--right .case__note-inner {
+    margin-left: auto;
+  }
+  .case__note-label {
+    margin: 0 0 0.7rem;
+  }
+  .case__note-text {
+    margin: 0;
+    padding: 0 0 0 0.4rem;
+    border: 0;
+    position: relative;
+  }
+  .case__note-text::before {
+    content: "“";
+    position: absolute;
+    top: -0.45em;
+    left: -0.7em;
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 8vw, 7rem);
+    line-height: 1;
+    color: var(--border);
+    user-select: none;
+    pointer-events: none;
+  }
+  .case--right .case__note-text::before {
+    left: auto;
+    right: -0.7em;
+  }
+  .case__note-text p {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.1vw, 1.85rem);
+    line-height: 1.42;
+    letter-spacing: -0.005em;
+    color: var(--fg);
+    margin: 0;
+    max-width: none;
+  }
+  .case__note-text :global(em) {
+    font-style: italic;
+    color: var(--fg);
+    font-weight: 400;
+    border-bottom: 1px solid var(--border-strong);
+    padding-bottom: 0.04em;
+  }
+  .case__note-text :global(strong) {
+    font-weight: 500;
+  }
+  :global(html[lang^="zh"]) .case__note-text p {
+    line-height: 1.55;
+    letter-spacing: 0.01em;
+  }
+
+  /* ----- Compact meta strip ------------------------------------------ */
+  .case__meta {
+    padding-top: var(--space-2);
+    padding-bottom: var(--space-3);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .case__meta dl {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem var(--space-3);
+    margin: 0;
+  }
+  .case__meta dl > div {
+    display: grid;
+    gap: 0.2rem;
+  }
+  .case__meta dt {
     font-family: var(--font-mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
-    color: var(--fg-muted);
-    padding-bottom: var(--space-2);
-    text-align: center;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-subtle);
+    margin: 0;
+  }
+  .case__meta dd {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--fg);
+    margin: 0;
   }
 
-  .project__body {
-    padding: var(--space-3) 0 var(--space-4);
+  /* ----- Body — magazine plates (kept from rehype output) ------------ */
+  .case__body {
+    padding: var(--space-4) 0 var(--space-4);
   }
-
-  /* ---------- Magazine plate layout ---------- */
+  .prose {
+    max-width: 760px;
+    margin: 0 auto;
+  }
   .prose :global(.plate) {
     max-width: var(--max-w);
     margin: 0 auto;
-    padding: var(--space-5) var(--gutter);
+    padding: var(--space-4) var(--gutter);
     border-top: 1px solid var(--border);
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -326,7 +455,6 @@ const subtitle =
       grid-row: 1;
     }
   }
-
   .prose :global(.plate__text h2) {
     font-family: var(--font-display);
     font-weight: 400;
@@ -334,6 +462,12 @@ const subtitle =
     line-height: var(--leading-tight);
     letter-spacing: -0.018em;
     margin: 0 0 var(--space-2);
+    color: var(--fg);
+  }
+  /* Each h2 starts with a tiny mono prefix that fades the section number,
+     so the body reads as numbered chapters rather than bare list items. */
+  .prose :global(.plate__text h2)::before {
+    content: "";
   }
   .prose :global(.plate__text p) {
     margin: 0 0 1rem;
@@ -350,42 +484,55 @@ const subtitle =
     background: var(--bg-elevated);
   }
 
-  .project__nav {
+  /* ----- Lang note + nav --------------------------------------------- */
+  .case__lang-note {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.06em;
+    color: var(--fg-subtle);
+    text-align: center;
+    padding: var(--space-2) 0;
+    text-transform: uppercase;
+  }
+  .case__nav {
     border-top: 1px solid var(--border);
     padding-top: var(--space-3);
     padding-bottom: var(--space-5);
     display: grid;
     gap: var(--space-3);
   }
-  .project__back {
+  .case__back {
     font-family: var(--font-mono);
     font-size: 0.78rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--fg-muted);
   }
-  .project__pager {
+  .case__back:hover {
+    color: var(--fg);
+  }
+  .case__pager {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-3);
   }
   @media (min-width: 720px) {
-    .project__pager {
+    .case__pager {
       grid-template-columns: 1fr 1fr;
     }
   }
-  .project__pager-item {
+  .case__pager-item {
     display: grid;
     gap: 0.3rem;
     border-top: 1px solid var(--border);
     padding-top: var(--space-2);
     color: var(--fg);
   }
-  .project__pager-item span:nth-child(2) {
+  .case__pager-item span:nth-child(2) {
     font-family: var(--font-display);
     font-size: 1.1rem;
   }
-  .project__pager-item--right {
+  .case__pager-item--right {
     text-align: right;
   }
 </style>

@@ -11,6 +11,9 @@ order: 2
 hero: "/projects/gbkzzx/_31.jpg"
 summary: "A combined dispatch and civic-facing volume on the Sixin axis, reconciling 24/7 operational requirements with the legibility owed to a transit landmark on the Yangtze."
 summaryZh: "武汉经济技术开发区位于湖北省武汉市西南，最初为承载中法合资神龙汽车项目而成立，1991年5月动工兴建，1993年4月经国务院批准为国家级经济技术开发区，2013年整体托管汉南区，探索出了一条功能区整体托管行政区、“区区融合”的发展新路径。截至2021年，武汉经开区辖区面积489.7平方公里，下辖7个街道、7大园区，常住人口61.8万人，形成了汽车及汽车零部件、电子电器、食品饮料等主导产业，年产整车近百万辆，工业产值突破3000亿元，是武汉经济发展的主战场、工业的顶梁柱，被誉为“中国车谷”。"
+align: "right"
+noteZh: "四新片区的滨江,会展、商业、超高层与轨道交通在此叠合。一座调度控制中心既要藏身,也要露面——它的后台是 24 小时不眠的运营,它的前台是路过此地的城市印象。我们用一条贯穿南北的*水平基准*接住整个体量,把运营核心收进背江一侧的塔体,把面向汉厅与上盖的立面让给一组*层叠抬升*的体块。基础设施不必沉默,但它应该说得*冷静*。"
+note: "At the Sixin riverbank, exhibition, retail, towers and metro overlap. A dispatch and control centre has to hide and to face the city at once — its backstage is a 24-hour operation, its frontstage is a passing impression of the river. We pull a single *horizontal datum* through the length of the site, gather the operational core into the river-facing tower, and step the public mass up toward the convention hall in *layered tiers*. Infrastructure does not have to be silent, but it should speak *quietly*."
 ---
 
 武汉经济技术开发区位于湖北省武汉市西南，最初为承载中法合资神龙汽车项目而成立，1991年5月动工兴建，1993年4月经国务院批准为国家级经济技术开发区，2013年整体托管汉南区，探索出了一条功能区整体托管行政区、“区区融合”的发展新路径。截至2021年，武汉经开区辖区面积489.7平方公里，下辖7个街道、7大园区，常住人口61.8万人，形成了汽车及汽车零部件、电子电器、食品饮料等主导产业，年产整车近百万辆，工业产值突破3000亿元，是武汉经济发展的主战场、工业的顶梁柱，被誉为“中国车谷”。

@@ -11,6 +11,9 @@ order: 5
 hero: "/projects/waeq/_1-1.jpg"
 summary: "A second-phase masterplan extending the National Cybersecurity Center campus, balancing operational secrecy with a continuous public datum at the urban edge."
 summaryZh: "在直径350米的苹果总部花园里，由设计总监乔纳森·艾维设计的彩虹色舞台，是园区开幕式上最亮眼的装置。"
+align: "left"
+noteZh: "一期已经在那里——二期的工作,首先是*接住*。我们不试图与一期对话,而是把它当作既定的现实——延续它的格网、它的层高节奏、它的进退。新的二期为研发与孵化提供更多落地面积,同时为整个园区留出一条贯穿的*公共南北轴*。基础设施类项目的设计,常常是『不显眼地把对的事做对』。"
+note: "Phase I was already there — Phase II's first job was to *carry on*. Rather than enter a dialogue, we took Phase I as given: its grid, its rhythm of floors, its setbacks. The new phase opens more ground for research and incubation while leaving a continuous *public north–south axis* through the campus. Infrastructure work is often a matter of doing the right thing without being noticed."
 ---
 
 设计概念

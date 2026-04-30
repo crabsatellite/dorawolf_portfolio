@@ -10,6 +10,9 @@ order: 4
 hero: "/projects/ggzszx/____05.jpg"
 summary: "An exhibition and visitor-facing volume in Wuhan's Optics Valley district; two competing schemes explore how to give a culturally legible face to a landlocked civic site."
 summaryZh: "在地:光谷展示中心需要如何改造？"
+align: "right"
+noteZh: "光谷的城市纹理还在生长——地铁、园区、住区,各自言语,缺一个公共停顿处。展示中心是一个城市的*客厅*。我们提了两个方案:一个外向,以连续的水平体量沿街展开,把内部活动暴露给路过的人;一个内敛,以围合的庭院聚拢日常使用,留一道窗给路人偷看。两种姿态,一个问题——光谷需要什么样的客厅?"
+note: "Optic Valley's urban grain is still growing — metro, parks, housing, each speaking its own language, missing a public pause. The exhibition centre is meant to be a *city's living room*. We proposed two schemes: one outward-facing, with a continuous horizontal volume along the street, the interior exposed to passers-by; one inward, with a courtyard that gathers daily use and a single window left for the passing eye. Two postures, one question — what kind of living room does Optic Valley need?"
 ---
 
 ## 2021-12
