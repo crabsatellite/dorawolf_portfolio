@@ -606,6 +606,72 @@ picture.lqip:hover {
   outline-color: var(--fg);
 }
 
+/* ---- Image type-aware sizing inside plate__media ----------------------
+   Each <picture> in a project body now carries data-type (set by the
+   rehype-image-types plugin from data/image-classifications/<slug>.json)
+   and optionally data-caption. Different image types want different
+   visual weights — a hand-drawn sketch should not fill the full plate
+   column, a rendering should. */
+
+/* default — full width inside the column */
+.plate__media picture.lqip {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+/* sketches: small, centred, with a generous breathing room */
+.plate__media picture.lqip[data-type="sketch"] {
+  max-width: min(72%, 460px);
+}
+.plate__media picture.lqip[data-type="sketch"] > img {
+  background: var(--bg-elevated);
+}
+
+/* diagrams: medium, light surface so abstract drawings have a frame */
+.plate__media picture.lqip[data-type="diagram"] {
+  max-width: 86%;
+  background: var(--bg-elevated);
+  padding: clamp(0.5rem, 1.5vw, 1rem);
+  outline: 1px solid var(--border);
+  outline-offset: -1px;
+}
+
+/* axonometric: similar treatment to diagrams but a bit larger */
+.plate__media picture.lqip[data-type="axon"] {
+  max-width: 90%;
+  background: var(--bg-elevated);
+}
+
+/* site plans: full-width, neutral surface */
+.plate__media picture.lqip[data-type="site-plan"] {
+  background: var(--bg-elevated);
+}
+
+/* renderings, photos, collages: full bleed, no surrounding chrome */
+.plate__media picture.lqip[data-type="render"],
+.plate__media picture.lqip[data-type="photo"],
+.plate__media picture.lqip[data-type="collage"] {
+  width: 100%;
+}
+
+/* If the classification provides a Chinese caption, render it under
+   the image as a tiny mono uppercase label. Doesn't replace any
+   prose — it just labels the image type for orientation. */
+.plate__media picture.lqip[data-caption]::after {
+  content: attr(data-caption);
+  display: block;
+  margin-top: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--fg-muted);
+  text-align: left;
+}
+.case--right .plate__media picture.lqip[data-caption]::after {
+  text-align: right;
+}
+
 /* ---- Project-list cursor-follow preview --------------------------------
    Hovering a row with [data-preview] shows a small floating image that
    tracks the cursor — Snøhetta / SANAA idiom. Pointer events stay off

@@ -54,6 +54,8 @@ const strings = {
     "projects.read": "进入",
 
     "case.eyebrow": "作品 · {year}",
+    "case.attribution":
+      "工作室早期作品 · 中信建筑设计研究总院 · 2021 — 2023",
     "case.lede_zh_label": "原文",
     "case.meta_date": "日期",
     "case.meta_location": "坐标",
@@ -157,6 +159,8 @@ const strings = {
     "projects.read": "Open",
 
     "case.eyebrow": "Work · {year}",
+    "case.attribution":
+      "Early studio work · realised at China Architecture Design & Research Group · 2021 — 2023",
     "case.lede_zh_label": "Original text",
     "case.meta_date": "Date",
     "case.meta_location": "Location",
