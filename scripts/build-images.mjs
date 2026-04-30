@@ -1,6 +1,6 @@
 /**
  * Pre-build step: walk public/{projects,research}/ for jpg/png originals and
- * emit AVIF + WebP variants at 800w / 1600w / 2400w. Writes a manifest at
+ * emit AVIF + WebP variants at SIZES below. Writes a manifest at
  * public/.image-manifest.json that the rehype-picture plugin reads at build
  * time to wrap markdown <img> with proper <picture> srcsets.
  *
@@ -23,8 +23,9 @@ const QUALITY = { avif: 50, webp: 78 };
 const AVIF_EFFORT = 3;
 // LQIP (low-quality image placeholder) width — emitted as a base64 AVIF
 // data URI in the manifest; used as a CSS background to fade in real
-// images.
-const LQIP_WIDTH = 24;
+// images. 16w halves the base64 weight in HTML vs 24w with negligible
+// perceptual difference once blurred.
+const LQIP_WIDTH = 16;
 const SUFFIX_RE = /-(800|1600|2400)\.(avif|webp)$/i;
 const ORIGINAL_RE = /\.(jpe?g|png)$/i;
 

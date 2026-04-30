@@ -75,6 +75,12 @@ const strings = {
     "research.back": "← 全部研究",
     "research.note":
       "未列入此处的工具——那些看起来惊艳却很少在实战方案中使用的——并不获得专属页面。工作室更看重一套小而精的工具。",
+    "research.case_eyebrow": "研究",
+    "research.attribution": "工作室长期研究 · DoraWolf 工作室",
+    "research.prev": "上一篇",
+    "research.next": "下一篇",
+    "research.body_note": "正文为中文。",
+    "research.note_label": "工作室手记",
 
     "about.title": "关于",
     "about.eyebrow": "关于",
@@ -181,6 +187,13 @@ const strings = {
     "research.back": "← All research",
     "research.note":
       "Tools that look impressive but are rarely used in real schemes don't earn a page. The studio prefers a small kit, used well.",
+    "research.case_eyebrow": "Research",
+    "research.attribution": "Long-running studio research · DoraWolf Studio",
+    "research.prev": "Previous",
+    "research.next": "Next",
+    "research.body_note":
+      "Visual study. The full prose version is on the Chinese site.",
+    "research.note_label": "Studio note",
 
     "about.title": "About",
     "about.eyebrow": "About",

@@ -47,4 +47,13 @@ const projectsEn = defineCollection({
   }),
 });
 
-export const collections = { projects, research, projectsEn };
+// English-locale bodies for the research studies. Same slug as the
+// canonical `research` entry; only the markdown body is translated.
+const researchEn = defineCollection({
+  type: "content",
+  schema: z.object({
+    slug: z.string().optional(),
+  }),
+});
+
+export const collections = { projects, research, projectsEn, researchEn };

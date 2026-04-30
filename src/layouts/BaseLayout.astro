@@ -50,6 +50,49 @@ const htmlLang = lang === "en" ? "en" : "zh-Hans-CN";
       // Mark JS as available so the reveal/cursor/fade-in styles take effect.
       document.documentElement.classList.remove("no-js");
       document.documentElement.classList.add("html-js");
+
+      // -------------------------------------------------------------------
+      // Connection-aware image policy.
+      //
+      // Runs in <head> BEFORE the body so CSS that keys off slow-net /
+      // save-data classes paints the right placeholder from the first
+      // frame (no FOUC). Reads the Network Information API where
+      // available and falls back to "fast" when unsupported.
+      //
+      // We also expose the policy globally so the body script that
+      // patches <picture><source sizes=…> for progressive-size loading
+      // can reuse the decision without re-reading navigator.connection.
+      // -------------------------------------------------------------------
+      (function () {
+        var html = document.documentElement;
+        var c =
+          navigator.connection ||
+          navigator.mozConnection ||
+          navigator.webkitConnection ||
+          null;
+
+        var effective = c && c.effectiveType ? String(c.effectiveType) : "4g";
+        var saveData = !!(c && c.saveData);
+        var downlink = c && typeof c.downlink === "number" ? c.downlink : null;
+        var slow =
+          saveData ||
+          effective === "slow-2g" ||
+          effective === "2g" ||
+          effective === "3g" ||
+          (downlink !== null && downlink > 0 && downlink < 1.0);
+
+        html.setAttribute("data-effective-type", effective);
+        if (saveData) html.classList.add("save-data");
+        html.classList.add(slow ? "slow-net" : "fast-net");
+
+        // Stash for the body-end <source sizes> patcher.
+        window.__netPolicy = {
+          slow: slow,
+          saveData: saveData,
+          effectiveType: effective,
+          downlink: downlink,
+        };
+      })();
     </script>
   </head>
   <body>
@@ -74,6 +117,33 @@ const htmlLang = lang === "en" ? "en" : "zh-Hans-CN";
     </dialog>
 
     <script is:inline>
+      // ----- Connection-aware <source sizes> patch -------------------------
+      // For slow networks / Save-Data, narrow the `sizes` hint on every
+      // <picture><source> so the browser picks a smaller variant from
+      // the existing srcset. This runs synchronously at the end of body
+      // parse, before any lazy <img> enters the viewport, so the
+      // preload-scanner that would otherwise have requested a 2000w
+      // variant on a phone instead picks the 400w / 800w one.
+      //
+      // Eager hero images may have already begun fetching by the time
+      // this runs — that is acceptable (the hero is full-bleed and
+      // wants the larger variant anyway).
+      (function () {
+        var policy = window.__netPolicy || { slow: false, saveData: false };
+        if (!policy.slow && !policy.saveData) return;
+        var slowSizes = policy.saveData ? "400px" : "480px";
+        var sources = document.querySelectorAll("picture.lqip > source");
+        for (var i = 0; i < sources.length; i++) {
+          sources[i].setAttribute("sizes", slowSizes);
+        }
+        // Also tighten the sizes attr on the fallback <img> (some
+        // browsers use it when no <source> matches).
+        var imgs = document.querySelectorAll("picture.lqip > img[srcset]");
+        for (var j = 0; j < imgs.length; j++) {
+          imgs[j].setAttribute("sizes", slowSizes);
+        }
+      })();
+
       // ----- Image fade-in -------------------------------------------------
       (function () {
         var imgs = document.querySelectorAll("picture.lqip > img");

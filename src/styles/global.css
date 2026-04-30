@@ -159,6 +159,24 @@ picture.lqip > img.is-loaded {
   opacity: 1;
 }
 
+/* When the user has opted into reduced-data (browser flag or system
+   setting), drop the inline base64 LQIP background so we don't pay the
+   data cost of decoding it. The image still fades in over the page bg. */
+@media (prefers-reduced-data: reduce) {
+  picture.lqip {
+    background-image: none !important;
+  }
+}
+html.save-data picture.lqip {
+  background-image: none;
+}
+/* On slow networks the placeholder is what the user sees longest, so we
+   keep it — but we remove the fade-in transition to avoid an extra
+   compositing layer while the device is busy decoding the real image. */
+html.slow-net picture.lqip > img {
+  transition: opacity 240ms linear;
+}
+
 /* Multi-image grid inside a plate's media column. When the column has 4
    or more pictures we lay them out 2-up on tablet and beyond — keeps
    plate 8 (9 images) from becoming a single tall stack. */

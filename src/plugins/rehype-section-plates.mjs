@@ -84,6 +84,7 @@ export default function rehypeSectionPlates(_opts = {}) {
       }
     }
 
+    let plateIndex = 0;
     while (cursor < kids.length) {
       const sectionNodes = [kids[cursor]];
       cursor++;
@@ -107,15 +108,43 @@ export default function rehypeSectionPlates(_opts = {}) {
         }
       }
 
+      // Promote the first 1–2 pictures of the FIRST plate (the one
+      // sitting just below the hero) to eager-load with high
+      // fetchpriority. Subsequent plates keep the default lazy behaviour
+      // so we don't blow the budget on a long case page.
+      if (plateIndex === 0) {
+        promoteAboveFold(mediaNodes, 2);
+      }
+
       const className =
         mediaNodes.length === 0 ? "plate plate--text-only" : "plate";
       newChildren.push(
         plate(className, { text: textNodes, media: mediaNodes })
       );
+      plateIndex++;
     }
 
     tree.children = newChildren;
   };
+}
+
+function promoteAboveFold(mediaNodes, count) {
+  let promoted = 0;
+  for (const node of mediaNodes) {
+    if (promoted >= count) break;
+    let img = null;
+    if (isPicture(node)) {
+      img = (node.children || []).find(
+        (c) => c && c.type === "element" && c.tagName === "img"
+      );
+    } else if (isImg(node)) {
+      img = node;
+    }
+    if (!img || !img.properties) continue;
+    img.properties.loading = "eager";
+    img.properties.fetchpriority = "high";
+    promoted++;
+  }
 }
 
 function plate(className, { text, media }) {
