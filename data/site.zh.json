@@ -1,9 +1,9 @@
 {
-  "$comment": "中文版站点信息。修改后 push,网站 30 秒内重建。英文版见 site.en.json。",
+  "$comment": "中文版站点信息。修改后 push，网站 30 秒内重建。英文版见 site.en.json。",
   "name": "DoraWolf",
   "fullName": "付清源",
   "studioName": "DoraWolf 工作室",
-  "tagline": "建筑围绕场地、气候和住在里面的人。",
+  "tagline": "我们关注场地、气候，还有住在里面的人。",
   "yearRange": "工作室 · 武汉 · 创立于 2023",
   "location": "中国 · 武汉",
   "email": "949505300@qq.com",

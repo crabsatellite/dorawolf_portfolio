@@ -24,9 +24,9 @@ const strings = {
     "nav.lang_switch_aria": "切换语言",
 
     "home.eyebrow": "{range}",
-    "home.hero": ["建筑围绕", "场地", "气候", "和住在里面的人"],
+    "home.hero": ["我们关注", "场地", "气候", "还有住在里面的人"],
     "home.lede":
-      "DoraWolf 工作室在武汉,主要做教育、基础设施和公共建筑。每个项目先看场地的地形、气候和周边,再用 Sketchup、Grasshopper、Rhino、Ladybug 把方案画出来。",
+      "DoraWolf 工作室在武汉，主要做教育、基础设施和公共建筑。每个项目先看场地的地形、气候和周边，再用 Sketchup、Grasshopper、Rhino、Ladybug 把方案画出来。",
     "home.cta_view_projects": "进入作品",
     "home.cta_about": "关于工作室",
     "home.section_index_eyebrow": "作品",
@@ -36,13 +36,13 @@ const strings = {
     "home.section_threads_title": "三条线索",
     "home.thread_1_title": "从场地开始",
     "home.thread_1_body":
-      "形态来自场地里现有的东西:地形、常年风向、人已经在走的路。先把场地看明白,再画。",
+      "形态从场地里已经有的东西出发，比如地形、常年风向、现有的步行路径。我们会先把场地看清楚再画。",
     "home.thread_2_title": "几样常用工具",
     "home.thread_2_body":
-      "Sketchup 和 Grasshopper 工作室用得最多,Rhino 画细节,Ladybug 在前期估算日照和能耗。设计的工作还是要靠自己。",
+      "Sketchup 和 Grasshopper 工作室用得最多，Rhino 画细节，Ladybug 在前期估算日照和能耗。一般是先把设计想好，再用这些工具画出来。",
     "home.thread_3_title": "面向街道",
     "home.thread_3_body":
-      "公共建筑对着街道,要让人一眼看懂。外面尽量简单,复杂的部分留在里面。",
+      "公共建筑对着街道，要让人一眼看懂。外面做得简单，复杂的部分放在里面。",
     "home.featured_eyebrow": "首件 · {year}",
     "home.featured_cta": "进入",
 
@@ -68,7 +68,7 @@ const strings = {
 
     "research.title": "研究",
     "research.eyebrow": "研究",
-    "research.h1": ["工具是", "器具", ",不是设计本身。"],
+    "research.h1": ["工具是", "器具", "，不是设计本身。"],
     "research.lede":
       "计算工具的价值在于让工作室能更诚实、更高效地探索更多可能。Sketchup 与 Grasshopper 两条长期研究合集于此。",
     "research.read": "阅读研究",
@@ -99,7 +99,7 @@ const strings = {
     "timeline.eyebrow": "起点",
     "timeline.h1": ["工作室之前", "与之后。"],
     "timeline.lede":
-      "两段时期串起目前这条线索:中信武汉分院的院所年(2021 — 2023)与之后独立工作室的实践。",
+      "两段时期串起目前这条线索：中信武汉分院的院所年(2021 — 2023)与之后独立工作室的实践。",
 
     "footer.contact": "联系",
     "footer.studio": "工作室",
@@ -123,13 +123,13 @@ const strings = {
 
     "home.eyebrow": "{range}",
     "home.hero": [
-      "Made for the",
+      "We focus on",
       "site",
       "climate",
-      "and the people who use it.",
+      "and the people who use the building.",
     ],
     "home.lede":
-      "DoraWolf Studio is based in {location}. The studio works on education, infrastructure, and public buildings. Each project starts on the site: terrain, climate, what's around it. We draw in Sketchup, Grasshopper, Rhino, and Ladybug.",
+      "DoraWolf Studio is based in {location} and works on education, infrastructure, and public buildings. Every project starts from the terrain, climate, and surroundings of the site. We draw in Sketchup, Grasshopper, Rhino, and Ladybug.",
     "home.cta_view_projects": "View projects",
     "home.cta_about": "About the studio",
     "home.section_index_eyebrow": "Works",
@@ -139,13 +139,13 @@ const strings = {
     "home.section_threads_title": "Three threads",
     "home.thread_1_title": "Start from the site",
     "home.thread_1_body":
-      "The form comes from what is already there: terrain, prevailing wind, the paths people walk. We look at the site carefully before we draw.",
+      "The form starts from what is already on the site. That includes terrain, prevailing wind, and paths people already walk. We look at the site carefully before drawing.",
     "home.thread_2_title": "A few regular tools",
     "home.thread_2_body":
-      "Sketchup and Grasshopper are what we use most. Rhino is for detail, Ladybug for early daylight and energy estimates. The design work still has to be done by us.",
-    "home.thread_3_title": "Facing the street",
+      "Sketchup and Grasshopper are what we use most. Rhino is for detail, Ladybug for early daylight and energy estimates. We work out the design first and then pick up the tools.",
+    "home.thread_3_title": "Toward the street",
     "home.thread_3_body":
-      "A public building should be easy to understand from the street. We keep the outside as a simple shape and put the more complicated parts inside.",
+      "A public building should look simple from the street. We keep the outside simple and put the more complicated parts inside.",
     "home.featured_eyebrow": "Featured · {year}",
     "home.featured_cta": "Open",
 

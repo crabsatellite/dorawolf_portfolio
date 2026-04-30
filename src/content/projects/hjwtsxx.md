@@ -9,9 +9,9 @@ status: "schematic"
 order: 6
 hero: "/projects/hjwtsxx/_23.jpg"
 summary: "A K-12 campus in the dense Qiaokou district treated as a network of stacked grounds — primary, secondary, sport, and community — with a raised carpet of green landscape running through."
-summaryZh: "硚口的高密度把场地推到角落——用地碎,体量必须收。我们把 200 米操场抬起来,让出地面步行连廊,幼小初高在垂直方向层叠铺开。"
+summaryZh: "硚口的高密度把场地推到角落——用地碎，体量必须收。我们把 200 米操场抬起来，让出地面步行连廊，幼小初高在垂直方向层叠铺开。"
 align: "right"
-noteZh: "硚口的高密度——南侧加油站、东侧文体公园、北侧住区——把场地推到一个角落里。*用地碎,体量必须收*。我们尝试了四种操场布局,最终把它抬起来——架空的 200 米操场,脚下让出步行连廊,再把幼小初高在垂直方向层叠铺开。江湾绿毯,云顶书屋——这个项目名,既是修辞,也是结构。"
+noteZh: "硚口的高密度——南侧加油站、东侧文体公园、北侧住区——把场地推到一个角落里。*用地碎，体量必须收*。我们尝试了四种操场布局，最终把它抬起来——架空的 200 米操场，脚下让出步行连廊，再把幼小初高在垂直方向层叠铺开。江湾绿毯，云顶书屋——这个项目名，既是修辞，也是结构。"
 note: "Qiaokou's density — gas station to the south, civic park to the east, residential blocks to the north — pushes the site into a corner. *When the ground is fragmented, the volume must contract.* We tried four layouts for the running track and lifted it: a 200-metre raised field, with the school's pedestrian walks freed underneath, K-12 stacked vertically along an L-shaped *learning street*. *A green carpet over the riverbank, a library above the clouds* — the project's name is both rhetoric and structure."
 ---
 
