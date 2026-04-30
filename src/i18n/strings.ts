@@ -169,7 +169,8 @@ const strings = {
     "case.back": "← All works",
     "case.prev": "Previous",
     "case.next": "Next",
-    "case.body_note": "The case-study text below is in Chinese.",
+    "case.body_note":
+      "Visual case study. The full prose version is on the Chinese site.",
 
     "research.title": "Research",
     "research.eyebrow": "Research",

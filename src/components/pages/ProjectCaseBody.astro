@@ -110,7 +110,6 @@ if (entry.data.status)
         </p>
       </div>
       <h1 class="case__title">{titleDisplay}</h1>
-      {subtitle && <p class="case__subtitle">{subtitle}</p>}
       <p class="case__attribution">{t(lang, "case.attribution")}</p>
     </header>
 
@@ -168,7 +167,7 @@ if (entry.data.status)
       </aside>
     )}
 
-    <section class="case__body">
+    <section class:list={["case__body", lang === "en" && "case__body--visual"]}>
       <div class="prose">
         <Content />
       </div>

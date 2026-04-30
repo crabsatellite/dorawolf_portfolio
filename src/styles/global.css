@@ -732,53 +732,63 @@ picture.lqip:hover {
   .plate__media-grid > picture[data-type="diagram"]:only-child { grid-column: 4 / span 6; justify-self: center; }
 }
 
-/* visual treatment per type — a thin frame for abstract drawings, no
-   chrome for renders/photos */
+/* Visual treatment per type — flat, no chrome.
+   Renders, photos, and site-plans sit on the cream directly. Abstract
+   drawings get a soft elevated surface but NO outline, so the page
+   reads as one continuous paper rather than a wall of framed posters. */
 .plate__media-grid > picture {
   width: 100%;
   margin: 0;
 }
 .plate__media-grid > picture[data-type="diagram"],
 .plate__media-grid > picture[data-type="axon"],
-.plate__media-grid > picture[data-type="sketch"],
-.plate__media-grid > picture[data-type="site-plan"] {
-  background: var(--bg-elevated);
-  outline: 1px solid var(--border);
-  outline-offset: -1px;
-}
-.plate__media-grid > picture[data-type="diagram"],
 .plate__media-grid > picture[data-type="sketch"] {
-  padding: clamp(0.6rem, 1.4vw, 1.2rem);
-}
-.plate__media-grid > picture[data-type="axon"] {
-  padding: clamp(0.4rem, 1vw, 0.8rem);
+  background: var(--bg-elevated);
+  padding: clamp(0.4rem, 0.9vw, 0.8rem);
 }
 
-/* image caption — tiny mono uppercase label under each picture, locale-
-   aware. Use captionEn on English pages, captionZh on Chinese pages. */
+/* Hide the mono uppercase caption labels — they were adding visual
+   noise and breaking the cohesion the user asked for. The data-caption
+   attrs stay in the DOM (tooltips / accessibility / future use). */
 .plate__media-grid > picture[data-caption-zh]::after,
 .plate__media-grid > picture[data-caption-en]::after {
-  display: block;
-  margin-top: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  color: var(--fg-muted);
-  text-align: left;
-  font-feature-settings: "tnum" 1;
+  display: none;
 }
-:global(html[lang^="zh"]) .plate__media-grid > picture[data-caption-zh]::after {
-  content: attr(data-caption-zh);
+
+/* Tighten the gap between paired drawings so they read as one
+   horizontal study, not two posters with a gulf between them. */
+@media (min-width: 720px) {
+  .plate__media-grid {
+    gap: clamp(0.6rem, 1vw, 1.1rem);
+  }
 }
-:global(html[lang^="en"]) .plate__media-grid > picture[data-caption-en]::after {
-  content: attr(data-caption-en);
-  text-transform: uppercase;
-}
-/* Fallback when only zh is present */
-:global(html[lang^="en"])
+
+/* First render / photo of a section breaks out of the container to
+   the full viewport width — gives each chapter one big editorial
+   moment instead of every image staying inside the same column. */
+@media (min-width: 1024px) {
   .plate__media-grid
-  > picture[data-caption-zh]:not([data-caption-en])::after {
-  content: attr(data-caption-zh);
+    > picture[data-type="render"]:first-of-type,
+  .plate__media-grid
+    > picture[data-type="photo"]:first-of-type {
+    grid-column: 1 / -1;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* English locale: hide the Chinese prose plates inside case bodies, so
+   EN visitors see only the visual case study (hero + studio note +
+   image grids). The lang note tells them the prose is in Chinese. */
+.case__body--visual .prose .plate__intro,
+.case__body--visual .prose .plate--text-only {
+  display: none;
+}
+.case__body--visual .prose .plate {
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
 }
 
 /* ---- Project-list cursor-follow preview --------------------------------
