@@ -205,7 +205,7 @@ const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
   }
   .case__seq {
     font-family: var(--font-mono);
-    font-size: 0.78rem;
+    font-size: var(--text-xs);
     letter-spacing: 0.12em;
     color: var(--fg-subtle);
     font-feature-settings: "tnum" 1;
@@ -222,7 +222,7 @@ const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
   .case__title {
     font-family: var(--font-display);
     font-weight: 300;
-    font-size: clamp(2.6rem, 8vw, 6.6rem);
+    font-size: var(--text-h1-xl);
     line-height: 0.96;
     letter-spacing: -0.032em;
     margin: var(--space-3) 0 0.4rem;
@@ -231,7 +231,7 @@ const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
 
   .case__attribution {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: var(--text-2xs);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--fg-subtle);
@@ -304,7 +304,7 @@ const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
     font-family: var(--font-display);
     font-weight: 300;
     font-style: italic;
-    font-size: clamp(1.4rem, 2.4vw, 2.05rem);
+    font-size: var(--text-pullquote);
     line-height: 1.38;
     letter-spacing: -0.012em;
     color: var(--fg);
@@ -361,7 +361,7 @@ const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
   .prose :global(.plate--intro .plate__intro p) {
     font-family: var(--font-display);
     font-weight: 300;
-    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+    font-size: var(--text-lede-lg);
     line-height: var(--leading-snug);
     color: var(--fg);
   }
@@ -375,7 +375,7 @@ const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
   /* ----- Lang note + nav --------------------------------------------- */
   .case__lang-note {
     font-family: var(--font-mono);
-    font-size: 0.74rem;
+    font-size: var(--text-xs);
     letter-spacing: 0.06em;
     color: var(--fg-subtle);
     text-align: center;
@@ -391,7 +391,7 @@ const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
   }
   .case__back {
     font-family: var(--font-mono);
-    font-size: 0.78rem;
+    font-size: var(--text-xs);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--fg-muted);
@@ -425,7 +425,7 @@ const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
   .case__pager-item span:nth-child(2) {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+    font-size: var(--text-lede-lg);
     letter-spacing: -0.012em;
     line-height: 1.2;
   }

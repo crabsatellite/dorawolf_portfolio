@@ -69,6 +69,24 @@
   --leading-normal: 1.7;
   --leading-cn: 1.85; /* Better for CJK */
 
+  /* Type scale — single source of truth.
+     Replaces dozens of near-identical clamp() / rem literals scattered
+     across components. Naming is by absolute size (xs … xl), not by
+     role, so the same token can serve multiple roles cleanly. */
+  --text-2xs: 0.7rem;       /* eyebrow, micro labels */
+  --text-xs: 0.78rem;       /* small mono labels, plate-no, case-seq */
+  --text-sm: 0.85rem;       /* year tags, range, secondary mono */
+  --text-md: 0.95rem;       /* nav, footer body, arrow-link, small CTA */
+  --text-base: 1rem;        /* default body upgrade tier */
+  --text-lede: clamp(1.05rem, 1.5vw, 1.3rem);    /* intro paragraphs */
+  --text-lede-lg: clamp(1.1rem, 1.6vw, 1.4rem);  /* prose intro, pager */
+  --text-h3: clamp(1.2rem, 1.7vw, 1.45rem);      /* card title, exp/timeline */
+  --text-h2: clamp(1.6rem, 2.6vw, 2.2rem);       /* plate title, sub-h2 */
+  --text-h2-lg: clamp(1.7rem, 3.4vw, 2.6rem);    /* section h2, featured */
+  --text-h1: clamp(2.6rem, 7vw, 5.4rem);         /* page h1 */
+  --text-h1-xl: clamp(2.6rem, 8vw, 6.6rem);      /* case-study cover */
+  --text-pullquote: clamp(1.4rem, 2.4vw, 2.05rem);
+
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
@@ -237,7 +255,7 @@ dialog.lightbox .lightbox__bar {
   align-items: center;
   gap: 1rem;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: var(--text-xs);
   letter-spacing: 0.08em;
   color: var(--bg);
   text-transform: uppercase;
@@ -286,18 +304,18 @@ h4 {
 }
 
 h1 {
-  font-size: clamp(2.6rem, 7vw, 5.4rem);
+  font-size: var(--text-h1);
   letter-spacing: -0.03em;
   line-height: 1;
 }
 
 h2 {
-  font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+  font-size: var(--text-h2-lg);
   letter-spacing: -0.022em;
 }
 
 h3 {
-  font-size: 1.35rem;
+  font-size: var(--text-h3);
   letter-spacing: -0.012em;
 }
 
@@ -351,7 +369,7 @@ hr {
 
 .eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--text-2xs);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--fg-muted);
@@ -383,7 +401,7 @@ hr {
   display: inline-flex;
   align-items: baseline;
   gap: 0.5rem;
-  font-size: 0.95rem;
+  font-size: var(--text-md);
   letter-spacing: 0.005em;
   color: var(--fg);
   border-bottom: 1px solid var(--fg);
@@ -410,7 +428,7 @@ hr {
 
 .arrow-link--mono {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: var(--text-xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -695,7 +713,7 @@ picture.lqip:hover {
 .plate__intro h2 {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-size: var(--text-h2-lg);
   line-height: var(--leading-tight);
   letter-spacing: -0.022em;
   margin: 0 0 var(--space-2);
@@ -715,7 +733,7 @@ picture.lqip:hover {
     grid-column: 1 / span 3;
     margin: 0;
     padding-right: 1rem;
-    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-size: var(--text-h2);
   }
 }
 .plate__intro p {
@@ -723,7 +741,7 @@ picture.lqip:hover {
   line-height: var(--leading-cn);
   color: var(--fg);
   max-width: 62ch;
-  font-size: clamp(1rem, 1.1vw, 1.1rem);
+  font-size: var(--text-base);
 }
 .plate__intro p:last-child {
   margin-bottom: 0;

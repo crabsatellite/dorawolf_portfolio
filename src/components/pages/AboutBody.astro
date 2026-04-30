@@ -157,7 +157,7 @@ const pickTitle = (e: any) =>
   }
   .about-bio__lead {
     font-family: var(--font-display);
-    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+    font-size: var(--text-lede);
     line-height: var(--leading-snug);
     max-width: 56ch;
     margin: 0 0 var(--space-3);
@@ -181,7 +181,7 @@ const pickTitle = (e: any) =>
   .studio-card__head h3 {
     font-family: var(--font-display);
     font-weight: 300;
-    font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+    font-size: var(--text-h2);
     margin: 0;
     letter-spacing: -0.022em;
     line-height: 1;
@@ -189,14 +189,14 @@ const pickTitle = (e: any) =>
   .studio-card__based {
     margin: 0 0 1rem;
     color: var(--fg-muted);
-    font-size: 0.92rem;
+    font-size: var(--text-md);
   }
   .studio-card__ethos {
     margin: 0 0 1rem;
     font-style: italic;
     font-weight: 300;
     font-family: var(--font-display);
-    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+    font-size: var(--text-lede);
     line-height: 1.45;
     color: var(--fg);
   }
@@ -214,7 +214,7 @@ const pickTitle = (e: any) =>
   }
   .studio-card__areas li {
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: var(--text-2xs);
     letter-spacing: 0.06em;
     text-transform: uppercase;
     padding: 0.22rem 0.55rem;
@@ -230,11 +230,11 @@ const pickTitle = (e: any) =>
     grid-template-columns: 7rem 1fr;
     gap: 0.45rem 1rem;
     margin: 0;
-    font-size: 0.92rem;
+    font-size: var(--text-md);
   }
   .kv dt {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: var(--text-2xs);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--fg-muted);
@@ -265,12 +265,12 @@ const pickTitle = (e: any) =>
   }
   .exp__range {
     font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     color: var(--fg-muted);
   }
   .exp__title {
     font-family: var(--font-display);
-    font-size: 1.3rem;
+    font-size: var(--text-h3);
     margin: 0 0 0.35rem;
   }
   .exp__org {
@@ -312,24 +312,24 @@ const pickTitle = (e: any) =>
   }
   .proj__no {
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: var(--text-2xs);
     color: var(--fg-subtle);
     font-feature-settings: "tnum" 1;
   }
   .proj__year {
     font-family: var(--font-mono);
-    font-size: 0.78rem;
+    font-size: var(--text-xs);
     color: var(--fg-muted);
   }
   .proj__en {
     display: block;
-    font-size: 0.94rem;
+    font-size: var(--text-md);
     line-height: 1.35;
   }
   .proj__zh {
     display: block;
     color: var(--fg-muted);
-    font-size: 0.82rem;
+    font-size: var(--text-sm);
     margin-top: 0.18rem;
   }
 
@@ -343,7 +343,7 @@ const pickTitle = (e: any) =>
   }
   .chip-list li {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: var(--text-2xs);
     letter-spacing: 0.04em;
     padding: 0.25rem 0.6rem;
     border: 1px solid var(--border);

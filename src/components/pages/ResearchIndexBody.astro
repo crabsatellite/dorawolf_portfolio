@@ -95,7 +95,7 @@ const h1 = t(lang, "research.h1") as readonly string[];
   .lede {
     font-family: var(--font-display);
     color: var(--fg-muted);
-    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    font-size: var(--text-lede);
     line-height: var(--leading-snug);
     max-width: 56ch;
     margin-top: var(--space-3);
@@ -139,7 +139,7 @@ const h1 = t(lang, "research.h1") as readonly string[];
   }
   .plate__no {
     font-family: var(--font-mono);
-    font-size: 0.78rem;
+    font-size: var(--text-xs);
     letter-spacing: 0.1em;
     color: var(--fg-subtle);
     padding-top: 0.4rem;
@@ -149,7 +149,7 @@ const h1 = t(lang, "research.h1") as readonly string[];
   }
   .plate__title {
     font-family: var(--font-display);
-    font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+    font-size: var(--text-h2);
     margin: 0 0 0.3rem;
     letter-spacing: -0.018em;
     line-height: var(--leading-tight);
@@ -157,7 +157,7 @@ const h1 = t(lang, "research.h1") as readonly string[];
   .plate__zh {
     font-family: var(--font-display);
     color: var(--fg-muted);
-    font-size: 1rem;
+    font-size: var(--text-base);
     margin: 0 0 0.9rem;
   }
   .plate__summary {

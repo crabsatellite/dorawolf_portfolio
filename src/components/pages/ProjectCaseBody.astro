@@ -256,7 +256,7 @@ if (entry.data.status)
   }
   .case__seq {
     font-family: var(--font-mono);
-    font-size: 0.78rem;
+    font-size: var(--text-xs);
     letter-spacing: 0.12em;
     color: var(--fg-subtle);
     font-feature-settings: "tnum" 1;
@@ -273,7 +273,7 @@ if (entry.data.status)
   .case__title {
     font-family: var(--font-display);
     font-weight: 300;
-    font-size: clamp(2.6rem, 8vw, 6.6rem);
+    font-size: var(--text-h1-xl);
     line-height: 0.96;
     letter-spacing: -0.032em;
     margin: var(--space-3) 0 0.4rem;
@@ -287,7 +287,7 @@ if (entry.data.status)
     font-family: var(--font-display);
     font-style: italic;
     color: var(--fg-muted);
-    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-size: var(--text-lede);
     margin: 0 0 var(--space-3);
     letter-spacing: 0.005em;
   }
@@ -372,7 +372,7 @@ if (entry.data.status)
     font-family: var(--font-display);
     font-weight: 300;
     font-style: italic;
-    font-size: clamp(1.4rem, 2.4vw, 2.05rem);
+    font-size: var(--text-pullquote);
     line-height: 1.38;
     letter-spacing: -0.012em;
     color: var(--fg);
@@ -435,7 +435,7 @@ if (entry.data.status)
   }
   .case__meta dt {
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: var(--text-2xs);
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--fg-subtle);
@@ -444,7 +444,7 @@ if (entry.data.status)
   .case__meta dd {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: 1.1rem;
+    font-size: var(--text-lede);
     line-height: 1.25;
     color: var(--fg);
     margin: 0;
@@ -473,7 +473,7 @@ if (entry.data.status)
   .prose :global(.plate--intro .plate__intro p) {
     font-family: var(--font-display);
     font-weight: 300;
-    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+    font-size: var(--text-lede-lg);
     line-height: var(--leading-snug);
     color: var(--fg);
   }
@@ -489,7 +489,7 @@ if (entry.data.status)
   /* ----- Lang note + nav --------------------------------------------- */
   .case__lang-note {
     font-family: var(--font-mono);
-    font-size: 0.74rem;
+    font-size: var(--text-xs);
     letter-spacing: 0.06em;
     color: var(--fg-subtle);
     text-align: center;
@@ -505,7 +505,7 @@ if (entry.data.status)
   }
   .case__back {
     font-family: var(--font-mono);
-    font-size: 0.78rem;
+    font-size: var(--text-xs);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--fg-muted);
@@ -539,7 +539,7 @@ if (entry.data.status)
   .case__pager-item span:nth-child(2) {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+    font-size: var(--text-lede-lg);
     letter-spacing: -0.012em;
     line-height: 1.2;
   }
