@@ -12,9 +12,6 @@ interface Props {
 }
 const { lang, entry } = Astro.props;
 
-// English locale: prefer the translated body in researchEn/<slug>.md;
-// otherwise fall back to the Chinese body rendered inside
-// .case__body--visual (image-grids only). Mirrors ProjectCaseBody.
 let Content: Awaited<ReturnType<CollectionEntry<"research">["render"]>>["Content"];
 let hasEnBody = false;
 if (lang === "en") {
@@ -65,14 +62,10 @@ const next = idx < all.length - 1 ? all[idx + 1] : null;
 
 const titleDisplay =
   lang === "zh" && entry.data.titleZh ? entry.data.titleZh : entry.data.title;
+const subtitle = lang === "zh" ? entry.data.title : entry.data.titleZh;
 
-// "blurb" is the research-collection equivalent of project "note" — use it
-// as the studio-note pull quote at the head of the page.
-const note =
-  lang === "zh" && entry.data.blurbZh
-    ? entry.data.blurbZh
-    : entry.data.blurb;
-const noteLabel = t(lang, "research.note_label");
+const blurb =
+  lang === "zh" && entry.data.blurbZh ? entry.data.blurbZh : entry.data.blurb;
 
 const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
 ---
@@ -91,17 +84,7 @@ const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
     ))
   }
 
-  <article class="case case--left">
-    <header class="case__head container">
-      <div class="case__head-rail">
-        <span class="case__seq" aria-hidden="true">{orderTwo}</span>
-        <span class="case__rule" aria-hidden="true"></span>
-        <p class="eyebrow case__eyebrow">{t(lang, "research.case_eyebrow")}</p>
-      </div>
-      <h1 class="case__title">{titleDisplay}</h1>
-      <p class="case__attribution">{t(lang, "research.attribution")}</p>
-    </header>
-
+  <article class="case">
     {entry.data.hero && (
       <figure class="case__hero">
         <Picture
@@ -114,16 +97,28 @@ const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
       </figure>
     )}
 
-    {note && (
-      <section class="case__note container">
-        <div class="case__note-inner">
-          <p class="eyebrow case__note-label">{noteLabel}</p>
-          <blockquote class="case__note-text">
-            <p>{note}</p>
-          </blockquote>
+    <header class="case__head container">
+      <div class="case__index">
+        <span class="case__index-no">{orderTwo}</span>
+        <span class="case__index-rule" aria-hidden="true"></span>
+        <span class="case__index-eyebrow">{t(lang, "research.case_eyebrow")}</span>
+      </div>
+
+      <div class="case__head-grid">
+        <div class="case__head-main">
+          <h1 class="case__title">{titleDisplay}</h1>
+          {subtitle && <p class="case__subtitle">{subtitle}</p>}
+          {blurb && <p class="case__note">{blurb}</p>}
         </div>
-      </section>
-    )}
+
+        <dl class="case__data">
+          <div>
+            <dt>{t(lang, "research.case_eyebrow")}</dt>
+            <dd>{t(lang, "research.attribution")}</dd>
+          </div>
+        </dl>
+      </div>
+    </header>
 
     <section
       class:list={[
@@ -179,68 +174,14 @@ const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
 </BaseLayout>
 
 <style>
-  /* ============================================================
-     Research case study — mirrors ProjectCaseBody's structure so
-     the two collections share the same plate template. The .case
-     selectors below are a local copy of the project-case CSS;
-     keeping them inside this component means the research page
-     stays self-contained even though it uses the same class names.
-     ============================================================ */
-
-  .case {
-    --case-pad-top: var(--space-5);
-  }
-
-  .case__head {
-    padding-top: var(--case-pad-top);
-    padding-bottom: var(--space-3);
-  }
-  .case__head-rail {
-    display: grid;
-    grid-template-columns: 3.5rem 1fr auto;
-    gap: 1rem;
-    align-items: center;
-    padding-bottom: var(--space-2);
-    border-bottom: 1px solid var(--border);
-  }
-  .case__seq {
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    letter-spacing: 0.12em;
-    color: var(--fg-subtle);
-    font-feature-settings: "tnum" 1;
-  }
-  .case__rule {
-    height: 1px;
-    background: var(--border);
-  }
-  .case__eyebrow {
-    margin: 0;
-    text-align: right;
-  }
-
-  .case__title {
-    font-family: var(--font-display);
-    font-weight: 300;
-    font-size: var(--text-h1-xl);
-    line-height: 0.96;
-    letter-spacing: -0.032em;
-    margin: var(--space-3) 0 0.4rem;
-    max-width: 18ch;
-  }
-
-  .case__attribution {
-    font-family: var(--font-mono);
-    font-size: var(--text-2xs);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--fg-subtle);
-    margin: 0 0 var(--space-3);
-  }
+  /* Mirror of ProjectCaseBody — hero-first, two-column header, divider,
+     plate body, pager. The selectors are scoped to this component so
+     research stays self-contained even though it shares class names. */
 
   .case__hero {
-    margin: var(--space-3) 0 var(--space-4);
+    margin: 0;
     padding: 0;
+    background: var(--bg-elevated);
   }
   .case__hero :global(picture),
   .case__hero :global(img) {
@@ -248,105 +189,143 @@ const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
     height: auto;
     display: block;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 720px) {
     .case__hero :global(picture),
     .case__hero :global(img) {
-      max-height: 84vh;
+      max-height: 78vh;
       object-fit: cover;
     }
   }
 
-  /* ----- Studio note — magazine pull-quote ---------------------------- */
-  .case__note {
-    padding-top: var(--space-4);
-    padding-bottom: var(--space-4);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+  .case__head {
+    padding-top: var(--space-5);
+    padding-bottom: var(--space-3);
   }
-  .case__note-inner {
-    position: relative;
-    max-width: var(--max-w);
-    margin: 0 auto;
+
+  .case__index {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fg-subtle);
+    font-feature-settings: "tnum" 1;
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: var(--space-4);
+  }
+  .case__index-no {
+    color: var(--fg);
+    letter-spacing: 0.1em;
+  }
+  .case__index-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .case__head-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-2);
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
   }
   @media (min-width: 880px) {
-    .case__note-inner {
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: clamp(1rem, 2vw, 2rem);
+    .case__head-grid {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+      gap: var(--space-5);
       align-items: start;
     }
   }
-  .case__note-label {
-    margin: 0;
-    align-self: start;
-  }
-  @media (min-width: 880px) {
-    .case__note-label {
-      grid-column: 1 / span 3;
-      padding-top: 0.5rem;
-    }
-  }
-  .case__note-text {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    position: relative;
-  }
-  @media (min-width: 880px) {
-    .case__note-text {
-      grid-column: 4 / span 8;
-      max-width: 60ch;
-    }
-  }
-  .case__note-text p {
-    font-family: var(--font-display);
-    font-weight: 300;
-    font-style: italic;
-    font-size: var(--text-pullquote);
-    line-height: 1.38;
-    letter-spacing: -0.012em;
-    color: var(--fg);
-    margin: 0;
-    max-width: none;
-    text-indent: 0;
-  }
-  .case__note-text p::before {
-    content: "“";
-    font-family: var(--font-display);
-    font-style: normal;
-    font-weight: 300;
-    color: var(--fg-subtle);
-    margin-right: 0.05em;
-    margin-left: -0.35em;
-  }
-  .case__note-text p::after {
-    content: "”";
-    font-family: var(--font-display);
-    font-style: normal;
-    font-weight: 300;
-    color: var(--fg-subtle);
-    margin-left: 0.05em;
-  }
-  :global(html[lang^="zh"]) .case__note-text p {
-    line-height: 1.55;
-    letter-spacing: 0.005em;
-    font-style: normal;
-  }
-  :global(html[lang^="zh"]) .case__note-text p::before,
-  :global(html[lang^="zh"]) .case__note-text p::after {
-    content: none;
+
+  .case__head-main {
+    max-width: 60ch;
   }
 
-  /* ----- Body — vertical-stack plates ------------------------------- */
+  .case__title {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: var(--text-h2-lg);
+    line-height: 1.05;
+    letter-spacing: -0.022em;
+    margin: 0;
+    color: var(--fg);
+    text-wrap: balance;
+  }
+
+  .case__subtitle {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: var(--text-lede);
+    line-height: 1.35;
+    color: var(--fg-muted);
+    margin: 0.7rem 0 0;
+  }
+  :global(html[lang^="zh"]) .case__subtitle {
+    font-style: normal;
+  }
+
+  .case__note {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: var(--text-lede);
+    line-height: var(--leading-snug);
+    color: var(--fg);
+    margin: var(--space-3) 0 0;
+    max-width: 56ch;
+  }
+  :global(html[lang^="zh"]) .case__note {
+    font-style: normal;
+    line-height: var(--leading-cn);
+    letter-spacing: 0.005em;
+  }
+
+  .case__data {
+    margin: 0;
+    padding: 0;
+    align-self: start;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  @media (min-width: 880px) {
+    .case__data {
+      border-top: 1px solid var(--fg);
+    }
+  }
+  .case__data > div {
+    display: grid;
+    grid-template-columns: minmax(5.5rem, 7rem) minmax(0, 1fr);
+    gap: 1rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: baseline;
+    margin: 0;
+  }
+  .case__data dt {
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fg-subtle);
+    margin: 0;
+  }
+  .case__data dd {
+    font-family: var(--font-display);
+    font-size: var(--text-md);
+    line-height: 1.3;
+    color: var(--fg);
+    margin: 0;
+  }
+
   .case__body {
     padding: var(--space-5) 0 var(--space-4);
+    border-top: 1px solid var(--border);
   }
   .prose {
-    /* the plate / plate__intro / plate__media-grid styles in
-       global.css carry the layout — the prose container only needs
-       to provide vertical rhythm */
     display: block;
   }
   .prose :global(.plate) {
@@ -372,7 +351,6 @@ const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
     padding: var(--space-4) 0;
   }
 
-  /* ----- Lang note + nav --------------------------------------------- */
   .case__lang-note {
     font-family: var(--font-mono);
     font-size: var(--text-xs);
@@ -382,6 +360,7 @@ const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
     padding: var(--space-2) 0;
     text-transform: uppercase;
   }
+
   .case__nav {
     border-top: 1px solid var(--border);
     padding-top: var(--space-4);
@@ -402,7 +381,7 @@ const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
   }
   .case__pager {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-3);
   }
   @media (min-width: 720px) {

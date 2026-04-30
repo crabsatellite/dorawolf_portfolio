@@ -4,7 +4,6 @@ import Picture from "~/components/Picture.astro";
 import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 import { t, type Lang } from "~/i18n/strings";
 import {
-  pickSummary,
   tr,
   typologyTranslations,
   locationTranslations,
@@ -19,9 +18,6 @@ interface Props {
 }
 const { lang, entry } = Astro.props;
 
-// English locale: prefer the translated body if present in
-// projects-en/<slug>.md; otherwise fall back to the Chinese body
-// rendered inside .case__body--visual (image-grids only).
 let Content: Awaited<ReturnType<CollectionEntry<"projects">["render"]>>["Content"];
 let hasEnBody = false;
 if (lang === "en") {
@@ -72,14 +68,10 @@ const next = idx < all.length - 1 ? all[idx + 1] : null;
 
 const titleDisplay =
   lang === "zh" && entry.data.titleZh ? entry.data.titleZh : entry.data.title;
-const subtitle =
-  lang === "zh" ? entry.data.title : entry.data.titleZh;
+const subtitle = lang === "zh" ? entry.data.title : entry.data.titleZh;
 
 const note = lang === "zh" ? entry.data.noteZh : entry.data.note;
-const noteLabel =
-  lang === "zh" ? "工作室手记" : "Studio note";
 
-// Tiny inline-markdown renderer for *italic* / **bold** within studio notes
 function renderInline(s: string): string {
   return s
     .replace(/&/g, "&amp;")
@@ -89,18 +81,7 @@ function renderInline(s: string): string {
     .replace(/\*([^*]+?)\*/g, "<em>$1</em>");
 }
 
-const align = entry.data.align ?? "left";
 const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
-
-// Compact meta line — typology · location · status (role is intentionally
-// dropped from the meta strip; the studio name carries authorship)
-const metaItems: string[] = [];
-if (entry.data.typology)
-  metaItems.push(tr(typologyTranslations, lang, entry.data.typology));
-if (entry.data.location)
-  metaItems.push(tr(locationTranslations, lang, entry.data.location));
-if (entry.data.status)
-  metaItems.push(tr(statusTranslations, lang, entry.data.status));
 ---
 
 <BaseLayout title={titleDisplay} description={entry.data.summary} lang={lang}>
@@ -117,18 +98,7 @@ if (entry.data.status)
     ))
   }
 
-  <article class:list={["case", `case--${align}`]}>
-    <header class="case__head container">
-      <div class="case__head-rail">
-        <span class="case__seq" aria-hidden="true">{orderTwo}</span>
-        <span class="case__rule" aria-hidden="true"></span>
-        <p class="eyebrow case__eyebrow">
-          {t(lang, "case.eyebrow", { year: String(entry.data.year) })}
-        </p>
-      </div>
-      <h1 class="case__title">{titleDisplay}</h1>
-    </header>
-
+  <article class="case">
     {entry.data.hero && (
       <figure class="case__hero">
         <Picture
@@ -141,26 +111,29 @@ if (entry.data.status)
       </figure>
     )}
 
-    {note && (
-      <section class="case__note container">
-        <div class="case__note-inner">
-          <p class="eyebrow case__note-label">{noteLabel}</p>
-          <blockquote class="case__note-text">
-            <p set:html={renderInline(note)} />
-          </blockquote>
-        </div>
-      </section>
-    )}
+    <header class="case__head container">
+      <div class="case__index">
+        <span class="case__index-no">{orderTwo}</span>
+        <span class="case__index-rule" aria-hidden="true"></span>
+        <span class="case__index-eyebrow">
+          {t(lang, "case.eyebrow", { year: String(entry.data.year) })}
+        </span>
+      </div>
 
-    {metaItems.length > 0 && (
-      <aside class="case__meta container">
-        <dl>
-          {entry.data.dateZh && (
-            <div>
-              <dt>{t(lang, "case.meta_date")}</dt>
-              <dd>{entry.data.dateZh}</dd>
-            </div>
+      <div class="case__head-grid">
+        <div class="case__head-main">
+          <h1 class="case__title">{titleDisplay}</h1>
+          {subtitle && <p class="case__subtitle">{subtitle}</p>}
+          {note && (
+            <p class="case__note" set:html={renderInline(note)} />
           )}
+        </div>
+
+        <dl class="case__data">
+          <div>
+            <dt>{t(lang, "case.meta_year")}</dt>
+            <dd>{entry.data.year}</dd>
+          </div>
           {entry.data.location && (
             <div>
               <dt>{t(lang, "case.meta_location")}</dt>
@@ -173,9 +146,15 @@ if (entry.data.status)
               <dd>{tr(typologyTranslations, lang, entry.data.typology)}</dd>
             </div>
           )}
+          {entry.data.status && (
+            <div>
+              <dt>{t(lang, "case.meta_status")}</dt>
+              <dd>{tr(statusTranslations, lang, entry.data.status)}</dd>
+            </div>
+          )}
         </dl>
-      </aside>
-    )}
+      </div>
+    </header>
 
     <section
       class:list={[
@@ -232,72 +211,16 @@ if (entry.data.status)
 
 <style>
   /* ============================================================
-     Project case study — independent layout, not the plate
-     template. Each project's `align` (left | right) flips the
-     studio-note column and title alignment so the two halves
-     of the case set carry a different center of gravity.
+     Project case study — hero-first asymmetric editorial.
+     Hero opens the page full-bleed, header sits below in a
+     two-column grid (title + studio note on left, data table on
+     right), divider, then the existing plate body system.
      ============================================================ */
 
-  .case {
-    --case-pad-top: var(--space-5);
-  }
-
-  .case__head {
-    padding-top: var(--case-pad-top);
-    padding-bottom: var(--space-3);
-  }
-  .case__head-rail {
-    display: grid;
-    grid-template-columns: 3.5rem 1fr auto;
-    gap: 1rem;
-    align-items: center;
-    padding-bottom: var(--space-2);
-    border-bottom: 1px solid var(--border);
-  }
-  .case__seq {
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    letter-spacing: 0.12em;
-    color: var(--fg-subtle);
-    font-feature-settings: "tnum" 1;
-  }
-  .case__rule {
-    height: 1px;
-    background: var(--border);
-  }
-  .case__eyebrow {
-    margin: 0;
-    text-align: right;
-  }
-
-  .case__title {
-    font-family: var(--font-display);
-    font-weight: 300;
-    font-size: var(--text-h1-xl);
-    line-height: 0.96;
-    letter-spacing: -0.032em;
-    margin: var(--space-3) 0 0.4rem;
-    max-width: 18ch;
-  }
-  .case--right .case__title {
-    margin-left: auto;
-    text-align: right;
-  }
-  .case__subtitle {
-    font-family: var(--font-display);
-    font-style: italic;
-    color: var(--fg-muted);
-    font-size: var(--text-lede);
-    margin: 0 0 var(--space-3);
-    letter-spacing: 0.005em;
-  }
-  .case--right .case__subtitle {
-    text-align: right;
-  }
-
   .case__hero {
-    margin: var(--space-3) 0 var(--space-4);
+    margin: 0;
     padding: 0;
+    background: var(--bg-elevated);
   }
   .case__hero :global(picture),
   .case__hero :global(img) {
@@ -305,159 +228,160 @@ if (entry.data.status)
     height: auto;
     display: block;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 720px) {
     .case__hero :global(picture),
     .case__hero :global(img) {
-      max-height: 84vh;
+      max-height: 78vh;
       object-fit: cover;
     }
   }
 
-  /* ----- Studio note — magazine pull-quote ---------------------------- */
-  .case__note {
-    padding-top: var(--space-4);
-    padding-bottom: var(--space-4);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+  .case__head {
+    padding-top: var(--space-5);
+    padding-bottom: var(--space-3);
   }
-  .case__note-inner {
-    position: relative;
-    max-width: var(--max-w);
-    margin: 0 auto;
+
+  .case__index {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fg-subtle);
+    font-feature-settings: "tnum" 1;
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: var(--space-4);
+  }
+  .case__index-no {
+    color: var(--fg);
+    letter-spacing: 0.1em;
+  }
+  .case__index-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .case__head-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-2);
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
   }
   @media (min-width: 880px) {
-    .case__note-inner {
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: clamp(1rem, 2vw, 2rem);
+    .case__head-grid {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+      gap: var(--space-5);
       align-items: start;
     }
   }
-  .case--right .case__note-inner {
-    margin-left: auto;
+
+  .case__head-main {
+    max-width: 60ch;
   }
-  .case__note-label {
-    margin: 0;
-    align-self: start;
-  }
-  @media (min-width: 880px) {
-    .case__note-label {
-      grid-column: 1 / span 3;
-      padding-top: 0.5rem;
-    }
-    .case--right .case__note-label {
-      grid-column: 10 / span 3;
-      text-align: right;
-    }
-  }
-  .case__note-text {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    position: relative;
-  }
-  @media (min-width: 880px) {
-    .case__note-text {
-      grid-column: 4 / span 8;
-      max-width: 60ch;
-    }
-    .case--right .case__note-text {
-      grid-column: 2 / span 8;
-      justify-self: end;
-    }
-  }
-  .case__note-text p {
+
+  .case__title {
     font-family: var(--font-display);
     font-weight: 300;
-    font-style: italic;
-    font-size: var(--text-pullquote);
-    line-height: 1.38;
-    letter-spacing: -0.012em;
+    font-size: var(--text-h2-lg);
+    line-height: 1.05;
+    letter-spacing: -0.022em;
+    margin: 0;
     color: var(--fg);
-    margin: 0;
-    max-width: none;
-    text-indent: 0;
+    text-wrap: balance;
   }
-  .case__note-text p::before {
-    content: "“";
+
+  .case__subtitle {
     font-family: var(--font-display);
-    font-style: normal;
+    font-style: italic;
     font-weight: 300;
-    color: var(--fg-subtle);
-    margin-right: 0.05em;
-    margin-left: -0.35em;
+    font-size: var(--text-lede);
+    line-height: 1.35;
+    color: var(--fg-muted);
+    margin: 0.7rem 0 0;
   }
-  .case__note-text p::after {
-    content: "”";
+  :global(html[lang^="zh"]) .case__subtitle {
+    font-style: normal;
+  }
+
+  .case__note {
     font-family: var(--font-display);
-    font-style: normal;
+    font-style: italic;
     font-weight: 300;
-    color: var(--fg-subtle);
-    margin-left: 0.05em;
+    font-size: var(--text-lede);
+    line-height: var(--leading-snug);
+    color: var(--fg);
+    margin: var(--space-3) 0 0;
+    max-width: 56ch;
   }
-  .case__note-text :global(em) {
+  .case__note :global(em) {
     font-style: italic;
     color: var(--fg);
-    font-weight: 400;
     box-shadow: inset 0 -1px 0 var(--border-strong);
   }
-  .case__note-text :global(strong) {
+  .case__note :global(strong) {
     font-weight: 500;
     font-style: normal;
   }
-  :global(html[lang^="zh"]) .case__note-text p {
-    line-height: 1.55;
-    letter-spacing: 0.005em;
+  :global(html[lang^="zh"]) .case__note {
     font-style: normal;
+    line-height: var(--leading-cn);
+    letter-spacing: 0.005em;
   }
-  :global(html[lang^="zh"]) .case__note-text p::before,
-  :global(html[lang^="zh"]) .case__note-text p::after {
-    content: none;
+  :global(html[lang^="zh"]) .case__note :global(em) {
+    font-family: var(--font-cjk-italic);
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.02em;
   }
 
-  /* ----- Compact meta strip ------------------------------------------ */
-  .case__meta {
-    padding-top: var(--space-3);
-    padding-bottom: var(--space-3);
-    border-bottom: 1px solid var(--border);
-  }
-  .case__meta dl {
+  .case__data {
+    margin: 0;
+    padding: 0;
+    align-self: start;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: var(--space-3);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  @media (min-width: 880px) {
+    .case__data {
+      border-top: 1px solid var(--fg);
+    }
+  }
+  .case__data > div {
+    display: grid;
+    grid-template-columns: minmax(5.5rem, 7rem) minmax(0, 1fr);
+    gap: 1rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: baseline;
     margin: 0;
   }
-  .case__meta dl > div {
-    display: grid;
-    gap: 0.35rem;
-  }
-  .case__meta dt {
+  .case__data dt {
     font-family: var(--font-mono);
     font-size: var(--text-2xs);
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--fg-subtle);
     margin: 0;
+    font-feature-settings: "tnum" 1;
   }
-  .case__meta dd {
+  .case__data dd {
     font-family: var(--font-display);
-    font-weight: 400;
-    font-size: var(--text-lede);
-    line-height: 1.25;
+    font-size: var(--text-md);
+    line-height: 1.3;
     color: var(--fg);
     margin: 0;
+    font-feature-settings: "tnum" 1, "lnum" 1;
   }
 
-  /* ----- Body — vertical-stack plates ------------------------------- */
   .case__body {
     padding: var(--space-5) 0 var(--space-4);
+    border-top: 1px solid var(--border);
   }
   .prose {
-    /* the plate / plate__intro / plate__media-grid styles in
-       global.css carry the layout — the prose container only needs
-       to provide vertical rhythm */
     display: block;
   }
   .prose :global(.plate) {
@@ -466,7 +390,6 @@ if (entry.data.status)
   .prose :global(.plate:first-child) {
     padding-top: 0;
   }
-  /* loose intro before first <h2> reads like a stand-first paragraph */
   .prose :global(.plate--intro) {
     padding-bottom: var(--space-3);
   }
@@ -480,13 +403,10 @@ if (entry.data.status)
   :global(html[lang^="zh"]) .prose :global(.plate--intro .plate__intro p) {
     line-height: var(--leading-cn);
   }
-  /* The plate--text-only sections (no images) deserve more breathing
-     room since they have nothing else to anchor */
   .prose :global(.plate--text-only) {
     padding: var(--space-4) 0;
   }
 
-  /* ----- Lang note + nav --------------------------------------------- */
   .case__lang-note {
     font-family: var(--font-mono);
     font-size: var(--text-xs);
@@ -496,6 +416,7 @@ if (entry.data.status)
     padding: var(--space-2) 0;
     text-transform: uppercase;
   }
+
   .case__nav {
     border-top: 1px solid var(--border);
     padding-top: var(--space-4);
@@ -516,7 +437,7 @@ if (entry.data.status)
   }
   .case__pager {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-3);
   }
   @media (min-width: 720px) {
