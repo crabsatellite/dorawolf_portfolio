@@ -1,0 +1,225 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import Picture from "~/components/Picture.astro";
+import type { CollectionEntry } from "astro:content";
+import { t, type Lang } from "~/i18n/strings";
+import fs from "node:fs";
+import path from "node:path";
+
+interface Props {
+  lang: Lang;
+  entry: CollectionEntry<"research">;
+}
+const { lang, entry } = Astro.props;
+const { Content } = await entry.render();
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const langPrefix = lang === "en" ? `${base}/en` : base;
+
+let heroPreloads: { type: string; srcset: string; sizes: string }[] = [];
+if (entry.data.hero) {
+  const manifestPath = path.join(process.cwd(), "public", ".image-manifest.json");
+  if (fs.existsSync(manifestPath)) {
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
+    const m = manifest[entry.data.hero];
+    if (m) {
+      for (const fmt of ["avif", "webp"] as const) {
+        const widths = m.variants?.[fmt];
+        if (!widths || !widths.length) continue;
+        const srcset = widths
+          .map(
+            (w: number) =>
+              `${base}${entry.data.hero!.replace(/\.[^.]+$/, `-${w}.${fmt}`)} ${w}w`
+          )
+          .join(", ");
+        heroPreloads.push({
+          type: `image/${fmt}`,
+          srcset,
+          sizes: "100vw",
+        });
+      }
+    }
+  }
+}
+
+const blurb =
+  lang === "zh" && entry.data.blurbZh ? entry.data.blurbZh : entry.data.blurb;
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.blurb} lang={lang}>
+  {
+    heroPreloads.map((p) => (
+      <link
+        slot="head"
+        rel="preload"
+        as="image"
+        type={p.type}
+        imagesrcset={p.srcset}
+        imagesizes={p.sizes}
+      />
+    ))
+  }
+
+  <article class="research">
+    <header class="container research__head">
+      <p class="eyebrow">{t(lang, "research.eyebrow")}</p>
+      <h1>{entry.data.title}</h1>
+      {entry.data.titleZh && <p class="research__zh">{entry.data.titleZh}</p>}
+      <p class="research__lede">{blurb}</p>
+    </header>
+
+    {entry.data.hero && (
+      <figure class="research__hero">
+        <Picture
+          src={entry.data.hero}
+          alt={`${entry.data.title} — cover`}
+          loading="eager"
+          fetchpriority="high"
+          sizes="100vw"
+        />
+      </figure>
+    )}
+
+    <section class="research__body">
+      <div class="prose">
+        <Content />
+      </div>
+    </section>
+
+    <nav class="container research__nav">
+      <a href={`${langPrefix}/research`} class="research__back">
+        {t(lang, "research.back")}
+      </a>
+    </nav>
+  </article>
+</BaseLayout>
+
+<style>
+  .research__head {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-4);
+  }
+  .research__head h1 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.4rem;
+  }
+  .research__zh {
+    color: var(--fg-muted);
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    margin: 0 0 var(--space-3);
+  }
+  .research__lede {
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+    line-height: var(--leading-snug);
+    max-width: 60ch;
+    margin: 0;
+    color: var(--fg);
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-3);
+  }
+  .research__hero {
+    margin: var(--space-3) 0 var(--space-5);
+  }
+  .research__hero :global(picture),
+  .research__hero :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .research__body {
+    padding: var(--space-3) 0 var(--space-4);
+  }
+
+  .prose :global(.plate) {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: var(--space-5) var(--gutter);
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-3);
+  }
+  .prose :global(.plate:first-child) {
+    border-top: 0;
+  }
+  .prose :global(.plate__text) {
+    max-width: 60ch;
+  }
+  .prose :global(.plate__media) {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .prose :global(.plate--text-only),
+  .prose :global(.plate--intro) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .prose :global(.plate--text-only .plate__text),
+  .prose :global(.plate--intro .plate__text) {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  @media (min-width: 920px) {
+    .prose :global(.plate--right),
+    .prose :global(.plate--left) {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+      gap: var(--space-5);
+      align-items: start;
+    }
+    .prose :global(.plate--right .plate__text) {
+      grid-column: 1 / 2;
+      grid-row: 1;
+      position: sticky;
+      top: calc(var(--nav-height) + var(--space-3));
+    }
+    .prose :global(.plate--right .plate__media) {
+      grid-column: 2 / 3;
+      grid-row: 1;
+    }
+    .prose :global(.plate--left .plate__text) {
+      grid-column: 2 / 3;
+      grid-row: 1;
+      position: sticky;
+      top: calc(var(--nav-height) + var(--space-3));
+    }
+    .prose :global(.plate--left .plate__media) {
+      grid-column: 1 / 2;
+      grid-row: 1;
+    }
+  }
+  .prose :global(.plate__text h2) {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.45rem, 2.4vw, 1.95rem);
+    line-height: var(--leading-tight);
+    margin: 0 0 var(--space-2);
+  }
+  .prose :global(.plate__text p) {
+    margin: 0 0 1rem;
+    line-height: var(--leading-cn);
+    max-width: 56ch;
+  }
+  .prose :global(.plate__media picture),
+  .prose :global(.plate__media img) {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    background: var(--bg-elevated);
+  }
+
+  .research__nav {
+    padding-bottom: var(--space-5);
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-3);
+    margin-top: var(--space-4);
+  }
+  .research__back {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+</style>

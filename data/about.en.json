@@ -1,0 +1,20 @@
+{
+  "$comment": "English about-page content.",
+  "bio": "I'm a designer with a long-standing interest in green plants, natural landscape, and parametric form. Grasshopper sits at the centre of my daily workflow, paired with a Sketchup practice that I've extended with custom dynamic components. Energy and daylight tools — chiefly Ladybug — let me weave sustainability into early-stage design instead of as a late-stage check.",
+  "education": {
+    "school": "Hubei University of Technology",
+    "department": "School of Civil Architecture and Environment",
+    "range": "2016 — 2021",
+    "degree": "B.Arch — Architecture",
+    "courses": [
+      "Architectural design",
+      "Introduction to architecture",
+      "Residential planning",
+      "Site design",
+      "Building mechanics",
+      "Interior design"
+    ]
+  },
+  "languages": ["Chinese", "English (CET-6)"],
+  "interests": ["Education", "Infrastructure", "Civic", "Concept"]
+}

@@ -1,0 +1,368 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import Picture from "~/components/Picture.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import { t, type Lang } from "~/i18n/strings";
+import fs from "node:fs";
+import path from "node:path";
+
+interface Props {
+  lang: Lang;
+  entry: CollectionEntry<"projects">;
+}
+const { lang, entry } = Astro.props;
+const { Content } = await entry.render();
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const langPrefix = lang === "en" ? `${base}/en` : base;
+
+let heroPreloads: { type: string; srcset: string; sizes: string }[] = [];
+if (entry.data.hero) {
+  const manifestPath = path.join(process.cwd(), "public", ".image-manifest.json");
+  if (fs.existsSync(manifestPath)) {
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
+    const m = manifest[entry.data.hero];
+    if (m) {
+      for (const fmt of ["avif", "webp"] as const) {
+        const widths = m.variants?.[fmt];
+        if (!widths || !widths.length) continue;
+        const srcset = widths
+          .map(
+            (w: number) =>
+              `${base}${entry.data.hero!.replace(/\.[^.]+$/, `-${w}.${fmt}`)} ${w}w`
+          )
+          .join(", ");
+        heroPreloads.push({
+          type: `image/${fmt}`,
+          srcset,
+          sizes: "100vw",
+        });
+      }
+    }
+  }
+}
+
+const all = (await getCollection("projects", ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order);
+const idx = all.findIndex((p) => p.slug === entry.slug);
+const prev = idx > 0 ? all[idx - 1] : null;
+const next = idx < all.length - 1 ? all[idx + 1] : null;
+
+const titleDisplay =
+  lang === "zh" && entry.data.titleZh ? entry.data.titleZh : entry.data.title;
+const subtitle =
+  lang === "zh"
+    ? entry.data.title
+    : entry.data.titleZh;
+---
+
+<BaseLayout title={titleDisplay} description={entry.data.summary} lang={lang}>
+  {
+    heroPreloads.map((p) => (
+      <link
+        slot="head"
+        rel="preload"
+        as="image"
+        type={p.type}
+        imagesrcset={p.srcset}
+        imagesizes={p.sizes}
+      />
+    ))
+  }
+
+  <article class="project">
+    <header class="container project__head">
+      <p class="eyebrow">
+        {t(lang, "case.eyebrow", { year: entry.data.year })}
+      </p>
+      <h1 class="project__h1">{titleDisplay}</h1>
+      {subtitle && <p class="project__zh">{subtitle}</p>}
+      <div class="project__meta-row">
+        <p class="project__lede">{entry.data.summary}</p>
+        <dl class="project__meta">
+          {entry.data.dateZh && (
+            <>
+              <dt>{t(lang, "case.meta_date")}</dt>
+              <dd>{entry.data.dateZh}</dd>
+            </>
+          )}
+          {entry.data.location && (
+            <>
+              <dt>{t(lang, "case.meta_location")}</dt>
+              <dd>{entry.data.location}</dd>
+            </>
+          )}
+          {entry.data.role && (
+            <>
+              <dt>{t(lang, "case.meta_role")}</dt>
+              <dd>{entry.data.role}</dd>
+            </>
+          )}
+          {entry.data.typology && (
+            <>
+              <dt>{t(lang, "case.meta_typology")}</dt>
+              <dd>{entry.data.typology}</dd>
+            </>
+          )}
+        </dl>
+      </div>
+    </header>
+
+    {entry.data.hero && (
+      <figure class="project__hero">
+        <Picture
+          src={entry.data.hero}
+          alt={`${entry.data.title} — hero`}
+          loading="eager"
+          fetchpriority="high"
+          sizes="100vw"
+        />
+      </figure>
+    )}
+
+    {lang === "en" && (
+      <p class="project__lang-note container">
+        {t(lang, "case.body_note")}
+      </p>
+    )}
+
+    <section class="project__body">
+      <div class="prose">
+        <Content />
+      </div>
+    </section>
+
+    <nav class="container project__nav" aria-label="Project navigation">
+      <a href={`${langPrefix}/projects`} class="project__back">
+        {t(lang, "case.back")}
+      </a>
+      <div class="project__pager">
+        {prev && (
+          <a
+            href={`${langPrefix}/projects/${prev.slug}`}
+            class="project__pager-item"
+          >
+            <span class="eyebrow">{t(lang, "case.prev")}</span>
+            <span>
+              {lang === "zh" && prev.data.titleZh
+                ? prev.data.titleZh
+                : prev.data.title}
+            </span>
+          </a>
+        )}
+        {next && (
+          <a
+            href={`${langPrefix}/projects/${next.slug}`}
+            class="project__pager-item project__pager-item--right"
+          >
+            <span class="eyebrow">{t(lang, "case.next")}</span>
+            <span>
+              {lang === "zh" && next.data.titleZh
+                ? next.data.titleZh
+                : next.data.title}
+            </span>
+          </a>
+        )}
+      </div>
+    </nav>
+  </article>
+</BaseLayout>
+
+<style>
+  .project__head {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-4);
+  }
+  .project__h1 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.4rem;
+  }
+  .project__zh {
+    color: var(--fg-muted);
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    margin: 0 0 var(--space-3);
+  }
+  .project__meta-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-3);
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-3);
+  }
+  @media (min-width: 880px) {
+    .project__meta-row {
+      grid-template-columns: 1.4fr 1fr;
+      gap: var(--space-4);
+      align-items: start;
+    }
+  }
+  .project__lede {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 1.55vw, 1.4rem);
+    line-height: var(--leading-snug);
+    max-width: 56ch;
+    margin: 0;
+  }
+  .project__meta {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+    margin: 0;
+    font-size: 0.92rem;
+  }
+  .project__meta dt {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    padding-top: 0.18rem;
+  }
+  .project__meta dd {
+    margin: 0;
+  }
+  .project__hero {
+    margin: var(--space-3) 0 var(--space-5);
+    padding: 0;
+  }
+  .project__hero :global(picture),
+  .project__hero :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .project__lang-note {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--fg-muted);
+    padding-bottom: var(--space-2);
+    text-align: center;
+  }
+
+  .project__body {
+    padding: var(--space-3) 0 var(--space-4);
+  }
+
+  /* ---------- Magazine plate layout ---------- */
+  .prose :global(.plate) {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: var(--space-5) var(--gutter);
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-3);
+  }
+  .prose :global(.plate:first-child) {
+    border-top: 0;
+  }
+  .prose :global(.plate__text) {
+    max-width: 60ch;
+  }
+  .prose :global(.plate__media) {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .prose :global(.plate--text-only),
+  .prose :global(.plate--intro) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .prose :global(.plate--text-only .plate__text),
+  .prose :global(.plate--intro .plate__text) {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  @media (min-width: 920px) {
+    .prose :global(.plate--right),
+    .prose :global(.plate--left) {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+      gap: var(--space-5);
+      align-items: start;
+    }
+    .prose :global(.plate--right .plate__text) {
+      grid-column: 1 / 2;
+      grid-row: 1;
+      position: sticky;
+      top: calc(var(--nav-height) + var(--space-3));
+    }
+    .prose :global(.plate--right .plate__media) {
+      grid-column: 2 / 3;
+      grid-row: 1;
+    }
+    .prose :global(.plate--left .plate__text) {
+      grid-column: 2 / 3;
+      grid-row: 1;
+      position: sticky;
+      top: calc(var(--nav-height) + var(--space-3));
+    }
+    .prose :global(.plate--left .plate__media) {
+      grid-column: 1 / 2;
+      grid-row: 1;
+    }
+  }
+
+  .prose :global(.plate__text h2) {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.45rem, 2.4vw, 1.95rem);
+    line-height: var(--leading-tight);
+    letter-spacing: -0.018em;
+    margin: 0 0 var(--space-2);
+  }
+  .prose :global(.plate__text p) {
+    margin: 0 0 1rem;
+    line-height: var(--leading-cn);
+    color: var(--fg);
+    max-width: 56ch;
+  }
+  .prose :global(.plate__media picture),
+  .prose :global(.plate__media img) {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    background: var(--bg-elevated);
+  }
+
+  .project__nav {
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-5);
+    display: grid;
+    gap: var(--space-3);
+  }
+  .project__back {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .project__pager {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  @media (min-width: 720px) {
+    .project__pager {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .project__pager-item {
+    display: grid;
+    gap: 0.3rem;
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-2);
+    color: var(--fg);
+  }
+  .project__pager-item span:nth-child(2) {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+  }
+  .project__pager-item--right {
+    text-align: right;
+  }
+</style>

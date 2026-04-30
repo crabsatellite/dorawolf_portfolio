@@ -1,48 +1,42 @@
 # `data/` — 网站数据(无需写代码即可修改)
 
-这个文件夹的所有 JSON 文件都是**直接驱动网站显示的数据**。修改任何一个文件,
-然后 commit 到 `main` 分支,GitHub Actions 会自动重新 build 并部署到
-[crabsatellite.github.io/dorawolf_portfolio](https://crabsatellite.github.io/dorawolf_portfolio/),
-约 30 秒后生效。
+修改任一 JSON 后 commit 到 `main`,GitHub Actions 自动重建并部署到
+[crabsatellite.github.io/dorawolf_portfolio](https://crabsatellite.github.io/dorawolf_portfolio/),约 30 秒后生效。
 
-## 怎么改
+## 修改方式
 
-最简单的方式 — 在 GitHub 网页上直接编辑:
+GitHub 网页直接编辑:
 
 1. 打开 https://github.com/crabsatellite/dorawolf_portfolio/tree/main/data
-2. 点开要改的 `.json` 文件
-3. 点右上角铅笔图标(Edit this file)
-4. 修改文字 → 拉到页面底部 → "Commit changes" → 输入说明 → Commit
-5. 等 30 秒,刷新 [网站](https://crabsatellite.github.io/dorawolf_portfolio/) 就能看到
+2. 点开要改的 `.json` → 铅笔图标(Edit this file)
+3. 改文字 → "Commit changes"
+4. 等 30 秒,刷新网站
 
 ## 文件清单
 
-| 文件 | 控制什么 | 谁会显示 |
+| 文件 | 控制什么 | 哪里显示 |
 |---|---|---|
-| `site.json` | 网站基本信息(姓名 / 角色 / 联系方式 / ICP) | 全站(导航栏 / 页脚 / SEO) |
-| `about.json` | 关于页 — 中英双语 bio / 教育背景 / 语言 / 兴趣 | About 页 |
-| `skills.json` | 工具栈(按类别分组) | About 页右侧栏 |
-| `experience.json` | 工作 + 教育 timeline | About 页 + Timeline 页 |
-| `projects-record.json` | 完整项目记录(含未做案例页的项目) | About 页 "Selected projects on record" |
-| `awards.json` | 奖项 / 荣誉 | About 页 |
+| `site.zh.json` | **中文版**站点信息(姓名 / 角色 / 联系方式) | 全站(中文版导航 / 页脚 / SEO) |
+| `site.en.json` | **English** site info | All pages (English nav / footer / SEO) |
+| `about.zh.json` | **中文版**关于页内容(简介 / 教育 / 兴趣) | About 页中文版 |
+| `about.en.json` | **English** About content | About page English version |
+| `experience.json` | 工作 + 教育时间线(双语,中英字段并存) | About + Timeline 页 |
+| `projects-record.json` | 完整项目记录(双语) | About 页 |
+| `awards.json` | 奖项(双语) | About 页 |
+| `skills.json` | 工具栈(分组,无需翻译) | About 页 |
 
-## 项目案例(深度页面)在哪改
+## 项目案例(详细页面)
 
 每个有详细页的建筑项目对应一个 markdown 文件,在
-[`src/content/projects/`](../src/content/projects/) 里 — 文件名就是 URL 末尾的 slug
-(比如 `cjxqwgyxx.md` 对应 `/projects/cjxqwgyxx/`)。
+[`src/content/projects/`](../src/content/projects/) — 文件名是 URL 末尾的 slug
+(如 `cjxqwgyxx.md` → `/projects/cjxqwgyxx/`)。
 
-每个文件顶部有一段 `---` 框起来的 frontmatter(标题 / 年份 / 分类等),下面是
-markdown 正文(段落 + 图片)。改完同样 commit 到 main 即可。
+每个文件顶部 `---` 框是 frontmatter(标题 / 年份 / 分类),下面是 markdown 正文。
 
-## JSON 格式注意事项
+## JSON 注意事项
 
-- 所有字符串必须用英文双引号 `"..."`
-- 字段之间用英文逗号 `,`,**最后一项后面不要逗号**
-- 中文/英文/数字都可以放在字符串里
-- 字段名带 `$comment` 的是注释,不会显示,可以保留也可以删除
-- 改完用 [jsonlint.com](https://jsonlint.com/) 验证一下能避免格式错误
-
-如果 JSON 格式有错,GitHub Actions 会 build 失败 — 在 repo 的 "Actions" 标签
-能看到红色 ❌,点进去看错误信息。最简单的恢复方式:回到 GitHub 网页打开同一文件
-点 "History" → 找上一个能跑的版本 → "Restore"。
+- 所有字符串用英文双引号 `"..."`
+- 字段之间英文逗号 `,`,**最后一项不加逗号**
+- 中英数字都可以
+- `$comment` 字段是注释,不显示
+- 出错恢复:GitHub repo → 文件 → "History" → 选可用版本 → "Restore"

@@ -1,11 +1,11 @@
 ---
-import ProjectCaseBody from "~/components/pages/ProjectCaseBody.astro";
+import ResearchCaseBody from "~/components/pages/ResearchCaseBody.astro";
 import { getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths = (async () => {
-  const projects = await getCollection("projects", ({ data }) => !data.draft);
-  return projects.map((entry) => ({
+  const items = await getCollection("research", ({ data }) => !data.draft);
+  return items.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
@@ -14,4 +14,4 @@ export const getStaticPaths = (async () => {
 const { entry } = Astro.props;
 ---
 
-<ProjectCaseBody lang="zh" entry={entry} />
+<ResearchCaseBody lang="en" entry={entry} />

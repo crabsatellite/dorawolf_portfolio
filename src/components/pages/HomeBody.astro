@@ -1,0 +1,394 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import Picture from "~/components/Picture.astro";
+import { getCollection } from "astro:content";
+import { t, type Lang } from "~/i18n/strings";
+import { loadSite } from "~/i18n/loadData";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const site = loadSite(lang);
+
+const projects = (await getCollection("projects", ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const featured = projects[0];
+const rest = projects.slice(1);
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const langPrefix = lang === "en" ? `${base}/en` : base;
+
+const heroLines = t(lang, "home.hero") as readonly string[];
+---
+
+<BaseLayout title={site.name} lang={lang}>
+  <section class="section section--hero container hero">
+    <div class="hero__head">
+      <p class="eyebrow">
+        {t(lang, "home.eyebrow", { range: site.yearRange })}
+      </p>
+      <h1 class="hero__title">
+        {
+          lang === "zh" ? (
+            <>
+              {heroLines[0]}
+              <br />
+              <span class="hero__emph">{heroLines[1]}</span>、<br />
+              <span class="hero__emph">{heroLines[2]}</span>、<br />
+              {heroLines[3]}。
+            </>
+          ) : (
+            <>
+              {heroLines[0]}
+              <br />
+              that listens to its <span class="hero__emph">{heroLines[1]}</span>
+              ,<br />
+              its <span class="hero__emph">{heroLines[2]}</span>,<br />
+              {heroLines[3]}
+            </>
+          )
+        }
+      </h1>
+    </div>
+    <div class="hero__lede">
+      <p>
+        {
+          t(lang, "home.lede", {
+            fullName: site.fullName,
+            name: site.name,
+            location: site.location,
+          })
+        }
+      </p>
+      <p class="hero__cta">
+        <a class="arrow-link" href={`${langPrefix}/projects`}>
+          {t(lang, "home.cta_view_projects")}
+        </a>
+      </p>
+    </div>
+  </section>
+
+  {
+    featured && (
+      <section class="section featured">
+        <a
+          href={`${langPrefix}/projects/${featured.slug}`}
+          class="featured__link"
+        >
+          <div class="featured__image">
+            {featured.data.hero ? (
+              <Picture
+                src={featured.data.hero}
+                alt={featured.data.title}
+                loading="eager"
+                fetchpriority="high"
+                sizes="100vw"
+              />
+            ) : null}
+          </div>
+          <div class="container featured__caption">
+            <p class="eyebrow">
+              {t(lang, "home.featured_eyebrow", { year: featured.data.year })}
+            </p>
+            <h2 class="featured__title">
+              {lang === "zh" && featured.data.titleZh
+                ? featured.data.titleZh
+                : featured.data.title}
+            </h2>
+            {lang === "en" && featured.data.titleZh && (
+              <p class="featured__zh">{featured.data.titleZh}</p>
+            )}
+            <p class="featured__summary">{featured.data.summary}</p>
+            <span class="arrow-link">{t(lang, "home.featured_cta")}</span>
+          </div>
+        </a>
+      </section>
+    )
+  }
+
+  <section class="section container">
+    <header class="section-head">
+      <div>
+        <p class="eyebrow">{t(lang, "home.section_index_eyebrow")}</p>
+        <h2>{t(lang, "home.section_index_title")}</h2>
+      </div>
+      <a
+        class="arrow-link arrow-link--mono"
+        href={`${langPrefix}/projects`}
+      >
+        {t(lang, "home.section_all_link", { count: projects.length })}
+      </a>
+    </header>
+    <ol class="project-list">
+      {
+        rest.map((p) => (
+          <li class="project-item">
+            <a href={`${langPrefix}/projects/${p.slug}`}>
+              <span class="project-item__year">{p.data.year}</span>
+              <span class="project-item__title">
+                <span class="project-item__title-en">
+                  {lang === "zh" && p.data.titleZh
+                    ? p.data.titleZh
+                    : p.data.title}
+                </span>
+                {lang === "en" && p.data.titleZh && (
+                  <span class="project-item__title-zh">{p.data.titleZh}</span>
+                )}
+              </span>
+              <span class="project-item__meta">
+                {[p.data.typology, p.data.location].filter(Boolean).join(" · ")}
+              </span>
+              <span class="project-item__arrow" aria-hidden="true">
+                →
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="section container threads-section">
+    <header class="section-head">
+      <div>
+        <p class="eyebrow">{t(lang, "home.section_threads_eyebrow")}</p>
+        <h2>{t(lang, "home.section_threads_title")}</h2>
+      </div>
+    </header>
+    <div class="threads">
+      <article>
+        <p class="thread__no">01</p>
+        <h3>{t(lang, "home.thread_1_title")}</h3>
+        <p>{t(lang, "home.thread_1_body")}</p>
+      </article>
+      <article>
+        <p class="thread__no">02</p>
+        <h3>{t(lang, "home.thread_2_title")}</h3>
+        <p>{t(lang, "home.thread_2_body")}</p>
+      </article>
+      <article>
+        <p class="thread__no">03</p>
+        <h3>{t(lang, "home.thread_3_title")}</h3>
+        <p>{t(lang, "home.thread_3_body")}</p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+  }
+  @media (min-width: 980px) {
+    .hero {
+      grid-template-columns: 1.55fr 1fr;
+      gap: var(--space-6);
+      align-items: end;
+    }
+  }
+  .hero__title {
+    margin: 0;
+  }
+  .hero__emph {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--fg);
+  }
+  .hero__lede p {
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    line-height: var(--leading-snug);
+    color: var(--fg-muted);
+    max-width: 42ch;
+  }
+  .hero__cta {
+    margin-top: var(--space-3);
+  }
+
+  .featured {
+    border-top: 1px solid var(--border);
+    padding: var(--space-5) 0 0;
+  }
+  .featured__link {
+    display: block;
+    color: inherit;
+  }
+  .featured__image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--bg-elevated);
+  }
+  .featured__image :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 900ms cubic-bezier(0.2, 0.6, 0.18, 1);
+  }
+  .featured__link:hover .featured__image :global(img) {
+    transform: scale(1.025);
+  }
+  .featured__caption {
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-2);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.4rem;
+    max-width: var(--max-w);
+  }
+  .featured__title {
+    font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+    margin: 0;
+  }
+  .featured__zh {
+    font-family: var(--font-display);
+    color: var(--fg-muted);
+    margin: 0;
+  }
+  .featured__summary {
+    margin: 0.6rem 0 1.2rem;
+    max-width: 60ch;
+    color: var(--fg);
+  }
+  @media (min-width: 980px) {
+    .featured__caption {
+      grid-template-columns: 1.5fr 1fr;
+      gap: var(--space-4);
+      align-items: start;
+    }
+    .featured__title {
+      grid-column: 1 / 2;
+    }
+    .featured__zh {
+      grid-column: 1 / 2;
+    }
+    .featured__summary {
+      grid-column: 2 / 3;
+      grid-row: 1 / span 3;
+      align-self: end;
+    }
+    .featured__caption .arrow-link {
+      grid-column: 2 / 3;
+      align-self: start;
+    }
+  }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: var(--space-4);
+    flex-wrap: wrap;
+  }
+  .section-head h2 {
+    margin: 0;
+  }
+
+  .project-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .project-item {
+    border-top: 1px solid var(--border);
+  }
+  .project-item:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+  .project-item a {
+    display: grid;
+    grid-template-columns: 5rem 1fr auto 2rem;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 1.6rem 0;
+    transition: padding-left var(--transition);
+  }
+  .project-item a:hover {
+    padding-left: 0.5rem;
+  }
+  .project-item__year {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--fg-muted);
+  }
+  .project-item__title-en {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 2vw, 1.65rem);
+    line-height: var(--leading-tight);
+    letter-spacing: -0.012em;
+  }
+  .project-item__title-zh {
+    display: block;
+    color: var(--fg-muted);
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    margin-top: 0.3rem;
+  }
+  .project-item__meta {
+    color: var(--fg-muted);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: right;
+    max-width: 22ch;
+  }
+  .project-item__arrow {
+    font-family: var(--font-mono);
+    color: var(--fg-subtle);
+  }
+  @media (max-width: 720px) {
+    .project-item a {
+      grid-template-columns: 3.5rem 1fr;
+      gap: 0.8rem;
+      padding: 1.2rem 0;
+    }
+    .project-item__meta {
+      grid-column: 2 / 3;
+      text-align: left;
+      margin-top: 0.4rem;
+      max-width: none;
+    }
+    .project-item__arrow {
+      display: none;
+    }
+  }
+
+  .threads-section {
+    border-top: 1px solid var(--border);
+  }
+  .threads {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-4);
+  }
+  .threads article {
+    border-top: 1px solid var(--fg);
+    padding-top: 1rem;
+  }
+  .thread__no {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--fg-subtle);
+    margin: 0 0 0.4rem;
+  }
+  .threads h3 {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1.05rem;
+    letter-spacing: 0;
+    margin-bottom: 0.6rem;
+  }
+  .threads p {
+    color: var(--fg-muted);
+    margin: 0;
+  }
+</style>

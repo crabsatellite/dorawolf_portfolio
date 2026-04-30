@@ -5,6 +5,15 @@
    accent. Hairline rules. Numerical features.
    ============================================================ */
 
+/* Self-hosted fonts via @fontsource (no Google CDN dependency) */
+@import "@fontsource-variable/source-serif-4/index.css";
+@import "@fontsource-variable/source-serif-4/wght-italic.css";
+@import "@fontsource/inter/300.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/jetbrains-mono/400.css";
+
 :root {
   /* Palette — pure ink on warm cream */
   --bg: #f6f5ef;
@@ -100,20 +109,108 @@ picture {
 
 /* Low-quality image placeholder. The blurred 24w AVIF is injected as a
    CSS variable on each <picture class="lqip">. The real <img> sits on
-   top; once it has bytes, it covers the placeholder. */
+   top; once it has bytes, it fades over the placeholder. */
 picture.lqip {
   position: relative;
   background-image: var(--lqip);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  display: block;
+  cursor: zoom-in;
 }
 picture.lqip > img {
   position: relative;
   z-index: 1;
+  opacity: 0;
+  transition: opacity 480ms cubic-bezier(0.2, 0.6, 0.18, 1);
 }
-@supports (background-image: image-set(url("") type("image/avif"))) {
-  /* AVIF base64 is fine — keep as-is */
+picture.lqip > img.is-loaded {
+  opacity: 1;
+}
+/* When JS is disabled, never hide images */
+.no-js picture.lqip > img {
+  opacity: 1;
+}
+
+/* Multi-image grid inside a plate's media column. When the column has 4
+   or more pictures we lay them out 2-up on tablet and beyond — keeps
+   plate 8 (9 images) from becoming a single tall stack. */
+.plate__media:has(picture.lqip:nth-of-type(4)) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+}
+@media (min-width: 720px) {
+  .plate__media:has(picture.lqip:nth-of-type(4)) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------- Lightbox ---------- */
+dialog.lightbox {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  inset: 0;
+  cursor: zoom-out;
+  color: var(--bg);
+  overflow: hidden;
+}
+dialog.lightbox::backdrop {
+  background: rgba(10, 10, 10, 0.94);
+}
+dialog.lightbox[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+dialog.lightbox__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: clamp(1rem, 4vw, 4rem);
+}
+dialog.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+dialog.lightbox .lightbox__bar {
+  position: absolute;
+  inset: auto 0 1.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--bg);
+  text-transform: uppercase;
+  pointer-events: none;
+  opacity: 0.7;
+}
+dialog.lightbox .lightbox__bar button,
+dialog.lightbox .lightbox__bar a {
+  pointer-events: auto;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  padding: 0.5rem 0.7rem;
+  cursor: pointer;
 }
 
 a {

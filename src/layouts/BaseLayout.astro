@@ -2,64 +2,189 @@
 import "~/styles/global.css";
 import Nav from "~/components/Nav.astro";
 import Footer from "~/components/Footer.astro";
+import { langFromPath, type Lang } from "~/i18n/strings";
+import { loadSite } from "~/i18n/loadData";
 
 interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  lang?: Lang;
 }
 
-const {
-  title,
-  description = "DoraWolf — architect and designer. Selected works and research in sustainable architecture.",
-  ogImage,
-} = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/+$/, "");
+const detected = langFromPath(Astro.url.pathname.replace(base, "") || "/");
+const { title, description, ogImage, lang = detected } = Astro.props;
+const site = loadSite(lang);
 
-const fullTitle = title === "DoraWolf" ? title : `${title} — DoraWolf`;
+const fallbackDescription =
+  lang === "en"
+    ? `${site.fullName} (${site.name}) — architect and designer based in ${site.location}.`
+    : `${site.fullName}（${site.name}）—— 建筑师与设计师,坐标 ${site.location}。`;
+
+const fullTitle = title === site.name ? title : `${title} — ${site.name}`;
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const htmlLang = lang === "en" ? "en" : "zh-Hans-CN";
 ---
 
 <!doctype html>
-<html lang="zh-Hans-CN">
+<html lang={htmlLang} class="no-js">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href={`${import.meta.env.BASE_URL}/favicon.svg`}
-    />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
     <link rel="canonical" href={canonical} />
     <slot name="head" />
 
     <title>{fullTitle}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={description || fallbackDescription} />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={description || fallbackDescription} />
     <meta property="og:url" content={canonical} />
     {ogImage && <meta property="og:image" content={ogImage} />}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500&family=JetBrains+Mono:wght@400&display=swap"
-    />
+    <script is:inline>
+      // Mark JS as available so opacity-0 fade-in styles can take effect.
+      document.documentElement.classList.remove("no-js");
+    </script>
   </head>
   <body>
-    <a href="#main" class="skip-link">Skip to content</a>
-    <Nav />
+    <a href="#main" class="skip-link">
+      {lang === "en" ? "Skip to content" : "跳到内容"}
+    </a>
+    <Nav lang={lang} />
     <main id="main">
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
+
+    <dialog class="lightbox" id="lightbox" aria-label="Image viewer">
+      <div class="lightbox__inner" id="lightbox-inner"></div>
+      <div class="lightbox__bar">
+        <button type="button" data-lb-prev aria-label="Previous">←</button>
+        <span data-lb-counter></span>
+        <button type="button" data-lb-next aria-label="Next">→</button>
+        <button type="button" data-lb-close aria-label="Close">Close ✕</button>
+      </div>
+    </dialog>
+
+    <script is:inline>
+      // Image fade-in: add `is-loaded` once the browser has decoded bytes.
+      (function () {
+        var imgs = document.querySelectorAll("picture.lqip > img");
+        for (var i = 0; i < imgs.length; i++) {
+          var img = imgs[i];
+          if (img.complete && img.naturalHeight !== 0) {
+            img.classList.add("is-loaded");
+          } else {
+            img.addEventListener(
+              "load",
+              (function (el) {
+                return function () {
+                  el.classList.add("is-loaded");
+                };
+              })(img),
+              { once: true }
+            );
+          }
+        }
+      })();
+
+      // Lightbox: click any <picture> to open full-screen.
+      (function () {
+        var dlg = document.getElementById("lightbox");
+        if (!dlg || typeof dlg.showModal !== "function") return;
+        var inner = document.getElementById("lightbox-inner");
+        var counter = dlg.querySelector("[data-lb-counter]");
+        var prevBtn = dlg.querySelector("[data-lb-prev]");
+        var nextBtn = dlg.querySelector("[data-lb-next]");
+        var closeBtn = dlg.querySelector("[data-lb-close]");
+        var list = [];
+        var idx = 0;
+
+        function render() {
+          var pic = list[idx];
+          if (!pic) return;
+          var img = pic.querySelector("img");
+          if (!img) return;
+          inner.innerHTML = "";
+          var big = document.createElement("img");
+          big.src = img.currentSrc || img.src;
+          big.alt = img.alt || "";
+          inner.appendChild(big);
+          if (counter)
+            counter.textContent =
+              list.length > 1 ? idx + 1 + " / " + list.length : "";
+        }
+
+        function open(pic) {
+          // Build the gallery list: every <picture> in the same logical
+          // group (closest container with multiple pictures, falling back
+          // to all pictures on the page).
+          var group = pic.closest(".plate__media") || pic.closest(".prose") || document;
+          list = Array.prototype.slice.call(
+            group.querySelectorAll("picture.lqip")
+          );
+          if (list.indexOf(pic) === -1) {
+            list = [pic];
+          }
+          idx = list.indexOf(pic);
+          render();
+          if (typeof dlg.showModal === "function") dlg.showModal();
+        }
+
+        document.addEventListener("click", function (e) {
+          var t = e.target;
+          while (t && t !== document) {
+            if (t.tagName === "PICTURE" && t.classList.contains("lqip")) {
+              e.preventDefault();
+              open(t);
+              return;
+            }
+            // Inside the dialog itself, clicks on the inner image area
+            // (but not buttons or img) close the lightbox.
+            if (t === dlg) break;
+            t = t.parentNode;
+          }
+        });
+
+        function close() {
+          if (dlg.open) dlg.close();
+          inner.innerHTML = "";
+        }
+        function next() {
+          if (!list.length) return;
+          idx = (idx + 1) % list.length;
+          render();
+        }
+        function prev() {
+          if (!list.length) return;
+          idx = (idx - 1 + list.length) % list.length;
+          render();
+        }
+
+        prevBtn && prevBtn.addEventListener("click", function (e) { e.stopPropagation(); prev(); });
+        nextBtn && nextBtn.addEventListener("click", function (e) { e.stopPropagation(); next(); });
+        closeBtn && closeBtn.addEventListener("click", close);
+
+        dlg.addEventListener("click", function (e) {
+          // Click on backdrop or inner area (not a button) closes.
+          if (e.target === dlg || e.target === inner || e.target.tagName === "IMG") {
+            close();
+          }
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (!dlg.open) return;
+          if (e.key === "ArrowRight") next();
+          else if (e.key === "ArrowLeft") prev();
+          else if (e.key === "Escape") close();
+        });
+      })();
+    </script>
 
     <style>
       .skip-link {

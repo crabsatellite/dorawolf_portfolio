@@ -1,15 +1,11 @@
 {
-  "$comment": "Site-wide settings. Edit any value here, push to main, the site rebuilds.",
+  "$comment": "English site settings. Edit and push, the site rebuilds within ~30s. Chinese version is in site.zh.json.",
   "name": "DoraWolf",
   "fullName": "Qingyuan Fu",
-  "fullNameZh": "付清源",
   "role": "Architect & Designer",
-  "roleZh": "建筑师 / 设计师",
   "tagline": "Architecture that listens to its site, its climate, and the people who will inhabit it.",
   "yearRange": "2021 — 2023",
   "location": "Wuhan, China",
-  "locationZh": "中国 · 武汉",
   "email": "949505300@qq.com",
-  "githubRepo": "crabsatellite/dorawolf_portfolio",
-  "icp": "鄂ICP备2024064771号"
+  "githubRepo": "crabsatellite/dorawolf_portfolio"
 }

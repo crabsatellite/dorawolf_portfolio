@@ -1,0 +1,110 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { t, type Lang } from "~/i18n/strings";
+import experience from "../../../data/experience.json";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const cleanRecord = (rec: any) =>
+  Object.fromEntries(Object.entries(rec).filter(([k]) => !k.startsWith("$")));
+const entries = experience.map(cleanRecord);
+
+const pickTitle = (e: any) =>
+  lang === "zh" ? e.titleZh || e.title : e.title;
+const pickOrg = (e: any) => (lang === "zh" ? e.orgZh || e.org : e.org);
+const h1 = t(lang, "timeline.h1") as readonly string[];
+---
+
+<BaseLayout title={t(lang, "timeline.title")} lang={lang}>
+  <section class="section section--hero container">
+    <p class="eyebrow">{t(lang, "timeline.eyebrow")}</p>
+    <h1>{h1[0]}<br />{h1[1]}</h1>
+  </section>
+
+  <section class="section container">
+    <ol class="timeline">
+      {
+        entries.map((e: any) => (
+          <li class:list={["t-item", `t-item--${e.kind}`]}>
+            <span class="t-item__range">{e.range}</span>
+            <div class="t-item__body">
+              <h3 class="t-item__title">{pickTitle(e)}</h3>
+              <p class="t-item__org">
+                {pickOrg(e)}
+                {e.location && <span class="t-item__loc"> · {e.location}</span>}
+              </p>
+              {e.note && <p class="t-item__notes">{e.note}</p>}
+            </div>
+            <span class="t-item__kind">
+              {e.kind === "work"
+                ? t(lang, "about.kind_practice")
+                : t(lang, "about.kind_education")}
+            </span>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</BaseLayout>
+
+<style>
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .t-item {
+    display: grid;
+    grid-template-columns: 9rem 1fr 7rem;
+    gap: var(--space-3);
+    padding: var(--space-4) 0;
+    border-top: 1px solid var(--border);
+    align-items: baseline;
+  }
+  .t-item:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+  .t-item__range {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--fg-muted);
+  }
+  .t-item__title {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    margin: 0 0 0.3rem;
+  }
+  .t-item__org {
+    margin: 0;
+    color: var(--fg);
+  }
+  .t-item__loc {
+    color: var(--fg-muted);
+  }
+  .t-item__notes {
+    margin: 0.7rem 0 0;
+    color: var(--fg-muted);
+    max-width: 60ch;
+  }
+  .t-item__kind {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-subtle);
+    text-align: right;
+  }
+  @media (max-width: 720px) {
+    .t-item {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    .t-item__kind {
+      text-align: left;
+      order: -1;
+    }
+  }
+</style>

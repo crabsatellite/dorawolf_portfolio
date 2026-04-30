@@ -1,0 +1,175 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import Picture from "~/components/Picture.astro";
+import { getCollection } from "astro:content";
+import { t, type Lang } from "~/i18n/strings";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const items = (await getCollection("research", ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const langPrefix = lang === "en" ? `${base}/en` : base;
+const h1 = t(lang, "research.h1") as readonly string[];
+---
+
+<BaseLayout title={t(lang, "research.title")} lang={lang}>
+  <section class="section section--hero container">
+    <p class="eyebrow">{t(lang, "research.eyebrow")}</p>
+    <h1>
+      {h1[0]} <em>{h1[1]}</em>{h1[2]}
+    </h1>
+    <p class="lede">{t(lang, "research.lede")}</p>
+  </section>
+
+  <section class="section">
+    <ol class="plates">
+      {
+        items.map((item, i) => (
+          <li class="plate">
+            <a href={`${langPrefix}/research/${item.slug}`} class="plate__link">
+              <div class="container plate__inner">
+                <span class="plate__no">{String(i + 1).padStart(2, "0")}</span>
+                <div class="plate__copy">
+                  <p class="eyebrow">{item.data.title}</p>
+                  <h2 class="plate__title">
+                    {lang === "zh" && item.data.titleZh
+                      ? item.data.titleZh
+                      : item.data.title}
+                  </h2>
+                  <p class="plate__summary">
+                    {lang === "zh" && item.data.blurbZh
+                      ? item.data.blurbZh
+                      : item.data.blurb}
+                  </p>
+                  <span class="arrow-link">{t(lang, "research.read")}</span>
+                </div>
+                <div class="plate__image">
+                  {item.data.hero && (
+                    <Picture
+                      src={item.data.hero}
+                      alt={item.data.title}
+                      loading={i === 0 ? "eager" : "lazy"}
+                      sizes="(min-width: 1440px) 720px, (min-width: 880px) 50vw, 100vw"
+                    />
+                  )}
+                </div>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="section container">
+    <div class="research-note">
+      <p>{t(lang, "research.note")}</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  h1 em {
+    font-style: italic;
+    font-weight: 300;
+  }
+  .lede {
+    font-family: var(--font-display);
+    color: var(--fg-muted);
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    line-height: var(--leading-snug);
+    max-width: 60ch;
+    margin-top: var(--space-3);
+  }
+
+  .plates {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .plate {
+    border-top: 1px solid var(--border);
+  }
+  .plate:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+  .plate__link {
+    display: block;
+    color: inherit;
+    transition: background var(--transition);
+  }
+  .plate__link:hover {
+    background: var(--bg-elevated);
+  }
+  .plate__inner {
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    gap: var(--space-3);
+    padding: var(--space-4) 0;
+    align-items: start;
+  }
+  @media (min-width: 880px) {
+    .plate__inner {
+      grid-template-columns: 4.5rem minmax(0, 1.05fr) minmax(0, 1.05fr);
+      gap: var(--space-4);
+      padding: var(--space-5) 0;
+    }
+  }
+  .plate__no {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    color: var(--fg-subtle);
+    padding-top: 0.4rem;
+  }
+  .plate__copy {
+    max-width: 48ch;
+  }
+  .plate__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+    margin: 0 0 0.3rem;
+  }
+  .plate__summary {
+    color: var(--fg);
+    margin: 0 0 1.2rem;
+  }
+  .plate__image {
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+  }
+  .plate__image :global(picture),
+  .plate__image :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  @media (max-width: 879px) {
+    .plate__image {
+      aspect-ratio: 16 / 10;
+      grid-column: 1 / -1;
+      margin-top: var(--space-2);
+    }
+    .plate__copy {
+      grid-column: 2 / -1;
+    }
+  }
+
+  .research-note {
+    padding: var(--space-3);
+    border-left: 2px solid var(--fg);
+    background: var(--bg-elevated);
+    color: var(--fg-muted);
+    max-width: 60ch;
+  }
+  .research-note p {
+    margin: 0;
+  }
+</style>
