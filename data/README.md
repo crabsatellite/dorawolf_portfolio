@@ -1,4 +1,4 @@
-# `data/` — 网站数据(无需写代码即可修改)
+# `data/` 网站数据(无需写代码即可修改)
 
 修改任一 JSON 后 commit 到 `main`,GitHub Actions 自动重建并部署到
 [crabsatellite.github.io/dorawolf_portfolio](https://crabsatellite.github.io/dorawolf_portfolio/)，约 30 秒后生效。
@@ -28,7 +28,7 @@ GitHub 网页直接编辑：
 ## 项目案例(详细页面)
 
 每个有详细页的建筑项目对应一个 markdown 文件，在
-[`src/content/projects/`](../src/content/projects/) — 文件名是 URL 末尾的 slug
+[`src/content/projects/`](../src/content/projects/)，文件名是 URL 末尾的 slug
 (如 `yangtze-foreign-language-school.md` → `/projects/yangtze-foreign-language-school/`)。
 
 每个文件顶部 `---` 框是 frontmatter(标题 / 年份 / 分类)，下面是 markdown 正文。

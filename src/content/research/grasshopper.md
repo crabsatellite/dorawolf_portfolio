@@ -1,8 +1,8 @@
 ---
 title: "Grasshopper"
 titleZh: "Grasshopper 专篇"
-blurb: "Visual programming for parametric design — a small kit of utility components, plus building, environmental, and exploratory experiments."
-blurbZh: "可视化参数化编程 — 通用小工具集，以及建筑、环境模拟、形态实验。"
+blurb: "Visual programming for parametric design. A small kit of utility components, plus building, environmental, and exploratory experiments."
+blurbZh: "可视化参数化编程。通用小工具集，以及建筑、环境模拟、形态实验。"
 hero: "/research/grasshopper/QQ_20240704215717.png"
 order: 2
 ---
@@ -17,7 +17,7 @@ Grasshopper 在工作室里被当作一件常驻工具，而不是一个"看起�
 
 第一组是反复用到的小功能，被整理成可随时调用的电池：提取上下边线、提取 Brep 高度、按距离等分线、ISO、转化余弦曲线、一键生成带休息平台的台阶、随机打断曲线、室内打灯、线转箭头、路径跟随、生成 V 形柱、合并楼板、转波浪线、去除重复面。
 
-提取上下边线写了两套不同原理，适配两类不同的模型——一个偏几何投影，一个偏拓扑遍历：
+提取上下边线写了两套不同原理，适配两类不同的模型，一个偏几何投影，一个偏拓扑遍历：
 
 ![](/research/grasshopper/QQ_20240704215717.png)
 
@@ -59,7 +59,7 @@ GH 在项目流程里，大部分时间花在建筑表皮和结构上。每个�
 
 ![](/research/grasshopper/QQ_20240705170206.png)
 
-一键排教室——用来在很短时间里铺出一个合规的教学组团：
+一键排教室，用来在很短时间里铺出一个合规的教学组团：
 
 ![](/research/grasshopper/QQ_20240705171209.png)
 
@@ -83,7 +83,7 @@ Y 形柱：
 
 ## 环境模拟
 
-这一组主要靠 Ladybug。它把方案早期的"感觉"变成可以被指认的数字——不解决问题，但至少把问题落到桌面上。
+这一组主要靠 Ladybug。它把方案早期的"感觉"变成可以被指认的数字，不解决问题，但至少把问题落到桌面上。
 
 日照分析：
 
@@ -107,7 +107,7 @@ Y 形柱：
 
 最后一组是把 GH 推到工程任务之外的边界，用来检验这套数据流到底能撑起多大的形态系统。它们不是项目交付物，而是工作室留给自己的压力测试。
 
-元素工具箱：一个不小的工程，设定了若干种相互独立又可叠加的"元素"，对应若干种小工具，按住 Alt + 鼠标右键左右滑动切换。下图只是其中一段电池截图——整体的工作量实在不适合塞进静态图里。
+元素工具箱：一个不小的工程，设定了若干种相互独立又可叠加的"元素"，对应若干种小工具，按住 Alt + 鼠标右键左右滑动切换。下图只是其中一段电池截图，整体的工作量实在不适合塞进静态图里。
 
 ![](/research/grasshopper/_-1.jpg)
 
@@ -123,7 +123,7 @@ Y 形柱：
 
 ![](/research/grasshopper/GIF-2024-7-5-20-28-10.gif)
 
-棋局推演——把规则当作约束写进电池组，验证规则到形态的跳变：
+棋局推演：把规则当作约束写进电池组，验证规则到形态的跳变：
 
 ![](/research/grasshopper/QQ_20240705203113.png)
 

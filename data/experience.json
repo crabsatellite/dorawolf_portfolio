@@ -1,25 +1,25 @@
 [
   {
     "$comment": "Studio practice arc. Latest first. The {now} placeholder is replaced by the current year at build time.",
-    "range": "2023 — {now}",
-    "rangeZh": "2023 — {now}",
+    "range": "2023-{now}",
+    "rangeZh": "2023-{now}",
     "title": "Independent practice",
     "titleZh": "独立工作室",
     "org": "DoraWolf Studio",
     "orgZh": "DoraWolf 工作室",
     "location": "Wuhan, China",
-    "note": "An independent practice working at the intersection of education, infrastructure, and public buildings. The studio reads each site — its topography, climate, and civic edges — before form is committed, then carries the design through a small kit of computational tools (Sketchup, Grasshopper, Rhino, Ladybug) until it has the precision to be built.",
-    "noteZh": "聚焦于教育建筑、基础设施与公共建筑的独立工作室。每个方案先读场地——它的等高线、它的气候、它的公共边界——再让形态从这里生发，经一套精炼的计算工具(Sketchup、Grasshopper、Rhino、Ladybug)推至落地。"
+    "note": "An independent practice working at the intersection of education, infrastructure, and public buildings. The studio reads each site, its topography, climate, and civic edges, before form is committed, then carries the design through a small kit of computational tools (Sketchup, Grasshopper, Rhino, Ladybug) until it has the precision to be built.",
+    "noteZh": "聚焦于教育建筑、基础设施与公共建筑的独立工作室。每个方案先读场地的等高线、气候和公共边界，再让形态从这里生发，经一套精炼的计算工具(Sketchup、Grasshopper、Rhino、Ladybug)推至落地。"
   },
   {
-    "range": "2021 — 2023",
-    "rangeZh": "2021 — 2023",
+    "range": "2021-2023",
+    "rangeZh": "2021-2023",
     "title": "Institute period",
     "titleZh": "院所时期",
     "org": "CITIC Architectural Design & Research Institute · Wuhan studio",
     "orgZh": "中信建筑设计研究总院 · 武汉分院",
     "location": "Wuhan, China",
     "note": "Schematic and competition work across education, infrastructure, and civic typologies. The projects on the list above were largely conceived during these years and now form the studio's founding portfolio.",
-    "noteZh": "覆盖教育、基础设施与公共建筑的方案与竞赛工作——这些项目随后成为 DoraWolf 工作室的起始资产。"
+    "noteZh": "覆盖教育、基础设施与公共建筑的方案与竞赛工作。这些项目随后成为 DoraWolf 工作室的起始资产。"
   }
 ]

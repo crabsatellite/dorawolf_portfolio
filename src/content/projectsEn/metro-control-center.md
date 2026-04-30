@@ -3,7 +3,7 @@
 
 ## Site
 
-The Sixin riverbank is still a growing edge. The Han Hall and conference centre have settled in, the Intercontinental and Greenland National Convention towers line up along the water, and to the north a band of super-tall housing pushes up to a hundred and forty, a hundred and fifty metres. What we read here is not an empty plot but a paragraph already half written — to drop another dispatch building in is to slip a breath between someone else's sentences. So we set the site back to a datum first, pulling a horizontal line north to south along the river, letting the control centre come down to catch the convention cluster, and yielding the river face to the towers behind.
+The Sixin riverbank is still a growing edge. The Han Hall and conference centre have settled in, the Intercontinental and Greenland National Convention towers line up along the water, and to the north a band of super-tall housing pushes up to a hundred and forty, a hundred and fifty metres. What we read here is not an empty plot but a paragraph already half written. To drop another dispatch building in is to slip a breath between someone else's sentences. So we set the site back to a datum first, pulling a horizontal line north to south along the river, letting the control centre come down to catch the convention cluster, and yielding the river face to the towers behind.
 
 ![](/projects/metro-control-center/_31.jpg)
 
@@ -17,7 +17,7 @@ The metro group's operational core needs a 24-hour run of equipment rooms and du
 
 ## Form
 
-We tried two readings of the form. In the first, orthogonal volumes interlock in a slight stagger, and a portal-shaped void is cut from the middle band — as if the building had been sliced laterally to let the city's gaze pass through. That opening is, in fact, a service-driven mechanical floor; we simply let it open outward, turning a technical setback into a dialogue between the metro group's civic identity and a public display. In the second reading, the same programme is pressed into a more continuous horizontal band, met by a rhythm of speed-line ribbon windows that respond to the shared direction of river and rail. The volume becomes more restrained, the corners quieter, and the eaves return once more to that single horizontal datum running south to north.
+We tried two readings of the form. In the first, orthogonal volumes interlock in a slight stagger, and a portal-shaped void is cut from the middle band, as if the building had been sliced laterally to let the city's gaze pass through. That opening is, in fact, a service-driven mechanical floor; we simply let it open outward, turning a technical setback into a dialogue between the metro group's civic identity and a public display. In the second reading, the same programme is pressed into a more continuous horizontal band, met by a rhythm of speed-line ribbon windows that respond to the shared direction of river and rail. The volume becomes more restrained, the corners quieter, and the eaves return once more to that single horizontal datum running south to north.
 
 ![](/projects/metro-control-center/_36.jpg)
 
@@ -35,7 +35,7 @@ The control centre is not a stand-alone block. Its lower floors thread into the 
 
 ![Image 39 copy](/projects/metro-control-center/_39-_-scaled.jpg)
 
-The ground plane folds into the TOD's vertical interchange, leaving openings for five themed gardens — wellness, wetland, allée, rooftop, and an arts garden — each carrying a different fragment of city life. The cloud exhibition space inside the future book city is left as an undefined, elastic field, and the canopy opening on its northern flank looks straight back at the control centre, so the two volumes meet each other's gaze across the distance. We hoped that whoever passes through here — a commuter, a family on a weekend stroll, a passenger waiting for a connection, a neighbour bringing a child to camp under the trees — would find a quiet corner to stop. Infrastructure can be the city's backstage, and it can also be a frontstage worth walking past.
+The ground plane folds into the TOD's vertical interchange, leaving openings for five themed gardens (wellness, wetland, allée, rooftop, and an arts garden), each carrying a different fragment of city life. The cloud exhibition space inside the future book city is left as an undefined, elastic field, and the canopy opening on its northern flank looks straight back at the control centre, so the two volumes meet each other's gaze across the distance. We hoped that whoever passes through here, a commuter, a family on a weekend stroll, a passenger waiting for a connection, a neighbour bringing a child to camp under the trees, would find a quiet corner to stop. Infrastructure can be the city's backstage, and it can also be a frontstage worth walking past.
 
 ![](/projects/metro-control-center/_42.jpg)
 

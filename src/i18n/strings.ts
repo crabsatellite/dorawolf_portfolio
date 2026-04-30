@@ -20,7 +20,7 @@ const strings = {
     "nav.projects": "项目",
     "nav.research": "研究",
     "nav.timeline": "起点",
-    "nav.home_aria": "{name} — 主页",
+    "nav.home_aria": "{name} 主页",
     "nav.lang_switch_aria": "切换语言",
 
     "home.eyebrow": "{range}",
@@ -76,7 +76,7 @@ const strings = {
     "research.read": "阅读研究",
     "research.back": "← 全部研究",
     "research.note":
-      "未列入此处的工具——那些看起来惊艳却很少在实战方案中使用的——并不获得专属页面。工作室更看重一套小而精的工具。",
+      "那些看起来惊艳但很少在实战方案中用到的工具，没有专属页面。工作室更看重一套小而精的工具。",
     "research.case_eyebrow": "研究",
     "research.attribution": "DoraWolf 工作室",
     "research.prev": "上一篇",
@@ -101,7 +101,7 @@ const strings = {
     "timeline.eyebrow": "起点",
     "timeline.h1": ["工作室之前", "与之后。"],
     "timeline.lede":
-      "两段时期串起目前这条线索：中信武汉分院的院所年(2021 — 2023)与之后独立工作室的实践。",
+      "两段时期串起目前这条线索：中信武汉分院的院所年(2021-2023)与之后独立工作室的实践。",
 
     "footer.contact": "联系",
     "footer.studio": "工作室",
@@ -120,7 +120,7 @@ const strings = {
     "nav.projects": "Projects",
     "nav.research": "Research",
     "nav.timeline": "Timeline",
-    "nav.home_aria": "{name} — home",
+    "nav.home_aria": "{name} home",
     "nav.lang_switch_aria": "Switch language",
 
     "home.eyebrow": "{range}",
@@ -178,7 +178,7 @@ const strings = {
     "research.eyebrow": "Research",
     "research.h1": ["Tools as", "instruments", ", not the design."],
     "research.lede":
-      "Computational tools earn their place when they let the studio test more alternatives, more honestly, in less time. Two long studies — Sketchup and Grasshopper — collected here as ongoing logs.",
+      "Computational tools earn their place when they let the studio test more alternatives, more honestly, in less time. Two long studies, Sketchup and Grasshopper, are collected here as ongoing logs.",
     "research.read": "Read study",
     "research.back": "← All research",
     "research.note":
@@ -208,7 +208,7 @@ const strings = {
     "timeline.eyebrow": "Timeline",
     "timeline.h1": ["Before the studio,", "and since."],
     "timeline.lede":
-      "Two periods carry the current thread: the institute years at CITIC Architectural Design & Research Institute, Wuhan studio (2021 — 2023), and the independent practice that followed.",
+      "Two periods carry the current thread: the institute years at CITIC Architectural Design & Research Institute, Wuhan studio (2021-2023), and the independent practice that followed.",
 
     "footer.contact": "Contact",
     "footer.studio": "Studio",
