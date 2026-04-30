@@ -4,6 +4,13 @@ import Picture from "~/components/Picture.astro";
 import { getCollection } from "astro:content";
 import { t, type Lang } from "~/i18n/strings";
 import { loadSite } from "~/i18n/loadData";
+import {
+  pickSummary,
+  tr,
+  typologyTranslations,
+  locationTranslations,
+  expandRange,
+} from "~/i18n/translateContent";
 
 interface Props {
   lang: Lang;
@@ -22,32 +29,43 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const langPrefix = lang === "en" ? `${base}/en` : base;
 
 const heroLines = t(lang, "home.hero") as readonly string[];
+const yearRange = expandRange(site.yearRange);
+
+// Build cursor-follow preview src for each project list row.
+function previewSrc(p: any): string | null {
+  return p.data.hero ? `${base}${p.data.hero}` : null;
+}
 ---
 
 <BaseLayout title={site.name} lang={lang}>
   <section class="section section--hero container hero">
     <div class="hero__head">
       <p class="eyebrow">
-        {t(lang, "home.eyebrow", { range: site.yearRange })}
+        {t(lang, "home.eyebrow", { range: yearRange })}
       </p>
       <h1 class="hero__title">
         {
           lang === "zh" ? (
             <>
-              {heroLines[0]}
-              <br />
-              <span class="hero__emph">{heroLines[1]}</span>、<br />
-              <span class="hero__emph">{heroLines[2]}</span>、<br />
-              {heroLines[3]}。
+              <span class="hero__line" style="--i:0">{heroLines[0]}</span>
+              <span class="hero__line" style="--i:1">
+                <span class="hero__emph">{heroLines[1]}</span>、
+              </span>
+              <span class="hero__line" style="--i:2">
+                <span class="hero__emph">{heroLines[2]}</span>、
+              </span>
+              <span class="hero__line" style="--i:3">{heroLines[3]}。</span>
             </>
           ) : (
             <>
-              {heroLines[0]}
-              <br />
-              that listens to its <span class="hero__emph">{heroLines[1]}</span>
-              ,<br />
-              its <span class="hero__emph">{heroLines[2]}</span>,<br />
-              {heroLines[3]}
+              <span class="hero__line" style="--i:0">{heroLines[0]}</span>
+              <span class="hero__line" style="--i:1">
+                <span class="hero__emph">{heroLines[1]}</span>,
+              </span>
+              <span class="hero__line" style="--i:2">
+                its <span class="hero__emph">{heroLines[2]}</span>,
+              </span>
+              <span class="hero__line" style="--i:3">{heroLines[3]}</span>
             </>
           )
         }
@@ -101,7 +119,7 @@ const heroLines = t(lang, "home.hero") as readonly string[];
             {lang === "en" && featured.data.titleZh && (
               <p class="featured__zh">{featured.data.titleZh}</p>
             )}
-            <p class="featured__summary">{featured.data.summary}</p>
+            <p class="featured__summary">{pickSummary(lang, featured.data)}</p>
             <span class="arrow-link">{t(lang, "home.featured_cta")}</span>
           </div>
         </a>
@@ -124,29 +142,39 @@ const heroLines = t(lang, "home.hero") as readonly string[];
     </header>
     <ol class="project-list">
       {
-        rest.map((p) => (
-          <li class="project-item">
-            <a href={`${langPrefix}/projects/${p.slug}`}>
-              <span class="project-item__year">{p.data.year}</span>
-              <span class="project-item__title">
-                <span class="project-item__title-en">
-                  {lang === "zh" && p.data.titleZh
-                    ? p.data.titleZh
-                    : p.data.title}
+        rest.map((p) => {
+          const meta = [
+            tr(typologyTranslations, lang, p.data.typology),
+            tr(locationTranslations, lang, p.data.location),
+          ]
+            .filter(Boolean)
+            .join(" · ");
+          const ps = previewSrc(p);
+          return (
+            <li class="project-item">
+              <a
+                href={`${langPrefix}/projects/${p.slug}`}
+                data-preview={ps}
+              >
+                <span class="project-item__year">{p.data.year}</span>
+                <span class="project-item__title">
+                  <span class="project-item__title-en">
+                    {lang === "zh" && p.data.titleZh
+                      ? p.data.titleZh
+                      : p.data.title}
+                  </span>
+                  {lang === "en" && p.data.titleZh && (
+                    <span class="project-item__title-zh">{p.data.titleZh}</span>
+                  )}
                 </span>
-                {lang === "en" && p.data.titleZh && (
-                  <span class="project-item__title-zh">{p.data.titleZh}</span>
-                )}
-              </span>
-              <span class="project-item__meta">
-                {[p.data.typology, p.data.location].filter(Boolean).join(" · ")}
-              </span>
-              <span class="project-item__arrow" aria-hidden="true">
-                →
-              </span>
-            </a>
-          </li>
-        ))
+                <span class="project-item__meta">{meta}</span>
+                <span class="project-item__arrow" aria-hidden="true">
+                  →
+                </span>
+              </a>
+            </li>
+          );
+        })
       }
     </ol>
   </section>
@@ -193,6 +221,32 @@ const heroLines = t(lang, "home.hero") as readonly string[];
   }
   .hero__title {
     margin: 0;
+    display: block;
+  }
+  .hero__line {
+    display: block;
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+    animation: hero-rise 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(var(--i, 0) * 90ms + 220ms);
+  }
+  .no-js .hero__line {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__line {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+  }
+  @keyframes hero-rise {
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
   .hero__emph {
     font-style: italic;

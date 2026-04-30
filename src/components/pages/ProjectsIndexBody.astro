@@ -3,6 +3,12 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
 import Picture from "~/components/Picture.astro";
 import { getCollection } from "astro:content";
 import { t, type Lang } from "~/i18n/strings";
+import {
+  pickSummary,
+  tr,
+  typologyTranslations,
+  locationTranslations,
+} from "~/i18n/translateContent";
 
 interface Props {
   lang: Lang;
@@ -36,8 +42,10 @@ const langPrefix = lang === "en" ? `${base}/en` : base;
                 <div class="plate__copy">
                   <p class="eyebrow">
                     {p.data.year}
-                    {p.data.typology && ` · ${p.data.typology}`}
-                    {p.data.location && ` · ${p.data.location}`}
+                    {p.data.typology &&
+                      ` · ${tr(typologyTranslations, lang, p.data.typology)}`}
+                    {p.data.location &&
+                      ` · ${tr(locationTranslations, lang, p.data.location)}`}
                   </p>
                   <h2 class="plate__title">
                     {lang === "zh" && p.data.titleZh
@@ -47,7 +55,7 @@ const langPrefix = lang === "en" ? `${base}/en` : base;
                   {lang === "en" && p.data.titleZh && (
                     <p class="plate__zh">{p.data.titleZh}</p>
                   )}
-                  <p class="plate__summary">{p.data.summary}</p>
+                  <p class="plate__summary">{pickSummary(lang, p.data)}</p>
                   <span class="arrow-link">{t(lang, "projects.read")}</span>
                 </div>
                 <div class="plate__image">

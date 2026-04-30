@@ -605,3 +605,33 @@ picture.lqip {
 picture.lqip:hover {
   outline-color: var(--fg);
 }
+
+/* ---- Project-list cursor-follow preview --------------------------------
+   Hovering a row with [data-preview] shows a small floating image that
+   tracks the cursor — Snøhetta / SANAA idiom. Pointer events stay off
+   so click-through to the link still works. */
+.hover-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: clamp(220px, 22vw, 360px);
+  aspect-ratio: 4 / 3;
+  background: var(--bg-elevated) center / cover no-repeat;
+  border: 1px solid var(--fg);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(-9999px, -9999px, 0);
+  transition:
+    opacity 320ms cubic-bezier(0.2, 0.6, 0.18, 1);
+  z-index: 55;
+  box-shadow: 0 8px 28px -10px rgba(0, 0, 0, 0.18);
+  will-change: transform, opacity;
+}
+.hover-preview.is-on {
+  opacity: 1;
+}
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .hover-preview {
+    display: none;
+  }
+}

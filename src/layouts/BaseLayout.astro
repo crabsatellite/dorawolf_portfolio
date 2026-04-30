@@ -252,6 +252,69 @@ const htmlLang = lang === "en" ? "en" : "zh-Hans-CN";
         }
       })();
 
+      // ----- Project-list hover preview -----------------------------------
+      (function () {
+        var canHover =
+          window.matchMedia && window.matchMedia("(hover: hover)").matches;
+        var prefersReduced =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (!canHover || prefersReduced) return;
+
+        var prev = document.createElement("div");
+        prev.className = "hover-preview";
+        document.body.appendChild(prev);
+
+        var on = false,
+          rafId = 0,
+          targetX = 0,
+          targetY = 0,
+          curX = -9999,
+          curY = -9999;
+
+        function tick() {
+          curX += (targetX - curX) * 0.18;
+          curY += (targetY - curY) * 0.18;
+          prev.style.transform =
+            "translate3d(" + (curX + 30) + "px," + (curY - 80) + "px,0)";
+          rafId = window.requestAnimationFrame(tick);
+        }
+
+        document.addEventListener(
+          "mousemove",
+          function (e) {
+            targetX = e.clientX;
+            targetY = e.clientY;
+            if (!rafId) rafId = window.requestAnimationFrame(tick);
+          },
+          { passive: true }
+        );
+
+        document.addEventListener("mouseover", function (e) {
+          var t = e.target.closest && e.target.closest("[data-preview]");
+          if (!t) return;
+          var src = t.getAttribute("data-preview");
+          if (!src) return;
+          prev.style.backgroundImage = 'url("' + src + '")';
+          // Snap to current cursor on first show to avoid a fly-in from far.
+          curX = targetX;
+          curY = targetY;
+          prev.classList.add("is-on");
+          on = true;
+        });
+
+        document.addEventListener("mouseout", function (e) {
+          var t = e.target.closest && e.target.closest("[data-preview]");
+          if (!t) return;
+          var to = e.relatedTarget && e.relatedTarget.closest
+            ? e.relatedTarget.closest("[data-preview]")
+            : null;
+          if (to === t) return;
+          prev.classList.remove("is-on");
+          on = false;
+        });
+      })();
+
       // ----- Custom cursor (desktop only) ---------------------------------
       (function () {
         // Skip on touch devices and reduced-motion

@@ -6,6 +6,7 @@ import skills from "../../../data/skills.json";
 import experience from "../../../data/experience.json";
 import projectsRecord from "../../../data/projects-record.json";
 import awards from "../../../data/awards.json";
+import { expandRange } from "~/i18n/translateContent";
 
 interface Props {
   lang: Lang;
@@ -85,11 +86,17 @@ const pickPrize = (a: any) =>
         {
           exp.map((e: any) => (
             <li class:list={["exp__item", `exp__item--${e.kind}`]}>
-              <span class="exp__range">{e.range}</span>
+              <span class="exp__range">
+                {expandRange(lang === "zh" ? e.rangeZh || e.range : e.range)}
+              </span>
               <div class="exp__body">
                 <p class="exp__title">{pickTitle(e)}</p>
                 <p class="exp__org">{pickOrg(e)}</p>
-                {e.note && <p class="exp__note">{e.note}</p>}
+                {(lang === "zh" ? e.noteZh || e.note : e.note) && (
+                  <p class="exp__note">
+                    {lang === "zh" ? e.noteZh || e.note : e.note}
+                  </p>
+                )}
               </div>
               <span class="exp__kind">
                 {e.kind === "work"

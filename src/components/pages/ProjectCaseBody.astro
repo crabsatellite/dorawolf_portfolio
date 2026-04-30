@@ -3,6 +3,14 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
 import Picture from "~/components/Picture.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { t, type Lang } from "~/i18n/strings";
+import {
+  pickSummary,
+  tr,
+  typologyTranslations,
+  locationTranslations,
+  roleTranslations,
+  statusTranslations,
+} from "~/i18n/translateContent";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -74,12 +82,14 @@ const subtitle =
     <header class="container project__head display-bg-wrap">
       <span class="display-bg" aria-hidden="true">{entry.data.year}</span>
       <p class="eyebrow">
-        {t(lang, "case.eyebrow", { year: entry.data.year })}
+        {t(lang, "case.eyebrow", { year: String(entry.data.year) })}
+        {entry.data.status &&
+          ` · ${tr(statusTranslations, lang, entry.data.status)}`}
       </p>
       <h1 class="project__h1">{titleDisplay}</h1>
       {subtitle && <p class="project__zh">{subtitle}</p>}
       <div class="project__meta-row">
-        <p class="project__lede">{entry.data.summary}</p>
+        <p class="project__lede">{pickSummary(lang, entry.data)}</p>
         <dl class="project__meta">
           {entry.data.dateZh && (
             <>
@@ -90,19 +100,19 @@ const subtitle =
           {entry.data.location && (
             <>
               <dt>{t(lang, "case.meta_location")}</dt>
-              <dd>{entry.data.location}</dd>
+              <dd>{tr(locationTranslations, lang, entry.data.location)}</dd>
             </>
           )}
           {entry.data.role && (
             <>
               <dt>{t(lang, "case.meta_role")}</dt>
-              <dd>{entry.data.role}</dd>
+              <dd>{tr(roleTranslations, lang, entry.data.role)}</dd>
             </>
           )}
           {entry.data.typology && (
             <>
               <dt>{t(lang, "case.meta_typology")}</dt>
-              <dd>{entry.data.typology}</dd>
+              <dd>{tr(typologyTranslations, lang, entry.data.typology)}</dd>
             </>
           )}
         </dl>

@@ -2,6 +2,7 @@
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import { t, type Lang } from "~/i18n/strings";
 import experience from "../../../data/experience.json";
+import { expandRange, tr, locationTranslations } from "~/i18n/translateContent";
 
 interface Props {
   lang: Lang;
@@ -15,6 +16,9 @@ const entries = experience.map(cleanRecord);
 const pickTitle = (e: any) =>
   lang === "zh" ? e.titleZh || e.title : e.title;
 const pickOrg = (e: any) => (lang === "zh" ? e.orgZh || e.org : e.org);
+const pickRange = (e: any) =>
+  expandRange(lang === "zh" ? e.rangeZh || e.range : e.range);
+const pickNote = (e: any) => (lang === "zh" ? e.noteZh || e.note : e.note);
 const h1 = t(lang, "timeline.h1") as readonly string[];
 ---
 
@@ -29,14 +33,18 @@ const h1 = t(lang, "timeline.h1") as readonly string[];
       {
         entries.map((e: any) => (
           <li class:list={["t-item", `t-item--${e.kind}`]}>
-            <span class="t-item__range">{e.range}</span>
+            <span class="t-item__range">{pickRange(e)}</span>
             <div class="t-item__body">
               <h3 class="t-item__title">{pickTitle(e)}</h3>
               <p class="t-item__org">
                 {pickOrg(e)}
-                {e.location && <span class="t-item__loc"> · {e.location}</span>}
+                {e.location && (
+                  <span class="t-item__loc">
+                    {" "}· {tr(locationTranslations, lang, e.location)}
+                  </span>
+                )}
               </p>
-              {e.note && <p class="t-item__notes">{e.note}</p>}
+              {pickNote(e) && <p class="t-item__notes">{pickNote(e)}</p>}
             </div>
             <span class="t-item__kind">
               {e.kind === "work"
@@ -71,6 +79,7 @@ const h1 = t(lang, "timeline.h1") as readonly string[];
     font-family: var(--font-mono);
     font-size: 0.85rem;
     color: var(--fg-muted);
+    font-feature-settings: "tnum" 1;
   }
   .t-item__title {
     font-family: var(--font-display);

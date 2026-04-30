@@ -1,28 +1,28 @@
 [
   {
-    "$comment": "Studio + work + education timeline. Latest first. kind = 'work' or 'education'.",
+    "$comment": "Studio + work + education timeline. Latest first. kind = 'work' or 'education'. The {now} placeholder is replaced by the current year at build time.",
     "kind": "work",
-    "range": "2023 — Present",
-    "rangeZh": "2023 年至今",
+    "range": "2023 — {now}",
+    "rangeZh": "2023 — {now}",
     "title": "Founder & Principal architect",
     "titleZh": "创始人 / 主创建筑师",
     "org": "DoraWolf Studio",
     "orgZh": "DoraWolf 工作室",
     "location": "Wuhan, China",
-    "note": "Founded the studio after four years inside a top-tier institute. DoraWolf Studio is an independent practice working at the intersection of education, infrastructure, and civic buildings. The studio reads each site — its topography, climate, and public edges — before any form is committed, then builds with a small kit of computational tools (Sketchup, Grasshopper, Rhino, Ladybug) used well rather than widely.",
-    "noteZh": "在大型设计院四年训练后离开,创立独立工作室。DoraWolf 工作室聚焦于教育建筑、基础设施与公共建筑的交叉地带。每个方案都从读地形、读气候、读城市边界开始,再以一套小而精的计算工具(Sketchup、Grasshopper、Rhino、Ladybug)推进至落地。"
+    "note": "An independent practice working at the intersection of education, infrastructure, and public buildings. The studio reads each site — its topography, climate, and civic edges — before form is committed, then carries the design through a small kit of computational tools (Sketchup, Grasshopper, Rhino, Ladybug) until it has the precision to be built.",
+    "noteZh": "聚焦于教育建筑、基础设施与公共建筑的独立工作室。每个方案先读场地——它的等高线、它的气候、它的公共边界——再让形态从这里生发,经一套精炼的计算工具(Sketchup、Grasshopper、Rhino、Ladybug)推至落地。"
   },
   {
     "kind": "work",
     "range": "2021 — 2023",
     "rangeZh": "2021 — 2023",
     "title": "Architectural designer",
-    "titleZh": "建筑设计师",
+    "titleZh": "建筑设计",
     "org": "China Architecture Design & Research Group · Wuhan studio",
     "orgZh": "中信建筑设计研究总院",
     "location": "Wuhan, China",
-    "note": "Top-60 Chinese engineering design enterprise; the foreign-aid engineering institute under the Ministry of Commerce. Schematic and competition work across education, infrastructure, and civic typologies — the projects on the case-study list above were largely conceived during these four years and now form the studio's founding portfolio.",
-    "noteZh": "中国工程设计企业 60 强,商务部援外工程设计定点院。在此完成的方案与竞赛覆盖教育、基础设施与公共建筑领域——这些项目随后构成了 DoraWolf 工作室的创业资产。"
+    "note": "Schematic and competition work across education, infrastructure, and civic typologies. The projects on the list above were largely conceived during these years and now form the studio's founding portfolio.",
+    "noteZh": "覆盖教育、基础设施与公共建筑的方案与竞赛工作——这些项目随后成为 DoraWolf 工作室的起始资产。"
   },
   {
     "kind": "education",
@@ -33,7 +33,7 @@
     "org": "Hubei University of Technology · School of Civil Architecture and Environment",
     "orgZh": "湖北工业大学 · 土木建筑与环境学院",
     "location": "Wuhan, China",
-    "note": "Coursework included architectural design, residential planning, site design, building mechanics, and interior design.",
-    "noteZh": "主修建筑设计、住区规划、场地设计、建筑力学、室内设计与建筑学概论等课程。"
+    "note": "Architectural design, residential planning, site design, building mechanics, interior design.",
+    "noteZh": "建筑设计、住区规划、场地设计、建筑力学、室内设计。"
   }
 ]
