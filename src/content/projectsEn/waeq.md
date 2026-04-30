@@ -45,7 +45,7 @@ The running track and the Cloud Ring sky-street unfold along either side of the 
 
 Most of the time, infrastructure work is making one *quiet* connection on behalf of the city. Phase I had already set the campus's character; Phase II's job was to complete this north–south *public* band *without notice*, and then *step aside*. We left the spine continuous, we left the heights consistent with what came before, and we left the centre to the people who would use it.
 
-Years later, looking back at the drawings from this stage, what we feel most settled about is exactly that. We did not contend, we did not add an extra gesture, and once the right position, the right height and the right *yield* had been arranged, most of the work was already done. The campus carries on, and the new pieces sit inside it as if they had always been there.
+Looking back at the drawings from this stage, what reassures us is exactly that. We did not contend, we did not add an extra gesture, and once the right position, the right height and the right *yield* had been arranged, most of the work was already done. The campus carries on, and the new pieces sit inside it as if they had always been there.
 
 ![](/projects/waeq/_3-1.jpg)
 

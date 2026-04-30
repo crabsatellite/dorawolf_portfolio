@@ -8,7 +8,6 @@ import {
   tr,
   typologyTranslations,
   locationTranslations,
-  roleTranslations,
   statusTranslations,
 } from "~/i18n/translateContent";
 import fs from "node:fs";
@@ -93,14 +92,13 @@ function renderInline(s: string): string {
 const align = entry.data.align ?? "left";
 const orderTwo = String(entry.data.order ?? 1).padStart(2, "0");
 
-// Compact meta line — typology · location · role
+// Compact meta line — typology · location · status (role is intentionally
+// dropped from the meta strip; the studio name carries authorship)
 const metaItems: string[] = [];
 if (entry.data.typology)
   metaItems.push(tr(typologyTranslations, lang, entry.data.typology));
 if (entry.data.location)
   metaItems.push(tr(locationTranslations, lang, entry.data.location));
-if (entry.data.role)
-  metaItems.push(tr(roleTranslations, lang, entry.data.role));
 if (entry.data.status)
   metaItems.push(tr(statusTranslations, lang, entry.data.status));
 ---
@@ -168,12 +166,6 @@ if (entry.data.status)
             <div>
               <dt>{t(lang, "case.meta_location")}</dt>
               <dd>{tr(locationTranslations, lang, entry.data.location)}</dd>
-            </div>
-          )}
-          {entry.data.role && (
-            <div>
-              <dt>{t(lang, "case.meta_role")}</dt>
-              <dd>{tr(roleTranslations, lang, entry.data.role)}</dd>
             </div>
           )}
           {entry.data.typology && (

@@ -10,7 +10,7 @@ status: "schematic"
 order: 1
 hero: "/projects/cjxqwgyxx/_9.jpg"
 summary: "An international-language secondary campus organised around a central cross of public space, set into a blue-green ecological corridor on the eastern edge of Wuhan's Yangtze New District."
-summaryZh: "西侧胜海大道为片区重要交通廊道，南北侧规划道路，西北角有规划远期轨道交通站点"
+summaryZh: "新区边缘的四向开口场地,我们以一条贯穿东西的公共轴接住街道与水网,教学抬升、运动退台,中央留白让校园与城市对话。"
 align: "left"
 noteZh: "场地是新区边缘的一块四向开口——西临胜海大道,北接规划路,东南留白。我们没有先画建筑,先画了一条贯穿东西的*公共轴*:让校园成为城市从主路通向滨湖的一段路径,而不是封闭的院落。教学楼向北抬起,接住光;运动场向南退台,接住街道;文化与共享空间落在轴的中点,以*十字风车*串联在一起。打开,而非围合——这是这座外国语学校对它所处的城市边缘的回答。"
 note: "The site sits on the edge of a new district, open on four sides — Shenghai Avenue to the west, planned roads to the north, soft ground to the south-east. Before drawing a building, we drew a single *east–west axis*: the campus becomes a piece of the city's path from arterial to lakeshore, not a closed compound. Classrooms lift to the north to catch stable light; sport fields step down to the south to meet the street; the shared and cultural programmes sit at the centre of the axis, bound together as a *cross-pinwheel*. To open, rather than to enclose — that is the school's reply to the edge of the city."

@@ -10,7 +10,7 @@ status: "concept"
 order: 3
 hero: "/projects/hsgzqlxq/_6.jpg"
 summary: "A 48-class senior-high campus draped down a lakeside slope; instruction occupies the upper plateau, sport and student-life spill toward the water, leaving a continuous public path along Qingling Lake."
-summaryZh: "引景入园——面向湖面的“BIG U”   一体双翼——“工字型”  规划结构"
+summaryZh: "青菱湖滨的坡地已经写好了一篇文章,我们顺势读下去——教学抬升至高台,运动随坡降下,湖岸留作公共,坡地穿过校园。"
 align: "left"
 noteZh: "青菱湖滨的坡地,本身已经写好了一篇文章——等高线、台地、缓坡、湖岸的退让。我们的工作,只是把它*读出来*。教学落在最高的台地——光线最稳定,视野最远;运动与生活随台地降下,各自寻到合适的标高;湖岸留作公共,不属于校园。校园不切断坡地,坡地穿过校园——这是青菱给我们的方法,我们只是顺势写下去。"
 note: "The slope by Qingling Lake had already written its essay — contour, terrace, gentle fall, the lake's own setback. Our work was *to read it*. Teaching settles on the highest plateau — steadiest light, longest view; sport and student life descend with the slope, each finding its level; the shore stays public, beyond the campus. The campus does not cut the slope; the slope passes through the campus — Qingling gave us the method, and we only carried it on."

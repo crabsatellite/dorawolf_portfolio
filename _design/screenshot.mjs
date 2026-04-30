@@ -16,6 +16,9 @@ const PAGES = [
   { name: "project-jxzx", url: `${BASE}/projects/jxzx/` },
   { name: "project-hjwtsxx", url: `${BASE}/projects/hjwtsxx/` },
   { name: "project-gbkzzx", url: `${BASE}/projects/gbkzzx/` },
+  { name: "research-index", url: `${BASE}/research/` },
+  { name: "research-sketchup", url: `${BASE}/research/sketchup/` },
+  { name: "research-grasshopper", url: `${BASE}/research/grasshopper/` },
   { name: "about", url: `${BASE}/about/` },
 ];
 

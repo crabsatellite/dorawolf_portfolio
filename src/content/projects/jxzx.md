@@ -10,7 +10,7 @@ status: "schematic"
 order: 7
 hero: "/projects/jxzx/_6-_.jpg"
 summary: "A civic and commercial complex on the southern edge of Wuhan; the scheme negotiates a tall-tower datum against a public ground plane shared with the surrounding neighbourhood."
-summaryZh: "过滤条件 1 ：决定规划格局的是模式的先进而不是形式的象形"
+summaryZh: "江夏副城在等一处可被识别但不喧闹的城市坐标。我们把高度让给塔身,把广度交给地面——一座水平的公共平台先成立,塔楼自然升起,不抢戏。"
 align: "left"
 noteZh: "江夏副城在等一个*地标的克制版本*——它不需要又一座超高层,需要一处可被识别但不喧闹的城市坐标。我们把高度让给塔身,把广度给地面——一座*水平的公共平台*承接周边交通,塔楼在平台上自然升起,不抢戏。江夏的星,不应该是最亮的那颗,而是*最稳的那颗*。"
 note: "Jiangxia's sub-district was waiting for a *restrained kind of landmark* — not another high-rise, but a recognisable, quiet civic anchor. We gave height to the tower and breadth to the ground: a *horizontal public platform* meets the surrounding traffic, and the tower rises naturally from it without competition. The Jiangxia Star is not meant to be the brightest — it is meant to be *the steadiest*."

@@ -1,11 +1,10 @@
 [
   {
-    "$comment": "Studio + work + education timeline. Latest first. kind = 'work' or 'education'. The {now} placeholder is replaced by the current year at build time.",
-    "kind": "work",
+    "$comment": "Studio practice arc. Latest first. The {now} placeholder is replaced by the current year at build time.",
     "range": "2023 — {now}",
     "rangeZh": "2023 — {now}",
-    "title": "Founder & Principal architect",
-    "titleZh": "创始人 / 主创建筑师",
+    "title": "Independent practice",
+    "titleZh": "独立工作室",
     "org": "DoraWolf Studio",
     "orgZh": "DoraWolf 工作室",
     "location": "Wuhan, China",
@@ -13,27 +12,14 @@
     "noteZh": "聚焦于教育建筑、基础设施与公共建筑的独立工作室。每个方案先读场地——它的等高线、它的气候、它的公共边界——再让形态从这里生发,经一套精炼的计算工具(Sketchup、Grasshopper、Rhino、Ladybug)推至落地。"
   },
   {
-    "kind": "work",
     "range": "2021 — 2023",
     "rangeZh": "2021 — 2023",
-    "title": "Architectural designer",
-    "titleZh": "建筑设计",
+    "title": "Institute period",
+    "titleZh": "院所时期",
     "org": "China Architecture Design & Research Group · Wuhan studio",
-    "orgZh": "中信建筑设计研究总院",
+    "orgZh": "中信建筑设计研究总院 · 武汉分院",
     "location": "Wuhan, China",
     "note": "Schematic and competition work across education, infrastructure, and civic typologies. The projects on the list above were largely conceived during these years and now form the studio's founding portfolio.",
     "noteZh": "覆盖教育、基础设施与公共建筑的方案与竞赛工作——这些项目随后成为 DoraWolf 工作室的起始资产。"
-  },
-  {
-    "kind": "education",
-    "range": "2016 — 2021",
-    "rangeZh": "2016 — 2021",
-    "title": "B.Arch — Architecture",
-    "titleZh": "建筑学学士",
-    "org": "Hubei University of Technology · School of Civil Architecture and Environment",
-    "orgZh": "湖北工业大学 · 土木建筑与环境学院",
-    "location": "Wuhan, China",
-    "note": "Architectural design, residential planning, site design, building mechanics, interior design.",
-    "noteZh": "建筑设计、住区规划、场地设计、建筑力学、室内设计。"
   }
 ]

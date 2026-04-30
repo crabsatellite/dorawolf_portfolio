@@ -15,7 +15,7 @@ const year = new Date().getFullYear();
   <div class="container foot__inner">
     <div class="foot__col">
       <p class="eyebrow">{site.name} · {site.fullName}</p>
-      <p class="foot__role">{site.role}</p>
+      {site.role && <p class="foot__role">{site.role}</p>}
       <p class="foot__role foot__role--muted">{site.location}</p>
     </div>
     <div class="foot__col">
@@ -37,7 +37,7 @@ const year = new Date().getFullYear();
   </div>
   <div class="container foot__bottom">
     <p>
-      {t(lang, "footer.rights", { year, fullName: site.fullName })}
+      {t(lang, "footer.rights", { year, studioName: site.studioName })}
     </p>
     <p class="foot__credit">
       {t(lang, "footer.credit", { year })}

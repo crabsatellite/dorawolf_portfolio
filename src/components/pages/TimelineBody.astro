@@ -20,19 +20,21 @@ const pickRange = (e: any) =>
   expandRange(lang === "zh" ? e.rangeZh || e.range : e.range);
 const pickNote = (e: any) => (lang === "zh" ? e.noteZh || e.note : e.note);
 const h1 = t(lang, "timeline.h1") as readonly string[];
+const lede = t(lang, "timeline.lede");
 ---
 
 <BaseLayout title={t(lang, "timeline.title")} lang={lang}>
   <section class="section section--hero container">
     <p class="eyebrow">{t(lang, "timeline.eyebrow")}</p>
     <h1>{h1[0]}<br />{h1[1]}</h1>
+    {lede && <p class="timeline-lede">{lede}</p>}
   </section>
 
   <section class="section container">
     <ol class="timeline">
       {
         entries.map((e: any) => (
-          <li class:list={["t-item", `t-item--${e.kind}`]}>
+          <li class="t-item">
             <span class="t-item__range">{pickRange(e)}</span>
             <div class="t-item__body">
               <h3 class="t-item__title">{pickTitle(e)}</h3>
@@ -46,11 +48,6 @@ const h1 = t(lang, "timeline.h1") as readonly string[];
               </p>
               {pickNote(e) && <p class="t-item__notes">{pickNote(e)}</p>}
             </div>
-            <span class="t-item__kind">
-              {e.kind === "work"
-                ? t(lang, "about.kind_practice")
-                : t(lang, "about.kind_education")}
-            </span>
           </li>
         ))
       }
@@ -59,6 +56,18 @@ const h1 = t(lang, "timeline.h1") as readonly string[];
 </BaseLayout>
 
 <style>
+  .timeline-lede {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+    line-height: var(--leading-snug);
+    color: var(--fg-muted);
+    max-width: 56ch;
+    margin: var(--space-3) 0 0;
+  }
+  :global(html[lang^="zh"]) .timeline-lede {
+    line-height: var(--leading-cn);
+  }
   .timeline {
     list-style: none;
     margin: 0;
@@ -66,7 +75,7 @@ const h1 = t(lang, "timeline.h1") as readonly string[];
   }
   .t-item {
     display: grid;
-    grid-template-columns: 9rem 1fr 7rem;
+    grid-template-columns: 9rem 1fr;
     gap: var(--space-3);
     padding: var(--space-4) 0;
     border-top: 1px solid var(--border);
@@ -98,22 +107,10 @@ const h1 = t(lang, "timeline.h1") as readonly string[];
     color: var(--fg-muted);
     max-width: 60ch;
   }
-  .t-item__kind {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--fg-subtle);
-    text-align: right;
-  }
   @media (max-width: 720px) {
     .t-item {
       grid-template-columns: 1fr;
       gap: 0.5rem;
-    }
-    .t-item__kind {
-      text-align: left;
-      order: -1;
     }
   }
 </style>

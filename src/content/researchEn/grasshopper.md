@@ -3,15 +3,15 @@
 
 ## About
 
-The first time I saw Grasshopper, in university, I assumed it was the "high-end-looking" canvas next to Rhino — and never really learned to use it. It wasn't until the second month at my first studio job, with my mentor Gao Atom walking me through it line by line, that I started treating it as a daily instrument.
+Grasshopper sits in the studio as a working instrument, not as the "high-end-looking" canvas next to Rhino. It doesn't make architectural design itself any cleverer; it just compresses the recurring steps into a single click and pulls the early-stage judgements that tend to dissipate back onto the desk.
 
-Once I was comfortable, I began wiring up small component groups that talk to Rhino in real time — no need to manually re-pick objects, just nudge the mouse and the definition runs again. None of this made architectural design itself any cleverer; it just turned a handful of repetitive steps into a single click. This study is divided into four directions: a kit of utility components, building skins and structure, environmental simulation, and personal-interest experiments unrelated to my profession.
+The studio's standard practice is to wire up small component groups that talk to Rhino in real time — nudge the mouse and the definition runs again, no need to manually re-pick objects. This study is divided into four directions: a kit of utility components, building skins and structure, environmental simulation, and a more exploratory set of form-driven experiments.
 
 ## A utility kit
 
-Small functions I find myself reaching for repeatedly, packaged as single-call components: extracting upper / lower edges, extracting Brep height, dividing curves by distance, ISO, converting curves to cosine waves, generating stairs with rest landings in one click, randomly breaking curves, indoor lighting, line-to-arrow, path-following, generating V-shaped columns, merging floor slabs, converting to wave lines, removing duplicate faces.
+The first group collects the small functions reached for repeatedly, packaged as single-call components: extracting upper / lower edges, extracting Brep height, dividing curves by distance, ISO, converting curves to cosine waves, generating stairs with rest landings in one click, randomly breaking curves, indoor lighting, line-to-arrow, path-following, generating V-shaped columns, merging floor slabs, converting to wave lines, removing duplicate faces.
 
-For extracting upper and lower edges I wrote two separate definitions covering different model types — one based on geometric projection, one on topological traversal:
+For extracting upper and lower edges there are two separate definitions covering different model types — one based on geometric projection, one on topological traversal:
 
 ![](/research/grasshopper/QQ_20240704215717.png)
 
@@ -37,7 +37,7 @@ Randomly breaking curves:
 
 ![](/research/grasshopper/QQ_20240704220910.png)
 
-Stitched together, even these small components occasionally produce something not very useful but unexpectedly fun:
+Stitched together, even these small components occasionally produce something not very useful but unexpectedly fun as a by-product:
 
 ![](/research/grasshopper/QQ_20240705162332.png)
 
@@ -45,7 +45,7 @@ Stitched together, even these small components occasionally produce something no
 
 ## Buildings
 
-Most of my Grasshopper time at work has gone to building skins and structure. Every project comes with its own boundary conditions, so the source files were rarely archived; what follows is a small selection of skin definitions that came back into rotation.
+In the project pipeline, most Grasshopper time goes into building skins and structure. Every project comes with its own boundary conditions, so the source files are rarely archived; what follows is a small selection of skin definitions that came back into rotation.
 
 A shark-skin façade:
 
@@ -97,27 +97,27 @@ Thermal comfort. The right image plots operative temperature against the share o
 
 ![](/research/grasshopper/QQ_20240705195830.png)
 
-## Hobbies
+## Form experiments
 
-This chapter has nothing to do with my day job. It's me playing with Grasshopper for the sake of it.
+The last group pushes Grasshopper past the boundary of its project tasks, to test how large a system of forms this dataflow can actually carry. These are not deliverables — they are the studio's own stress tests.
 
-An *element toolbox*: a fairly large project. Inspired by the seven elements of *Genshin Impact*, mapped onto seven small tools — hold Alt and drag the right mouse button left or right to switch elements, with combinations between them. The full demo lives on [Bilibili](https://www.bilibili.com/video/BV1LdKRejEZL/); the screenshot below is only a fragment of the wiring, the whole graph is too dense to fit into a still image.
+An *element toolbox*: a fairly large piece of work, built around several mutually independent yet combinable "elements", each tied to its own small tool. Hold Alt and drag the right mouse button left or right to switch between them. The screenshot below is a fragment of the wiring; the whole graph is too dense to fit into a still image.
 
 ![](/research/grasshopper/_-1.jpg)
 
-A look at two of the elements in motion:
+Two of the elements in motion:
 
 ![](/research/grasshopper/GIF-2024-7-8-17-02-39.gif)
 
 ![](/research/grasshopper/GIF-2024-7-8-17-03-44.gif)
 
-Bow-and-arrow launch. Only the pre-launch animation is finished so far; the rest is still in progress:
+Bow-and-arrow launch. Only the pre-launch animation is finished so far; the rest continues as a motion state-machine:
 
 ![](/research/grasshopper/QQ_20240705202826.png)
 
 ![](/research/grasshopper/GIF-2024-7-5-20-28-10.gif)
 
-Chess:
+Rule-driven board-game study — the rules are written into the wiring as constraints, used to verify the jump from rules to form:
 
 ![](/research/grasshopper/QQ_20240705203113.png)
 

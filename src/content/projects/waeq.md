@@ -10,7 +10,7 @@ status: "schematic"
 order: 5
 hero: "/projects/waeq/_1-1.jpg"
 summary: "A second-phase masterplan extending the National Cybersecurity Center campus, balancing operational secrecy with a continuous public datum at the urban edge."
-summaryZh: "在直径350米的苹果总部花园里，由设计总监乔纳森·艾维设计的彩虹色舞台，是园区开幕式上最亮眼的装置。"
+summaryZh: "一期已经在那里——二期的工作首先是接住。我们延续一期的格网与节奏,把新增体量降下来,让出一条贯穿南北的公共轴。"
 align: "left"
 noteZh: "一期已经在那里——二期的工作,首先是*接住*。我们不试图与一期对话,而是把它当作既定的现实——延续它的格网、它的层高节奏、它的进退。新的二期为研发与孵化提供更多落地面积,同时为整个园区留出一条贯穿的*公共南北轴*。基础设施类项目的设计,常常是『不显眼地把对的事做对』。"
 note: "Phase I was already there — Phase II's first job was to *carry on*. Rather than enter a dialogue, we took Phase I as given: its grid, its rhythm of floors, its setbacks. The new phase opens more ground for research and incubation while leaving a continuous *public north–south axis* through the campus. Infrastructure work is often a matter of doing the right thing without being noticed."
@@ -47,7 +47,7 @@ note: "Phase I was already there — Phase II's first job was to *carry on*. Rat
 
 中央这条轴并不是一条单一步道,而是把五段不同性格的园子串联起来:创艺、生态、乐活、林荫、文艺。每段对应它旁边的建筑界面,屋面、坡地、广场、林下空间彼此续上,从北端的创客智谷一直走到南端的活力社区。运动跑道与云环天街沿轴线两侧展开,服务的是平日园区里真正会留下来的人——师生、产业工人、考试人群。
 
-基础设施类的项目,大部分时间是替城市做一段不显眼的连接。一期已经把性格立住了,二期的工作,是把这条南北向的公共带安静地补上,然后退到一旁。多年之后回看这个阶段的图纸,最让我们觉得放心的也是这一点——没有去争抢,没有添加多余的姿态,把对的位置、对的高度和对的退让安排好,工作就完成了大半。
+基础设施类的项目,大部分时间是替城市做一段不显眼的连接。一期已经把性格立住了,二期的工作,是把这条南北向的公共带安静地补上,然后退到一旁。回看这一阶段的图纸,最让我们觉得放心的也是这一点——没有去争抢,没有添加多余的姿态,把对的位置、对的高度和对的退让安排好,工作就完成了大半。
 
 ![](/projects/waeq/_3-1.jpg)
 

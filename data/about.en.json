@@ -1,27 +1,13 @@
 {
   "$comment": "English about-page content.",
-  "bio": "DoraWolf Studio works in education, infrastructure, and public buildings. The method is single: read the site first — its contour, its weather, its civic edges — and let form emerge from what is already there. Sustainable design and parametric modelling are the daily fabric of the practice, not a manifesto.",
+  "bio": "DoraWolf Studio works in education, infrastructure, and public buildings. The method is single: read the site first — its contour, its weather, its civic edges — and let form emerge from what is already there. Sustainable design and parametric modelling are the daily fabric of the practice, not a manifesto. Before founding the studio, the principal spent the institute years (2021 — 2023, China Architecture Design & Research Group, Wuhan studio) on schematic and competition work across education, infrastructure, and civic typologies — projects that became the studio's founding portfolio.",
   "studio": {
     "name": "DoraWolf Studio",
     "founded": "Founded in Wuhan, 2023",
     "based": "Wuhan, China",
-    "principal": "Qingyuan Fu · Founder & principal architect",
+    "principal": "Qingyuan Fu",
     "ethos": "A small kit, used well. Restrained form. Public buildings owe the street a calm presence.",
     "areas": ["Education", "Infrastructure", "Civic & cultural", "Concept & competition"]
   },
-  "education": {
-    "school": "Hubei University of Technology",
-    "department": "School of Civil Architecture and Environment",
-    "range": "2016 — 2021",
-    "degree": "B.Arch — Architecture",
-    "courses": [
-      "Architectural design",
-      "Residential planning",
-      "Site design",
-      "Building mechanics",
-      "Interior design"
-    ]
-  },
-  "languages": ["Chinese", "English (CET-6)"],
-  "interests": ["Education", "Infrastructure", "Civic", "Concept"]
+  "languages": ["Chinese", "English"]
 }

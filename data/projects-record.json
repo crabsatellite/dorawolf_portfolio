@@ -1,6 +1,6 @@
 [
   {
-    "$comment": "Full list of projects on record (winning bids, schemes, etc.). Items with a matching slug under src/content/projects/ also get a detailed case-study page.",
+    "$comment": "Curated list of projects on record. Each item has a matching slug under src/content/projects/ for its detail page.",
     "en": "Wuhan Metro National Convention Center Control",
     "zh": "武汉市轨道交通国博控制中心",
     "year": "2022",
@@ -41,50 +41,5 @@
     "zh": "江夏之星",
     "year": "2022",
     "slug": "jxzx"
-  },
-  {
-    "en": "Zhuxin Technology Industrial Park",
-    "zh": "筑芯科技产业园",
-    "year": "—"
-  },
-  {
-    "en": "Foshan Longjiang Middle School (Renovation & Expansion)",
-    "zh": "佛山龙江中学改扩建",
-    "year": "—"
-  },
-  {
-    "en": "Yichang Concord Hospital",
-    "zh": "宜昌市协和医院",
-    "year": "—"
-  },
-  {
-    "en": "Yangtze New District Urban Design",
-    "zh": "长江新区城市设计",
-    "year": "—"
-  },
-  {
-    "en": "Wuhan Metro Line 12 · Danshuichi Section",
-    "zh": "武汉轨道交通12号线丹水池标段",
-    "year": "—"
-  },
-  {
-    "en": "Chinese Academy of Sciences Primary School",
-    "zh": "中科院小学设计",
-    "year": "—"
-  },
-  {
-    "en": "Longjiang Middle School Gate (adopted scheme)",
-    "zh": "龙江中学校门设计 (被采纳方案)",
-    "year": "—"
-  },
-  {
-    "en": "Suzhou Industrial Internet Park",
-    "zh": "苏州工业互联网园区",
-    "year": "—"
-  },
-  {
-    "en": "National Geological Museum",
-    "zh": "国家地质博物馆",
-    "year": "—"
   }
 ]

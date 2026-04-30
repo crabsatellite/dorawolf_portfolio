@@ -5,7 +5,6 @@ import { loadSite, loadAbout } from "~/i18n/loadData";
 import skills from "../../../data/skills.json";
 import experience from "../../../data/experience.json";
 import projectsRecord from "../../../data/projects-record.json";
-import awards from "../../../data/awards.json";
 import { expandRange } from "~/i18n/translateContent";
 
 interface Props {
@@ -15,29 +14,16 @@ const { lang } = Astro.props;
 const site = loadSite(lang);
 const about = loadAbout(lang);
 
-const skillGroups = [
-  { label: t(lang, "about.tools_modeling"), items: skills.modeling },
-  { label: t(lang, "about.tools_rendering"), items: skills.rendering },
-  { label: t(lang, "about.tools_drafting"), items: skills.drafting },
-  { label: t(lang, "about.tools_graphics"), items: skills.graphics },
-  { label: t(lang, "about.tools_ai"), items: skills.ai },
-];
-
 const cleanRecord = (rec: any) =>
   Object.fromEntries(Object.entries(rec).filter(([k]) => !k.startsWith("$")));
 const records = projectsRecord.map(cleanRecord);
 const exp = experience.map(cleanRecord);
-const aw = awards.map(cleanRecord);
 
 const pickName = (r: any) =>
   lang === "zh" ? r.zh || r.en : r.en || r.zh;
 const pickOrg = (e: any) => (lang === "zh" ? e.orgZh || e.org : e.org);
 const pickTitle = (e: any) =>
   lang === "zh" ? e.titleZh || e.title : e.title;
-const pickAward = (a: any) =>
-  lang === "zh" ? a.titleZh || a.title : a.title;
-const pickPrize = (a: any) =>
-  lang === "zh" ? a.prizeZh || a.prize : a.prize;
 ---
 
 <BaseLayout title={t(lang, "about.title")} lang={lang}>
@@ -48,9 +34,6 @@ const pickPrize = (a: any) =>
         t(lang, "about.h1_after")
       }
     </h1>
-    <p class="about-hero__zh">
-      {about.education.degree}
-    </p>
   </section>
 
   <section class="section container about-bio">
@@ -75,17 +58,11 @@ const pickPrize = (a: any) =>
         </div>
       )}
 
-      <h2 class="about-h2">{t(lang, "about.h2_education")}</h2>
-      <p>
-        <strong>{about.education.school}</strong> · {about.education.department}
-        · {about.education.range}.
-      </p>
-
       <h2 class="about-h2">{t(lang, "about.h2_practice")}</h2>
       <ul class="exp">
         {
           exp.map((e: any) => (
-            <li class:list={["exp__item", `exp__item--${e.kind}`]}>
+            <li class="exp__item">
               <span class="exp__range">
                 {expandRange(lang === "zh" ? e.rangeZh || e.range : e.range)}
               </span>
@@ -98,11 +75,6 @@ const pickPrize = (a: any) =>
                   </p>
                 )}
               </div>
-              <span class="exp__kind">
-                {e.kind === "work"
-                  ? t(lang, "about.kind_practice")
-                  : t(lang, "about.kind_education")}
-              </span>
             </li>
           ))
         }
@@ -126,35 +98,10 @@ const pickPrize = (a: any) =>
         }
       </ol>
 
-      <h2 class="about-h2">{t(lang, "about.h2_awards")}</h2>
-      <ul class="awards">
-        {
-          aw.map((a: any) => (
-            <li>
-              <span class="awards__title">{pickAward(a)}</span>
-              <span class="awards__prize">{pickPrize(a)}</span>
-            </li>
-          ))
-        }
-      </ul>
-
       <h2 class="about-h2">{t(lang, "about.h2_tools")}</h2>
-      <dl class="tools">
-        {
-          skillGroups.map((g) => (
-            <>
-              <dt>{g.label}</dt>
-              <dd>
-                <ul class="chip-list">
-                  {g.items.map((s) => (
-                    <li>{s}</li>
-                  ))}
-                </ul>
-              </dd>
-            </>
-          ))
-        }
-      </dl>
+      <ul class="chip-list tools-kit">
+        {skills.kit.map((s: string) => <li>{s}</li>)}
+      </ul>
     </div>
 
     <aside class="about-bio__side">
@@ -163,12 +110,6 @@ const pickPrize = (a: any) =>
         <dd>{site.location}</dd>
         <dt>{t(lang, "about.kv_languages")}</dt>
         <dd>{about.languages.join(" · ")}</dd>
-        <dt>{t(lang, "about.kv_works_in")}</dt>
-        <dd>{about.interests.join(" · ")}</dd>
-        <dt>{t(lang, "about.kv_email")}</dt>
-        <dd>
-          <a href={`mailto:${site.email}`}>{site.email}</a>
-        </dd>
       </dl>
     </aside>
   </section>
@@ -183,18 +124,6 @@ const pickPrize = (a: any) =>
     font-style: italic;
     font-weight: 300;
     color: var(--fg-muted);
-  }
-  .about-hero__zh {
-    color: var(--fg-muted);
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 300;
-    font-size: clamp(1rem, 1.4vw, 1.2rem);
-    margin-top: var(--space-3);
-    max-width: 60ch;
-  }
-  :global(html[lang^="zh"]) .about-hero__zh {
-    font-style: normal;
   }
   .about-h2 {
     font-family: var(--font-display);
@@ -332,7 +261,7 @@ const pickPrize = (a: any) =>
   }
   .exp__item {
     display: grid;
-    grid-template-columns: 8.5rem 1fr 7rem;
+    grid-template-columns: 8.5rem 1fr;
     gap: var(--space-3);
     padding: var(--space-3) 0;
     border-top: 1px solid var(--border);
@@ -361,22 +290,10 @@ const pickPrize = (a: any) =>
     color: var(--fg-muted);
     max-width: 60ch;
   }
-  .exp__kind {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--fg-subtle);
-    text-align: right;
-  }
   @media (max-width: 720px) {
     .exp__item {
       grid-template-columns: 1fr;
       gap: 0.5rem;
-    }
-    .exp__kind {
-      text-align: left;
-      order: -1;
     }
   }
 
@@ -423,49 +340,6 @@ const pickPrize = (a: any) =>
     margin-top: 0.18rem;
   }
 
-  .awards {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .awards li {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 0.4rem 1rem;
-    padding: 0.6rem 0;
-    border-top: 1px solid var(--border);
-  }
-  .awards li:last-child {
-    border-bottom: 1px solid var(--border);
-  }
-  .awards__title {
-    font-size: 0.96rem;
-  }
-  .awards__prize {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--fg);
-  }
-
-  .tools {
-    margin: 0;
-    display: grid;
-    grid-template-columns: 7rem 1fr;
-    gap: 0.6rem 1rem;
-  }
-  .tools dt {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--fg-muted);
-    padding-top: 0.4rem;
-  }
-  .tools dd {
-    margin: 0;
-  }
   .chip-list {
     list-style: none;
     margin: 0;
@@ -482,5 +356,8 @@ const pickPrize = (a: any) =>
     border: 1px solid var(--border);
     border-radius: 999px;
     color: var(--fg-muted);
+  }
+  .tools-kit {
+    margin-top: 0.2rem;
   }
 </style>
