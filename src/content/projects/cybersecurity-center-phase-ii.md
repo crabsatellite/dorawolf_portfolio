@@ -7,7 +7,7 @@ location: "Wuhan, Hubei"
 typology: "Civic / infrastructure"
 status: "schematic"
 order: 5
-hero: "/projects/waeq/_1-1.jpg"
+hero: "/projects/cybersecurity-center-phase-ii/_1-1.jpg"
 summary: "A second-phase masterplan extending the National Cybersecurity Center campus, balancing operational secrecy with a continuous public datum at the urban edge."
 summaryZh: "一期已经在那里——二期的工作首先是接住。我们延续一期的格网与节奏，把新增体量降下来，让出一条贯穿南北的公共轴。"
 align: "left"
@@ -20,11 +20,11 @@ note: "Phase I was already there — Phase II's first job was to *carry on*. Rat
 
 二期需要兑现的功能是清楚的——更多的研发与孵化面积、考试与会展、配套酒店、面向园区与城市的商业带。但量是给定的，场地是给定的，一期的几何也是给定的；我们能做的事不多，主要是决定这些新增的部分以什么方式落下来。总平面里，新增的部分主动让出中间——把建筑推到东西两侧，把一条连续的公共带留在中央。规划上我们把它叫作景观主轴，说穿了就是一句：让人能走到底。
 
-![](/projects/waeq/_12-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_12-1.jpg)
 
-![](/projects/waeq/_1-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_1-1.jpg)
 
-![](/projects/waeq/_2-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_2-1.jpg)
 
 ## 新增的部分
 
@@ -32,15 +32,15 @@ note: "Phase I was already there — Phase II's first job was to *carry on*. Rat
 
 体量克制下来之后，屋面、坡地与外部空间反而被释放出来，成为公园本身的一部分。
 
-![](/projects/waeq/_8-2.jpg)
+![](/projects/cybersecurity-center-phase-ii/_8-2.jpg)
 
-![](/projects/waeq/_16-2.jpg)
+![](/projects/cybersecurity-center-phase-ii/_16-2.jpg)
 
-![](/projects/waeq/_9-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_9-1.jpg)
 
-![](/projects/waeq/_5-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_5-1.jpg)
 
-![](/projects/waeq/_7-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_7-1.jpg)
 
 ## 公共南北轴
 
@@ -48,20 +48,20 @@ note: "Phase I was already there — Phase II's first job was to *carry on*. Rat
 
 基础设施类的项目，大部分时间是替城市做一段不显眼的连接。一期已经把性格立住了，二期的工作，是把这条南北向的公共带安静地补上，然后退到一旁。回看这一阶段的图纸，最让我们觉得放心的也是这一点——没有去争抢，没有添加多余的姿态，把对的位置、对的高度和对的退让安排好，工作就完成了大半。
 
-![](/projects/waeq/_3-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_3-1.jpg)
 
-![](/projects/waeq/_13-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_13-1.jpg)
 
-![](/projects/waeq/_4-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_4-1.jpg)
 
-![](/projects/waeq/_14-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_14-1.jpg)
 
-![](/projects/waeq/_17-2.jpg)
+![](/projects/cybersecurity-center-phase-ii/_17-2.jpg)
 
-![](/projects/waeq/_15-3.jpg)
+![](/projects/cybersecurity-center-phase-ii/_15-3.jpg)
 
-![](/projects/waeq/_6-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_6-1.jpg)
 
-![](/projects/waeq/_10-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_10-1.jpg)
 
-![](/projects/waeq/_11-2.jpg)
+![](/projects/cybersecurity-center-phase-ii/_11-2.jpg)

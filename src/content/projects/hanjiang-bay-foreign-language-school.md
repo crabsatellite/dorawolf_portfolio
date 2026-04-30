@@ -7,7 +7,7 @@ location: "Wuhan, Hubei"
 typology: "Education"
 status: "schematic"
 order: 6
-hero: "/projects/hjwtsxx/_23.jpg"
+hero: "/projects/hanjiang-bay-foreign-language-school/_23.jpg"
 summary: "A K-12 campus in the dense Qiaokou district treated as a network of stacked grounds — primary, secondary, sport, and community — with a raised carpet of green landscape running through."
 summaryZh: "硚口的高密度把场地推到角落——用地碎，体量必须收。我们把 200 米操场抬起来，让出地面步行连廊，幼小初高在垂直方向层叠铺开。"
 align: "right"
@@ -21,7 +21,7 @@ note: "Qiaokou's density — gas station to the south, civic park to the east, r
 
 退一步看周边，西南汉江湾高中、东南全民健身中心，用地与之形成松散的三角呼应。这意味着校园不必再把姿态封死，反而可以让开一角，与街区互相礼让，让外部的公共生活渗一点进来。用地碎，体量必须收——这是我们读到的第一句话。
 
-![](/projects/hjwtsxx/_23.jpg)
+![](/projects/hanjiang-bay-foreign-language-school/_23.jpg)
 
 ## 抬起来
 
@@ -29,9 +29,9 @@ note: "Qiaokou's density — gas station to the south, civic park to the east, r
 
 最后我们把操场抬起来。架空之后，小学的活动面留在云端，地面层让出一条贯穿东西的步行廊，街角也由此降下来——不再是封闭的围墙，而是高密度社区里一处可以呼吸的开放面。这一抬，把碎裂的用地重新缝合，原本被退距切走的部分以另一种方式回到校园。
 
-![](/projects/hjwtsxx/_18.png)
+![](/projects/hanjiang-bay-foreign-language-school/_18.png)
 
-![](/projects/hjwtsxx/_24.jpg)
+![](/projects/hanjiang-bay-foreign-language-school/_24.jpg)
 
 ## 学街与云顶
 
@@ -39,8 +39,8 @@ note: "Qiaokou's density — gas station to the south, civic park to the east, r
 
 中轴上，云顶大棚架与花园书屋并峙，棚下形成参差的聚落，阳光、棚架、庭院互相留白，留给孩子们在课后慢下来的位置。我们希望这里的克制不是简洁的姿态，而是把决定让给使用——让一个学段与另一个学段之间有缓冲，让公共与教学之间有过渡，让孩子在不同年龄段的过渡里仍能找到属于自己的角落。江湾绿毯在脚下铺开，云顶书屋安静地浮在上面——名字与结构是同一件事。
 
-![](/projects/hjwtsxx/_30.jpg)
+![](/projects/hanjiang-bay-foreign-language-school/_30.jpg)
 
-![](/projects/hjwtsxx/_26.jpg)
+![](/projects/hanjiang-bay-foreign-language-school/_26.jpg)
 
-![](/projects/hjwtsxx/_27.jpg)
+![](/projects/hanjiang-bay-foreign-language-school/_27.jpg)

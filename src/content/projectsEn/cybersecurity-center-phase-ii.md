@@ -11,11 +11,11 @@ On the site plan, the new volumes voluntarily *yield* the middle. We pushed the 
 
 We were not trying to dialogue with Phase I, and we were not trying to introduce a second character into the campus. *Phase II's first job is to catch* — to catch the datum that is already set, to catch the public movement the city was beginning to expect, and to catch the next decade of the campus's working life without making a fuss about any of it.
 
-![](/projects/waeq/_12-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_12-1.jpg)
 
-![](/projects/waeq/_1-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_1-1.jpg)
 
-![](/projects/waeq/_2-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_2-1.jpg)
 
 ## What we added
 
@@ -27,15 +27,15 @@ The decision running through all of them is the same. We chose to *inherit* a he
 
 There is a quiet *setback* at work. None of these new pieces tries to be the project's image. The image, when we drew it, was always the spine and the ground around it; the buildings are what hold the ground. Looking back at the volumetrics now, what reassures us is how little ambition lives in the silhouette and how much of the design ended up in the section.
 
-![](/projects/waeq/_8-2.jpg)
+![](/projects/cybersecurity-center-phase-ii/_8-2.jpg)
 
-![](/projects/waeq/_16-2.jpg)
+![](/projects/cybersecurity-center-phase-ii/_16-2.jpg)
 
-![](/projects/waeq/_9-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_9-1.jpg)
 
-![](/projects/waeq/_5-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_5-1.jpg)
 
-![](/projects/waeq/_7-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_7-1.jpg)
 
 ## The public north–south axis
 
@@ -47,20 +47,20 @@ Most of the time, infrastructure work is making one *quiet* connection on behalf
 
 Looking back at the drawings from this stage, what reassures us is exactly that. We did not contend, we did not add an extra gesture, and once the right position, the right height and the right *yield* had been arranged, most of the work was already done. The campus carries on, and the new pieces sit inside it as if they had always been there.
 
-![](/projects/waeq/_3-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_3-1.jpg)
 
-![](/projects/waeq/_13-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_13-1.jpg)
 
-![](/projects/waeq/_4-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_4-1.jpg)
 
-![](/projects/waeq/_14-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_14-1.jpg)
 
-![](/projects/waeq/_17-2.jpg)
+![](/projects/cybersecurity-center-phase-ii/_17-2.jpg)
 
-![](/projects/waeq/_15-3.jpg)
+![](/projects/cybersecurity-center-phase-ii/_15-3.jpg)
 
-![](/projects/waeq/_6-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_6-1.jpg)
 
-![](/projects/waeq/_10-1.jpg)
+![](/projects/cybersecurity-center-phase-ii/_10-1.jpg)
 
-![](/projects/waeq/_11-2.jpg)
+![](/projects/cybersecurity-center-phase-ii/_11-2.jpg)

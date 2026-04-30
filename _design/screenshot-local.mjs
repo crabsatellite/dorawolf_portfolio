@@ -15,10 +15,10 @@ const OUT = path.resolve("./_design/shots-local");
 const PAGES = [
   { name: "home", url: `${BASE}/` },
   { name: "projects-index", url: `${BASE}/projects/` },
-  { name: "project-cjxqwgyxx", url: `${BASE}/projects/cjxqwgyxx/` },
-  { name: "project-jxzx", url: `${BASE}/projects/jxzx/` },
-  { name: "project-hjwtsxx", url: `${BASE}/projects/hjwtsxx/` },
-  { name: "project-gbkzzx", url: `${BASE}/projects/gbkzzx/` },
+  { name: "project-yangtze-foreign-language-school", url: `${BASE}/projects/yangtze-foreign-language-school/` },
+  { name: "project-jiangxia-star", url: `${BASE}/projects/jiangxia-star/` },
+  { name: "project-hanjiang-bay-foreign-language-school", url: `${BASE}/projects/hanjiang-bay-foreign-language-school/` },
+  { name: "project-metro-control-center", url: `${BASE}/projects/metro-control-center/` },
   { name: "about", url: `${BASE}/about/` },
 ];
 

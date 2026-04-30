@@ -29,7 +29,7 @@ GitHub 网页直接编辑：
 
 每个有详细页的建筑项目对应一个 markdown 文件，在
 [`src/content/projects/`](../src/content/projects/) — 文件名是 URL 末尾的 slug
-(如 `cjxqwgyxx.md` → `/projects/cjxqwgyxx/`)。
+(如 `yangtze-foreign-language-school.md` → `/projects/yangtze-foreign-language-school/`)。
 
 每个文件顶部 `---` 框是 frontmatter(标题 / 年份 / 分类)，下面是 markdown 正文。
 

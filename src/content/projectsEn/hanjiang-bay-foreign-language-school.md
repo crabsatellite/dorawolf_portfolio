@@ -7,7 +7,7 @@ Qiaokou's interior density arrived before the building did. To the south, a fuel
 
 Stepping back to look at the surroundings, Hanjiangwan Senior High School sat to the southwest and the all-citizen fitness centre to the southeast, forming a loose triangular dialogue with our site. This meant the campus did not have to seal its posture shut; it could instead concede a corner, let the street and the school give way to one another, and allow some of the city's public life to seep in. *When the ground is fragmented, the volume must contract* — this was the first sentence the site spoke to us, and we took it as the starting clause of everything that followed.
 
-![](/projects/hjwtsxx/_23.jpg)
+![](/projects/hanjiang-bay-foreign-language-school/_23.jpg)
 
 ## Lifting it up
 
@@ -15,9 +15,9 @@ The hardest piece to place was always the 200-metre running track. Its footprint
 
 In the end we lifted the track. Once raised, the primary school's activity surface stayed up in the cloud, and the ground level opened a pedestrian corridor running east to west. The street corner came down with it — no longer a sealed wall, but a place in this dense neighbourhood where the city could draw a breath. That single gesture stitched the fragmented site back together; the parts that setbacks had cut away returned to the campus through the air rather than through the ground.
 
-![](/projects/hjwtsxx/_18.png)
+![](/projects/hanjiang-bay-foreign-language-school/_18.png)
 
-![](/projects/hjwtsxx/_24.jpg)
+![](/projects/hanjiang-bay-foreign-language-school/_24.jpg)
 
 ## The learning street and the cloud-top
 
@@ -25,8 +25,8 @@ The general classrooms were gathered along the northern edge of the site, thread
 
 On the central axis, the cloud-top trellis stands beside the garden library. Beneath the canopy, an irregular cluster forms — sunlight, frame, and courtyard each leaving room for the others, holding small pauses where children can slow down after class. We hoped the restraint here would not read as a stylistic gesture, but as a way of handing the decision back to use itself: a buffer between one age group and the next, a transition between the public and the pedagogical, so that as a child moves through the years they can still find a corner that feels their own. *A green carpet over the riverbank* unrolls underfoot, and the cloud-top library floats quietly above it. The name and the structure are, in the end, the same thing.
 
-![](/projects/hjwtsxx/_30.jpg)
+![](/projects/hanjiang-bay-foreign-language-school/_30.jpg)
 
-![](/projects/hjwtsxx/_26.jpg)
+![](/projects/hanjiang-bay-foreign-language-school/_26.jpg)
 
-![](/projects/hjwtsxx/_27.jpg)
+![](/projects/hanjiang-bay-foreign-language-school/_27.jpg)
