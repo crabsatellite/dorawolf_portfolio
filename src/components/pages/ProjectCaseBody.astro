@@ -127,7 +127,6 @@ if (entry.data.status)
         </p>
       </div>
       <h1 class="case__title">{titleDisplay}</h1>
-      <p class="case__attribution">{t(lang, "case.attribution")}</p>
     </header>
 
     {entry.data.hero && (
@@ -293,18 +292,6 @@ if (entry.data.status)
     letter-spacing: 0.005em;
   }
   .case--right .case__subtitle {
-    text-align: right;
-  }
-
-  .case__attribution {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--fg-subtle);
-    margin: 0 0 var(--space-3);
-  }
-  .case--right .case__attribution {
     text-align: right;
   }
 

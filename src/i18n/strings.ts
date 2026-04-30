@@ -54,8 +54,6 @@ const strings = {
     "projects.read": "进入",
 
     "case.eyebrow": "作品 · {year}",
-    "case.attribution":
-      "中信建筑设计研究总院 · 2021 — 2023",
     "lightbox.close": "关闭",
     "lightbox.prev": "上一张",
     "lightbox.next": "下一张",
@@ -159,8 +157,6 @@ const strings = {
     "projects.read": "Open",
 
     "case.eyebrow": "Work · {year}",
-    "case.attribution":
-      "At CITIC Architectural Design & Research Institute · 2021 — 2023",
     "lightbox.close": "Close",
     "lightbox.prev": "Previous",
     "lightbox.next": "Next",
