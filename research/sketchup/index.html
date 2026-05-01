@@ -1,0 +1,411 @@
+<!DOCTYPE html><html lang="zh-Hans-CN" class="no-js" data-astro-cid-37fxchfa> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Astro v5.18.1"><link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32"><link rel="icon" type="image/png" href="/favicon-16.png" sizes="16x16"><link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"><link rel="canonical" href="https://dorawolf.com/research/sketchup/"><link rel="preload" as="image" type="image/avif" imagesrcset="/research/sketchup/_-2-_-400.avif 400w, /research/sketchup/_-2-_-800.avif 800w, /research/sketchup/_-2-_-1200.avif 1200w, /research/sketchup/_-2-_-2000.avif 2000w" imagesizes="100vw"><link rel="preload" as="image" type="image/webp" imagesrcset="/research/sketchup/_-2-_-400.webp 400w, /research/sketchup/_-2-_-800.webp 800w, /research/sketchup/_-2-_-1200.webp 1200w, /research/sketchup/_-2-_-2000.webp 2000w" imagesizes="100vw"><title>Sketchup 专篇 · DoraWolf</title><meta name="description" content="Daily 3D modeling. Small-object practice, scene-creation studies, and a custom dynamic-component method developed in the studio."><meta property="og:type" content="website"><meta property="og:title" content="Sketchup 专篇 · DoraWolf"><meta property="og:description" content="Daily 3D modeling. Small-object practice, scene-creation studies, and a custom dynamic-component method developed in the studio."><meta property="og:url" content="https://dorawolf.com/research/sketchup/"><script>
+      // Mark JS as available so the reveal/cursor/fade-in styles take effect.
+      document.documentElement.classList.remove("no-js");
+      document.documentElement.classList.add("html-js");
+
+      // -------------------------------------------------------------------
+      // Connection-aware image policy.
+      //
+      // Runs in <head> BEFORE the body so CSS that keys off slow-net /
+      // save-data classes paints the right placeholder from the first
+      // frame (no FOUC). Reads the Network Information API where
+      // available and falls back to "fast" when unsupported.
+      //
+      // We also expose the policy globally so the body script that
+      // patches <picture><source sizes=…> for progressive-size loading
+      // can reuse the decision without re-reading navigator.connection.
+      // -------------------------------------------------------------------
+      (function () {
+        var html = document.documentElement;
+        var c =
+          navigator.connection ||
+          navigator.mozConnection ||
+          navigator.webkitConnection ||
+          null;
+
+        var effective = c && c.effectiveType ? String(c.effectiveType) : "4g";
+        var saveData = !!(c && c.saveData);
+        var downlink = c && typeof c.downlink === "number" ? c.downlink : null;
+        var slow =
+          saveData ||
+          effective === "slow-2g" ||
+          effective === "2g" ||
+          effective === "3g" ||
+          (downlink !== null && downlink > 0 && downlink < 1.0);
+
+        html.setAttribute("data-effective-type", effective);
+        if (saveData) html.classList.add("save-data");
+        html.classList.add(slow ? "slow-net" : "fast-net");
+
+        // Stash for the body-end <source sizes> patcher.
+        window.__netPolicy = {
+          slow: slow,
+          saveData: saveData,
+          effectiveType: effective,
+          downlink: downlink,
+        };
+      })();
+    </script><link rel="stylesheet" href="/_astro/about.CUP54ywj.css">
+<link rel="stylesheet" href="/_astro/_slug_.BOEaIUn5.css"></head> <body data-astro-cid-37fxchfa> <a href="#main" class="skip-link" data-astro-cid-37fxchfa> 跳到内容 </a> <div class="scroll-progress" id="scroll-progress" aria-hidden="true" data-astro-cid-37fxchfa></div> <header class="nav" data-astro-cid-dmqpwcec> <div class="nav__inner container" data-astro-cid-dmqpwcec> <a href="/" class="nav__logo" aria-label="DoraWolf 主页" data-astro-cid-dmqpwcec> <span class="nav__logo-name" data-astro-cid-dmqpwcec>DoraWolf</span> <span class="nav__logo-zh" aria-hidden="true" data-astro-cid-dmqpwcec>付清源</span> </a> <nav aria-label="Primary" class="nav__primary" data-astro-cid-dmqpwcec> <ul class="nav__list" data-astro-cid-dmqpwcec> <li data-astro-cid-dmqpwcec> <a href="/about" class="nav__link" data-astro-cid-dmqpwcec> 关于 </a> </li><li data-astro-cid-dmqpwcec> <a href="/projects" class="nav__link" data-astro-cid-dmqpwcec> 项目 </a> </li><li data-astro-cid-dmqpwcec> <a href="/research" class="nav__link nav__link--active" aria-current="page" data-astro-cid-dmqpwcec> 研究 </a> </li><li data-astro-cid-dmqpwcec> <a href="/timeline" class="nav__link" data-astro-cid-dmqpwcec> 起点 </a> </li> <li class="nav__lang" data-astro-cid-dmqpwcec> <a href="/en/research/sketchup/" class="nav__link nav__link--lang" aria-label="切换语言" data-lang-switch="en" data-astro-cid-dmqpwcec> EN </a> </li> </ul> </nav> </div> </header>  <main id="main" data-astro-cid-37fxchfa> <article class="case" data-astro-cid-uz27kggp> <figure class="case__hero" data-astro-cid-uz27kggp> <picture class="lqip" style="--lqip:url('data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAMgACAAAAAAHGAAEAAAAAAAAANQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAKAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAb21kYXQSAAoIOAz+WEBDQaQyJBsAAABQiHNBRks6kfon5WAtHbd2ecN/nR/putTSPgGMuHeRgBIACgUYDP5YVDIqGwAAAUDAA/llxsZJKUHyFiDpMPRqJFZL39yAVhFU1/watGtWtqJmKq3E')"> <source type="image/avif" srcset="/research/sketchup/_-2-_-400.avif 400w, /research/sketchup/_-2-_-800.avif 800w, /research/sketchup/_-2-_-1200.avif 1200w, /research/sketchup/_-2-_-2000.avif 2000w" sizes="100vw"> <source type="image/webp" srcset="/research/sketchup/_-2-_-400.webp 400w, /research/sketchup/_-2-_-800.webp 800w, /research/sketchup/_-2-_-1200.webp 1200w, /research/sketchup/_-2-_-2000.webp 2000w" sizes="100vw"> <img src="/research/sketchup/_-2-_.png" alt="Sketchup cover" loading="eager" decoding="async" fetchpriority="high" width="2500" height="1566"> </picture> </figure> <header class="case__head container" data-astro-cid-uz27kggp> <div class="case__index" data-astro-cid-uz27kggp> <span class="case__index-no" data-astro-cid-uz27kggp>01</span> <span class="case__index-rule" aria-hidden="true" data-astro-cid-uz27kggp></span> <span class="case__index-eyebrow" data-astro-cid-uz27kggp>研究</span> </div> <div class="case__head-grid" data-astro-cid-uz27kggp> <div class="case__head-main" data-astro-cid-uz27kggp> <h1 class="case__title" data-astro-cid-uz27kggp>Sketchup 专篇</h1> <p class="case__subtitle" data-astro-cid-uz27kggp>Sketchup</p> <p class="case__note" data-astro-cid-uz27kggp>日常 3D 建模。小物件练习、场景营造、以及自创的动态组件建模法。</p> </div> <dl class="case__data" data-astro-cid-uz27kggp> <div data-astro-cid-uz27kggp> <dt data-astro-cid-uz27kggp>研究</dt> <dd data-astro-cid-uz27kggp>DoraWolf 工作室</dd> </div> </dl> </div> </header> <section class="case__body" data-astro-cid-uz27kggp> <div class="prose" data-astro-cid-uz27kggp> <section class="plate plate--text-only"><div class="plate__intro"><h2 id="关于">关于</h2>
+<p>Sketchup 在工作室的工具栏里待得很久了。它在建筑学科里通常被框定为推敲体量的工具，但我把它当作一支可以随手起稿的笔，画错揉掉，几乎没有代价，适合任何尚未确定的形态。</p>
+<p>围绕这支笔，工作室逐步把 SubD 细分建模、Curviloft 流动、MSPhysics 动力学几样能力接到主流程里，并在此之上沉淀出一套自己的动态组件做法。Sketchup 之于工作室，与其说是建筑软件，不如说是一支愿意陪我跑题的笔。下面三章，是这支笔留下的一部分练习。</p>
+</div></section><section class="plate"><div class="plate__intro"><h2 id="小物件">小物件</h2>
+<p>第一类练习从身边的小尺度物件起手。果盘、小刀、夜灯、挂件、留声机、蜘蛛、牙刷、口琴：每件都从一条最不起眼的轮廓开始，先用顶点编辑器抠形，再交给 SubD 做圆润，最后用 Curviloft 把曲面缝起来。</p>
+<p>这些小物件没有”对错”。它们的意义在于把流程跑顺：熟悉一个面如何被分割，熟悉一条曲线如何决定整个形态。这一阶段攒下的肌肉记忆，几乎托住了之后所有更复杂的练习。</p>
+
+</div><div class="plate__media-grid"><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAMgACAAAAAAHGAAEAAAAAAAAANQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAKAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAb21kYXQSAAoIOAz+WEBDQaQyJBsAAABQiHNBRks6kfon5WAtHbd2ecN/nR/putTSPgGMuHeRgBIACgUYDP5YVDIqGwAAAUDAA/llxsZJKUHyFiDpMPRqJFZL39yAVhFU1/watGtWtqJmKq3E&#x27;)"><source type="image/avif" srcset="/research/sketchup/_-2-_-400.avif 400w, /research/sketchup/_-2-_-800.avif 800w, /research/sketchup/_-2-_-1200.avif 1200w, /research/sketchup/_-2-_-2000.avif 2000w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/sketchup/_-2-_-400.webp 400w, /research/sketchup/_-2-_-800.webp 800w, /research/sketchup/_-2-_-1200.webp 1200w, /research/sketchup/_-2-_-2000.webp 2000w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/sketchup/_-2-_.png" alt="" loading="lazy" decoding="async" width="2500" height="1566"></picture></div></section><section class="plate"><div class="plate__intro"><h2 id="场景营造">场景营造</h2>
+<p>第二类把视线从一件物品放到一片场景。素材取自日常观察与图像档案：一顶探险帽、玻璃碎片堆里的星星、海边的步道、三叶草丛、印有 Sketchup 标记的杯子、徽章物件、风里的芦苇步道。</p>
+<p>场景练习靠两个插件起家：MSPhysics 让物体落得真、堆得乱；Skatter 让自然元素铺得开、长得不一样。它们一起补上了 Sketchup 默认那种偏几何的洁癖。</p>
+
+</div><div class="plate__media-grid"><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAATAACAAAAAAHgAAEAAAAAAAAAOQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAKAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAjW1kYXQSAAoIOAz+WEBDQaQyPhsAKKAAhQDQJPJ+fGYj6iJzlZEHr4XWET6S39KrfpbDiF81hd+ugFLw93PVAcZ/w9TchZFOi2dcFgnDnvjQEgAKBRgM/lhUMi4bAF1xAME5+koDoaqtokaFPg6JY3u1sySrDtQwqhPy1irNSEi4T2mFm55Fx0qY&#x27;)"><source type="image/avif" srcset="/research/sketchup/_-3-_-400.avif 400w, /research/sketchup/_-3-_-800.avif 800w, /research/sketchup/_-3-_-1200.avif 1200w, /research/sketchup/_-3-_-2000.avif 2000w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/sketchup/_-3-_-400.webp 400w, /research/sketchup/_-3-_-800.webp 800w, /research/sketchup/_-3-_-1200.webp 1200w, /research/sketchup/_-3-_-2000.webp 2000w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/sketchup/_-3-_.png" alt="" loading="lazy" decoding="async" width="2500" height="1559"></picture></div></section><section class="plate"><div class="plate__intro"><h2 id="自创的动态组件">自创的动态组件</h2>
+<p>第三类聚焦于 Sketchup 自带的”动态组件”，那些可以点击、可以缩放、可以参数化变形的官方样例。把它们拆开看，核心只是一套不大的属性 + 公式系统；但配上插件，它能跑出比想象中多得多的东西。</p>
+<p>下图的几件，是工作室用这套思路做的一些参数化模型，形态都可以通过参数调控：贝壳、参数球、三段人行天桥、参数环、雪花灯、耳环、壁灯。</p>
+
+<p>参数化的形态，静态图很难讲清楚，所以下面用 GIF 来记录它们怎么变。</p>
+<p>第一例最简单：鼠标点击切换两个表情。原理是把两个表情各做一个模型，点击时切换它们的隐藏属性。</p>
+
+<p>这只蝴蝶可以飞。点击让一个内部计数器一直加，蝴蝶的坐标用三角函数和这个变量挂上钩，翅膀就动起来了。</p>
+
+<p>栅栏门的原理跟蝴蝶相似，多了一个固定尺寸的设定：可以缩放控制长度，鼠标点击触发开合动画。</p>
+
+<p>这是一道可以随机切换颜色的栅栏。尺寸和颜色种类都开放给参数，做一道，就是做一族。</p>
+
+<p>参数环。把公式直接转成模型的极坐标，一组参数对应一种形态，再用 Curviloft 把它们缝成一个干净的实体。</p>
+
+<p>最后是一个密室逃脱小练习。鼠标点击触发各种事件，通过解谜逃出房间，它已经超出”建模”的范畴，更像是用 Sketchup 写了一段交互。</p>
+</div><div class="plate__media-grid"><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAOwACAAAAAAHPAAEAAAAAAAAAIwAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAKAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAZm1kYXQSAAoIOAz+WEBDQaQyLRsAEEARxQDJ1hC88yjYJk7GeLLrbbBorS63k8ndUc6p/bj1FfQy6afBwiussBIACgUYDP5YVDIYGwAwwUB71609DOun9DbYq38RUB3StDIQ&#x27;)"><source type="image/avif" srcset="/research/sketchup/_-1-_-400.avif 400w, /research/sketchup/_-1-_-800.avif 800w, /research/sketchup/_-1-_-1200.avif 1200w, /research/sketchup/_-1-_-2000.avif 2000w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/sketchup/_-1-_-400.webp 400w, /research/sketchup/_-1-_-800.webp 800w, /research/sketchup/_-1-_-1200.webp 1200w, /research/sketchup/_-1-_-2000.webp 2000w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/sketchup/_-1-_.png" alt="" loading="lazy" decoding="async" width="2500" height="1565"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAHAACAAAAAAGwAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAMAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAOW1kYXQSAAoIOAz+2EBDQaQyDhsABBAABQClXm+OfnCrEgAKBRgM/thUMgobAAABAAH9Ze/A&#x27;)" data-type="gif" data-animated="true"><img src="/research/sketchup/GIF-2024-7-3-20-07-08.gif" alt="" loading="lazy" decoding="async" width="530" height="402"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGQACAAAAAAGtAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAMAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAANm1kYXQSAAoIOAz+2EBDQaQyCxsAAABQecjaC44gEgAKBRgM/thUMgobAAABAAH9Ze/A&#x27;)" data-type="gif" data-animated="true"><img src="/research/sketchup/GIF-2024-7-3-20-25-03.gif" alt="" loading="lazy" decoding="async" width="667" height="508"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAIQACAAAAAAG1AAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAMAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAPm1kYXQSAAoIOAz+2EBDQaQyExsAAABQzQ9lBmvnNQ7Zrwd2Ja4SAAoFGAz+2FQyChsAAAEAAf1l78A=&#x27;)" data-type="gif" data-animated="true"><img src="/research/sketchup/GIF-2024-7-3-20-26-40.gif" alt="" loading="lazy" decoding="async" width="667" height="508"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAJQACAAAAAAG5AAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAMAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAQm1kYXQSAAoIOAz+2EBDQaQyFxsADjgABQDNEHkWuXG/wnZQoKHNSn13EgAKBRgM/thUMgobAAABAAH9Ze/A&#x27;)" data-type="gif" data-animated="true"><img src="/research/sketchup/GIF-2024-7-3-20-23-15.gif" alt="" loading="lazy" decoding="async" width="667" height="508"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAHwACAAAAAAGzAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAALAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAPG1kYXQSAAoIOAz+mEBDQaQyERsAAABQeeL0PsxPh+9wwDaoEgAKBRgM/phUMgobAAABAAH9Ze/A&#x27;)" data-type="gif" data-animated="true"><img src="/research/sketchup/GIF-2024-7-3-20-33-29.gif" alt="" loading="lazy" decoding="async" width="880" height="627"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAALAACAAAAAAHAAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAKAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAASW1kYXQSAAoIOAz+WEBDQaQyHhsAAABAjJCeWniThxRHiV5Rxq/mxfuOqLkXAI6VgBIACgUYDP5YVDIKGwAAAQAB/WXvwA==&#x27;)" data-type="gif" data-animated="true"><img src="/research/sketchup/GIF-2024-7-3-22-40-28.gif" alt="" loading="lazy" decoding="async" width="585" height="363"></picture></div></section> </div> </section>  <nav class="container case__nav" aria-label="Research navigation" data-astro-cid-uz27kggp> <a href="/research" class="case__back" data-astro-cid-uz27kggp> ← 全部研究 </a> <div class="case__pager" data-astro-cid-uz27kggp>  <a href="/research/grasshopper" class="case__pager-item case__pager-item--right" data-astro-cid-uz27kggp> <span class="eyebrow" data-astro-cid-uz27kggp>下一篇</span> <span data-astro-cid-uz27kggp> Grasshopper 专篇 </span> </a> </div> </nav> </article>  </main> <footer class="foot" data-astro-cid-sz7xmlte> <div class="container foot__inner" data-astro-cid-sz7xmlte> <div class="foot__col" data-astro-cid-sz7xmlte> <p class="eyebrow" data-astro-cid-sz7xmlte>DoraWolf · 付清源</p> <p class="foot__location" data-astro-cid-sz7xmlte>中国 · 武汉</p> </div> <div class="foot__col" data-astro-cid-sz7xmlte> <p class="eyebrow" data-astro-cid-sz7xmlte>联系</p> <p data-astro-cid-sz7xmlte> <a href="mailto:949505300@qq.com" data-astro-cid-sz7xmlte>949505300@qq.com</a> </p> </div> <div class="foot__col" data-astro-cid-sz7xmlte> <p class="eyebrow" data-astro-cid-sz7xmlte>链接</p> <p data-astro-cid-sz7xmlte> <a href="https://github.com/crabsatellite/dorawolf_portfolio" rel="noopener noreferrer" target="_blank" data-astro-cid-sz7xmlte>源代码 · GitHub</a> </p> </div> </div> <div class="container foot__bottom" data-astro-cid-sz7xmlte> <p data-astro-cid-sz7xmlte> © 2026 DoraWolf 工作室. 保留所有权利。 </p> <p class="foot__credit" data-astro-cid-sz7xmlte> 于 2026 设计与构建。 </p> </div> </footer>  <dialog class="lightbox" id="lightbox" aria-label="Image viewer" data-astro-cid-37fxchfa> <div class="lightbox__inner" id="lightbox-inner" data-astro-cid-37fxchfa></div> <div class="lightbox__bar" data-astro-cid-37fxchfa> <button type="button" data-lb-prev aria-label="上一张" data-astro-cid-37fxchfa>←</button> <span data-lb-counter data-astro-cid-37fxchfa></span> <button type="button" data-lb-next aria-label="下一张" data-astro-cid-37fxchfa>→</button> <button type="button" data-lb-close aria-label="关闭" data-astro-cid-37fxchfa>关闭 ✕</button> </div> </dialog> <script>
+      // ----- Connection-aware <source sizes> patch -------------------------
+      // For slow networks / Save-Data, narrow the `sizes` hint on every
+      // <picture><source> so the browser picks a smaller variant from
+      // the existing srcset. This runs synchronously at the end of body
+      // parse, before any lazy <img> enters the viewport, so the
+      // preload-scanner that would otherwise have requested a 2000w
+      // variant on a phone instead picks the 400w / 800w one.
+      //
+      // Eager hero images may have already begun fetching by the time
+      // this runs — that is acceptable (the hero is full-bleed and
+      // wants the larger variant anyway).
+      (function () {
+        var policy = window.__netPolicy || { slow: false, saveData: false };
+        if (!policy.slow && !policy.saveData) return;
+        var slowSizes = policy.saveData ? "400px" : "480px";
+        var sources = document.querySelectorAll("picture.lqip > source");
+        for (var i = 0; i < sources.length; i++) {
+          sources[i].setAttribute("sizes", slowSizes);
+        }
+        // Also tighten the sizes attr on the fallback <img> (some
+        // browsers use it when no <source> matches).
+        var imgs = document.querySelectorAll("picture.lqip > img[srcset]");
+        for (var j = 0; j < imgs.length; j++) {
+          imgs[j].setAttribute("sizes", slowSizes);
+        }
+      })();
+
+      // ----- Image fade-in -------------------------------------------------
+      (function () {
+        var imgs = document.querySelectorAll("picture.lqip > img");
+        for (var i = 0; i < imgs.length; i++) {
+          var img = imgs[i];
+          if (img.complete && img.naturalHeight !== 0) {
+            img.classList.add("is-loaded");
+          } else {
+            img.addEventListener(
+              "load",
+              (function (el) {
+                return function () {
+                  el.classList.add("is-loaded");
+                };
+              })(img),
+              { once: true }
+            );
+          }
+        }
+      })();
+
+      // ----- Lightbox ------------------------------------------------------
+      (function () {
+        var dlg = document.getElementById("lightbox");
+        if (!dlg || typeof dlg.showModal !== "function") return;
+        var inner = document.getElementById("lightbox-inner");
+        var counter = dlg.querySelector("[data-lb-counter]");
+        var prevBtn = dlg.querySelector("[data-lb-prev]");
+        var nextBtn = dlg.querySelector("[data-lb-next]");
+        var closeBtn = dlg.querySelector("[data-lb-close]");
+        var list = [];
+        var idx = 0;
+
+        function render() {
+          var pic = list[idx];
+          if (!pic) return;
+          var img = pic.querySelector("img");
+          if (!img) return;
+          inner.innerHTML = "";
+          var big = document.createElement("img");
+          big.src = img.currentSrc || img.src;
+          big.alt = img.alt || "";
+          inner.appendChild(big);
+          if (counter)
+            counter.textContent =
+              list.length > 1 ? idx + 1 + " / " + list.length : "";
+        }
+
+        function open(pic) {
+          var group = pic.closest(".plate__media") || pic.closest(".prose") || document;
+          list = Array.prototype.slice.call(
+            group.querySelectorAll("picture.lqip")
+          );
+          if (list.indexOf(pic) === -1) {
+            list = [pic];
+          }
+          idx = list.indexOf(pic);
+          render();
+          if (typeof dlg.showModal === "function") dlg.showModal();
+        }
+
+        document.addEventListener("click", function (e) {
+          var t = e.target;
+          while (t && t !== document) {
+            if (t.tagName === "PICTURE" && t.classList.contains("lqip")) {
+              e.preventDefault();
+              open(t);
+              return;
+            }
+            if (t === dlg) break;
+            t = t.parentNode;
+          }
+        });
+
+        function close() {
+          if (dlg.open) dlg.close();
+          inner.innerHTML = "";
+        }
+        function next() {
+          if (!list.length) return;
+          idx = (idx + 1) % list.length;
+          render();
+        }
+        function prev() {
+          if (!list.length) return;
+          idx = (idx - 1 + list.length) % list.length;
+          render();
+        }
+
+        prevBtn && prevBtn.addEventListener("click", function (e) { e.stopPropagation(); prev(); });
+        nextBtn && nextBtn.addEventListener("click", function (e) { e.stopPropagation(); next(); });
+        closeBtn && closeBtn.addEventListener("click", close);
+
+        dlg.addEventListener("click", function (e) {
+          if (e.target === dlg || e.target === inner || e.target.tagName === "IMG") {
+            close();
+          }
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (!dlg.open) return;
+          if (e.key === "ArrowRight") next();
+          else if (e.key === "ArrowLeft") prev();
+          else if (e.key === "Escape") close();
+        });
+      })();
+
+      // ----- Scroll progress ----------------------------------------------
+      (function () {
+        var bar = document.getElementById("scroll-progress");
+        if (!bar) return;
+        var ticking = false;
+        function update() {
+          var doc = document.documentElement;
+          var max = (doc.scrollHeight - doc.clientHeight) || 1;
+          var p = Math.min(1, Math.max(0, doc.scrollTop / max));
+          bar.style.transform = "scaleX(" + p + ")";
+          ticking = false;
+        }
+        window.addEventListener(
+          "scroll",
+          function () {
+            if (!ticking) {
+              window.requestAnimationFrame(update);
+              ticking = true;
+            }
+          },
+          { passive: true }
+        );
+        update();
+      })();
+
+      // ----- Scroll-reveal -------------------------------------------------
+      (function () {
+        if (!("IntersectionObserver" in window)) return;
+        var prefersReduced =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (prefersReduced) return;
+
+        // Selector list — anything we want to fade-up on scroll.
+        var sel = [
+          ".section--hero h1",
+          ".section--hero .lede",
+          ".section--hero .hero__lede p",
+          ".section--hero .eyebrow",
+          ".project-item",
+          ".plate",
+          ".threads article",
+          ".t-item",
+          ".exp__item",
+          ".proj__item",
+          ".awards li",
+          ".chip-list li",
+          ".about-h2",
+          ".featured__caption",
+          "h2",
+        ].join(",");
+        var nodes = document.querySelectorAll(sel);
+        for (var i = 0; i < nodes.length; i++) {
+          nodes[i].classList.add("reveal");
+        }
+        var io = new IntersectionObserver(
+          function (entries) {
+            for (var i = 0; i < entries.length; i++) {
+              if (entries[i].isIntersecting) {
+                entries[i].target.classList.add("in-view");
+                io.unobserve(entries[i].target);
+              }
+            }
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+        );
+        for (var j = 0; j < nodes.length; j++) {
+          io.observe(nodes[j]);
+        }
+      })();
+
+      // ----- Project-list hover preview -----------------------------------
+      (function () {
+        var canHover =
+          window.matchMedia && window.matchMedia("(hover: hover)").matches;
+        var prefersReduced =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (!canHover || prefersReduced) return;
+
+        var prev = document.createElement("div");
+        prev.className = "hover-preview";
+        document.body.appendChild(prev);
+
+        var on = false,
+          rafId = 0,
+          targetX = 0,
+          targetY = 0,
+          curX = -9999,
+          curY = -9999;
+
+        function tick() {
+          curX += (targetX - curX) * 0.18;
+          curY += (targetY - curY) * 0.18;
+          prev.style.transform =
+            "translate3d(" + (curX + 30) + "px," + (curY - 80) + "px,0)";
+          rafId = window.requestAnimationFrame(tick);
+        }
+
+        document.addEventListener(
+          "mousemove",
+          function (e) {
+            targetX = e.clientX;
+            targetY = e.clientY;
+            if (!rafId) rafId = window.requestAnimationFrame(tick);
+          },
+          { passive: true }
+        );
+
+        document.addEventListener("mouseover", function (e) {
+          var t = e.target.closest && e.target.closest("[data-preview]");
+          if (!t) return;
+          var src = t.getAttribute("data-preview");
+          if (!src) return;
+          prev.style.backgroundImage = 'url("' + src + '")';
+          // Snap to current cursor on first show to avoid a fly-in from far.
+          curX = targetX;
+          curY = targetY;
+          prev.classList.add("is-on");
+          on = true;
+        });
+
+        document.addEventListener("mouseout", function (e) {
+          var t = e.target.closest && e.target.closest("[data-preview]");
+          if (!t) return;
+          var to = e.relatedTarget && e.relatedTarget.closest
+            ? e.relatedTarget.closest("[data-preview]")
+            : null;
+          if (to === t) return;
+          prev.classList.remove("is-on");
+          on = false;
+        });
+      })();
+
+      // ----- Custom cursor (desktop only) ---------------------------------
+      (function () {
+        // Skip on touch devices and reduced-motion
+        var canHover =
+          window.matchMedia && window.matchMedia("(hover: hover)").matches;
+        var prefersReduced =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (!canHover || prefersReduced) return;
+
+        var dot = document.createElement("div");
+        var ring = document.createElement("div");
+        dot.className = "cursor-dot";
+        ring.className = "cursor-ring";
+        document.body.appendChild(dot);
+        document.body.appendChild(ring);
+
+        var dx = -50,
+          dy = -50,
+          rx = -50,
+          ry = -50,
+          raf = 0;
+        function tick() {
+          rx += (dx - rx) * 0.18;
+          ry += (dy - ry) * 0.18;
+          dot.style.transform = "translate3d(" + (dx - 3) + "px," + (dy - 3) + "px,0)";
+          ring.style.transform = "translate3d(" + (rx - 17) + "px," + (ry - 17) + "px,0)";
+          raf = window.requestAnimationFrame(tick);
+        }
+        window.addEventListener(
+          "mousemove",
+          function (e) {
+            dx = e.clientX;
+            dy = e.clientY;
+            if (!raf) raf = window.requestAnimationFrame(tick);
+          },
+          { passive: true }
+        );
+
+        // Expand the ring when the cursor is over an interactive surface.
+        var hoverSel = "a, button, picture.lqip, .plate__link, [data-lang-switch]";
+        document.addEventListener("mouseover", function (e) {
+          if (e.target.closest && e.target.closest(hoverSel)) {
+            ring.classList.add("is-hover");
+          }
+        });
+        document.addEventListener("mouseout", function (e) {
+          if (e.target.closest && e.target.closest(hoverSel)) {
+            ring.classList.remove("is-hover");
+          }
+        });
+        window.addEventListener("mousedown", function () {
+          ring.classList.add("is-press");
+        });
+        window.addEventListener("mouseup", function () {
+          ring.classList.remove("is-press");
+        });
+        window.addEventListener("mouseleave", function () {
+          dot.style.opacity = "0";
+          ring.style.opacity = "0";
+        });
+        window.addEventListener("mouseenter", function () {
+          dot.style.opacity = "";
+          ring.style.opacity = "";
+        });
+      })();
+    </script>  </body> </html> 

@@ -1,0 +1,396 @@
+<!DOCTYPE html><html lang="en" class="no-js" data-astro-cid-37fxchfa> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Astro v5.18.1"><link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32"><link rel="icon" type="image/png" href="/favicon-16.png" sizes="16x16"><link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"><link rel="canonical" href="https://dorawolf.com/en/"><title>DoraWolf</title><meta name="description" content="Qingyuan Fu (DoraWolf), architect, Wuhan, China."><meta property="og:type" content="website"><meta property="og:title" content="DoraWolf"><meta property="og:description" content="Qingyuan Fu (DoraWolf), architect, Wuhan, China."><meta property="og:url" content="https://dorawolf.com/en/"><script>
+      // Mark JS as available so the reveal/cursor/fade-in styles take effect.
+      document.documentElement.classList.remove("no-js");
+      document.documentElement.classList.add("html-js");
+
+      // -------------------------------------------------------------------
+      // Connection-aware image policy.
+      //
+      // Runs in <head> BEFORE the body so CSS that keys off slow-net /
+      // save-data classes paints the right placeholder from the first
+      // frame (no FOUC). Reads the Network Information API where
+      // available and falls back to "fast" when unsupported.
+      //
+      // We also expose the policy globally so the body script that
+      // patches <picture><source sizes=…> for progressive-size loading
+      // can reuse the decision without re-reading navigator.connection.
+      // -------------------------------------------------------------------
+      (function () {
+        var html = document.documentElement;
+        var c =
+          navigator.connection ||
+          navigator.mozConnection ||
+          navigator.webkitConnection ||
+          null;
+
+        var effective = c && c.effectiveType ? String(c.effectiveType) : "4g";
+        var saveData = !!(c && c.saveData);
+        var downlink = c && typeof c.downlink === "number" ? c.downlink : null;
+        var slow =
+          saveData ||
+          effective === "slow-2g" ||
+          effective === "2g" ||
+          effective === "3g" ||
+          (downlink !== null && downlink > 0 && downlink < 1.0);
+
+        html.setAttribute("data-effective-type", effective);
+        if (saveData) html.classList.add("save-data");
+        html.classList.add(slow ? "slow-net" : "fast-net");
+
+        // Stash for the body-end <source sizes> patcher.
+        window.__netPolicy = {
+          slow: slow,
+          saveData: saveData,
+          effectiveType: effective,
+          downlink: downlink,
+        };
+      })();
+    </script><link rel="stylesheet" href="/_astro/about.CUP54ywj.css">
+<link rel="stylesheet" href="/_astro/index.BpLsupYi.css"></head> <body data-astro-cid-37fxchfa> <a href="#main" class="skip-link" data-astro-cid-37fxchfa> Skip to content </a> <div class="scroll-progress" id="scroll-progress" aria-hidden="true" data-astro-cid-37fxchfa></div> <header class="nav" data-astro-cid-dmqpwcec> <div class="nav__inner container" data-astro-cid-dmqpwcec> <a href="/en/" class="nav__logo" aria-label="DoraWolf home" data-astro-cid-dmqpwcec> <span class="nav__logo-name" data-astro-cid-dmqpwcec>DoraWolf</span> <span class="nav__logo-zh" aria-hidden="true" data-astro-cid-dmqpwcec>Qingyuan Fu</span> </a> <nav aria-label="Primary" class="nav__primary" data-astro-cid-dmqpwcec> <ul class="nav__list" data-astro-cid-dmqpwcec> <li data-astro-cid-dmqpwcec> <a href="/en/about" class="nav__link" data-astro-cid-dmqpwcec> About </a> </li><li data-astro-cid-dmqpwcec> <a href="/en/projects" class="nav__link" data-astro-cid-dmqpwcec> Projects </a> </li><li data-astro-cid-dmqpwcec> <a href="/en/research" class="nav__link" data-astro-cid-dmqpwcec> Research </a> </li><li data-astro-cid-dmqpwcec> <a href="/en/timeline" class="nav__link" data-astro-cid-dmqpwcec> Timeline </a> </li> <li class="nav__lang" data-astro-cid-dmqpwcec> <a href="/" class="nav__link nav__link--lang" aria-label="Switch language" data-lang-switch="zh" data-astro-cid-dmqpwcec> 中 </a> </li> </ul> </nav> </div> </header>  <main id="main" data-astro-cid-37fxchfa>  <section class="section section--hero container hero" data-astro-cid-eomcwz7w> <span class="hero__backdrop" aria-hidden="true" data-astro-cid-eomcwz7w>2023</span> <div class="hero__head" data-astro-cid-eomcwz7w> <p class="eyebrow" data-astro-cid-eomcwz7w> Studio · Wuhan · est. 2023 </p> <h1 class="hero__title" data-astro-cid-eomcwz7w>  <span class="hero__line hero__line--prose" style="--i:0" data-astro-cid-eomcwz7w> We focus on </span> <span class="hero__line hero__line--mark" style="--i:1" data-astro-cid-eomcwz7w> <span class="hero__index" aria-hidden="true" data-astro-cid-eomcwz7w>01</span> <span class="hero__keyword" data-astro-cid-eomcwz7w>site</span> </span> <span class="hero__line hero__line--mark" style="--i:2" data-astro-cid-eomcwz7w> <span class="hero__index" aria-hidden="true" data-astro-cid-eomcwz7w>02</span> <span class="hero__keyword" data-astro-cid-eomcwz7w>climate</span> </span> <span class="hero__line hero__line--prose" style="--i:3" data-astro-cid-eomcwz7w> and the people who use the building. </span>  </h1> </div> <div class="hero__lede" data-astro-cid-eomcwz7w> <p data-astro-cid-eomcwz7w> DoraWolf Studio is based in Wuhan, China and works on education, infrastructure, and public buildings. Every project starts from the terrain, climate, and surroundings of the site. We draw in Sketchup, Grasshopper, Rhino, and Ladybug. </p> <p class="hero__cta" data-astro-cid-eomcwz7w> <a class="arrow-link" href="/en/projects" data-astro-cid-eomcwz7w> View projects </a> </p> </div> </section> <section class="section featured" data-astro-cid-eomcwz7w> <a href="/en/projects/yangtze-foreign-language-school" class="featured__link" data-astro-cid-eomcwz7w> <div class="featured__image" data-astro-cid-eomcwz7w> <picture class="lqip" style="--lqip:url('data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAANZtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAAImlsb2MAAAAAREAAAQABAAAAAAD6AAEAAAAAAAAAJQAAACNpaW5mAAAAAAABAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAVmlwcnAAAAA4aXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAALAAAAEHBpeGkAAAAAAwgICAAAABZpcG1hAAAAAAAAAAEAAQOBAgMAAAAtbWRhdBIACgg4DP6YQENBpDIXGwAAAECLcov2Ajb8EuknmtblyKJk/YA=')"> <source type="image/avif" srcset="/projects/yangtze-foreign-language-school/_9-400.avif 400w, /projects/yangtze-foreign-language-school/_9-800.avif 800w, /projects/yangtze-foreign-language-school/_9-1200.avif 1200w, /projects/yangtze-foreign-language-school/_9-2000.avif 2000w" sizes="100vw"> <source type="image/webp" srcset="/projects/yangtze-foreign-language-school/_9-400.webp 400w, /projects/yangtze-foreign-language-school/_9-800.webp 800w, /projects/yangtze-foreign-language-school/_9-1200.webp 1200w, /projects/yangtze-foreign-language-school/_9-2000.webp 2000w" sizes="100vw"> <img src="/projects/yangtze-foreign-language-school/_9.jpg" alt="Wuhan Yangtze New District Foreign Language School" loading="eager" decoding="async" fetchpriority="high" width="2500" height="1769"> </picture> </div> <div class="container featured__caption" data-astro-cid-eomcwz7w> <p class="eyebrow" data-astro-cid-eomcwz7w> Featured · 2023 </p> <h2 class="featured__title" data-astro-cid-eomcwz7w> Wuhan Yangtze New District Foreign Language School </h2> <p class="featured__zh" data-astro-cid-eomcwz7w>长江新区外国语学校</p> <p class="featured__summary" data-astro-cid-eomcwz7w>An international-language secondary campus organised around a central cross of public space, set into a blue-green ecological corridor on the eastern edge of Wuhan&#39;s Yangtze New District.</p> <span class="arrow-link" data-astro-cid-eomcwz7w>Open</span> </div> </a> </section><section class="section container" data-astro-cid-eomcwz7w> <header class="section-head" data-astro-cid-eomcwz7w> <div data-astro-cid-eomcwz7w> <p class="eyebrow" data-astro-cid-eomcwz7w>Works</p> <h2 data-astro-cid-eomcwz7w>Selected works</h2> </div> <a class="arrow-link arrow-link--mono" href="/en/projects" data-astro-cid-eomcwz7w> All 7 works </a> </header> <ol class="project-list" data-astro-cid-eomcwz7w> <li class="project-item" data-astro-cid-eomcwz7w> <a href="/en/projects/metro-control-center" data-preview="/projects/metro-control-center/_34.jpg" data-astro-cid-eomcwz7w> <span class="project-item__thumb" aria-hidden="true" data-astro-cid-eomcwz7w> <picture class="lqip" style="--lqip:url('data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAANZtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAAImlsb2MAAAAAREAAAQABAAAAAAD6AAEAAAAAAAAAKwAAACNpaW5mAAAAAAABAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAVmlwcnAAAAA4aXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAALAAAAEHBpeGkAAAAAAwgICAAAABZpcG1hAAAAAAAAAAEAAQOBAgMAAAAzbWRhdBIACgg4DP6YQENBpDIdGwAAAEB6XJYwIPFKEFqMhrGIKv1bAT4EQSJYbCw=')"> <source type="image/avif" srcset="/projects/metro-control-center/_34-400.avif 400w, /projects/metro-control-center/_34-800.avif 800w, /projects/metro-control-center/_34-1200.avif 1200w, /projects/metro-control-center/_34-2000.avif 2000w" sizes="96px"> <source type="image/webp" srcset="/projects/metro-control-center/_34-400.webp 400w, /projects/metro-control-center/_34-800.webp 800w, /projects/metro-control-center/_34-1200.webp 1200w, /projects/metro-control-center/_34-2000.webp 2000w" sizes="96px"> <img src="/projects/metro-control-center/_34.jpg" alt loading="lazy" decoding="async" width="2500" height="1768"> </picture> </span> <span class="project-item__year" data-astro-cid-eomcwz7w>2022</span> <span class="project-item__title" data-astro-cid-eomcwz7w> <span class="project-item__title-en" data-astro-cid-eomcwz7w> Wuhan Metro National Convention Center Control Center </span> <span class="project-item__title-zh" data-astro-cid-eomcwz7w>国博控制中心</span> </span> <span class="project-item__meta" data-astro-cid-eomcwz7w>Infrastructure / civic · Wuhan, Hubei</span> <span class="project-item__arrow" aria-hidden="true" data-astro-cid-eomcwz7w>
+→
+</span> </a> </li><li class="project-item" data-astro-cid-eomcwz7w> <a href="/en/projects/qingling-lakeside-high-school" data-preview="/projects/qingling-lakeside-high-school/_6.jpg" data-astro-cid-eomcwz7w> <span class="project-item__thumb" aria-hidden="true" data-astro-cid-eomcwz7w> <picture class="lqip" style="--lqip:url('data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAANZtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAAImlsb2MAAAAAREAAAQABAAAAAAD6AAEAAAAAAAAAJgAAACNpaW5mAAAAAAABAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAVmlwcnAAAAA4aXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAALAAAAEHBpeGkAAAAAAwgICAAAABZpcG1hAAAAAAAAAAEAAQOBAgMAAAAubWRhdBIACgg4DP6YQENBpDIYGwAWWOIEAIhwPbqBWTqVdDapsS40qIdA')"> <source type="image/avif" srcset="/projects/qingling-lakeside-high-school/_6-400.avif 400w, /projects/qingling-lakeside-high-school/_6-800.avif 800w, /projects/qingling-lakeside-high-school/_6-1200.avif 1200w, /projects/qingling-lakeside-high-school/_6-2000.avif 2000w" sizes="96px"> <source type="image/webp" srcset="/projects/qingling-lakeside-high-school/_6-400.webp 400w, /projects/qingling-lakeside-high-school/_6-800.webp 800w, /projects/qingling-lakeside-high-school/_6-1200.webp 1200w, /projects/qingling-lakeside-high-school/_6-2000.webp 2000w" sizes="96px"> <img src="/projects/qingling-lakeside-high-school/_6.jpg" alt loading="lazy" decoding="async" width="2500" height="1720"> </picture> </span> <span class="project-item__year" data-astro-cid-eomcwz7w>2022</span> <span class="project-item__title" data-astro-cid-eomcwz7w> <span class="project-item__title-en" data-astro-cid-eomcwz7w> Hongshan High School, Qingling Campus </span> <span class="project-item__title-zh" data-astro-cid-eomcwz7w>洪山高中青菱校区</span> </span> <span class="project-item__meta" data-astro-cid-eomcwz7w>Education · Wuhan, Hubei</span> <span class="project-item__arrow" aria-hidden="true" data-astro-cid-eomcwz7w>
+→
+</span> </a> </li><li class="project-item" data-astro-cid-eomcwz7w> <a href="/en/projects/optics-valley-exhibition-center" data-preview="/projects/optics-valley-exhibition-center/____07.jpg" data-astro-cid-eomcwz7w> <span class="project-item__thumb" aria-hidden="true" data-astro-cid-eomcwz7w> <picture class="lqip" style="--lqip:url('data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAANZtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAAImlsb2MAAAAAREAAAQABAAAAAAD6AAEAAAAAAAAAHgAAACNpaW5mAAAAAAABAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAVmlwcnAAAAA4aXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAGAAAAEHBpeGkAAAAAAwgICAAAABZpcG1hAAAAAAAAAAEAAQOBAgMAAAAmbWRhdBIACgg4DL6wgIaDSDIQGwAAAEDhqWYjbmIdj0MJgA==')"> <source type="image/avif" srcset="/projects/optics-valley-exhibition-center/____07-400.avif 400w, /projects/optics-valley-exhibition-center/____07-800.avif 800w, /projects/optics-valley-exhibition-center/____07-1200.avif 1200w, /projects/optics-valley-exhibition-center/____07-2000.avif 2000w" sizes="96px"> <source type="image/webp" srcset="/projects/optics-valley-exhibition-center/____07-400.webp 400w, /projects/optics-valley-exhibition-center/____07-800.webp 800w, /projects/optics-valley-exhibition-center/____07-1200.webp 1200w, /projects/optics-valley-exhibition-center/____07-2000.webp 2000w" sizes="96px"> <img src="/projects/optics-valley-exhibition-center/____07.jpg" alt loading="lazy" decoding="async" width="2500" height="877"> </picture> </span> <span class="project-item__year" data-astro-cid-eomcwz7w>2022</span> <span class="project-item__title" data-astro-cid-eomcwz7w> <span class="project-item__title-en" data-astro-cid-eomcwz7w> Optics Valley Exhibition Center </span> <span class="project-item__title-zh" data-astro-cid-eomcwz7w>光谷展示中心</span> </span> <span class="project-item__meta" data-astro-cid-eomcwz7w>Civic / cultural · Wuhan, Hubei</span> <span class="project-item__arrow" aria-hidden="true" data-astro-cid-eomcwz7w>
+→
+</span> </a> </li><li class="project-item" data-astro-cid-eomcwz7w> <a href="/en/projects/cybersecurity-center-phase-ii" data-preview="/projects/cybersecurity-center-phase-ii/_1-1.jpg" data-astro-cid-eomcwz7w> <span class="project-item__thumb" aria-hidden="true" data-astro-cid-eomcwz7w> <picture class="lqip" style="--lqip:url('data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAANZtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAAImlsb2MAAAAAREAAAQABAAAAAAD6AAEAAAAAAAAAGAAAACNpaW5mAAAAAAABAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAVmlwcnAAAAA4aXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAIAAAAEHBpeGkAAAAAAwgICAAAABZpcG1hAAAAAAAAAAEAAQOBAgMAAAAgbWRhdBIACgg4DL+wgIaDSDIKGwAAAECDNcl+8A==')"> <source type="image/avif" srcset="/projects/cybersecurity-center-phase-ii/_1-1-400.avif 400w, /projects/cybersecurity-center-phase-ii/_1-1-800.avif 800w, /projects/cybersecurity-center-phase-ii/_1-1-1200.avif 1200w, /projects/cybersecurity-center-phase-ii/_1-1-2000.avif 2000w" sizes="96px"> <source type="image/webp" srcset="/projects/cybersecurity-center-phase-ii/_1-1-400.webp 400w, /projects/cybersecurity-center-phase-ii/_1-1-800.webp 800w, /projects/cybersecurity-center-phase-ii/_1-1-1200.webp 1200w, /projects/cybersecurity-center-phase-ii/_1-1-2000.webp 2000w" sizes="96px"> <img src="/projects/cybersecurity-center-phase-ii/_1-1.jpg" alt loading="lazy" decoding="async" width="2500" height="1312"> </picture> </span> <span class="project-item__year" data-astro-cid-eomcwz7w>2022</span> <span class="project-item__title" data-astro-cid-eomcwz7w> <span class="project-item__title-en" data-astro-cid-eomcwz7w> National Cybersecurity Center, Phase II </span> <span class="project-item__title-zh" data-astro-cid-eomcwz7w>网安二期</span> </span> <span class="project-item__meta" data-astro-cid-eomcwz7w>Civic / infrastructure · Wuhan, Hubei</span> <span class="project-item__arrow" aria-hidden="true" data-astro-cid-eomcwz7w>
+→
+</span> </a> </li><li class="project-item" data-astro-cid-eomcwz7w> <a href="/en/projects/hanjiang-bay-foreign-language-school" data-preview="/projects/hanjiang-bay-foreign-language-school/_23.jpg" data-astro-cid-eomcwz7w> <span class="project-item__thumb" aria-hidden="true" data-astro-cid-eomcwz7w> <picture class="lqip" style="--lqip:url('data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAANZtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAAImlsb2MAAAAAREAAAQABAAAAAAD6AAEAAAAAAAAALwAAACNpaW5mAAAAAAABAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAVmlwcnAAAAA4aXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAALAAAAEHBpeGkAAAAAAwgICAAAABZpcG1hAAAAAAAAAAEAAQOBAgMAAAA3bWRhdBIACgg4DP6YQENBpDIhGwAEEAAFADINCTAdZtl4wS8j/vRKbcxTmAjB34OrS6dg')"> <source type="image/avif" srcset="/projects/hanjiang-bay-foreign-language-school/_23-400.avif 400w, /projects/hanjiang-bay-foreign-language-school/_23-800.avif 800w, /projects/hanjiang-bay-foreign-language-school/_23-1200.avif 1200w, /projects/hanjiang-bay-foreign-language-school/_23-2000.avif 2000w" sizes="96px"> <source type="image/webp" srcset="/projects/hanjiang-bay-foreign-language-school/_23-400.webp 400w, /projects/hanjiang-bay-foreign-language-school/_23-800.webp 800w, /projects/hanjiang-bay-foreign-language-school/_23-1200.webp 1200w, /projects/hanjiang-bay-foreign-language-school/_23-2000.webp 2000w" sizes="96px"> <img src="/projects/hanjiang-bay-foreign-language-school/_23.jpg" alt loading="lazy" decoding="async" width="2500" height="1720"> </picture> </span> <span class="project-item__year" data-astro-cid-eomcwz7w>2022</span> <span class="project-item__title" data-astro-cid-eomcwz7w> <span class="project-item__title-en" data-astro-cid-eomcwz7w> Hanjiangwan Foreign Language Specialty School </span> <span class="project-item__title-zh" data-astro-cid-eomcwz7w>汉江湾外语特色学校</span> </span> <span class="project-item__meta" data-astro-cid-eomcwz7w>Education · Wuhan, Hubei</span> <span class="project-item__arrow" aria-hidden="true" data-astro-cid-eomcwz7w>
+→
+</span> </a> </li><li class="project-item" data-astro-cid-eomcwz7w> <a href="/en/projects/jiangxia-star" data-preview="/projects/jiangxia-star/_6-_.jpg" data-astro-cid-eomcwz7w> <span class="project-item__thumb" aria-hidden="true" data-astro-cid-eomcwz7w> <picture class="lqip" style="--lqip:url('data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAANZtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAAImlsb2MAAAAAREAAAQABAAAAAAD6AAEAAAAAAAAAJwAAACNpaW5mAAAAAAABAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAVmlwcnAAAAA4aXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAALAAAAEHBpeGkAAAAAAwgICAAAABZpcG1hAAAAAAAAAAEAAQOBAgMAAAAvbWRhdBIACgg4DP6YQENBpDIZGwAAAEB6NEVKrOn2cgQ0vHXG29LmY2+SpA==')"> <source type="image/avif" srcset="/projects/jiangxia-star/_6-_-400.avif 400w, /projects/jiangxia-star/_6-_-800.avif 800w, /projects/jiangxia-star/_6-_-1200.avif 1200w, /projects/jiangxia-star/_6-_-2000.avif 2000w" sizes="96px"> <source type="image/webp" srcset="/projects/jiangxia-star/_6-_-400.webp 400w, /projects/jiangxia-star/_6-_-800.webp 800w, /projects/jiangxia-star/_6-_-1200.webp 1200w, /projects/jiangxia-star/_6-_-2000.webp 2000w" sizes="96px"> <img src="/projects/jiangxia-star/_6-_.jpg" alt loading="lazy" decoding="async" width="2500" height="1768"> </picture> </span> <span class="project-item__year" data-astro-cid-eomcwz7w>2022</span> <span class="project-item__title" data-astro-cid-eomcwz7w> <span class="project-item__title-en" data-astro-cid-eomcwz7w> Jiangxia Star </span> <span class="project-item__title-zh" data-astro-cid-eomcwz7w>江夏之星</span> </span> <span class="project-item__meta" data-astro-cid-eomcwz7w>Mixed-use / civic · Wuhan, Hubei</span> <span class="project-item__arrow" aria-hidden="true" data-astro-cid-eomcwz7w>
+→
+</span> </a> </li> </ol> </section> <section class="section container threads-section" data-astro-cid-eomcwz7w> <header class="section-head" data-astro-cid-eomcwz7w> <div data-astro-cid-eomcwz7w> <p class="eyebrow" data-astro-cid-eomcwz7w>Studio</p> <h2 data-astro-cid-eomcwz7w>Three threads</h2> </div> </header> <div class="threads" data-astro-cid-eomcwz7w> <article data-astro-cid-eomcwz7w> <p class="thread__no" data-astro-cid-eomcwz7w>01</p> <h3 data-astro-cid-eomcwz7w>Start from the site</h3> <p data-astro-cid-eomcwz7w>The form starts from what is already on the site. That includes terrain, prevailing wind, and paths people already walk. We look at the site carefully before drawing.</p> </article> <article data-astro-cid-eomcwz7w> <p class="thread__no" data-astro-cid-eomcwz7w>02</p> <h3 data-astro-cid-eomcwz7w>Use a small kit</h3> <p data-astro-cid-eomcwz7w>Sketchup and Grasshopper are what we use most. Rhino is for detail, Ladybug for early daylight and energy estimates. We work out the design first and then pick up the tools.</p> </article> <article data-astro-cid-eomcwz7w> <p class="thread__no" data-astro-cid-eomcwz7w>03</p> <h3 data-astro-cid-eomcwz7w>Toward the street</h3> <p data-astro-cid-eomcwz7w>A public building should look simple from the street. We keep the outside simple and put the more complicated parts inside.</p> </article> </div> </section>  </main> <footer class="foot" data-astro-cid-sz7xmlte> <div class="container foot__inner" data-astro-cid-sz7xmlte> <div class="foot__col" data-astro-cid-sz7xmlte> <p class="eyebrow" data-astro-cid-sz7xmlte>DoraWolf · Qingyuan Fu</p> <p class="foot__location" data-astro-cid-sz7xmlte>Wuhan, China</p> </div> <div class="foot__col" data-astro-cid-sz7xmlte> <p class="eyebrow" data-astro-cid-sz7xmlte>Contact</p> <p data-astro-cid-sz7xmlte> <a href="mailto:949505300@qq.com" data-astro-cid-sz7xmlte>949505300@qq.com</a> </p> </div> <div class="foot__col" data-astro-cid-sz7xmlte> <p class="eyebrow" data-astro-cid-sz7xmlte>Links</p> <p data-astro-cid-sz7xmlte> <a href="https://github.com/crabsatellite/dorawolf_portfolio" rel="noopener noreferrer" target="_blank" data-astro-cid-sz7xmlte>Source · GitHub</a> </p> </div> </div> <div class="container foot__bottom" data-astro-cid-sz7xmlte> <p data-astro-cid-sz7xmlte> © 2026 DoraWolf Studio. All rights reserved. </p> <p class="foot__credit" data-astro-cid-sz7xmlte> Designed and built 2026. </p> </div> </footer>  <dialog class="lightbox" id="lightbox" aria-label="Image viewer" data-astro-cid-37fxchfa> <div class="lightbox__inner" id="lightbox-inner" data-astro-cid-37fxchfa></div> <div class="lightbox__bar" data-astro-cid-37fxchfa> <button type="button" data-lb-prev aria-label="Previous" data-astro-cid-37fxchfa>←</button> <span data-lb-counter data-astro-cid-37fxchfa></span> <button type="button" data-lb-next aria-label="Next" data-astro-cid-37fxchfa>→</button> <button type="button" data-lb-close aria-label="Close" data-astro-cid-37fxchfa>Close ✕</button> </div> </dialog> <script>
+      // ----- Connection-aware <source sizes> patch -------------------------
+      // For slow networks / Save-Data, narrow the `sizes` hint on every
+      // <picture><source> so the browser picks a smaller variant from
+      // the existing srcset. This runs synchronously at the end of body
+      // parse, before any lazy <img> enters the viewport, so the
+      // preload-scanner that would otherwise have requested a 2000w
+      // variant on a phone instead picks the 400w / 800w one.
+      //
+      // Eager hero images may have already begun fetching by the time
+      // this runs — that is acceptable (the hero is full-bleed and
+      // wants the larger variant anyway).
+      (function () {
+        var policy = window.__netPolicy || { slow: false, saveData: false };
+        if (!policy.slow && !policy.saveData) return;
+        var slowSizes = policy.saveData ? "400px" : "480px";
+        var sources = document.querySelectorAll("picture.lqip > source");
+        for (var i = 0; i < sources.length; i++) {
+          sources[i].setAttribute("sizes", slowSizes);
+        }
+        // Also tighten the sizes attr on the fallback <img> (some
+        // browsers use it when no <source> matches).
+        var imgs = document.querySelectorAll("picture.lqip > img[srcset]");
+        for (var j = 0; j < imgs.length; j++) {
+          imgs[j].setAttribute("sizes", slowSizes);
+        }
+      })();
+
+      // ----- Image fade-in -------------------------------------------------
+      (function () {
+        var imgs = document.querySelectorAll("picture.lqip > img");
+        for (var i = 0; i < imgs.length; i++) {
+          var img = imgs[i];
+          if (img.complete && img.naturalHeight !== 0) {
+            img.classList.add("is-loaded");
+          } else {
+            img.addEventListener(
+              "load",
+              (function (el) {
+                return function () {
+                  el.classList.add("is-loaded");
+                };
+              })(img),
+              { once: true }
+            );
+          }
+        }
+      })();
+
+      // ----- Lightbox ------------------------------------------------------
+      (function () {
+        var dlg = document.getElementById("lightbox");
+        if (!dlg || typeof dlg.showModal !== "function") return;
+        var inner = document.getElementById("lightbox-inner");
+        var counter = dlg.querySelector("[data-lb-counter]");
+        var prevBtn = dlg.querySelector("[data-lb-prev]");
+        var nextBtn = dlg.querySelector("[data-lb-next]");
+        var closeBtn = dlg.querySelector("[data-lb-close]");
+        var list = [];
+        var idx = 0;
+
+        function render() {
+          var pic = list[idx];
+          if (!pic) return;
+          var img = pic.querySelector("img");
+          if (!img) return;
+          inner.innerHTML = "";
+          var big = document.createElement("img");
+          big.src = img.currentSrc || img.src;
+          big.alt = img.alt || "";
+          inner.appendChild(big);
+          if (counter)
+            counter.textContent =
+              list.length > 1 ? idx + 1 + " / " + list.length : "";
+        }
+
+        function open(pic) {
+          var group = pic.closest(".plate__media") || pic.closest(".prose") || document;
+          list = Array.prototype.slice.call(
+            group.querySelectorAll("picture.lqip")
+          );
+          if (list.indexOf(pic) === -1) {
+            list = [pic];
+          }
+          idx = list.indexOf(pic);
+          render();
+          if (typeof dlg.showModal === "function") dlg.showModal();
+        }
+
+        document.addEventListener("click", function (e) {
+          var t = e.target;
+          while (t && t !== document) {
+            if (t.tagName === "PICTURE" && t.classList.contains("lqip")) {
+              e.preventDefault();
+              open(t);
+              return;
+            }
+            if (t === dlg) break;
+            t = t.parentNode;
+          }
+        });
+
+        function close() {
+          if (dlg.open) dlg.close();
+          inner.innerHTML = "";
+        }
+        function next() {
+          if (!list.length) return;
+          idx = (idx + 1) % list.length;
+          render();
+        }
+        function prev() {
+          if (!list.length) return;
+          idx = (idx - 1 + list.length) % list.length;
+          render();
+        }
+
+        prevBtn && prevBtn.addEventListener("click", function (e) { e.stopPropagation(); prev(); });
+        nextBtn && nextBtn.addEventListener("click", function (e) { e.stopPropagation(); next(); });
+        closeBtn && closeBtn.addEventListener("click", close);
+
+        dlg.addEventListener("click", function (e) {
+          if (e.target === dlg || e.target === inner || e.target.tagName === "IMG") {
+            close();
+          }
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (!dlg.open) return;
+          if (e.key === "ArrowRight") next();
+          else if (e.key === "ArrowLeft") prev();
+          else if (e.key === "Escape") close();
+        });
+      })();
+
+      // ----- Scroll progress ----------------------------------------------
+      (function () {
+        var bar = document.getElementById("scroll-progress");
+        if (!bar) return;
+        var ticking = false;
+        function update() {
+          var doc = document.documentElement;
+          var max = (doc.scrollHeight - doc.clientHeight) || 1;
+          var p = Math.min(1, Math.max(0, doc.scrollTop / max));
+          bar.style.transform = "scaleX(" + p + ")";
+          ticking = false;
+        }
+        window.addEventListener(
+          "scroll",
+          function () {
+            if (!ticking) {
+              window.requestAnimationFrame(update);
+              ticking = true;
+            }
+          },
+          { passive: true }
+        );
+        update();
+      })();
+
+      // ----- Scroll-reveal -------------------------------------------------
+      (function () {
+        if (!("IntersectionObserver" in window)) return;
+        var prefersReduced =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (prefersReduced) return;
+
+        // Selector list — anything we want to fade-up on scroll.
+        var sel = [
+          ".section--hero h1",
+          ".section--hero .lede",
+          ".section--hero .hero__lede p",
+          ".section--hero .eyebrow",
+          ".project-item",
+          ".plate",
+          ".threads article",
+          ".t-item",
+          ".exp__item",
+          ".proj__item",
+          ".awards li",
+          ".chip-list li",
+          ".about-h2",
+          ".featured__caption",
+          "h2",
+        ].join(",");
+        var nodes = document.querySelectorAll(sel);
+        for (var i = 0; i < nodes.length; i++) {
+          nodes[i].classList.add("reveal");
+        }
+        var io = new IntersectionObserver(
+          function (entries) {
+            for (var i = 0; i < entries.length; i++) {
+              if (entries[i].isIntersecting) {
+                entries[i].target.classList.add("in-view");
+                io.unobserve(entries[i].target);
+              }
+            }
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+        );
+        for (var j = 0; j < nodes.length; j++) {
+          io.observe(nodes[j]);
+        }
+      })();
+
+      // ----- Project-list hover preview -----------------------------------
+      (function () {
+        var canHover =
+          window.matchMedia && window.matchMedia("(hover: hover)").matches;
+        var prefersReduced =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (!canHover || prefersReduced) return;
+
+        var prev = document.createElement("div");
+        prev.className = "hover-preview";
+        document.body.appendChild(prev);
+
+        var on = false,
+          rafId = 0,
+          targetX = 0,
+          targetY = 0,
+          curX = -9999,
+          curY = -9999;
+
+        function tick() {
+          curX += (targetX - curX) * 0.18;
+          curY += (targetY - curY) * 0.18;
+          prev.style.transform =
+            "translate3d(" + (curX + 30) + "px," + (curY - 80) + "px,0)";
+          rafId = window.requestAnimationFrame(tick);
+        }
+
+        document.addEventListener(
+          "mousemove",
+          function (e) {
+            targetX = e.clientX;
+            targetY = e.clientY;
+            if (!rafId) rafId = window.requestAnimationFrame(tick);
+          },
+          { passive: true }
+        );
+
+        document.addEventListener("mouseover", function (e) {
+          var t = e.target.closest && e.target.closest("[data-preview]");
+          if (!t) return;
+          var src = t.getAttribute("data-preview");
+          if (!src) return;
+          prev.style.backgroundImage = 'url("' + src + '")';
+          // Snap to current cursor on first show to avoid a fly-in from far.
+          curX = targetX;
+          curY = targetY;
+          prev.classList.add("is-on");
+          on = true;
+        });
+
+        document.addEventListener("mouseout", function (e) {
+          var t = e.target.closest && e.target.closest("[data-preview]");
+          if (!t) return;
+          var to = e.relatedTarget && e.relatedTarget.closest
+            ? e.relatedTarget.closest("[data-preview]")
+            : null;
+          if (to === t) return;
+          prev.classList.remove("is-on");
+          on = false;
+        });
+      })();
+
+      // ----- Custom cursor (desktop only) ---------------------------------
+      (function () {
+        // Skip on touch devices and reduced-motion
+        var canHover =
+          window.matchMedia && window.matchMedia("(hover: hover)").matches;
+        var prefersReduced =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (!canHover || prefersReduced) return;
+
+        var dot = document.createElement("div");
+        var ring = document.createElement("div");
+        dot.className = "cursor-dot";
+        ring.className = "cursor-ring";
+        document.body.appendChild(dot);
+        document.body.appendChild(ring);
+
+        var dx = -50,
+          dy = -50,
+          rx = -50,
+          ry = -50,
+          raf = 0;
+        function tick() {
+          rx += (dx - rx) * 0.18;
+          ry += (dy - ry) * 0.18;
+          dot.style.transform = "translate3d(" + (dx - 3) + "px," + (dy - 3) + "px,0)";
+          ring.style.transform = "translate3d(" + (rx - 17) + "px," + (ry - 17) + "px,0)";
+          raf = window.requestAnimationFrame(tick);
+        }
+        window.addEventListener(
+          "mousemove",
+          function (e) {
+            dx = e.clientX;
+            dy = e.clientY;
+            if (!raf) raf = window.requestAnimationFrame(tick);
+          },
+          { passive: true }
+        );
+
+        // Expand the ring when the cursor is over an interactive surface.
+        var hoverSel = "a, button, picture.lqip, .plate__link, [data-lang-switch]";
+        document.addEventListener("mouseover", function (e) {
+          if (e.target.closest && e.target.closest(hoverSel)) {
+            ring.classList.add("is-hover");
+          }
+        });
+        document.addEventListener("mouseout", function (e) {
+          if (e.target.closest && e.target.closest(hoverSel)) {
+            ring.classList.remove("is-hover");
+          }
+        });
+        window.addEventListener("mousedown", function () {
+          ring.classList.add("is-press");
+        });
+        window.addEventListener("mouseup", function () {
+          ring.classList.remove("is-press");
+        });
+        window.addEventListener("mouseleave", function () {
+          dot.style.opacity = "0";
+          ring.style.opacity = "0";
+        });
+        window.addEventListener("mouseenter", function () {
+          dot.style.opacity = "";
+          ring.style.opacity = "";
+        });
+      })();
+    </script>  </body> </html> 

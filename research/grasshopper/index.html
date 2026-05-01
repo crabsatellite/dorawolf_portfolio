@@ -1,0 +1,444 @@
+<!DOCTYPE html><html lang="zh-Hans-CN" class="no-js" data-astro-cid-37fxchfa> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Astro v5.18.1"><link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32"><link rel="icon" type="image/png" href="/favicon-16.png" sizes="16x16"><link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"><link rel="canonical" href="https://dorawolf.com/research/grasshopper/"><link rel="preload" as="image" type="image/avif" imagesrcset="/research/grasshopper/QQ_20240704215717-400.avif 400w, /research/grasshopper/QQ_20240704215717-800.avif 800w" imagesizes="100vw"><link rel="preload" as="image" type="image/webp" imagesrcset="/research/grasshopper/QQ_20240704215717-400.webp 400w, /research/grasshopper/QQ_20240704215717-800.webp 800w" imagesizes="100vw"><title>Grasshopper 专篇 · DoraWolf</title><meta name="description" content="Visual programming for parametric design. A small kit of utility components, plus building, environmental, and exploratory experiments."><meta property="og:type" content="website"><meta property="og:title" content="Grasshopper 专篇 · DoraWolf"><meta property="og:description" content="Visual programming for parametric design. A small kit of utility components, plus building, environmental, and exploratory experiments."><meta property="og:url" content="https://dorawolf.com/research/grasshopper/"><script>
+      // Mark JS as available so the reveal/cursor/fade-in styles take effect.
+      document.documentElement.classList.remove("no-js");
+      document.documentElement.classList.add("html-js");
+
+      // -------------------------------------------------------------------
+      // Connection-aware image policy.
+      //
+      // Runs in <head> BEFORE the body so CSS that keys off slow-net /
+      // save-data classes paints the right placeholder from the first
+      // frame (no FOUC). Reads the Network Information API where
+      // available and falls back to "fast" when unsupported.
+      //
+      // We also expose the policy globally so the body script that
+      // patches <picture><source sizes=…> for progressive-size loading
+      // can reuse the decision without re-reading navigator.connection.
+      // -------------------------------------------------------------------
+      (function () {
+        var html = document.documentElement;
+        var c =
+          navigator.connection ||
+          navigator.mozConnection ||
+          navigator.webkitConnection ||
+          null;
+
+        var effective = c && c.effectiveType ? String(c.effectiveType) : "4g";
+        var saveData = !!(c && c.saveData);
+        var downlink = c && typeof c.downlink === "number" ? c.downlink : null;
+        var slow =
+          saveData ||
+          effective === "slow-2g" ||
+          effective === "2g" ||
+          effective === "3g" ||
+          (downlink !== null && downlink > 0 && downlink < 1.0);
+
+        html.setAttribute("data-effective-type", effective);
+        if (saveData) html.classList.add("save-data");
+        html.classList.add(slow ? "slow-net" : "fast-net");
+
+        // Stash for the body-end <source sizes> patcher.
+        window.__netPolicy = {
+          slow: slow,
+          saveData: saveData,
+          effectiveType: effective,
+          downlink: downlink,
+        };
+      })();
+    </script><link rel="stylesheet" href="/_astro/about.CUP54ywj.css">
+<link rel="stylesheet" href="/_astro/_slug_.BOEaIUn5.css"></head> <body data-astro-cid-37fxchfa> <a href="#main" class="skip-link" data-astro-cid-37fxchfa> 跳到内容 </a> <div class="scroll-progress" id="scroll-progress" aria-hidden="true" data-astro-cid-37fxchfa></div> <header class="nav" data-astro-cid-dmqpwcec> <div class="nav__inner container" data-astro-cid-dmqpwcec> <a href="/" class="nav__logo" aria-label="DoraWolf 主页" data-astro-cid-dmqpwcec> <span class="nav__logo-name" data-astro-cid-dmqpwcec>DoraWolf</span> <span class="nav__logo-zh" aria-hidden="true" data-astro-cid-dmqpwcec>付清源</span> </a> <nav aria-label="Primary" class="nav__primary" data-astro-cid-dmqpwcec> <ul class="nav__list" data-astro-cid-dmqpwcec> <li data-astro-cid-dmqpwcec> <a href="/about" class="nav__link" data-astro-cid-dmqpwcec> 关于 </a> </li><li data-astro-cid-dmqpwcec> <a href="/projects" class="nav__link" data-astro-cid-dmqpwcec> 项目 </a> </li><li data-astro-cid-dmqpwcec> <a href="/research" class="nav__link nav__link--active" aria-current="page" data-astro-cid-dmqpwcec> 研究 </a> </li><li data-astro-cid-dmqpwcec> <a href="/timeline" class="nav__link" data-astro-cid-dmqpwcec> 起点 </a> </li> <li class="nav__lang" data-astro-cid-dmqpwcec> <a href="/en/research/grasshopper/" class="nav__link nav__link--lang" aria-label="切换语言" data-lang-switch="en" data-astro-cid-dmqpwcec> EN </a> </li> </ul> </nav> </div> </header>  <main id="main" data-astro-cid-37fxchfa> <article class="case" data-astro-cid-uz27kggp> <figure class="case__hero" data-astro-cid-uz27kggp> <picture class="lqip" style="--lqip:url('data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGQACAAAAAAGtAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAFAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAANm1kYXQSAAoIOAy+MICGg0gyCxsAAABAAUitLSHgEgAKBRgMvjCoMgobAAABAAJlKGuA')"> <source type="image/avif" srcset="/research/grasshopper/QQ_20240704215717-400.avif 400w, /research/grasshopper/QQ_20240704215717-800.avif 800w" sizes="100vw"> <source type="image/webp" srcset="/research/grasshopper/QQ_20240704215717-400.webp 400w, /research/grasshopper/QQ_20240704215717-800.webp 800w" sizes="100vw"> <img src="/research/grasshopper/QQ_20240704215717.png" alt="Grasshopper cover" loading="eager" decoding="async" fetchpriority="high" width="978" height="313"> </picture> </figure> <header class="case__head container" data-astro-cid-uz27kggp> <div class="case__index" data-astro-cid-uz27kggp> <span class="case__index-no" data-astro-cid-uz27kggp>02</span> <span class="case__index-rule" aria-hidden="true" data-astro-cid-uz27kggp></span> <span class="case__index-eyebrow" data-astro-cid-uz27kggp>研究</span> </div> <div class="case__head-grid" data-astro-cid-uz27kggp> <div class="case__head-main" data-astro-cid-uz27kggp> <h1 class="case__title" data-astro-cid-uz27kggp>Grasshopper 专篇</h1> <p class="case__subtitle" data-astro-cid-uz27kggp>Grasshopper</p> <p class="case__note" data-astro-cid-uz27kggp>可视化参数化编程。通用小工具集，以及建筑、环境模拟、形态实验。</p> </div> <dl class="case__data" data-astro-cid-uz27kggp> <div data-astro-cid-uz27kggp> <dt data-astro-cid-uz27kggp>研究</dt> <dd data-astro-cid-uz27kggp>DoraWolf 工作室</dd> </div> </dl> </div> </header> <section class="case__body" data-astro-cid-uz27kggp> <div class="prose" data-astro-cid-uz27kggp> <section class="plate plate--text-only"><div class="plate__intro"><h2 id="关于">关于</h2>
+<p>Grasshopper 在工作室里被当作一件常驻工具，而不是一个”看起来很高级”的画布。它没有让”建筑设计”这件事本身变得更聪明，但确实让一些反复出现的步骤压缩成一次点击，把方案早期那种容易耗散的判断重新攥回到桌面上。</p>
+<p>工作室的常用做法，是围绕 Rhino 拼出几组可以实时联动的电池组，鼠标动一动就跑一遍，不必再手动选物体。这一篇分四个方向记录：通用工具集、建筑表皮与结构、环境模拟、以及偏实验性的形态探索。</p>
+</div></section><section class="plate"><div class="plate__intro"><h2 id="通用工具">通用工具</h2>
+<p>第一组是反复用到的小功能，被整理成可随时调用的电池：提取上下边线、提取 Brep 高度、按距离等分线、ISO、转化余弦曲线、一键生成带休息平台的台阶、随机打断曲线、室内打灯、线转箭头、路径跟随、生成 V 形柱、合并楼板、转波浪线、去除重复面。</p>
+<p>提取上下边线写了两套不同原理，适配两类不同的模型，一个偏几何投影，一个偏拓扑遍历：</p>
+
+
+<p>把直线按周期转成余弦曲线：</p>
+
+
+
+<p>把一片曲面转成带休息平台的台阶：</p>
+
+
+<p>随机打断曲线：</p>
+
+
+<p>把这些电池组合起来，有时也能拼出一些不那么实用、但意外好玩的副产物：</p>
+
+
+</div><div class="plate__media-grid"><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGQACAAAAAAGtAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAFAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAANm1kYXQSAAoIOAy+MICGg0gyCxsAAABAAUitLSHgEgAKBRgMvjCoMgobAAABAAJlKGuA&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240704215717-400.avif 400w, /research/grasshopper/QQ_20240704215717-800.avif 800w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240704215717-400.webp 400w, /research/grasshopper/QQ_20240704215717-800.webp 800w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240704215717.png" alt="" loading="lazy" decoding="async" width="978" height="313"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAIgACAAAAAAG2AAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAKAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAP21kYXQSAAoIOAz+WEBDQaQyFBsAAABANisWLiUzUoGxv3zeqLDAEgAKBRgM/lhUMgobAAABAAH9Ze/A&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240704215749-400.avif 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240704215749-400.webp 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240704215749.png" alt="" loading="lazy" decoding="async" width="570" height="369"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGgACAAAAAAGuAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAEAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAN21kYXQSAAoIOAx/YQENBpAyDBsAAABAg3ydAgOwwBIACgUYDH9hUDIKGwAAAQACZShrgA==&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240704220013-400.avif 400w, /research/grasshopper/QQ_20240704220013-800.avif 800w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240704220013-400.webp 400w, /research/grasshopper/QQ_20240704220013-800.webp 800w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240704220013.png" alt="" loading="lazy" decoding="async" width="912" height="203"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGAACAAAAAAGsAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAEAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAANW1kYXQSAAoIOAx/YQENBpAyChsAAABAAMNdqGASAAoFGAx/YVAyChsAAAEAAmUoa4A=&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240704220113-400.avif 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240704220113-400.webp 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240704220113.png" alt="" loading="lazy" decoding="async" width="429" height="112"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGAACAAAAAAGsAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAEAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAANW1kYXQSAAoIOAx/YQENBpAyChsAAABAAMNdqGASAAoFGAx/YVAyChsAAAEAAmUoa4A=&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240704220125-400.avif 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240704220125-400.webp 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240704220125.png" alt="" loading="lazy" decoding="async" width="384" height="107"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGQACAAAAAAGtAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAEAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAANm1kYXQSAAoIOAx/YQENBpAyCxsAAABACKA+HXuQEgAKBRgMf2FQMgobAAABAAJlKGuA&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240704220754-400.avif 400w, /research/grasshopper/QQ_20240704220754-800.avif 800w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240704220754-400.webp 400w, /research/grasshopper/QQ_20240704220754-800.webp 800w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240704220754.png" alt="" loading="lazy" decoding="async" width="992" height="234"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAHAACAAAAAAGwAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAIAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAOW1kYXQSAAoIOAy/sICGg0gyDhsAAABAtzmUA3nTmjfAEgAKBRgMv7CoMgobAAABAAJlKGuA&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240704220808-400.avif 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240704220808-400.webp 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240704220808.png" alt="" loading="lazy" decoding="async" width="682" height="326"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGAACAAAAAAGsAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAEAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAANW1kYXQSAAoIOAx/YQENBpAyChsAAABAAOFW188SAAoFGAx/YVAyChsAAAEAAmUoa4A=&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240704220904-400.avif 400w, /research/grasshopper/QQ_20240704220904-800.avif 800w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240704220904-400.webp 400w, /research/grasshopper/QQ_20240704220904-800.webp 800w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240704220904.png" alt="" loading="lazy" decoding="async" width="929" height="209"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGgACAAAAAAGuAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAJAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAN21kYXQSAAoIOAz+GEBDQaQyDBsAAABQe/jERpLTnRIACgUYDP4YVDIKGwAAAQAB/WXvwA==&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240704220910-400.avif 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240704220910-400.webp 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240704220910.png" alt="" loading="lazy" decoding="async" width="581" height="333"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGQACAAAAAAGtAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAFAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAANm1kYXQSAAoIOAy+MICGg0gyCxsAAABAAUitMPHgEgAKBRgMvjCoMgobAAABAAJlKGuA&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240705162332-400.avif 400w, /research/grasshopper/QQ_20240705162332-800.avif 800w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240705162332-400.webp 400w, /research/grasshopper/QQ_20240705162332-800.webp 800w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240705162332.png" alt="" loading="lazy" decoding="async" width="1128" height="363"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAIwACAAAAAAG3AAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAMAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAQG1kYXQSAAoIOAz+2EBDQaQyFRsAEEAABQB7+iJMK/x9Y1XMcat++BIACgUYDP7YVDIKGwAAAQAB/WXvwA==&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240705162340-400.avif 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240705162340-400.webp 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240705162340.png" alt="" loading="lazy" decoding="async" width="450" height="330"></picture></div></section><section class="plate"><div class="plate__intro"><h2 id="建筑">建筑</h2>
+<p>GH 在项目流程里，大部分时间花在建筑表皮和结构上。每个项目的边界条件都不一样，源文件大多没特意留底，这里只挑几个反复用到的表皮做记录。</p>
+<p>鲨鱼皮：</p>
+
+
+<p>一键排教室，用来在很短时间里铺出一个合规的教学组团：</p>
+
+
+<p>Y 形柱：</p>
+
+
+<p>雨水模拟，用来粗算屋面排水方向：</p>
+
+<p>一键立面流动(区分材质):</p>
+
+
+</div><div class="plate__media-grid"><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGAACAAAAAAGsAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAFAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAANW1kYXQSAAoIOAy+MICGg0gyChsAAABAAOFW4q8SAAoFGAy+MKgyChsAAAEAAmUoa4A=&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240705170154-400.avif 400w, /research/grasshopper/QQ_20240705170154-800.avif 800w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240705170154-400.webp 400w, /research/grasshopper/QQ_20240705170154-800.webp 800w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240705170154.png" alt="" loading="lazy" decoding="async" width="892" height="268"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAHAACAAAAAAGwAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAJAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAOW1kYXQSAAoIOAz+GEBDQaQyDhsAAABQe/iwZ9JpvyEXEgAKBRgM/hhUMgobAAABAAH9Ze/A&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240705170206-400.avif 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240705170206-400.webp 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240705170206.png" alt="" loading="lazy" decoding="async" width="499" height="282"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGQACAAAAAAGtAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAADAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAANm1kYXQSAAoIOAx+YQENBpAyCxsAAABACEZIYA1oEgAKBRgMfmFQMgobAAABAAJlKGuA&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240705171209-400.avif 400w, /research/grasshopper/QQ_20240705171209-800.avif 800w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240705171209-400.webp 400w, /research/grasshopper/QQ_20240705171209-800.webp 800w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240705171209.png" alt="" loading="lazy" decoding="async" width="873" height="165"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGAACAAAAAAGsAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAMAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAANW1kYXQSAAoIOAz+2EBDQaQyChsAAABAAKmMwpASAAoFGAz+2FQyChsAAAEAAf1l78A=&#x27;)" data-type="gif" data-animated="true"><img src="/research/grasshopper/GIF-2024-7-5-17-10-29.gif" alt="" loading="lazy" decoding="async" width="530" height="402"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGQACAAAAAAGtAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAEAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAANm1kYXQSAAoIOAx/YQENBpAyCxsAAABAAMNdsrtAEgAKBRgMf2FQMgobAAABAAJlKGuA&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240705172017-400.avif 400w, /research/grasshopper/QQ_20240705172017-800.avif 800w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240705172017-400.webp 400w, /research/grasshopper/QQ_20240705172017-800.webp 800w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240705172017.png" alt="" loading="lazy" decoding="async" width="973" height="223"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAJgACAAAAAAG6AAEAAAAAAAAAFAAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAVAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAQm1kYXQSAAoIOA0+jCAhoNIyGBsAF1wABQDj8ryvOtOPzmjp75hjR46esBIACgUYDT6MKjIJGwAAAQAGZv+O&#x27;)" data-type="gif" data-animated="true"><img src="/research/grasshopper/GIF-2024-7-5-17-19-31.gif" alt="" loading="lazy" decoding="async" width="328" height="421"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAHAACAAAAAAGwAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAMAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAOW1kYXQSAAoIOAz+2EBDQaQyDhsACCAABAB7wHJbYtXiEgAKBRgM/thUMgobAAABAAH9Ze/A&#x27;)" data-type="gif" data-animated="true"><img src="/research/grasshopper/GIF-2024-7-5-17-27-45.gif" alt="" loading="lazy" decoding="async" width="530" height="402"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGQACAAAAAAGtAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAEAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAANm1kYXQSAAoIOAx/YQENBpAyCxsAAABAAMNdsF9AEgAKBRgMf2FQMgobAAABAAJlKGuA&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ20240718-222144-400.avif 400w, /research/grasshopper/QQ20240718-222144-800.avif 800w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ20240718-222144-400.webp 400w, /research/grasshopper/QQ20240718-222144-800.webp 800w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ20240718-222144.png" alt="" loading="lazy" decoding="async" width="1018" height="261"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAKwACAAAAAAG/AAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAJAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAASG1kYXQSAAoIOAz+GEBDQaQyHRsABBAABQB9RZf8Fo4ejtOrkiM94NRV1H1yW12AEgAKBRgM/hhUMgpGwAAAQAH0Fj5A&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ20240718-222122-400.avif 400w, /research/grasshopper/QQ20240718-222122-800.avif 800w, /research/grasshopper/QQ20240718-222122-1200.avif 1200w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ20240718-222122-400.webp 400w, /research/grasshopper/QQ20240718-222122-800.webp 800w, /research/grasshopper/QQ20240718-222122-1200.webp 1200w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ20240718-222122.png" alt="" loading="lazy" decoding="async" width="1245" height="694"></picture></div></section><section class="plate"><div class="plate__intro"><h2 id="环境模拟">环境模拟</h2>
+<p>这一组主要靠 Ladybug。它把方案早期的”感觉”变成可以被指认的数字，不解决问题，但至少把问题落到桌面上。</p>
+<p>日照分析：</p>
+
+
+<p>采光系数。右图是一间教室的模拟数据，UDI(有效采光照度)和 DA(全自然采光百分比):</p>
+
+
+<p>热舒适模拟。右图是操作温度和舒适时间占比：</p>
+
+
+</div><div class="plate__media-grid"><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAHgACAAAAAAGyAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAALAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAO21kYXQSAAoIOAz+mEBDQaQyEBsACCAABQB51He+VQNQkYASAAoFGAz+mFQyChsAAAEAAf1l78A=&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240705190133-400.avif 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240705190133-400.webp 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240705190133.png" alt="" loading="lazy" decoding="async" width="565" height="378"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAVQACAAAAAAHpAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAOAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAcm1kYXQSAAoIOAz/WEBDQaQyRxsAEkgABQCK5R2dZAd1oD34vC7XrdS5XzM1+hqyX543UMOHxMYVZFXndzWyb/5F5c59MWLkhOKPo4fB23kNNGgl/9xqPKR3EgAKBRgM/1hUMgobAAABAAH9Ze/A&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240705190124-400.avif 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240705190124-400.webp 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240705190124.png" alt="" loading="lazy" decoding="async" width="449" height="381"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGwACAAAAAAGvAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAFAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAOG1kYXQSAAoIOAy+MICGg0gyDRsACCAABQAJwOcc5+wSAAoFGAy+MKgyChsAAAEAAmUoa4A=&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240705195127-400.avif 400w, /research/grasshopper/QQ_20240705195127-800.avif 800w, /research/grasshopper/QQ_20240705195127-1200.avif 1200w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240705195127-400.webp 400w, /research/grasshopper/QQ_20240705195127-800.webp 800w, /research/grasshopper/QQ_20240705195127-1200.webp 1200w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240705195127.png" alt="" loading="lazy" decoding="async" width="1312" height="427"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAMQACAAAAAAHFAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAGAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAATm1kYXQSAAoIOAy+sICGg0gyIxsAAABA6CcVUFaFngfPiSB2qOZWGO1ZIGL6m2/bn2fsdCH4EgAKBRgMvrCoMgobAAABAAJlKGuA&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240705195809-400.avif 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240705195809-400.webp 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240705195809.png" alt="" loading="lazy" decoding="async" width="539" height="211"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGQACAAAAAAGtAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAEAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAANm1kYXQSAAoIOAx/YQENBpAyCxsAAABAAMNdsF9AEgAKBRgMf2FQMgobAAABAAJlKGuA&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240705195306-400.avif 400w, /research/grasshopper/QQ_20240705195306-800.avif 800w, /research/grasshopper/QQ_20240705195306-1200.avif 1200w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240705195306-400.webp 400w, /research/grasshopper/QQ_20240705195306-800.webp 800w, /research/grasshopper/QQ_20240705195306-1200.webp 1200w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240705195306.png" alt="" loading="lazy" decoding="async" width="1645" height="417"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAKQACAAAAAAG9AAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAGAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAARm1kYXQSAAoIOAy+sICGg0gyGxsAAABA55rGCt629uSya7czti93EQ2YhsXNQBIACgUYDL6wqDIKGwAAAQACZShrgA==&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240705195830-400.avif 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240705195830-400.webp 400w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240705195830.png" alt="" loading="lazy" decoding="async" width="386" height="137"></picture></div></section><section class="plate"><div class="plate__intro"><h2 id="形态实验">形态实验</h2>
+<p>最后一组是把 GH 推到工程任务之外的边界，用来检验这套数据流到底能撑起多大的形态系统。它们不是项目交付物，而是工作室留给自己的压力测试。</p>
+<p>元素工具箱：一个不小的工程，设定了若干种相互独立又可叠加的”元素”，对应若干种小工具，按住 Alt + 鼠标右键左右滑动切换。下图只是其中一段电池截图，整体的工作量实在不适合塞进静态图里。</p>
+
+<p>下面是其中两种元素的效果：</p>
+
+
+<p>弓箭发射。目前先做完了发射前的一段动画，后续作为运动状态机继续推：</p>
+
+
+<p>棋局推演：把规则当作约束写进电池组，验证规则到形态的跳变：</p>
+
+</div><div class="plate__media-grid"><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAANZtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAAImlsb2MAAAAAREAAAQABAAAAAAD6AAEAAAAAAAAAIAAAACNpaW5mAAAAAAABAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAVmlwcnAAAAA4aXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAMAAAAEHBpeGkAAAAAAwgICAAAABZpcG1hAAAAAAAAAAEAAQOBAgMAAAAobWRhdBIACgg4DP7YQENBpDISGwAIIAAFADWFG1UDPBmc6eYc&#x27;)"><source type="image/avif" srcset="/research/grasshopper/_-1-400.avif 400w, /research/grasshopper/_-1-800.avif 800w, /research/grasshopper/_-1-1200.avif 1200w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/_-1-400.webp 400w, /research/grasshopper/_-1-800.webp 800w, /research/grasshopper/_-1-1200.webp 1200w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/_-1.jpg" alt="" loading="lazy" decoding="async" width="1167" height="873"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGQACAAAAAAGtAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAJAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAANm1kYXQSAAoIOAz+GEBDQaQyCxsAAABAB4FvjfUQEgAKBRgM/hhUMgobAAABAAH9Ze/A&#x27;)" data-type="gif" data-animated="true"><img src="/research/grasshopper/GIF-2024-7-8-17-02-39.gif" alt="" loading="lazy" decoding="async" width="579" height="318"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAHQACAAAAAAGxAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAJAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAOm1kYXQSAAoIOAz+GEBDQaQyDxsAAggABAB7z/kkAn54sBIACgUYDP4YVDIKGwAAAQAB/WXvwA==&#x27;)" data-type="gif" data-animated="true"><img src="/research/grasshopper/GIF-2024-7-8-17-03-44.gif" alt="" loading="lazy" decoding="async" width="579" height="318"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGQACAAAAAAGtAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAGAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAANm1kYXQSAAoIOAy+sICGg0gyCxsAAABAAMNdsHZQEgAKBRgMvrCoMgobAAABAAJlKGuA&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240705202826-400.avif 400w, /research/grasshopper/QQ_20240705202826-800.avif 800w, /research/grasshopper/QQ_20240705202826-1200.avif 1200w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240705202826-400.webp 400w, /research/grasshopper/QQ_20240705202826-800.webp 800w, /research/grasshopper/QQ_20240705202826-1200.webp 1200w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240705202826.png" alt="" loading="lazy" decoding="async" width="1419" height="573"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGAACAAAAAAGsAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAMAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAANW1kYXQSAAoIOAz+2EBDQaQyCkbAAAAQAKBc3jASAAoFGAz+2FQyChsAAAEAAf1l78A=&#x27;)" data-type="gif" data-animated="true"><img src="/research/grasshopper/GIF-2024-7-5-20-28-10.gif" alt="" loading="lazy" decoding="async" width="530" height="402"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAGQACAAAAAAGtAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAEAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAANm1kYXQSAAoIOAx/YQENBpAyCxsAAABACG7p/2qAEgAKBRgMf2FQMgobAAABAAJlKGuA&#x27;)"><source type="image/avif" srcset="/research/grasshopper/QQ_20240705203113-400.avif 400w, /research/grasshopper/QQ_20240705203113-800.avif 800w, /research/grasshopper/QQ_20240705203113-1200.avif 1200w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><source type="image/webp" srcset="/research/grasshopper/QQ_20240705203113-400.webp 400w, /research/grasshopper/QQ_20240705203113-800.webp 800w, /research/grasshopper/QQ_20240705203113-1200.webp 1200w" sizes="(min-width: 1024px) 50vw, (min-width: 720px) 70vw, 100vw"><img src="/research/grasshopper/QQ_20240705203113.png" alt="" loading="lazy" decoding="async" width="1234" height="285"></picture><picture class="lqip" style="--lqip:url(&#x27;data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAG1pZjFhdmlmbWlhZgAAAXBtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAANGlsb2MAAAAAREAAAgABAAAAAAGUAAEAAAAAAAAAHgACAAAAAAGyAAEAAAAAAAAAFQAAADhpaW5mAAAAAAACAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAFWluZmUCAAAAAAIAAGF2MDEAAAAAr2lwcnAAAACKaXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAABAAAAAMAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQAcAAAAAA5waXhpAAAAAAEIAAAAOGF1eEMAAAAAdXJuOm1wZWc6bXBlZ0I6Y2ljcDpzeXN0ZW1zOmF1eGlsaWFyeTphbHBoYQAAAAAdaXBtYQAAAAAAAAACAAEDgQIDAAIEhAIFhgAAABppcmVmAAAAAAAAAA5hdXhsAAIAAQABAAAAO21kYXQSAAoIOAz+2EBDQaQyEBsAAABQo+xqFdz7ZAuWL94SAAoFGAz+2FQyChsAAAEAAf1l78A=&#x27;)" data-type="gif" data-animated="true"><img src="/research/grasshopper/GIF-2024-7-5-20-31-52.gif" alt="" loading="lazy" decoding="async" width="530" height="402"></picture></div></section> </div> </section>  <nav class="container case__nav" aria-label="Research navigation" data-astro-cid-uz27kggp> <a href="/research" class="case__back" data-astro-cid-uz27kggp> ← 全部研究 </a> <div class="case__pager" data-astro-cid-uz27kggp> <a href="/research/sketchup" class="case__pager-item" data-astro-cid-uz27kggp> <span class="eyebrow" data-astro-cid-uz27kggp>上一篇</span> <span data-astro-cid-uz27kggp> Sketchup 专篇 </span> </a>  </div> </nav> </article>  </main> <footer class="foot" data-astro-cid-sz7xmlte> <div class="container foot__inner" data-astro-cid-sz7xmlte> <div class="foot__col" data-astro-cid-sz7xmlte> <p class="eyebrow" data-astro-cid-sz7xmlte>DoraWolf · 付清源</p> <p class="foot__location" data-astro-cid-sz7xmlte>中国 · 武汉</p> </div> <div class="foot__col" data-astro-cid-sz7xmlte> <p class="eyebrow" data-astro-cid-sz7xmlte>联系</p> <p data-astro-cid-sz7xmlte> <a href="mailto:949505300@qq.com" data-astro-cid-sz7xmlte>949505300@qq.com</a> </p> </div> <div class="foot__col" data-astro-cid-sz7xmlte> <p class="eyebrow" data-astro-cid-sz7xmlte>链接</p> <p data-astro-cid-sz7xmlte> <a href="https://github.com/crabsatellite/dorawolf_portfolio" rel="noopener noreferrer" target="_blank" data-astro-cid-sz7xmlte>源代码 · GitHub</a> </p> </div> </div> <div class="container foot__bottom" data-astro-cid-sz7xmlte> <p data-astro-cid-sz7xmlte> © 2026 DoraWolf 工作室. 保留所有权利。 </p> <p class="foot__credit" data-astro-cid-sz7xmlte> 于 2026 设计与构建。 </p> </div> </footer>  <dialog class="lightbox" id="lightbox" aria-label="Image viewer" data-astro-cid-37fxchfa> <div class="lightbox__inner" id="lightbox-inner" data-astro-cid-37fxchfa></div> <div class="lightbox__bar" data-astro-cid-37fxchfa> <button type="button" data-lb-prev aria-label="上一张" data-astro-cid-37fxchfa>←</button> <span data-lb-counter data-astro-cid-37fxchfa></span> <button type="button" data-lb-next aria-label="下一张" data-astro-cid-37fxchfa>→</button> <button type="button" data-lb-close aria-label="关闭" data-astro-cid-37fxchfa>关闭 ✕</button> </div> </dialog> <script>
+      // ----- Connection-aware <source sizes> patch -------------------------
+      // For slow networks / Save-Data, narrow the `sizes` hint on every
+      // <picture><source> so the browser picks a smaller variant from
+      // the existing srcset. This runs synchronously at the end of body
+      // parse, before any lazy <img> enters the viewport, so the
+      // preload-scanner that would otherwise have requested a 2000w
+      // variant on a phone instead picks the 400w / 800w one.
+      //
+      // Eager hero images may have already begun fetching by the time
+      // this runs — that is acceptable (the hero is full-bleed and
+      // wants the larger variant anyway).
+      (function () {
+        var policy = window.__netPolicy || { slow: false, saveData: false };
+        if (!policy.slow && !policy.saveData) return;
+        var slowSizes = policy.saveData ? "400px" : "480px";
+        var sources = document.querySelectorAll("picture.lqip > source");
+        for (var i = 0; i < sources.length; i++) {
+          sources[i].setAttribute("sizes", slowSizes);
+        }
+        // Also tighten the sizes attr on the fallback <img> (some
+        // browsers use it when no <source> matches).
+        var imgs = document.querySelectorAll("picture.lqip > img[srcset]");
+        for (var j = 0; j < imgs.length; j++) {
+          imgs[j].setAttribute("sizes", slowSizes);
+        }
+      })();
+
+      // ----- Image fade-in -------------------------------------------------
+      (function () {
+        var imgs = document.querySelectorAll("picture.lqip > img");
+        for (var i = 0; i < imgs.length; i++) {
+          var img = imgs[i];
+          if (img.complete && img.naturalHeight !== 0) {
+            img.classList.add("is-loaded");
+          } else {
+            img.addEventListener(
+              "load",
+              (function (el) {
+                return function () {
+                  el.classList.add("is-loaded");
+                };
+              })(img),
+              { once: true }
+            );
+          }
+        }
+      })();
+
+      // ----- Lightbox ------------------------------------------------------
+      (function () {
+        var dlg = document.getElementById("lightbox");
+        if (!dlg || typeof dlg.showModal !== "function") return;
+        var inner = document.getElementById("lightbox-inner");
+        var counter = dlg.querySelector("[data-lb-counter]");
+        var prevBtn = dlg.querySelector("[data-lb-prev]");
+        var nextBtn = dlg.querySelector("[data-lb-next]");
+        var closeBtn = dlg.querySelector("[data-lb-close]");
+        var list = [];
+        var idx = 0;
+
+        function render() {
+          var pic = list[idx];
+          if (!pic) return;
+          var img = pic.querySelector("img");
+          if (!img) return;
+          inner.innerHTML = "";
+          var big = document.createElement("img");
+          big.src = img.currentSrc || img.src;
+          big.alt = img.alt || "";
+          inner.appendChild(big);
+          if (counter)
+            counter.textContent =
+              list.length > 1 ? idx + 1 + " / " + list.length : "";
+        }
+
+        function open(pic) {
+          var group = pic.closest(".plate__media") || pic.closest(".prose") || document;
+          list = Array.prototype.slice.call(
+            group.querySelectorAll("picture.lqip")
+          );
+          if (list.indexOf(pic) === -1) {
+            list = [pic];
+          }
+          idx = list.indexOf(pic);
+          render();
+          if (typeof dlg.showModal === "function") dlg.showModal();
+        }
+
+        document.addEventListener("click", function (e) {
+          var t = e.target;
+          while (t && t !== document) {
+            if (t.tagName === "PICTURE" && t.classList.contains("lqip")) {
+              e.preventDefault();
+              open(t);
+              return;
+            }
+            if (t === dlg) break;
+            t = t.parentNode;
+          }
+        });
+
+        function close() {
+          if (dlg.open) dlg.close();
+          inner.innerHTML = "";
+        }
+        function next() {
+          if (!list.length) return;
+          idx = (idx + 1) % list.length;
+          render();
+        }
+        function prev() {
+          if (!list.length) return;
+          idx = (idx - 1 + list.length) % list.length;
+          render();
+        }
+
+        prevBtn && prevBtn.addEventListener("click", function (e) { e.stopPropagation(); prev(); });
+        nextBtn && nextBtn.addEventListener("click", function (e) { e.stopPropagation(); next(); });
+        closeBtn && closeBtn.addEventListener("click", close);
+
+        dlg.addEventListener("click", function (e) {
+          if (e.target === dlg || e.target === inner || e.target.tagName === "IMG") {
+            close();
+          }
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (!dlg.open) return;
+          if (e.key === "ArrowRight") next();
+          else if (e.key === "ArrowLeft") prev();
+          else if (e.key === "Escape") close();
+        });
+      })();
+
+      // ----- Scroll progress ----------------------------------------------
+      (function () {
+        var bar = document.getElementById("scroll-progress");
+        if (!bar) return;
+        var ticking = false;
+        function update() {
+          var doc = document.documentElement;
+          var max = (doc.scrollHeight - doc.clientHeight) || 1;
+          var p = Math.min(1, Math.max(0, doc.scrollTop / max));
+          bar.style.transform = "scaleX(" + p + ")";
+          ticking = false;
+        }
+        window.addEventListener(
+          "scroll",
+          function () {
+            if (!ticking) {
+              window.requestAnimationFrame(update);
+              ticking = true;
+            }
+          },
+          { passive: true }
+        );
+        update();
+      })();
+
+      // ----- Scroll-reveal -------------------------------------------------
+      (function () {
+        if (!("IntersectionObserver" in window)) return;
+        var prefersReduced =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (prefersReduced) return;
+
+        // Selector list — anything we want to fade-up on scroll.
+        var sel = [
+          ".section--hero h1",
+          ".section--hero .lede",
+          ".section--hero .hero__lede p",
+          ".section--hero .eyebrow",
+          ".project-item",
+          ".plate",
+          ".threads article",
+          ".t-item",
+          ".exp__item",
+          ".proj__item",
+          ".awards li",
+          ".chip-list li",
+          ".about-h2",
+          ".featured__caption",
+          "h2",
+        ].join(",");
+        var nodes = document.querySelectorAll(sel);
+        for (var i = 0; i < nodes.length; i++) {
+          nodes[i].classList.add("reveal");
+        }
+        var io = new IntersectionObserver(
+          function (entries) {
+            for (var i = 0; i < entries.length; i++) {
+              if (entries[i].isIntersecting) {
+                entries[i].target.classList.add("in-view");
+                io.unobserve(entries[i].target);
+              }
+            }
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+        );
+        for (var j = 0; j < nodes.length; j++) {
+          io.observe(nodes[j]);
+        }
+      })();
+
+      // ----- Project-list hover preview -----------------------------------
+      (function () {
+        var canHover =
+          window.matchMedia && window.matchMedia("(hover: hover)").matches;
+        var prefersReduced =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (!canHover || prefersReduced) return;
+
+        var prev = document.createElement("div");
+        prev.className = "hover-preview";
+        document.body.appendChild(prev);
+
+        var on = false,
+          rafId = 0,
+          targetX = 0,
+          targetY = 0,
+          curX = -9999,
+          curY = -9999;
+
+        function tick() {
+          curX += (targetX - curX) * 0.18;
+          curY += (targetY - curY) * 0.18;
+          prev.style.transform =
+            "translate3d(" + (curX + 30) + "px," + (curY - 80) + "px,0)";
+          rafId = window.requestAnimationFrame(tick);
+        }
+
+        document.addEventListener(
+          "mousemove",
+          function (e) {
+            targetX = e.clientX;
+            targetY = e.clientY;
+            if (!rafId) rafId = window.requestAnimationFrame(tick);
+          },
+          { passive: true }
+        );
+
+        document.addEventListener("mouseover", function (e) {
+          var t = e.target.closest && e.target.closest("[data-preview]");
+          if (!t) return;
+          var src = t.getAttribute("data-preview");
+          if (!src) return;
+          prev.style.backgroundImage = 'url("' + src + '")';
+          // Snap to current cursor on first show to avoid a fly-in from far.
+          curX = targetX;
+          curY = targetY;
+          prev.classList.add("is-on");
+          on = true;
+        });
+
+        document.addEventListener("mouseout", function (e) {
+          var t = e.target.closest && e.target.closest("[data-preview]");
+          if (!t) return;
+          var to = e.relatedTarget && e.relatedTarget.closest
+            ? e.relatedTarget.closest("[data-preview]")
+            : null;
+          if (to === t) return;
+          prev.classList.remove("is-on");
+          on = false;
+        });
+      })();
+
+      // ----- Custom cursor (desktop only) ---------------------------------
+      (function () {
+        // Skip on touch devices and reduced-motion
+        var canHover =
+          window.matchMedia && window.matchMedia("(hover: hover)").matches;
+        var prefersReduced =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (!canHover || prefersReduced) return;
+
+        var dot = document.createElement("div");
+        var ring = document.createElement("div");
+        dot.className = "cursor-dot";
+        ring.className = "cursor-ring";
+        document.body.appendChild(dot);
+        document.body.appendChild(ring);
+
+        var dx = -50,
+          dy = -50,
+          rx = -50,
+          ry = -50,
+          raf = 0;
+        function tick() {
+          rx += (dx - rx) * 0.18;
+          ry += (dy - ry) * 0.18;
+          dot.style.transform = "translate3d(" + (dx - 3) + "px," + (dy - 3) + "px,0)";
+          ring.style.transform = "translate3d(" + (rx - 17) + "px," + (ry - 17) + "px,0)";
+          raf = window.requestAnimationFrame(tick);
+        }
+        window.addEventListener(
+          "mousemove",
+          function (e) {
+            dx = e.clientX;
+            dy = e.clientY;
+            if (!raf) raf = window.requestAnimationFrame(tick);
+          },
+          { passive: true }
+        );
+
+        // Expand the ring when the cursor is over an interactive surface.
+        var hoverSel = "a, button, picture.lqip, .plate__link, [data-lang-switch]";
+        document.addEventListener("mouseover", function (e) {
+          if (e.target.closest && e.target.closest(hoverSel)) {
+            ring.classList.add("is-hover");
+          }
+        });
+        document.addEventListener("mouseout", function (e) {
+          if (e.target.closest && e.target.closest(hoverSel)) {
+            ring.classList.remove("is-hover");
+          }
+        });
+        window.addEventListener("mousedown", function () {
+          ring.classList.add("is-press");
+        });
+        window.addEventListener("mouseup", function () {
+          ring.classList.remove("is-press");
+        });
+        window.addEventListener("mouseleave", function () {
+          dot.style.opacity = "0";
+          ring.style.opacity = "0";
+        });
+        window.addEventListener("mouseenter", function () {
+          dot.style.opacity = "";
+          ring.style.opacity = "";
+        });
+      })();
+    </script>  </body> </html> 
