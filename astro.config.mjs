@@ -4,8 +4,8 @@ import rehypePicture from "./src/plugins/rehype-picture.mjs";
 import rehypeImageTypes from "./src/plugins/rehype-image-types.mjs";
 import rehypeSectionPlates from "./src/plugins/rehype-section-plates.mjs";
 
-const SITE = "https://crabsatellite.github.io";
-const BASE = "/dorawolf_portfolio";
+const SITE = "https://dorawolf.com";
+const BASE = "";
 
 export default defineConfig({
   site: SITE,
