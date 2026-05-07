@@ -128,7 +128,7 @@ const strings = {
     "footer.contact": "联系",
     "footer.studio": "工作室",
     "footer.links": "链接",
-    "footer.source": "源代码 · GitHub",
+    "footer.source": "GitHub",
     "footer.rights": "© {year} {studioName}. 保留所有权利。",
     "footer.credit": "于 {year} 设计与构建。",
 
@@ -257,7 +257,7 @@ const strings = {
     "footer.contact": "Contact",
     "footer.studio": "Studio",
     "footer.links": "Links",
-    "footer.source": "Source · GitHub",
+    "footer.source": "GitHub",
     "footer.rights": "© {year} {studioName}. All rights reserved.",
     "footer.credit": "Designed and built {year}.",
 
