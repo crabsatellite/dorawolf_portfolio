@@ -11,6 +11,7 @@ const { lang } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const langPrefix = lang === "en" ? `${base}/en` : base;
 
+interface LangBlock { zh: string; en: string; ja: string }
 interface ProjectEntry {
   id: string;
   year: number | null;
@@ -19,10 +20,8 @@ interface ProjectEntry {
   type_label_zh: string;
   type_label_en: string;
   slug: string;
-  title_zh: string;
-  title_en: string;
-  summary_zh: string;
-  summary_en: string;
+  title: LangBlock;
+  summary: LangBlock;
   tags: string[];
   software: string[];
   cover_url: string | null;
@@ -34,10 +33,11 @@ interface ProjectEntry {
   source: { repo: string; branch: string; path: string };
 }
 
-// Defensive filter: only render entries that have the minimum fields the
-// website needs. If `organize.py` ever emits a malformed entry (e.g. an
-// upstream sync brings in a folder that hasn't been renamed yet), we skip it
-// here instead of crashing the build.
+// Defensive filter: render only entries that
+//   (1) have a parseable id/slug,
+//   (2) have a known type,
+//   (3) carry an English title (organize.py also enforces this; this is the
+//       safety-net second layer per user spec — "if no English, don't show").
 const KNOWN_TYPES = new Set(["thesis", "project", "coursework"]);
 const allProjects = (manifest.projects as ProjectEntry[]) || [];
 const projects = allProjects.filter(
@@ -45,22 +45,34 @@ const projects = allProjects.filter(
     p &&
     typeof p.id === "string" && p.id.length > 0 &&
     typeof p.slug === "string" && p.slug.length > 0 &&
-    (p.type === "" || KNOWN_TYPES.has(p.type))
+    (p.type === "" || KNOWN_TYPES.has(p.type)) &&
+    p.title && typeof p.title.en === "string" && p.title.en.length > 0
 );
 
+// Lang-aware lookup with English fallback. zh / ja missing → use en.
+// en is guaranteed present by the filter above.
+function pickLang(block: LangBlock | undefined, lang: Lang): string {
+  if (!block) return "";
+  const requested = (block as any)[lang];
+  if (typeof requested === "string" && requested.length > 0) return requested;
+  return block.en || "";
+}
+
 function pickTitle(p: ProjectEntry): string {
-  if (lang === "zh") return p.title_zh || p.title_en || p.slug;
-  return p.title_en || p.title_zh || p.slug;
+  return pickLang(p.title, lang);
 }
 
 function pickSubtitle(p: ProjectEntry): string {
-  if (lang === "zh") return p.title_en && p.title_zh ? p.title_en : "";
-  return p.title_zh && p.title_en ? p.title_zh : "";
+  // Show the alternate-language title beneath the primary one when distinct.
+  const primary = pickTitle(p);
+  if (lang === "en") {
+    return p.title?.zh && p.title.zh !== primary ? p.title.zh : "";
+  }
+  return p.title?.en && p.title.en !== primary ? p.title.en : "";
 }
 
 function pickSummary(p: ProjectEntry): string {
-  if (lang === "zh") return p.summary_zh || p.summary_en || "";
-  return p.summary_en || p.summary_zh || "";
+  return pickLang(p.summary, lang);
 }
 
 function softwareLabel(s: string): string {

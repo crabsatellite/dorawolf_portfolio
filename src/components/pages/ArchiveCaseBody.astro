@@ -11,6 +11,7 @@ interface ModelItem extends FileItem {
   kind: string;
   kind_label: string;
 }
+interface LangBlock { zh: string; en: string; ja: string }
 interface ProjectEntry {
   id: string;
   year: number | null;
@@ -19,10 +20,8 @@ interface ProjectEntry {
   type_label_zh: string;
   type_label_en: string;
   slug: string;
-  title_zh: string;
-  title_en: string;
-  summary_zh: string;
-  summary_en: string;
+  title: LangBlock;
+  summary: LangBlock;
   tags: string[];
   software: string[];
   cover_url: string | null;
@@ -52,17 +51,26 @@ const validType = p.type && KNOWN_TYPES.has(p.type);
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const langPrefix = lang === "en" ? `${base}/en` : base;
 
+// Lang-aware lookup with English fallback. Required-language (en) is
+// guaranteed by organize.py + the index-page filter, but we still defend here.
+function pickLang(block: LangBlock | undefined, l: Lang): string {
+  if (!block) return "";
+  const requested = (block as any)[l];
+  if (typeof requested === "string" && requested.length > 0) return requested;
+  return block.en || "";
+}
 function pickTitle(): string {
-  if (lang === "zh") return p.title_zh || p.title_en || p.slug;
-  return p.title_en || p.title_zh || p.slug;
+  return pickLang(p.title, lang) || p.slug;
 }
 function pickSubtitle(): string {
-  if (lang === "zh") return p.title_en && p.title_zh ? p.title_en : "";
-  return p.title_zh && p.title_en ? p.title_zh : "";
+  const primary = pickTitle();
+  if (lang === "en") {
+    return p.title?.zh && p.title.zh !== primary ? p.title.zh : "";
+  }
+  return p.title?.en && p.title.en !== primary ? p.title.en : "";
 }
 function pickSummary(): string {
-  if (lang === "zh") return p.summary_zh || p.summary_en || "";
-  return p.summary_en || p.summary_zh || "";
+  return pickLang(p.summary, lang);
 }
 function softwareLabel(s: string): string {
   const m: Record<string, string> = {
