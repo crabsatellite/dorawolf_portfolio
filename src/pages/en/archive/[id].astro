@@ -1,0 +1,15 @@
+---
+import ArchiveCaseBody from "~/components/pages/ArchiveCaseBody.astro";
+import manifest from "../../../../data/works-manifest.json";
+
+export async function getStaticPaths() {
+  return manifest.projects.map((p: any) => ({
+    params: { id: p.id },
+    props: { project: p },
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<ArchiveCaseBody lang="en" project={project} />

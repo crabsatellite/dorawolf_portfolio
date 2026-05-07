@@ -1,0 +1,1464 @@
+{
+  "schema_version": "2.0",
+  "generated_at": "2026-05-07T03:35:00+00:00",
+  "source": {
+    "owner": "crabsatellite",
+    "year_repos": [
+      {
+        "repo": "crabsatellite/2026",
+        "branch": "restructure"
+      },
+      {
+        "repo": "crabsatellite/2025",
+        "branch": "restructure"
+      },
+      {
+        "repo": "crabsatellite/Pre_2025",
+        "branch": "restructure"
+      }
+    ]
+  },
+  "totals": {
+    "projects": 22,
+    "by_year": {
+      "2026": 8,
+      "2025": 3,
+      "2023": 2,
+      "2022": 6,
+      "null": 3
+    },
+    "by_type": {
+      "coursework": 7,
+      "project": 12,
+      "thesis": 3
+    }
+  },
+  "projects": [
+    {
+      "id": "2026-01-01_coursework_perforation-interference",
+      "year": 2026,
+      "date": "2026-01-01",
+      "type": "coursework",
+      "type_label_zh": "作业",
+      "type_label_en": "Coursework",
+      "slug": "perforation-interference",
+      "title_zh": "开洞干扰研究",
+      "title_en": "Perforation-Interference Studies",
+      "summary_zh": "把表皮上的开洞看作一组互相干扰的场，参数化生成由密度场调制的开洞图样。",
+      "summary_en": "Treats perforations on a façade as a field of mutually interfering attractors; parametric generation of openings modulated by a density field.",
+      "tags": [
+        "facade",
+        "parametric",
+        "perforation"
+      ],
+      "software": [
+        "rhino",
+        "grasshopper"
+      ],
+      "cover_url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-01-01_coursework_perforation-interference/images/1.png",
+      "gallery": [
+        {
+          "label": "1.png",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-01-01_coursework_perforation-interference/images/1.png"
+        }
+      ],
+      "docs": [],
+      "models": [
+        {
+          "label": "渐变纹理.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-01-01_coursework_perforation-interference/models/grasshopper/%E6%B8%90%E5%8F%98%E7%BA%B9%E7%90%86.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "渐变纹理2.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-01-01_coursework_perforation-interference/models/grasshopper/%E6%B8%90%E5%8F%98%E7%BA%B9%E7%90%862.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "渐变纹理.3dm",
+          "kind": "rhino",
+          "kind_label": "Rhino",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-01-01_coursework_perforation-interference/models/rhino/%E6%B8%90%E5%8F%98%E7%BA%B9%E7%90%86.3dm",
+          "ext": "3dm"
+        },
+        {
+          "label": "渐变纹理2.3dm",
+          "kind": "rhino",
+          "kind_label": "Rhino",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-01-01_coursework_perforation-interference/models/rhino/%E6%B8%90%E5%8F%98%E7%BA%B9%E7%90%862.3dm",
+          "ext": "3dm"
+        }
+      ],
+      "archives": [],
+      "counts": {
+        "images": 2,
+        "models": 4
+      },
+      "source": {
+        "repo": "crabsatellite/2026",
+        "branch": "restructure",
+        "path": "2026-01-01_coursework_perforation-interference"
+      }
+    },
+    {
+      "id": "2026-01-03_coursework_kangaroo-form-finding",
+      "year": 2026,
+      "date": "2026-01-03",
+      "type": "coursework",
+      "type_label_zh": "作业",
+      "type_label_en": "Coursework",
+      "slug": "kangaroo-form-finding",
+      "title_zh": "Kangaroo 物理找形",
+      "title_en": "Kangaroo Physics Form-Finding",
+      "summary_zh": "用 Kangaroo 解算器做的找形 / 张力网研究；面向轻型张拉结构与膜的几何前期研究。",
+      "summary_en": "Form-finding / tension-net research driven by the Kangaroo solver — preliminary geometry for light tensile and membrane systems.",
+      "tags": [
+        "kangaroo",
+        "form-finding",
+        "structural"
+      ],
+      "software": [
+        "rhino",
+        "grasshopper"
+      ],
+      "cover_url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-01-03_coursework_kangaroo-form-finding/images/1.png",
+      "gallery": [
+        {
+          "label": "1.png",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-01-03_coursework_kangaroo-form-finding/images/1.png"
+        }
+      ],
+      "docs": [],
+      "models": [
+        {
+          "label": "TEST.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-01-03_coursework_kangaroo-form-finding/models/grasshopper/TEST.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "test2.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-01-03_coursework_kangaroo-form-finding/models/grasshopper/test2.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "鼠标1222.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-01-03_coursework_kangaroo-form-finding/models/grasshopper/%E9%BC%A0%E6%A0%871222.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "鼠标1222.3dm",
+          "kind": "rhino",
+          "kind_label": "Rhino",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-01-03_coursework_kangaroo-form-finding/models/rhino/%E9%BC%A0%E6%A0%871222.3dm",
+          "ext": "3dm"
+        }
+      ],
+      "archives": [],
+      "counts": {
+        "images": 3,
+        "models": 4
+      },
+      "source": {
+        "repo": "crabsatellite/2026",
+        "branch": "restructure",
+        "path": "2026-01-03_coursework_kangaroo-form-finding"
+      }
+    },
+    {
+      "id": "2026-04-01_coursework_sculpture-study",
+      "year": 2026,
+      "date": "2026-04-01",
+      "type": "coursework",
+      "type_label_zh": "作业",
+      "type_label_en": "Coursework",
+      "slug": "sculpture-study",
+      "title_zh": "雕塑性空间",
+      "title_en": "Sculptural Space",
+      "summary_zh": "把雕塑当成空间、把空间当成雕塑的一次小尺度尝试。",
+      "summary_en": "A small-scale study in treating sculpture as space and space as sculpture.",
+      "tags": [
+        "form-study"
+      ],
+      "software": [
+        "sketchup"
+      ],
+      "cover_url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-01_coursework_sculpture-study/images/1.png",
+      "gallery": [
+        {
+          "label": "1.png",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-01_coursework_sculpture-study/images/1.png"
+        }
+      ],
+      "docs": [],
+      "models": [
+        {
+          "label": "0401.skp",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-01_coursework_sculpture-study/models/sketchup/0401.skp",
+          "ext": "skp"
+        }
+      ],
+      "archives": [],
+      "counts": {
+        "images": 2,
+        "models": 1
+      },
+      "source": {
+        "repo": "crabsatellite/2026",
+        "branch": "restructure",
+        "path": "2026-04-01_coursework_sculpture-study"
+      }
+    },
+    {
+      "id": "2026-04-09_coursework_sunken-plaza",
+      "year": 2026,
+      "date": "2026-04-09",
+      "type": "coursework",
+      "type_label_zh": "作业",
+      "type_label_en": "Coursework",
+      "slug": "sunken-plaza",
+      "title_zh": "下沉广场",
+      "title_en": "Sunken Plaza",
+      "summary_zh": "下沉广场的形体与流线研究。",
+      "summary_en": "Massing and circulation study of a sunken urban plaza.",
+      "tags": [
+        "urban",
+        "public-space"
+      ],
+      "software": [],
+      "cover_url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-09_coursework_sunken-plaza/images/1.png",
+      "gallery": [
+        {
+          "label": "1.png",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-09_coursework_sunken-plaza/images/1.png"
+        }
+      ],
+      "docs": [],
+      "models": [],
+      "archives": [
+        {
+          "label": "广场建模 有下沉改s.rar",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-09_coursework_sunken-plaza/archives/%E5%B9%BF%E5%9C%BA%E5%BB%BA%E6%A8%A1%20%E6%9C%89%E4%B8%8B%E6%B2%89%E6%94%B9s.rar",
+          "ext": "rar"
+        }
+      ],
+      "counts": {
+        "archives": 1,
+        "images": 1
+      },
+      "source": {
+        "repo": "crabsatellite/2026",
+        "branch": "restructure",
+        "path": "2026-04-09_coursework_sunken-plaza"
+      }
+    },
+    {
+      "id": "2026-04-14_coursework_kindergarten",
+      "year": 2026,
+      "date": "2026-04-14",
+      "type": "coursework",
+      "type_label_zh": "作业",
+      "type_label_en": "Coursework",
+      "slug": "kindergarten",
+      "title_zh": "幼儿园方案研究",
+      "title_en": "Kindergarten Scheme Study",
+      "summary_zh": "一个小型幼儿园方案；尺度、视线与院落组织的研究。",
+      "summary_en": "A small kindergarten scheme study — scale, sightlines and courtyard organization.",
+      "tags": [
+        "education",
+        "small-scale"
+      ],
+      "software": [
+        "sketchup",
+        "grasshopper"
+      ],
+      "cover_url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-14_coursework_kindergarten/images/1.png",
+      "gallery": [
+        {
+          "label": "1.png",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-14_coursework_kindergarten/images/1.png"
+        }
+      ],
+      "docs": [],
+      "models": [
+        {
+          "label": "0414幼儿园.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-14_coursework_kindergarten/models/grasshopper/0414%E5%B9%BC%E5%84%BF%E5%9B%AD.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "0414幼儿园.skp",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-14_coursework_kindergarten/models/sketchup/0414%E5%B9%BC%E5%84%BF%E5%9B%AD.skp",
+          "ext": "skp"
+        }
+      ],
+      "archives": [],
+      "counts": {
+        "images": 1,
+        "models": 2
+      },
+      "source": {
+        "repo": "crabsatellite/2026",
+        "branch": "restructure",
+        "path": "2026-04-14_coursework_kindergarten"
+      }
+    },
+    {
+      "id": "2026-04-20_project_rotational-architecture",
+      "year": 2026,
+      "date": "2026-04-20",
+      "type": "project",
+      "type_label_zh": "项目",
+      "type_label_en": "Project",
+      "slug": "rotational-architecture",
+      "title_zh": "回转建筑研究",
+      "title_en": "Rotational Architecture Studies",
+      "summary_zh": "围绕「回转」这一基本几何动作展开的形体生成与采光研究。",
+      "summary_en": "Form-generation and daylighting studies built around the single geometric act of rotation.",
+      "tags": [
+        "form-finding",
+        "geometry",
+        "daylight"
+      ],
+      "software": [
+        "rhino"
+      ],
+      "cover_url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-20_project_rotational-architecture/images/1.jpg",
+      "gallery": [
+        {
+          "label": "1.jpg",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-20_project_rotational-architecture/images/1.jpg"
+        }
+      ],
+      "docs": [],
+      "models": [
+        {
+          "label": "Model1.3dm",
+          "kind": "rhino",
+          "kind_label": "Rhino",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-20_project_rotational-architecture/models/rhino/Model1.3dm",
+          "ext": "3dm"
+        }
+      ],
+      "archives": [],
+      "counts": {
+        "images": 3,
+        "models": 1
+      },
+      "source": {
+        "repo": "crabsatellite/2026",
+        "branch": "restructure",
+        "path": "2026-04-20_project_rotational-architecture"
+      }
+    },
+    {
+      "id": "2026-04-22_coursework_acoustics-grasshopper",
+      "year": 2026,
+      "date": "2026-04-22",
+      "type": "coursework",
+      "type_label_zh": "作业",
+      "type_label_en": "Coursework",
+      "slug": "acoustics-grasshopper",
+      "title_zh": "音响 · Grasshopper 几何",
+      "title_en": "Acoustics — Grasshopper Geometry",
+      "summary_zh": "面向声学/音响装置的参数化几何研究。",
+      "summary_en": "A parametric geometry study aimed at acoustic / loudspeaker enclosures.",
+      "tags": [
+        "grasshopper",
+        "parametric",
+        "acoustics"
+      ],
+      "software": [
+        "grasshopper"
+      ],
+      "cover_url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-22_coursework_acoustics-grasshopper/images/1.png",
+      "gallery": [
+        {
+          "label": "1.png",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-22_coursework_acoustics-grasshopper/images/1.png"
+        }
+      ],
+      "docs": [],
+      "models": [
+        {
+          "label": "0422干扰.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-22_coursework_acoustics-grasshopper/models/grasshopper/0422%E5%B9%B2%E6%89%B0.gh",
+          "ext": "gh"
+        }
+      ],
+      "archives": [],
+      "counts": {
+        "images": 1,
+        "models": 1
+      },
+      "source": {
+        "repo": "crabsatellite/2026",
+        "branch": "restructure",
+        "path": "2026-04-22_coursework_acoustics-grasshopper"
+      }
+    },
+    {
+      "id": "2026-04-29_thesis_fallout-shelter",
+      "year": 2026,
+      "date": "2026-04-29",
+      "type": "thesis",
+      "type_label_zh": "毕设",
+      "type_label_en": "Thesis",
+      "slug": "fallout-shelter",
+      "title_zh": "呼吸之间——长沙岳麓区防空洞公共空间改造",
+      "title_en": "Between Breaths — Adapting an Air-Raid Shelter into Public Space",
+      "summary_zh": "把一段冷战遗留的防空洞改成可呼吸、可停留、可聚集的城市底层公共空间。用地形重塑、采光井、与既有结构的最小干预策略，让一段被城市记忆遗忘的负空间重新回到日常生活。",
+      "summary_en": "Reuses a Cold-War-era air-raid shelter as a breathable public commons underneath the city. Minimal intervention, re-grading, and skylight insertion bring a forgotten negative volume back into everyday use.",
+      "tags": [
+        "adaptive-reuse",
+        "underground",
+        "daylight",
+        "public-space"
+      ],
+      "software": [
+        "rhino",
+        "sketchup",
+        "grasshopper",
+        "autocad"
+      ],
+      "cover_url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-29_thesis_fallout-shelter/images/1.png",
+      "gallery": [
+        {
+          "label": "1.png",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-29_thesis_fallout-shelter/images/1.png"
+        }
+      ],
+      "docs": [
+        {
+          "label": "2026任务书.docx",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-29_thesis_fallout-shelter/docs/2026%E4%BB%BB%E5%8A%A1%E4%B9%A6.docx",
+          "ext": "docx"
+        },
+        {
+          "label": "呼吸之间：长沙市岳麓区防空洞公共空间改造设计_20251226010304.pdf",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-29_thesis_fallout-shelter/docs/%E5%91%BC%E5%90%B8%E4%B9%8B%E9%97%B4%EF%BC%9A%E9%95%BF%E6%B2%99%E5%B8%82%E5%B2%B3%E9%BA%93%E5%8C%BA%E9%98%B2%E7%A9%BA%E6%B4%9E%E5%85%AC%E5%85%B1%E7%A9%BA%E9%97%B4%E6%94%B9%E9%80%A0%E8%AE%BE%E8%AE%A1_20251226010304.pdf",
+          "ext": "pdf"
+        },
+        {
+          "label": "开题报告.pdf",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-29_thesis_fallout-shelter/docs/%E5%BC%80%E9%A2%98%E6%8A%A5%E5%91%8A.pdf",
+          "ext": "pdf"
+        }
+      ],
+      "models": [
+        {
+          "label": "111.dwg",
+          "kind": "cad",
+          "kind_label": "AutoCAD",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-29_thesis_fallout-shelter/models/cad/111.dwg",
+          "ext": "dwg"
+        },
+        {
+          "label": "Drawing1.dwg",
+          "kind": "cad",
+          "kind_label": "AutoCAD",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-29_thesis_fallout-shelter/models/cad/Drawing1.dwg",
+          "ext": "dwg"
+        },
+        {
+          "label": "地形处理.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-29_thesis_fallout-shelter/models/grasshopper/%E5%9C%B0%E5%BD%A2%E5%A4%84%E7%90%86.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "场地.3dm",
+          "kind": "rhino",
+          "kind_label": "Rhino",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-29_thesis_fallout-shelter/models/rhino/%E5%9C%BA%E5%9C%B0.3dm",
+          "ext": "3dm"
+        },
+        {
+          "label": "0.skp",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-29_thesis_fallout-shelter/models/sketchup/0.skp",
+          "ext": "skp"
+        },
+        {
+          "label": "0429.skp",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-29_thesis_fallout-shelter/models/sketchup/0429.skp",
+          "ext": "skp"
+        },
+        {
+          "label": "1.skp",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-29_thesis_fallout-shelter/models/sketchup/1.skp",
+          "ext": "skp"
+        },
+        {
+          "label": "1111.skp",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-29_thesis_fallout-shelter/models/sketchup/1111.skp",
+          "ext": "skp"
+        },
+        {
+          "label": "3d打印用.skp",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-29_thesis_fallout-shelter/models/sketchup/3d%E6%89%93%E5%8D%B0%E7%94%A8.skp",
+          "ext": "skp"
+        },
+        {
+          "label": "地形.skp",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-29_thesis_fallout-shelter/models/sketchup/%E5%9C%B0%E5%BD%A2.skp",
+          "ext": "skp"
+        },
+        {
+          "label": "防空洞内部.skp",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2026/restructure/2026-04-29_thesis_fallout-shelter/models/sketchup/%E9%98%B2%E7%A9%BA%E6%B4%9E%E5%86%85%E9%83%A8.skp",
+          "ext": "skp"
+        }
+      ],
+      "archives": [],
+      "counts": {
+        "docs": 3,
+        "images": 5,
+        "models": 11
+      },
+      "source": {
+        "repo": "crabsatellite/2026",
+        "branch": "restructure",
+        "path": "2026-04-29_thesis_fallout-shelter"
+      }
+    },
+    {
+      "id": "2025-03-03_coursework_perforated-surface",
+      "year": 2025,
+      "date": "2025-03-03",
+      "type": "coursework",
+      "type_label_zh": "作业",
+      "type_label_en": "Coursework",
+      "slug": "perforated-surface",
+      "title_zh": "镂空表皮研究",
+      "title_en": "Perforated-Surface Study",
+      "summary_zh": "Rhino 中的小型镂空 / 表皮研究。",
+      "summary_en": "A small perforated-surface / façade study built in Rhino.",
+      "tags": [
+        "facade",
+        "rhino"
+      ],
+      "software": [
+        "rhino"
+      ],
+      "cover_url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-03-03_coursework_perforated-surface/images/_raw/Clipboard-f63ac052-32d4-4a71-ad4d-870386062ccd.png",
+      "gallery": [
+        {
+          "label": "Clipboard-f63ac052-32d4-4a71-ad4d-870386062ccd.png",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-03-03_coursework_perforated-surface/images/_raw/Clipboard-f63ac052-32d4-4a71-ad4d-870386062ccd.png"
+        }
+      ],
+      "docs": [],
+      "models": [
+        {
+          "label": "镂空.3dm",
+          "kind": "rhino",
+          "kind_label": "Rhino",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-03-03_coursework_perforated-surface/models/rhino/%E9%95%82%E7%A9%BA.3dm",
+          "ext": "3dm"
+        }
+      ],
+      "archives": [],
+      "counts": {
+        "images": 1,
+        "models": 1
+      },
+      "source": {
+        "repo": "crabsatellite/2025",
+        "branch": "restructure",
+        "path": "2025-03-03_coursework_perforated-surface"
+      }
+    },
+    {
+      "id": "2025-05-26_thesis_daylight-thermal-retrofit",
+      "year": 2025,
+      "date": "2025-05-26",
+      "type": "thesis",
+      "type_label_zh": "毕设",
+      "type_label_en": "Thesis",
+      "slug": "daylight-thermal-retrofit",
+      "title_zh": "光环境与热舒适——某教学楼绿色化改造",
+      "title_en": "Daylight & Thermal-Comfort Retrofit of an Education Building",
+      "summary_zh": "用 Ladybug + EnergyPlus + Octopus 做的多目标优化：在采光（DA/UDI）、热舒适（PMV）与能耗之间求帕累托前沿，给出一组可施工的立面改造方案。",
+      "summary_en": "Multi-objective optimisation with Ladybug + EnergyPlus + Octopus — a Pareto front across daylight (DA/UDI), thermal comfort (PMV) and energy use, yielding a set of constructable façade retrofits.",
+      "tags": [
+        "simulation",
+        "ladybug",
+        "energyplus",
+        "octopus",
+        "retrofit",
+        "education"
+      ],
+      "software": [
+        "rhino",
+        "sketchup",
+        "grasshopper",
+        "ladybug-energyplus"
+      ],
+      "cover_url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/images/pic/1.jpg",
+      "gallery": [
+        {
+          "label": "1.jpg",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/images/pic/1.jpg"
+        },
+        {
+          "label": "2.jpg",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/images/pic/2.jpg"
+        },
+        {
+          "label": "3.jpg",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/images/pic/3.jpg"
+        },
+        {
+          "label": "3d66Model-368268-1-39.jpg",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/images/%E6%AD%A3%E5%B8%B8_%E7%BD%AE%E5%85%A5%E7%9A%84%E6%96%87%E4%BB%B6/3d66Model-368268-1-39.jpg"
+        },
+        {
+          "label": "3d66Model-368268-11-39.jpg",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/images/%E6%AD%A3%E5%B8%B8_%E7%BD%AE%E5%85%A5%E7%9A%84%E6%96%87%E4%BB%B6/3d66Model-368268-11-39.jpg"
+        },
+        {
+          "label": "3d66Model-368268-6-39.jpg",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/images/%E6%AD%A3%E5%B8%B8_%E7%BD%AE%E5%85%A5%E7%9A%84%E6%96%87%E4%BB%B6/3d66Model-368268-6-39.jpg"
+        },
+        {
+          "label": "3d66Model-368268-7-39.jpg",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/images/%E6%AD%A3%E5%B8%B8_%E7%BD%AE%E5%85%A5%E7%9A%84%E6%96%87%E4%BB%B6/3d66Model-368268-7-39.jpg"
+        },
+        {
+          "label": "3d66Model-368268-8-39.jpg",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/images/%E6%AD%A3%E5%B8%B8_%E7%BD%AE%E5%85%A5%E7%9A%84%E6%96%87%E4%BB%B6/3d66Model-368268-8-39.jpg"
+        }
+      ],
+      "docs": [
+        {
+          "label": "1.1工具介绍及安装.pptx",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/docs/1.1%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D%E5%8F%8A%E5%AE%89%E8%A3%85.pptx",
+          "ext": "pptx"
+        },
+        {
+          "label": "1.1气象数据的来源与内容.pptx",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/docs/1.1%E6%B0%94%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9D%A5%E6%BA%90%E4%B8%8E%E5%86%85%E5%AE%B9.pptx",
+          "ext": "pptx"
+        },
+        {
+          "label": "1.2Ladybug_Tools中的基础图表.pptx",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/docs/1.2Ladybug_Tools%E4%B8%AD%E7%9A%84%E5%9F%BA%E7%A1%80%E5%9B%BE%E8%A1%A8.pptx",
+          "ext": "pptx"
+        },
+        {
+          "label": "场地与环境1-SunPath与Sunhours.pptx",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/docs/%E5%9C%BA%E5%9C%B0%E4%B8%8E%E7%8E%AF%E5%A2%831-SunPath%E4%B8%8ESunhours.pptx",
+          "ext": "pptx"
+        }
+      ],
+      "models": [
+        {
+          "label": "04thermalcomfort.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/grasshopper/04thermalcomfort.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "9c0c4794b3.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/grasshopper/9c0c4794b3.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "可以算能耗的(1).gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/grasshopper/%E5%8F%AF%E4%BB%A5%E7%AE%97%E8%83%BD%E8%80%97%E7%9A%84%281%29.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "可以算能耗的(2).gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/grasshopper/%E5%8F%AF%E4%BB%A5%E7%AE%97%E8%83%BD%E8%80%97%E7%9A%84%282%29.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "可以算能耗的(3).gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/grasshopper/%E5%8F%AF%E4%BB%A5%E7%AE%97%E8%83%BD%E8%80%97%E7%9A%84%283%29.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "可以算能耗的.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/grasshopper/%E5%8F%AF%E4%BB%A5%E7%AE%97%E8%83%BD%E8%80%97%E7%9A%84.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "可以算能耗的备份.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/grasshopper/%E5%8F%AF%E4%BB%A5%E7%AE%97%E8%83%BD%E8%80%97%E7%9A%84%E5%A4%87%E4%BB%BD.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "日照分析.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/grasshopper/%E6%97%A5%E7%85%A7%E5%88%86%E6%9E%90.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "热舒适.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/grasshopper/%E7%83%AD%E8%88%92%E9%80%82.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "采光系数.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/grasshopper/%E9%87%87%E5%85%89%E7%B3%BB%E6%95%B0.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "导视角.3dm",
+          "kind": "rhino",
+          "kind_label": "Rhino",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/rhino/%E5%AF%BC%E8%A7%86%E8%A7%92.3dm",
+          "ext": "3dm"
+        },
+        {
+          "label": "建筑能耗.3dm",
+          "kind": "rhino",
+          "kind_label": "Rhino",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/rhino/%E5%BB%BA%E7%AD%91%E8%83%BD%E8%80%97.3dm",
+          "ext": "3dm"
+        },
+        {
+          "label": "日照分析.3dm",
+          "kind": "rhino",
+          "kind_label": "Rhino",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/rhino/%E6%97%A5%E7%85%A7%E5%88%86%E6%9E%90.3dm",
+          "ext": "3dm"
+        },
+        {
+          "label": "日照分析.3dmbak",
+          "kind": "rhino",
+          "kind_label": "Rhino",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/rhino/%E6%97%A5%E7%85%A7%E5%88%86%E6%9E%90.3dmbak",
+          "ext": "3dmbak"
+        },
+        {
+          "label": "未命名.3dm",
+          "kind": "rhino",
+          "kind_label": "Rhino",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/rhino/%E6%9C%AA%E5%91%BD%E5%90%8D.3dm",
+          "ext": "3dm"
+        },
+        {
+          "label": "正常(1).3dm",
+          "kind": "rhino",
+          "kind_label": "Rhino",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/rhino/%E6%AD%A3%E5%B8%B8%281%29.3dm",
+          "ext": "3dm"
+        },
+        {
+          "label": "正常.3dm",
+          "kind": "rhino",
+          "kind_label": "Rhino",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/rhino/%E6%AD%A3%E5%B8%B8.3dm",
+          "ext": "3dm"
+        },
+        {
+          "label": "热舒适导图.3dm",
+          "kind": "rhino",
+          "kind_label": "Rhino",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/rhino/%E7%83%AD%E8%88%92%E9%80%82%E5%AF%BC%E5%9B%BE.3dm",
+          "ext": "3dm"
+        },
+        {
+          "label": "采光导图.3dm",
+          "kind": "rhino",
+          "kind_label": "Rhino",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/rhino/%E9%87%87%E5%85%89%E5%AF%BC%E5%9B%BE.3dm",
+          "ext": "3dm"
+        },
+        {
+          "label": "采光系数.3dm",
+          "kind": "rhino",
+          "kind_label": "Rhino",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/rhino/%E9%87%87%E5%85%89%E7%B3%BB%E6%95%B0.3dm",
+          "ext": "3dm"
+        },
+        {
+          "label": "0513.skb",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/sketchup/0513.skb",
+          "ext": "skb"
+        },
+        {
+          "label": "0513.skp",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/sketchup/0513.skp",
+          "ext": "skp"
+        },
+        {
+          "label": "daochu.skb",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/sketchup/daochu.skb",
+          "ext": "skb"
+        },
+        {
+          "label": "daochu.skp",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/sketchup/daochu.skp",
+          "ext": "skp"
+        },
+        {
+          "label": "其他教室.skb",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/sketchup/%E5%AF%BC%E5%87%BA%E6%A8%A1%E5%9E%8B/%E5%85%B6%E4%BB%96%E6%95%99%E5%AE%A4.skb",
+          "ext": "skb"
+        },
+        {
+          "label": "其他教室.skp",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/sketchup/%E5%AF%BC%E5%87%BA%E6%A8%A1%E5%9E%8B/%E5%85%B6%E4%BB%96%E6%95%99%E5%AE%A4.skp",
+          "ext": "skp"
+        },
+        {
+          "label": "周边建筑.skb",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/sketchup/%E5%AF%BC%E5%87%BA%E6%A8%A1%E5%9E%8B/%E5%91%A8%E8%BE%B9%E5%BB%BA%E7%AD%91.skb",
+          "ext": "skb"
+        },
+        {
+          "label": "周边建筑.skp",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/sketchup/%E5%AF%BC%E5%87%BA%E6%A8%A1%E5%9E%8B/%E5%91%A8%E8%BE%B9%E5%BB%BA%E7%AD%91.skp",
+          "ext": "skp"
+        },
+        {
+          "label": "廊桥.skb",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/sketchup/%E5%AF%BC%E5%87%BA%E6%A8%A1%E5%9E%8B/%E5%BB%8A%E6%A1%A5.skb",
+          "ext": "skb"
+        },
+        {
+          "label": "廊桥.skp",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/sketchup/%E5%AF%BC%E5%87%BA%E6%A8%A1%E5%9E%8B/%E5%BB%8A%E6%A1%A5.skp",
+          "ext": "skp"
+        },
+        {
+          "label": "普通教室.skb",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/sketchup/%E5%AF%BC%E5%87%BA%E6%A8%A1%E5%9E%8B/%E6%99%AE%E9%80%9A%E6%95%99%E5%AE%A4.skb",
+          "ext": "skb"
+        },
+        {
+          "label": "普通教室.skp",
+          "kind": "sketchup",
+          "kind_label": "SketchUp",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/models/sketchup/%E5%AF%BC%E5%87%BA%E6%A8%A1%E5%9E%8B/%E6%99%AE%E9%80%9A%E6%95%99%E5%AE%A4.skp",
+          "ext": "skp"
+        }
+      ],
+      "archives": [
+        {
+          "label": "gh_shujuku.rar",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/archives/gh_shujuku.rar",
+          "ext": "rar"
+        },
+        {
+          "label": "CHN_HB_Wuhan.574940_CSWD.zip",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/archives/gh_shujuku/CHN_HB_Wuhan.574940_CSWD.zip",
+          "ext": "zip"
+        },
+        {
+          "label": "CHN_HB_Wuhan.574940_CSWD.zip",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/archives/gh_shujuku/LB_shujuchucun/CHN_HB_Wuhan.574940_CSWD/CHN_HB_Wuhan.574940_CSWD.zip",
+          "ext": "zip"
+        },
+        {
+          "label": "data_point.zip",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-05-26_thesis_daylight-thermal-retrofit/archives/gh_shujuku/LB_tongfeng/Classroom/openstudio/run/data_point.zip",
+          "ext": "zip"
+        }
+      ],
+      "counts": {
+        "archives": 4,
+        "data": 10,
+        "docs": 4,
+        "images": 21,
+        "models": 32,
+        "simulation": 92
+      },
+      "source": {
+        "repo": "crabsatellite/2025",
+        "branch": "restructure",
+        "path": "2025-05-26_thesis_daylight-thermal-retrofit"
+      }
+    },
+    {
+      "id": "2025-11-04_thesis_interference-field",
+      "year": 2025,
+      "date": "2025-11-04",
+      "type": "thesis",
+      "type_label_zh": "毕设",
+      "type_label_en": "Thesis",
+      "slug": "interference-field",
+      "title_zh": "干扰场研究",
+      "title_en": "Interference-Field Studies",
+      "summary_zh": "用相互干扰的场调制开洞与纹理，作为防空洞顶部采光井的几何来源。",
+      "summary_en": "Perforations and textures driven by interfering fields, seeded into the shelter project's skylight design.",
+      "tags": [
+        "field",
+        "parametric",
+        "facade"
+      ],
+      "software": [
+        "rhino",
+        "grasshopper"
+      ],
+      "cover_url": null,
+      "gallery": [],
+      "docs": [],
+      "models": [
+        {
+          "label": "zq.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-11-04_thesis_interference-field/models/grasshopper/zq.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "zuoye.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-11-04_thesis_interference-field/models/grasshopper/zuoye.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "渐变开洞.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-11-04_thesis_interference-field/models/grasshopper/%E6%B8%90%E5%8F%98%E5%BC%80%E6%B4%9E.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "渐变纹理.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-11-04_thesis_interference-field/models/grasshopper/%E6%B8%90%E5%8F%98%E7%BA%B9%E7%90%86.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "渐变纹理2.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-11-04_thesis_interference-field/models/grasshopper/%E6%B8%90%E5%8F%98%E7%BA%B9%E7%90%862.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "织物打印6.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-11-04_thesis_interference-field/models/grasshopper/%E7%BB%87%E7%89%A9%E6%89%93%E5%8D%B06.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "音响洞.gh",
+          "kind": "grasshopper",
+          "kind_label": "Grasshopper",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-11-04_thesis_interference-field/models/grasshopper/%E9%9F%B3%E5%93%8D%E6%B4%9E.gh",
+          "ext": "gh"
+        },
+        {
+          "label": "渐变纹理.3dm",
+          "kind": "rhino",
+          "kind_label": "Rhino",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-11-04_thesis_interference-field/models/rhino/%E6%B8%90%E5%8F%98%E7%BA%B9%E7%90%86.3dm",
+          "ext": "3dm"
+        },
+        {
+          "label": "渐变纹理2.3dm",
+          "kind": "rhino",
+          "kind_label": "Rhino",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-11-04_thesis_interference-field/models/rhino/%E6%B8%90%E5%8F%98%E7%BA%B9%E7%90%862.3dm",
+          "ext": "3dm"
+        },
+        {
+          "label": "织物打印案例1.3dm",
+          "kind": "rhino",
+          "kind_label": "Rhino",
+          "url": "https://raw.githubusercontent.com/crabsatellite/2025/restructure/2025-11-04_thesis_interference-field/models/rhino/%E7%BB%87%E7%89%A9%E6%89%93%E5%8D%B0%E6%A1%88%E4%BE%8B1.3dm",
+          "ext": "3dm"
+        }
+      ],
+      "archives": [],
+      "counts": {
+        "models": 10
+      },
+      "source": {
+        "repo": "crabsatellite/2025",
+        "branch": "restructure",
+        "path": "2025-11-04_thesis_interference-field"
+      }
+    },
+    {
+      "id": "2023-03-20_project_shenzhen-shajing-buchong-school",
+      "year": 2023,
+      "date": "2023-03-20",
+      "type": "project",
+      "type_label_zh": "项目",
+      "type_label_en": "Project",
+      "slug": "shenzhen-shajing-buchong-school",
+      "title_zh": "深圳宝安沙井步涌学校",
+      "title_en": "Shenzhen Bao'an Shajing Buchong School",
+      "summary_zh": "深圳宝安沙井步涌学校方案，一份合稿文本。",
+      "summary_en": "Shenzhen Bao'an Shajing Buchong School — combined scheme document.",
+      "tags": [
+        "education",
+        "school",
+        "report"
+      ],
+      "software": [],
+      "cover_url": null,
+      "gallery": [],
+      "docs": [
+        {
+          "label": "0320-深圳宝安沙井步涌学校-合-ok.pdf",
+          "url": "https://raw.githubusercontent.com/crabsatellite/Pre_2025/restructure/2023/2023-03-20_project_shenzhen-shajing-buchong-school/docs/0320-%E6%B7%B1%E5%9C%B3%E5%AE%9D%E5%AE%89%E6%B2%99%E4%BA%95%E6%AD%A5%E6%B6%8C%E5%AD%A6%E6%A0%A1-%E5%90%88-ok.pdf",
+          "ext": "pdf"
+        }
+      ],
+      "models": [],
+      "archives": [],
+      "counts": {
+        "docs": 1
+      },
+      "source": {
+        "repo": "crabsatellite/Pre_2025",
+        "branch": "restructure",
+        "path": "2023/2023-03-20_project_shenzhen-shajing-buchong-school"
+      }
+    },
+    {
+      "id": "2023-03-24_project_yangtze-new-district-framework",
+      "year": 2023,
+      "date": "2023-03-24",
+      "type": "project",
+      "type_label_zh": "项目",
+      "type_label_en": "Project",
+      "slug": "yangtze-new-district-framework",
+      "title_zh": "长江新区 · 文本框架汇总",
+      "title_en": "Yangtze New District — Framework Summary",
+      "summary_zh": "长江新区项目文本的框架汇总，城市设计阶段的整合稿。",
+      "summary_en": "Yangtze New District — framework summary at the urban-design stage.",
+      "tags": [
+        "urban-design",
+        "report"
+      ],
+      "software": [],
+      "cover_url": null,
+      "gallery": [],
+      "docs": [
+        {
+          "label": "20230324长江新区文本框架汇总定稿okokok.pdf",
+          "url": "https://raw.githubusercontent.com/crabsatellite/Pre_2025/restructure/2023/2023-03-24_project_yangtze-new-district-framework/docs/20230324%E9%95%BF%E6%B1%9F%E6%96%B0%E5%8C%BA%E6%96%87%E6%9C%AC%E6%A1%86%E6%9E%B6%E6%B1%87%E6%80%BB%E5%AE%9A%E7%A8%BFokokok.pdf",
+          "ext": "pdf"
+        }
+      ],
+      "models": [],
+      "archives": [],
+      "counts": {
+        "docs": 1
+      },
+      "source": {
+        "repo": "crabsatellite/Pre_2025",
+        "branch": "restructure",
+        "path": "2023/2023-03-24_project_yangtze-new-district-framework"
+      }
+    },
+    {
+      "id": "2022-01-23_project_jiangxia-star-combined-report",
+      "year": 2022,
+      "date": "2022-01-23",
+      "type": "project",
+      "type_label_zh": "项目",
+      "type_label_en": "Project",
+      "slug": "jiangxia-star-combined-report",
+      "title_zh": "江夏之星 · 两方案合稿",
+      "title_en": "Jiangxia Star — Combined Two-Scheme Report",
+      "summary_zh": "江夏之星 · 两方案合稿。",
+      "summary_en": "Jiangxia Star — combined two-scheme report.",
+      "tags": [
+        "report"
+      ],
+      "software": [],
+      "cover_url": null,
+      "gallery": [],
+      "docs": [
+        {
+          "label": "20220123-江夏之星两方案合稿okokok.pdf",
+          "url": "https://raw.githubusercontent.com/crabsatellite/Pre_2025/restructure/2022/2022-01-23_project_jiangxia-star-combined-report/docs/20220123-%E6%B1%9F%E5%A4%8F%E4%B9%8B%E6%98%9F%E4%B8%A4%E6%96%B9%E6%A1%88%E5%90%88%E7%A8%BFokokok.pdf",
+          "ext": "pdf"
+        }
+      ],
+      "models": [],
+      "archives": [],
+      "counts": {
+        "docs": 1
+      },
+      "source": {
+        "repo": "crabsatellite/Pre_2025",
+        "branch": "restructure",
+        "path": "2022/2022-01-23_project_jiangxia-star-combined-report"
+      }
+    },
+    {
+      "id": "2022-02-03_project_hanjiang-bay-foreign-language-school",
+      "year": 2022,
+      "date": "2022-02-03",
+      "type": "project",
+      "type_label_zh": "项目",
+      "type_label_en": "Project",
+      "slug": "hanjiang-bay-foreign-language-school",
+      "title_zh": "硚口区汉江湾外语特色学校",
+      "title_en": "Hanjiang Bay Foreign Language School",
+      "summary_zh": "硚口区汉江湾外语特色学校的方案文本。",
+      "summary_en": "Hanjiang Bay Foreign Language School scheme document.",
+      "tags": [
+        "education",
+        "school",
+        "report"
+      ],
+      "software": [],
+      "cover_url": null,
+      "gallery": [],
+      "docs": [
+        {
+          "label": "20220203硚口区汉江湾外语特色学校ok.pdf",
+          "url": "https://raw.githubusercontent.com/crabsatellite/Pre_2025/restructure/2022/2022-02-03_project_hanjiang-bay-foreign-language-school/docs/20220203%E7%A1%9A%E5%8F%A3%E5%8C%BA%E6%B1%89%E6%B1%9F%E6%B9%BE%E5%A4%96%E8%AF%AD%E7%89%B9%E8%89%B2%E5%AD%A6%E6%A0%A1ok.pdf",
+          "ext": "pdf"
+        }
+      ],
+      "models": [],
+      "archives": [],
+      "counts": {
+        "docs": 1
+      },
+      "source": {
+        "repo": "crabsatellite/Pre_2025",
+        "branch": "restructure",
+        "path": "2022/2022-02-03_project_hanjiang-bay-foreign-language-school"
+      }
+    },
+    {
+      "id": "2022-02-20_project_jiangxia-star-baicao-variant",
+      "year": 2022,
+      "date": "2022-02-20",
+      "type": "project",
+      "type_label_zh": "项目",
+      "type_label_en": "Project",
+      "slug": "jiangxia-star-baicao-variant",
+      "title_zh": "江夏之星 · 百草丰饶",
+      "title_en": "Jiangxia Star — Hundred-Herb Variant",
+      "summary_zh": "江夏之星 · 百草丰饶方案文本。",
+      "summary_en": "Jiangxia Star — Hundred-Herb Variant scheme document.",
+      "tags": [
+        "report"
+      ],
+      "software": [],
+      "cover_url": null,
+      "gallery": [],
+      "docs": [
+        {
+          "label": "20220220-江夏之星-百草丰饶ok.pdf",
+          "url": "https://raw.githubusercontent.com/crabsatellite/Pre_2025/restructure/2022/2022-02-20_project_jiangxia-star-baicao-variant/docs/20220220-%E6%B1%9F%E5%A4%8F%E4%B9%8B%E6%98%9F-%E7%99%BE%E8%8D%89%E4%B8%B0%E9%A5%B6ok.pdf",
+          "ext": "pdf"
+        }
+      ],
+      "models": [],
+      "archives": [],
+      "counts": {
+        "docs": 1
+      },
+      "source": {
+        "repo": "crabsatellite/Pre_2025",
+        "branch": "restructure",
+        "path": "2022/2022-02-20_project_jiangxia-star-baicao-variant"
+      }
+    },
+    {
+      "id": "2022-02-26_project_yangtze-new-town-full-draft",
+      "year": 2022,
+      "date": "2022-02-26",
+      "type": "project",
+      "type_label_zh": "项目",
+      "type_label_en": "Project",
+      "slug": "yangtze-new-town-full-draft",
+      "title_zh": "长江新城 · 文本完整版初稿",
+      "title_en": "Yangtze New Town — Full Draft Report",
+      "summary_zh": "长江新城文本完整版初稿。",
+      "summary_en": "Yangtze New Town — full draft report.",
+      "tags": [
+        "urban-design",
+        "report"
+      ],
+      "software": [],
+      "cover_url": null,
+      "gallery": [],
+      "docs": [
+        {
+          "label": "0长江新城文本0226完整版初稿S.pdf",
+          "url": "https://raw.githubusercontent.com/crabsatellite/Pre_2025/restructure/2022/2022-02-26_project_yangtze-new-town-full-draft/docs/0%E9%95%BF%E6%B1%9F%E6%96%B0%E5%9F%8E%E6%96%87%E6%9C%AC0226%E5%AE%8C%E6%95%B4%E7%89%88%E5%88%9D%E7%A8%BFS.pdf",
+          "ext": "pdf"
+        }
+      ],
+      "models": [],
+      "archives": [],
+      "counts": {
+        "docs": 1
+      },
+      "source": {
+        "repo": "crabsatellite/Pre_2025",
+        "branch": "restructure",
+        "path": "2022/2022-02-26_project_yangtze-new-town-full-draft"
+      }
+    },
+    {
+      "id": "2022-08-04_project_combined-report-2022-08",
+      "year": 2022,
+      "date": "2022-08-04",
+      "type": "project",
+      "type_label_zh": "项目",
+      "type_label_en": "Project",
+      "slug": "combined-report-2022-08",
+      "title_zh": "2022 夏 · 合稿汇报",
+      "title_en": "Summer 2022 — Combined Submission Report",
+      "summary_zh": "2022 夏的合稿汇报，多方案集成。",
+      "summary_en": "Summer 2022 combined-scheme submission across multiple projects.",
+      "tags": [
+        "report"
+      ],
+      "software": [],
+      "cover_url": null,
+      "gallery": [],
+      "docs": [
+        {
+          "label": "压缩-20220804最终文本汇报合稿-okokok.pdf",
+          "url": "https://raw.githubusercontent.com/crabsatellite/Pre_2025/restructure/2022/2022-08-04_project_combined-report-2022-08/docs/%E5%8E%8B%E7%BC%A9-20220804%E6%9C%80%E7%BB%88%E6%96%87%E6%9C%AC%E6%B1%87%E6%8A%A5%E5%90%88%E7%A8%BF-okokok.pdf",
+          "ext": "pdf"
+        }
+      ],
+      "models": [],
+      "archives": [],
+      "counts": {
+        "docs": 1
+      },
+      "source": {
+        "repo": "crabsatellite/Pre_2025",
+        "branch": "restructure",
+        "path": "2022/2022-08-04_project_combined-report-2022-08"
+      }
+    },
+    {
+      "id": "2022-08-19_project_cybersecurity-center-phase-ii",
+      "year": 2022,
+      "date": "2022-08-19",
+      "type": "project",
+      "type_label_zh": "项目",
+      "type_label_en": "Project",
+      "slug": "cybersecurity-center-phase-ii",
+      "title_zh": "国家网络安全中心 · 二期 (绿洲方案)",
+      "title_en": "National Cybersecurity Center · Phase II (Oasis Scheme)",
+      "summary_zh": "国家网络安全中心 · 二期 · 绿洲方案的文本汇报。",
+      "summary_en": "National Cybersecurity Center · Phase II · Oasis Scheme submission document.",
+      "tags": [
+        "industrial-park",
+        "masterplan",
+        "report"
+      ],
+      "software": [],
+      "cover_url": null,
+      "gallery": [],
+      "docs": [
+        {
+          "label": "网安二期绿洲方案文本-0819-okS.pdf",
+          "url": "https://raw.githubusercontent.com/crabsatellite/Pre_2025/restructure/2022/2022-08-19_project_cybersecurity-center-phase-ii/docs/%E7%BD%91%E5%AE%89%E4%BA%8C%E6%9C%9F%E7%BB%BF%E6%B4%B2%E6%96%B9%E6%A1%88%E6%96%87%E6%9C%AC-0819-okS.pdf",
+          "ext": "pdf"
+        }
+      ],
+      "models": [],
+      "archives": [],
+      "counts": {
+        "docs": 1
+      },
+      "source": {
+        "repo": "crabsatellite/Pre_2025",
+        "branch": "restructure",
+        "path": "2022/2022-08-19_project_cybersecurity-center-phase-ii"
+      }
+    },
+    {
+      "id": "undated_project_hanjiang-bay-foreign-language-school-concept",
+      "year": null,
+      "date": "",
+      "type": "project",
+      "type_label_zh": "项目",
+      "type_label_en": "Project",
+      "slug": "hanjiang-bay-foreign-language-school-concept",
+      "title_zh": "硚口区汉江湾外语特色学校 · 概念提案",
+      "title_en": "Hanjiang Bay Foreign Language School — Concept Proposal",
+      "summary_zh": "硚口区汉江湾外语特色学校概念提案。",
+      "summary_en": "Hanjiang Bay Foreign Language School — concept proposal.",
+      "tags": [
+        "education",
+        "school",
+        "concept"
+      ],
+      "software": [],
+      "cover_url": null,
+      "gallery": [],
+      "docs": [
+        {
+          "label": "硚口区汉江湾外语特色学校概念提案.pdf",
+          "url": "https://raw.githubusercontent.com/crabsatellite/Pre_2025/restructure/undated/undated_project_hanjiang-bay-foreign-language-school-concept/docs/%E7%A1%9A%E5%8F%A3%E5%8C%BA%E6%B1%89%E6%B1%9F%E6%B9%BE%E5%A4%96%E8%AF%AD%E7%89%B9%E8%89%B2%E5%AD%A6%E6%A0%A1%E6%A6%82%E5%BF%B5%E6%8F%90%E6%A1%88.pdf",
+          "ext": "pdf"
+        }
+      ],
+      "models": [],
+      "archives": [],
+      "counts": {
+        "docs": 1
+      },
+      "source": {
+        "repo": "crabsatellite/Pre_2025",
+        "branch": "restructure",
+        "path": "undated/undated_project_hanjiang-bay-foreign-language-school-concept"
+      }
+    },
+    {
+      "id": "undated_project_liuzhou-agro-pastoral-park-phase-1",
+      "year": null,
+      "date": "",
+      "type": "project",
+      "type_label_zh": "项目",
+      "type_label_en": "Project",
+      "slug": "liuzhou-agro-pastoral-park-phase-1",
+      "title_zh": "柳州市农牧实训产业园 · 一期设计",
+      "title_en": "Liuzhou Agro-Pastoral Training Industrial Park · Phase I",
+      "summary_zh": "柳州市农牧实训产业园 · 一期设计文本。",
+      "summary_en": "Liuzhou Agro-Pastoral Training Industrial Park · Phase I design document.",
+      "tags": [
+        "industrial-park",
+        "masterplan",
+        "report"
+      ],
+      "software": [],
+      "cover_url": null,
+      "gallery": [],
+      "docs": [
+        {
+          "label": "柳州市农牧实训产业园（一期）设计okokokS.pdf",
+          "url": "https://raw.githubusercontent.com/crabsatellite/Pre_2025/restructure/undated/undated_project_liuzhou-agro-pastoral-park-phase-1/docs/%E6%9F%B3%E5%B7%9E%E5%B8%82%E5%86%9C%E7%89%A7%E5%AE%9E%E8%AE%AD%E4%BA%A7%E4%B8%9A%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89%E8%AE%BE%E8%AE%A1okokokS.pdf",
+          "ext": "pdf"
+        }
+      ],
+      "models": [],
+      "archives": [],
+      "counts": {
+        "docs": 1
+      },
+      "source": {
+        "repo": "crabsatellite/Pre_2025",
+        "branch": "restructure",
+        "path": "undated/undated_project_liuzhou-agro-pastoral-park-phase-1"
+      }
+    },
+    {
+      "id": "undated_project_optics-valley-exhibition-center",
+      "year": null,
+      "date": "",
+      "type": "project",
+      "type_label_zh": "项目",
+      "type_label_en": "Project",
+      "slug": "optics-valley-exhibition-center",
+      "title_zh": "中信院 · 光谷展示中心",
+      "title_en": "ZTE Academy — Optics Valley Exhibition Center",
+      "summary_zh": "中信院 · 光谷展示中心两方案文本。",
+      "summary_en": "ZTE Academy — Optics Valley Exhibition Center, two-scheme document.",
+      "tags": [
+        "exhibition",
+        "report"
+      ],
+      "software": [],
+      "cover_url": null,
+      "gallery": [],
+      "docs": [
+        {
+          "label": "中信院光谷展示中心两方案文本S.pdf",
+          "url": "https://raw.githubusercontent.com/crabsatellite/Pre_2025/restructure/undated/undated_project_optics-valley-exhibition-center/docs/%E4%B8%AD%E4%BF%A1%E9%99%A2%E5%85%89%E8%B0%B7%E5%B1%95%E7%A4%BA%E4%B8%AD%E5%BF%83%E4%B8%A4%E6%96%B9%E6%A1%88%E6%96%87%E6%9C%ACS.pdf",
+          "ext": "pdf"
+        }
+      ],
+      "models": [],
+      "archives": [],
+      "counts": {
+        "docs": 1
+      },
+      "source": {
+        "repo": "crabsatellite/Pre_2025",
+        "branch": "restructure",
+        "path": "undated/undated_project_optics-valley-exhibition-center"
+      }
+    }
+  ]
+}

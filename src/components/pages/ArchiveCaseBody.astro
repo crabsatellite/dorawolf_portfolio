@@ -1,0 +1,315 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { t, type Lang } from "~/i18n/strings";
+
+interface FileItem {
+  label: string;
+  url: string;
+  ext: string;
+}
+interface ModelItem extends FileItem {
+  kind: string;
+  kind_label: string;
+}
+interface ProjectEntry {
+  id: string;
+  year: number | null;
+  date: string;
+  type: string;
+  type_label_zh: string;
+  type_label_en: string;
+  slug: string;
+  title_zh: string;
+  title_en: string;
+  summary_zh: string;
+  summary_en: string;
+  tags: string[];
+  software: string[];
+  cover_url: string | null;
+  gallery: { label: string; url: string }[];
+  docs: FileItem[];
+  models: ModelItem[];
+  archives: FileItem[];
+  counts: Record<string, number>;
+  source: { repo: string; branch: string; path: string };
+}
+
+interface Props {
+  lang: Lang;
+  project: ProjectEntry;
+}
+const { lang, project: p } = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const langPrefix = lang === "en" ? `${base}/en` : base;
+
+function pickTitle(): string {
+  if (lang === "zh") return p.title_zh || p.title_en || p.slug;
+  return p.title_en || p.title_zh || p.slug;
+}
+function pickSubtitle(): string {
+  if (lang === "zh") return p.title_en && p.title_zh ? p.title_en : "";
+  return p.title_zh && p.title_en ? p.title_zh : "";
+}
+function pickSummary(): string {
+  if (lang === "zh") return p.summary_zh || p.summary_en || "";
+  return p.summary_en || p.summary_zh || "";
+}
+function softwareLabel(s: string): string {
+  const m: Record<string, string> = {
+    rhino: "Rhino",
+    sketchup: "SketchUp",
+    grasshopper: "Grasshopper",
+    autocad: "AutoCAD",
+    "ladybug-energyplus": "Ladybug + EnergyPlus",
+  };
+  return m[s] ?? s;
+}
+
+const sourceUrl = `https://github.com/${p.source.repo}/tree/${p.source.branch}/${p.source.path}`;
+---
+
+<BaseLayout title={pickTitle()} lang={lang}>
+  <article class="case container">
+    <p class="crumbs">
+      <a href={`${langPrefix}/archive`}>{t(lang, "archive.back")}</a>
+    </p>
+
+    <header class="case-head">
+      {p.cover_url && (
+        <div class="case-cover">
+          <img src={p.cover_url} alt={pickTitle()} loading="eager" />
+        </div>
+      )}
+      <div class="case-meta-block">
+        <p class="eyebrow">
+          {p.date || (p.year ? String(p.year) : "")}
+          {p.type && ` · ${t(lang, `archive.type.${p.type}` as any)}`}
+        </p>
+        <h1>{pickTitle()}</h1>
+        {pickSubtitle() && <p class="case-subtitle">{pickSubtitle()}</p>}
+        {pickSummary() && <p class="case-summary">{pickSummary()}</p>}
+
+        <dl class="case-attrs">
+          {p.software.length > 0 && (
+            <>
+              <dt>{t(lang, "archive.filter_tools")}</dt>
+              <dd>{p.software.map(softwareLabel).join(" · ")}</dd>
+            </>
+          )}
+          {p.tags.length > 0 && (
+            <>
+              <dt>Tags</dt>
+              <dd>{p.tags.join(" · ")}</dd>
+            </>
+          )}
+          <dt>{t(lang, "archive.source")}</dt>
+          <dd>
+            <a href={sourceUrl} target="_blank" rel="noopener">
+              {p.source.repo} / {p.source.path}
+            </a>
+          </dd>
+        </dl>
+      </div>
+    </header>
+
+    {p.gallery.length > 0 && (
+      <section class="case-section">
+        <h2>{t(lang, "archive.gallery")} <span class="case-count">({p.gallery.length})</span></h2>
+        <ul class="gallery">
+          {p.gallery.map((g) => (
+            <li>
+              <a href={g.url} target="_blank" rel="noopener">
+                <img src={g.url} alt={g.label} loading="lazy" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {p.docs.length > 0 && (
+      <section class="case-section">
+        <h2>{t(lang, "archive.docs")} <span class="case-count">({p.docs.length})</span></h2>
+        <ul class="file-list">
+          {p.docs.map((f) => (
+            <li class="file-row">
+              <span class="file-name">{f.label}</span>
+              <span class="file-ext">.{f.ext}</span>
+              <a class="file-dl" href={f.url} target="_blank" rel="noopener" download>↓</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {p.models.length > 0 && (
+      <section class="case-section">
+        <h2>{t(lang, "archive.models")} <span class="case-count">({p.models.length})</span></h2>
+        <ul class="file-list">
+          {p.models.map((f) => (
+            <li class="file-row">
+              <span class="file-name">{f.label}</span>
+              <span class="file-ext">{f.kind_label} · .{f.ext}</span>
+              <a class="file-dl" href={f.url} target="_blank" rel="noopener" download>↓</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <p class="case-foot">{t(lang, "archive.downloads_zero_byte_note")}</p>
+    <p class="crumbs">
+      <a href={`${langPrefix}/archive`}>{t(lang, "archive.back")}</a>
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .case { padding-top: var(--space-5); padding-bottom: var(--space-6); }
+  .crumbs {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.06em;
+    color: var(--fg-subtle);
+    margin: 0 0 var(--space-3);
+  }
+  .crumbs a { color: var(--fg-muted); }
+  .crumbs a:hover { color: var(--fg); }
+
+  .case-head {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+  @media (min-width: 880px) {
+    .case-head {
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: var(--space-5);
+    }
+  }
+  .case-cover {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+  }
+  .case-cover img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .case-head h1 {
+    margin: 0.4rem 0 0.6rem;
+    font-family: var(--font-display);
+    font-size: var(--text-h1);
+    line-height: var(--leading-tight);
+    letter-spacing: -0.018em;
+  }
+  .case-subtitle {
+    margin: 0 0 1rem;
+    color: var(--fg-muted);
+    font-family: var(--font-display);
+    font-size: var(--text-md);
+  }
+  .case-summary {
+    margin: 0 0 1.4rem;
+    font-family: var(--font-display);
+    font-size: var(--text-lede);
+    line-height: var(--leading-snug);
+    color: var(--fg);
+  }
+  .case-attrs {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 1rem;
+    row-gap: 0.4rem;
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-3);
+    font-size: var(--text-sm);
+  }
+  .case-attrs dt {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: var(--text-xs);
+    color: var(--fg-subtle);
+    align-self: center;
+  }
+  .case-attrs dd {
+    margin: 0;
+    color: var(--fg);
+  }
+
+  .case-section {
+    margin-top: var(--space-6);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border);
+  }
+  .case-section h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    margin: 0 0 var(--space-3);
+    letter-spacing: -0.014em;
+  }
+  .case-count {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--fg-subtle);
+    letter-spacing: 0.04em;
+  }
+
+  .gallery {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+    gap: 0.8rem;
+  }
+  .gallery a {
+    display: block;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    transition: border-color var(--transition);
+  }
+  .gallery a:hover { border-color: var(--fg-muted); }
+  .gallery img { width: 100%; height: 100%; object-fit: cover; }
+
+  .file-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; }
+  .file-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    font-size: var(--text-sm);
+  }
+  .file-name { word-break: break-all; }
+  .file-ext {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.05em;
+    color: var(--fg-subtle);
+    text-transform: uppercase;
+  }
+  .file-dl {
+    text-decoration: none;
+    border: 1px solid var(--fg);
+    padding: 0.25rem 0.7rem;
+    color: var(--fg);
+    font-family: var(--font-mono);
+  }
+  .file-dl:hover { background: var(--fg); color: var(--bg); }
+
+  .case-foot {
+    margin-top: var(--space-6);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--fg-subtle);
+    text-align: center;
+  }
+</style>

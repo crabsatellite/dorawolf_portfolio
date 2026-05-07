@@ -1,0 +1,390 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { t, type Lang } from "~/i18n/strings";
+import manifest from "../../../data/works-manifest.json";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const langPrefix = lang === "en" ? `${base}/en` : base;
+
+interface ProjectEntry {
+  id: string;
+  year: number | null;
+  date: string;
+  type: string;
+  type_label_zh: string;
+  type_label_en: string;
+  slug: string;
+  title_zh: string;
+  title_en: string;
+  summary_zh: string;
+  summary_en: string;
+  tags: string[];
+  software: string[];
+  cover_url: string | null;
+  gallery: { label: string; url: string }[];
+  docs: { label: string; url: string; ext: string }[];
+  models: { label: string; kind: string; kind_label: string; url: string; ext: string }[];
+  archives: { label: string; url: string; ext: string }[];
+  counts: Record<string, number>;
+  source: { repo: string; branch: string; path: string };
+}
+
+const projects = manifest.projects as ProjectEntry[];
+
+function pickTitle(p: ProjectEntry): string {
+  if (lang === "zh") return p.title_zh || p.title_en || p.slug;
+  return p.title_en || p.title_zh || p.slug;
+}
+
+function pickSubtitle(p: ProjectEntry): string {
+  if (lang === "zh") return p.title_en && p.title_zh ? p.title_en : "";
+  return p.title_zh && p.title_en ? p.title_zh : "";
+}
+
+function pickSummary(p: ProjectEntry): string {
+  if (lang === "zh") return p.summary_zh || p.summary_en || "";
+  return p.summary_en || p.summary_zh || "";
+}
+
+function softwareLabel(s: string): string {
+  const m: Record<string, string> = {
+    rhino: "Rhino",
+    sketchup: "SketchUp",
+    grasshopper: "Grasshopper",
+    autocad: "AutoCAD",
+    "ladybug-energyplus": "Ladybug + EnergyPlus",
+  };
+  return m[s] ?? s;
+}
+
+const years = [
+  ...new Set(projects.map((p) => p.year).filter((y): y is number => y != null)),
+].sort((a, b) => b - a);
+
+const yearRange = years.length
+  ? `${years[years.length - 1]}–${years[0]}`
+  : "—";
+---
+
+<BaseLayout title={t(lang, "archive.title")} lang={lang}>
+  <section class="section section--hero container archive-hero">
+    <p class="eyebrow">{t(lang, "archive.eyebrow")}</p>
+    <h1>{t(lang, "archive.h1")}</h1>
+    <p class="lede">{t(lang, "archive.lede")}</p>
+    <p class="archive-stats">
+      {t(lang, "archive.count", { count: projects.length, years: yearRange })}
+    </p>
+  </section>
+
+  <section class="section container">
+    <div class="archive-toolbar">
+      <div class="facet">
+        <span class="facet-label">{t(lang, "archive.filter_year")}</span>
+        <div class="chips" data-chips="year">
+          <button class="chip chip--active" type="button" data-value="">
+            {t(lang, "archive.filter_all")}
+          </button>
+          {years.map((y) => (
+            <button class="chip" type="button" data-value={String(y)}>
+              {y}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div class="facet">
+        <span class="facet-label">{t(lang, "archive.filter_type")}</span>
+        <div class="chips" data-chips="type">
+          <button class="chip chip--active" type="button" data-value="">
+            {t(lang, "archive.filter_all")}
+          </button>
+          <button class="chip" type="button" data-value="thesis">
+            {t(lang, "archive.type.thesis")}
+          </button>
+          <button class="chip" type="button" data-value="project">
+            {t(lang, "archive.type.project")}
+          </button>
+          <button class="chip" type="button" data-value="coursework">
+            {t(lang, "archive.type.coursework")}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <ol class="archive-grid" id="archive-grid">
+      {projects.map((p) => (
+        <li
+          class="card"
+          data-year={p.year ?? ""}
+          data-type={p.type ?? ""}
+        >
+          <a href={`${langPrefix}/archive/${p.id}`} class="card__link">
+            <div class="card__cover">
+              {p.cover_url ? (
+                <img
+                  src={p.cover_url}
+                  alt={pickTitle(p)}
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <span class="card__cover-placeholder" aria-hidden="true">—</span>
+              )}
+              {p.type && (
+                <span class={`card__type card__type--${p.type}`}>
+                  {t(lang, `archive.type.${p.type}` as any)}
+                </span>
+              )}
+            </div>
+            <div class="card__body">
+              <p class="card__meta">
+                {p.date || (p.year ? String(p.year) : "")}
+              </p>
+              <h2 class="card__title">{pickTitle(p)}</h2>
+              {pickSubtitle(p) && (
+                <p class="card__subtitle">{pickSubtitle(p)}</p>
+              )}
+              {pickSummary(p) && (
+                <p class="card__summary">{pickSummary(p)}</p>
+              )}
+              {p.software.length > 0 && (
+                <p class="card__tools">
+                  {p.software.map((s) => softwareLabel(s)).join(" · ")}
+                </p>
+              )}
+            </div>
+          </a>
+        </li>
+      ))}
+    </ol>
+    <p class="archive-empty" id="archive-empty" hidden>
+      {t(lang, "archive.no_match")}
+    </p>
+    <p class="archive-foot">{t(lang, "archive.downloads_zero_byte_note")}</p>
+  </section>
+</BaseLayout>
+
+<style>
+  .archive-hero h1 {
+    margin-bottom: var(--space-2);
+  }
+  .archive-hero .lede {
+    font-family: var(--font-display);
+    color: var(--fg-muted);
+    font-size: var(--text-lede);
+    line-height: var(--leading-snug);
+    max-width: 56ch;
+  }
+  .archive-stats {
+    margin-top: var(--space-3);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-subtle);
+  }
+
+  .archive-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-5);
+    align-items: flex-start;
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: var(--space-4);
+  }
+  .facet {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+  }
+  .facet-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-subtle);
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .chip {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--fg-muted);
+    padding: 0.3rem 0.85rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .chip:hover {
+    border-color: var(--fg-muted);
+    color: var(--fg);
+  }
+  .chip--active {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+  }
+
+  .archive-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr));
+    gap: var(--space-4);
+  }
+  .card {
+    border: 1px solid var(--border);
+    background: var(--bg);
+    transition: border-color var(--transition);
+  }
+  .card:hover { border-color: var(--fg-muted); }
+  .card__link {
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+    text-decoration: none;
+    height: 100%;
+  }
+  .card__cover {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: var(--bg-elevated);
+    overflow: hidden;
+  }
+  .card__cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 700ms cubic-bezier(0.2, 0.6, 0.18, 1);
+  }
+  .card__link:hover .card__cover img {
+    transform: scale(1.04);
+  }
+  .card__cover-placeholder {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: var(--fg-subtle);
+    font-family: var(--font-display);
+    font-size: 3rem;
+  }
+  .card__type {
+    position: absolute;
+    top: 0.65rem;
+    left: 0.65rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    padding: 0.2rem 0.55rem;
+    background: var(--bg);
+    color: var(--fg);
+    border: 1px solid var(--border);
+    text-transform: uppercase;
+  }
+  .card__type--thesis { color: var(--fg); border-color: var(--fg); }
+  .card__type--project { color: var(--fg-muted); }
+  .card__type--coursework { color: var(--fg-subtle); }
+
+  .card__body {
+    padding: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    flex: 1;
+  }
+  .card__meta {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.05em;
+    color: var(--fg-subtle);
+  }
+  .card__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--text-h4);
+    line-height: var(--leading-tight);
+    letter-spacing: -0.012em;
+  }
+  .card__subtitle {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    color: var(--fg-muted);
+  }
+  .card__summary {
+    margin: 0.4rem 0 0;
+    color: var(--fg-muted);
+    font-size: var(--text-sm);
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .card__tools {
+    margin: 0.7rem 0 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.04em;
+    color: var(--fg-subtle);
+  }
+
+  .archive-empty {
+    text-align: center;
+    color: var(--fg-muted);
+    padding: var(--space-5) 0;
+  }
+  .archive-foot {
+    margin-top: var(--space-5);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--fg-subtle);
+    text-align: center;
+  }
+</style>
+
+<script>
+  // Client-side filtering for the archive index.
+  const grid = document.getElementById("archive-grid");
+  const empty = document.getElementById("archive-empty");
+  if (grid && empty) {
+    const state: { year: string; type: string } = { year: "", type: "" };
+
+    document.querySelectorAll<HTMLElement>("[data-chips]").forEach((group) => {
+      const key = group.dataset.chips as "year" | "type";
+      group.addEventListener("click", (ev) => {
+        const btn = (ev.target as HTMLElement)?.closest<HTMLButtonElement>(".chip");
+        if (!btn) return;
+        for (const sib of group.querySelectorAll(".chip")) sib.classList.remove("chip--active");
+        btn.classList.add("chip--active");
+        state[key] = btn.dataset.value ?? "";
+        applyFilters();
+      });
+    });
+
+    function applyFilters() {
+      let visible = 0;
+      for (const card of grid.querySelectorAll<HTMLElement>(".card")) {
+        const okYear = !state.year || card.dataset.year === state.year;
+        const okType = !state.type || card.dataset.type === state.type;
+        const show = okYear && okType;
+        card.style.display = show ? "" : "none";
+        if (show) visible += 1;
+      }
+      empty.hidden = visible !== 0;
+    }
+  }
+</script>
