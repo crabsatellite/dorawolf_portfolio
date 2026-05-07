@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import { t, type Lang } from "~/i18n/strings";
+import { localizeArchiveImage } from "~/lib/archive-image";
 
 interface FileItem {
   label: string;
@@ -95,7 +96,7 @@ const sourceUrl = `https://github.com/${p.source.repo}/tree/${p.source.branch}/$
     <header class="case-head">
       {p.cover_url && (
         <div class="case-cover">
-          <img src={p.cover_url} alt={pickTitle()} loading="eager" />
+          <img src={localizeArchiveImage(p.cover_url, p.id)} alt={pickTitle()} loading="eager" />
         </div>
       )}
       <div class="case-meta-block">
@@ -138,13 +139,16 @@ const sourceUrl = `https://github.com/${p.source.repo}/tree/${p.source.branch}/$
       <section class="case-section">
         <h2>{t(lang, "archive.gallery")} <span class="case-count">({gallery.length})</span></h2>
         <ul class="gallery">
-          {gallery.map((g) => (
-            <li>
-              <a href={g.url} target="_blank" rel="noopener">
-                <img src={g.url} alt={g.label} loading="lazy" />
-              </a>
-            </li>
-          ))}
+          {gallery.map((g) => {
+            const localSrc = localizeArchiveImage(g.url, p.id);
+            return (
+              <li>
+                <a href={localSrc} target="_blank" rel="noopener">
+                  <img src={localSrc} alt={g.label} loading="lazy" />
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </section>
     )}

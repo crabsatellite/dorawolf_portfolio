@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import { t, type Lang } from "~/i18n/strings";
+import { localizeArchiveImage } from "~/lib/archive-image";
 import manifest from "../../../data/works-manifest.json";
 
 interface Props {
@@ -150,7 +151,7 @@ const yearRange = years.length
             <div class="card__cover">
               {p.cover_url ? (
                 <img
-                  src={p.cover_url}
+                  src={localizeArchiveImage(p.cover_url, p.id)}
                   alt={pickTitle(p)}
                   loading="lazy"
                   decoding="async"

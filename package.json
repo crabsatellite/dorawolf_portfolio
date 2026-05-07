@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "prebuild": "node scripts/build-images.mjs",
+    "prebuild": "node scripts/fetch-archive-images.mjs && node scripts/build-images.mjs",
+    "fetch:archive": "node scripts/fetch-archive-images.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
