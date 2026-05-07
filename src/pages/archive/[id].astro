@@ -3,10 +3,18 @@ import ArchiveCaseBody from "~/components/pages/ArchiveCaseBody.astro";
 import manifest from "../../../data/works-manifest.json";
 
 export async function getStaticPaths() {
-  return manifest.projects.map((p: any) => ({
-    params: { id: p.id },
-    props: { project: p },
-  }));
+  const KNOWN = new Set(["thesis", "project", "coursework"]);
+  return (manifest.projects || [])
+    .filter((p: any) =>
+      p &&
+      typeof p.id === "string" && p.id.length > 0 &&
+      typeof p.slug === "string" && p.slug.length > 0 &&
+      (p.type === "" || KNOWN.has(p.type))
+    )
+    .map((p: any) => ({
+      params: { id: p.id },
+      props: { project: p },
+    }));
 }
 
 const { project } = Astro.props;

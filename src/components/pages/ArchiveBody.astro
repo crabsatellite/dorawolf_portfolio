@@ -34,7 +34,19 @@ interface ProjectEntry {
   source: { repo: string; branch: string; path: string };
 }
 
-const projects = manifest.projects as ProjectEntry[];
+// Defensive filter: only render entries that have the minimum fields the
+// website needs. If `organize.py` ever emits a malformed entry (e.g. an
+// upstream sync brings in a folder that hasn't been renamed yet), we skip it
+// here instead of crashing the build.
+const KNOWN_TYPES = new Set(["thesis", "project", "coursework"]);
+const allProjects = (manifest.projects as ProjectEntry[]) || [];
+const projects = allProjects.filter(
+  (p) =>
+    p &&
+    typeof p.id === "string" && p.id.length > 0 &&
+    typeof p.slug === "string" && p.slug.length > 0 &&
+    (p.type === "" || KNOWN_TYPES.has(p.type))
+);
 
 function pickTitle(p: ProjectEntry): string {
   if (lang === "zh") return p.title_zh || p.title_en || p.slug;
@@ -134,7 +146,7 @@ const yearRange = years.length
               ) : (
                 <span class="card__cover-placeholder" aria-hidden="true">—</span>
               )}
-              {p.type && (
+              {p.type && KNOWN_TYPES.has(p.type) && (
                 <span class={`card__type card__type--${p.type}`}>
                   {t(lang, `archive.type.${p.type}` as any)}
                 </span>

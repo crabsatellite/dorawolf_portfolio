@@ -40,6 +40,15 @@ interface Props {
 }
 const { lang, project: p } = Astro.props;
 
+// Tolerate missing collections so a partially-populated project still renders.
+const tags = Array.isArray(p.tags) ? p.tags : [];
+const software = Array.isArray(p.software) ? p.software : [];
+const gallery = Array.isArray(p.gallery) ? p.gallery : [];
+const docs = Array.isArray(p.docs) ? p.docs : [];
+const models = Array.isArray(p.models) ? p.models : [];
+const KNOWN_TYPES = new Set(["thesis", "project", "coursework"]);
+const validType = p.type && KNOWN_TYPES.has(p.type);
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const langPrefix = lang === "en" ? `${base}/en` : base;
 
@@ -84,40 +93,44 @@ const sourceUrl = `https://github.com/${p.source.repo}/tree/${p.source.branch}/$
       <div class="case-meta-block">
         <p class="eyebrow">
           {p.date || (p.year ? String(p.year) : "")}
-          {p.type && ` · ${t(lang, `archive.type.${p.type}` as any)}`}
+          {validType && ` · ${t(lang, `archive.type.${p.type}` as any)}`}
         </p>
         <h1>{pickTitle()}</h1>
         {pickSubtitle() && <p class="case-subtitle">{pickSubtitle()}</p>}
         {pickSummary() && <p class="case-summary">{pickSummary()}</p>}
 
         <dl class="case-attrs">
-          {p.software.length > 0 && (
+          {software.length > 0 && (
             <>
               <dt>{t(lang, "archive.filter_tools")}</dt>
-              <dd>{p.software.map(softwareLabel).join(" · ")}</dd>
+              <dd>{software.map(softwareLabel).join(" · ")}</dd>
             </>
           )}
-          {p.tags.length > 0 && (
+          {tags.length > 0 && (
             <>
               <dt>Tags</dt>
-              <dd>{p.tags.join(" · ")}</dd>
+              <dd>{tags.join(" · ")}</dd>
             </>
           )}
-          <dt>{t(lang, "archive.source")}</dt>
-          <dd>
-            <a href={sourceUrl} target="_blank" rel="noopener">
-              {p.source.repo} / {p.source.path}
-            </a>
-          </dd>
+          {p.source && p.source.repo && (
+            <>
+              <dt>{t(lang, "archive.source")}</dt>
+              <dd>
+                <a href={sourceUrl} target="_blank" rel="noopener">
+                  {p.source.repo} / {p.source.path}
+                </a>
+              </dd>
+            </>
+          )}
         </dl>
       </div>
     </header>
 
-    {p.gallery.length > 0 && (
+    {gallery.length > 0 && (
       <section class="case-section">
-        <h2>{t(lang, "archive.gallery")} <span class="case-count">({p.gallery.length})</span></h2>
+        <h2>{t(lang, "archive.gallery")} <span class="case-count">({gallery.length})</span></h2>
         <ul class="gallery">
-          {p.gallery.map((g) => (
+          {gallery.map((g) => (
             <li>
               <a href={g.url} target="_blank" rel="noopener">
                 <img src={g.url} alt={g.label} loading="lazy" />
@@ -128,11 +141,11 @@ const sourceUrl = `https://github.com/${p.source.repo}/tree/${p.source.branch}/$
       </section>
     )}
 
-    {p.docs.length > 0 && (
+    {docs.length > 0 && (
       <section class="case-section">
-        <h2>{t(lang, "archive.docs")} <span class="case-count">({p.docs.length})</span></h2>
+        <h2>{t(lang, "archive.docs")} <span class="case-count">({docs.length})</span></h2>
         <ul class="file-list">
-          {p.docs.map((f) => (
+          {docs.map((f) => (
             <li class="file-row">
               <span class="file-name">{f.label}</span>
               <span class="file-ext">.{f.ext}</span>
@@ -143,11 +156,11 @@ const sourceUrl = `https://github.com/${p.source.repo}/tree/${p.source.branch}/$
       </section>
     )}
 
-    {p.models.length > 0 && (
+    {models.length > 0 && (
       <section class="case-section">
-        <h2>{t(lang, "archive.models")} <span class="case-count">({p.models.length})</span></h2>
+        <h2>{t(lang, "archive.models")} <span class="case-count">({models.length})</span></h2>
         <ul class="file-list">
-          {p.models.map((f) => (
+          {models.map((f) => (
             <li class="file-row">
               <span class="file-name">{f.label}</span>
               <span class="file-ext">{f.kind_label} · .{f.ext}</span>
